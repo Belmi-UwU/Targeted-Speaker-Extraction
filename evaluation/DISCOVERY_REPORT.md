@@ -213,6 +213,14 @@ What this shows:
 
 Conclusion: the SepFormer selector cannot meet a conversational delay. The live stage needs a model built to be causal. The [survey of causal candidates](CAUSAL_CANDIDATES.md) found no option with public causal weights under a clear licence, so a training run is needed. It ranks first the WeSep causal BSRNN recipe: 32 ms latency, published causal research checkpoints with no weights licence, Apache-2.0 code. In the WeSep paper, causal conditioning on a plain ECAPA embedding fell to 6.87 dB SI-SDRi on Libri2Mix, while conditioning on features of the enrollment audio kept 12.98 dB. The discovered track's **audio**, not just its embedding, should therefore condition the live model.
 
+**Crossfade between blocks.** [run_block_online_crossfade.py](run_block_online_crossfade.py) holds back the last 20 or 50 ms of each block and blends it (raised cosine) with the next window's estimate of the same audio. Delay grows by 20 or 50 ms, and no future audio is used. Results for B = 1 s, W = 2 s:
+
+- **Quality is unchanged.** Test median SI-SDRi is +11.65 / +11.63 / +11.50 dB for no / 20 ms / 50 ms crossfade with discovered enrollment, and +12.31 / +12.34 / +12.40 dB with clean enrollment.
+- **On the real recording, sample jumps at block boundaries shrink.** The jump at a block boundary divided by the typical jump elsewhere fell from 2.1×, 1.8× and 1.3× (Nicker, Sam, Mond) without crossfade to 1.0×, 0.7× and 0.1× with 20 ms. 50 ms gave the same values.
+- **On the synthetic conversations this measure says little.** Many boundaries fall in silent output, so only listening can judge them there.
+
+A 20 ms crossfade is a cheap default. Listening comparisons are in the local page `data/user_recordings/discovery/crossfade.html`.
+
 Listening outputs from the real recording for every setting are on a local page, `data/user_recordings/discovery/block_online.html`, next to the offline output.
 
 ## Limitations

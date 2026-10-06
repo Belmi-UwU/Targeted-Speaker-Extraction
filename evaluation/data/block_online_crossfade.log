@@ -1,0 +1,19 @@
+done dev_n4_5683-2300-4992-8555
+done dev_n5_7021-260-2830-5639-1221
+done dev_n6_4507-2094-1580-672-3729-1320
+done test_n4_8230-237-7729-6930
+done test_n5_908-1188-1089-7176-4970
+done test_n6_8455-4446-4077-5105-2961-121
+dev|clean|0ms {'runs': 15, 'median_si_sdri_db': 10.08, 'median_alone_si_sdr_db': 14.78, 'median_boundary_jump': 0.1}
+dev|clean|20ms {'runs': 15, 'median_si_sdri_db': 10.11, 'median_alone_si_sdr_db': 14.83, 'median_boundary_jump': 0.0}
+dev|clean|50ms {'runs': 15, 'median_si_sdri_db': 10.22, 'median_alone_si_sdr_db': 14.94, 'median_boundary_jump': 0.0}
+dev|discovered|0ms {'runs': 15, 'median_si_sdri_db': 9.56, 'median_alone_si_sdr_db': 9.34, 'median_boundary_jump': 0.03}
+dev|discovered|20ms {'runs': 15, 'median_si_sdri_db': 9.56, 'median_alone_si_sdr_db': 9.4, 'median_boundary_jump': 0.0}
+dev|discovered|50ms {'runs': 15, 'median_si_sdri_db': 9.56, 'median_alone_si_sdr_db': 9.58, 'median_boundary_jump': 0.0}
+test|clean|0ms {'runs': 15, 'median_si_sdri_db': 12.31, 'median_alone_si_sdr_db': 19.08, 'median_boundary_jump': 0.11}
+test|clean|20ms {'runs': 15, 'median_si_sdri_db': 12.34, 'median_alone_si_sdr_db': 19.16, 'median_boundary_jump': 0.0}
+test|clean|50ms {'runs': 15, 'median_si_sdri_db': 12.4, 'median_alone_si_sdr_db': 18.76, 'median_boundary_jump': 0.0}
+test|discovered|0ms {'runs': 15, 'median_si_sdri_db': 11.65, 'median_alone_si_sdr_db': 12.16, 'median_boundary_jump': 0.02}
+test|discovered|20ms {'runs': 15, 'median_si_sdri_db': 11.63, 'median_alone_si_sdr_db': 12.15, 'median_boundary_jump': 0.0}
+test|discovered|50ms {'runs': 15, 'median_si_sdri_db': 11.5, 'median_alone_si_sdr_db': 12.14, 'median_boundary_jump': 0.0}
+wrote /Users/valentinotriadi/Code/VSCode/Random/Targeted-Speaker-Extraction/evaluation/data/user_recordings/discovery/crossfade.html

@@ -31,8 +31,10 @@ RULES = ("sepformer_selector", "sepformer_competitive")
 USER = Path(__file__).resolve().parent / "data/user_recordings/discovery"
 
 
-def block_online_separation(models, mix16, block_s, window_s):
+def block_online_separation(models, mix16, block_s, window_s, fade_s=0.0):
+    """fade_s keeps that much audio before each block in its tail, for crossfading."""
     block, window = int(block_s * dp.RATE), int(window_s * dp.RATE)
+    fade = int(fade_s * dp.RATE)
     blocks = []
     for block_start in range(0, len(mix16), block):
         stop = min(block_start + block, len(mix16))
@@ -42,6 +44,7 @@ def block_online_separation(models, mix16, block_s, window_s):
             segment = np.pad(segment, (-start, 0))
         began = time.perf_counter()
         streams = []
+        lead = min(fade, block_start)
         if np.sqrt(np.mean(segment ** 2)) >= dp.SILENT_WINDOW_RMS:
             seg8 = scipy.signal.resample_poly(segment, 1, 2).astype("float32")
             with torch.inference_mode():
@@ -57,14 +60,20 @@ def block_online_separation(models, mix16, block_s, window_s):
                                          max(energy, 1e-20))
                 if relative < dp.STREAM_FLOOR_DB:
                     continue
-                streams.append({"tail": wave[-(stop - block_start):],
+                streams.append({"tail": wave[-(stop - block_start + lead):],
                                 "ecapa": models.embed("ecapa", wave)})
-        blocks.append({"start": block_start, "stop": stop, "streams": streams,
+        blocks.append({"start": block_start, "stop": stop, "lead": lead, "streams": streams,
                        "seconds": time.perf_counter() - began})
     return blocks
 
 
-def select(blocks, frames, rule, run, threshold):
+def select(blocks, frames, rule, run, threshold, fade_s=0.0):
+    """Assemble the newest block of each window.
+
+    With fade_s > 0 the last fade_s of the previous block is held back and
+    crossfaded (raised cosine) with the new window's estimate of the same
+    audio. That adds fade_s of delay but still uses no future audio.
+    """
     out = np.zeros(frames, dtype="float32")
     known = np.stack(run["candidates"])
     for b in blocks:
@@ -79,8 +88,16 @@ def select(blocks, frames, rule, run, threshold):
                 keep = int(np.argmax(sims)) == run["target_index"] and sims[run["target_index"]] >= threshold
             if keep:
                 chosen.append(stream["tail"])
-        if chosen:
-            out[b["start"]:b["stop"]] = np.sum(chosen, axis=0)
+        lead = b.get("lead", 0)
+        piece = (np.sum(chosen, axis=0) if chosen
+                 else np.zeros(lead + b["stop"] - b["start"], dtype="float32"))
+        fade = min(int(fade_s * dp.RATE), lead)
+        piece = piece[lead - fade:]
+        if fade:
+            ease_in = 0.5 - 0.5 * np.cos(np.linspace(0, np.pi, fade))
+            region = slice(b["start"] - fade, b["start"])
+            out[region] = out[region] * (1 - ease_in) + piece[:fade] * ease_in
+        out[b["start"]:b["stop"]] = piece[fade:]
     return out
 
 

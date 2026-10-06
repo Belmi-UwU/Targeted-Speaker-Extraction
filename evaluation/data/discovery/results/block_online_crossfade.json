@@ -1,0 +1,3264 @@
+{
+  "block_seconds": 1.0,
+  "window_seconds": 2.0,
+  "rule": "sepformer_competitive",
+  "thresholds": {
+    "clean": 0.0,
+    "discovered": 0.4
+  },
+  "added_delay_ms": {
+    "0ms": 0,
+    "20ms": 20,
+    "50ms": 50
+  },
+  "summary": {
+    "dev|clean|0ms": {
+      "runs": 15,
+      "median_si_sdri_db": 10.082960865607806,
+      "median_alone_si_sdr_db": 14.781859866995601,
+      "median_boundary_jump": 0.09628593684371792
+    },
+    "dev|clean|20ms": {
+      "runs": 15,
+      "median_si_sdri_db": 10.113608275889076,
+      "median_alone_si_sdr_db": 14.827536183786162,
+      "median_boundary_jump": 0.0
+    },
+    "dev|clean|50ms": {
+      "runs": 15,
+      "median_si_sdri_db": 10.22398109532649,
+      "median_alone_si_sdr_db": 14.9389548413305,
+      "median_boundary_jump": 0.0
+    },
+    "dev|discovered|0ms": {
+      "runs": 15,
+      "median_si_sdri_db": 9.560069457906966,
+      "median_alone_si_sdr_db": 9.339082449600564,
+      "median_boundary_jump": 0.026011023051863112
+    },
+    "dev|discovered|20ms": {
+      "runs": 15,
+      "median_si_sdri_db": 9.56172648938212,
+      "median_alone_si_sdr_db": 9.40038851412314,
+      "median_boundary_jump": 0.0
+    },
+    "dev|discovered|50ms": {
+      "runs": 15,
+      "median_si_sdri_db": 9.564710280789786,
+      "median_alone_si_sdr_db": 9.577059413411103,
+      "median_boundary_jump": 0.0
+    },
+    "test|clean|0ms": {
+      "runs": 15,
+      "median_si_sdri_db": 12.312831241272175,
+      "median_alone_si_sdr_db": 19.083014607459464,
+      "median_boundary_jump": 0.11127659804597119
+    },
+    "test|clean|20ms": {
+      "runs": 15,
+      "median_si_sdri_db": 12.343453785740929,
+      "median_alone_si_sdr_db": 19.160316641864764,
+      "median_boundary_jump": 0.0
+    },
+    "test|clean|50ms": {
+      "runs": 15,
+      "median_si_sdri_db": 12.401518487690925,
+      "median_alone_si_sdr_db": 18.75617685311964,
+      "median_boundary_jump": 0.0
+    },
+    "test|discovered|0ms": {
+      "runs": 15,
+      "median_si_sdri_db": 11.645586857694145,
+      "median_alone_si_sdr_db": 12.15819414259396,
+      "median_boundary_jump": 0.021332833933370387
+    },
+    "test|discovered|20ms": {
+      "runs": 15,
+      "median_si_sdri_db": 11.626276373535042,
+      "median_alone_si_sdr_db": 12.154014271529952,
+      "median_boundary_jump": 0.0
+    },
+    "test|discovered|50ms": {
+      "runs": 15,
+      "median_si_sdri_db": 11.502831383688248,
+      "median_alone_si_sdr_db": 12.144818843297047,
+      "median_boundary_jump": 0.0
+    }
+  },
+  "runs": [
+    {
+      "split": "dev",
+      "mixture": "dev_n4_5683-2300-4992-8555",
+      "target": "5683",
+      "enrollment": "clean",
+      "fade_ms": 0,
+      "boundary_jump": 0.35290337315191084,
+      "overall_si_sdri_db": 11.526713992977065,
+      "target_alone_si_sdr_db": 15.148222756839406,
+      "si_sdri_by_overlap_db": {
+        "target_plus_1": 12.708749213257715,
+        "target_plus_2": 12.586434677158874,
+        "target_plus_3": 3.055528948857549
+      },
+      "absent_vs_active_output_db": -20.743396491457414,
+      "absent_vs_active_input_db": -0.7357184579447527,
+      "absent_suppression_db": 20.00767803351266
+    },
+    {
+      "split": "dev",
+      "mixture": "dev_n4_5683-2300-4992-8555",
+      "target": "5683",
+      "enrollment": "clean",
+      "fade_ms": 20,
+      "boundary_jump": 0.0277001755152407,
+      "overall_si_sdri_db": 11.487365028929034,
+      "target_alone_si_sdr_db": 15.124831863820855,
+      "si_sdri_by_overlap_db": {
+        "target_plus_1": 12.742182314109481,
+        "target_plus_2": 12.529181276665803,
+        "target_plus_3": 3.0206508070787863
+      },
+      "absent_vs_active_output_db": -20.669810224453588,
+      "absent_vs_active_input_db": -0.7357184579447527,
+      "absent_suppression_db": 19.934091766508836
+    },
+    {
+      "split": "dev",
+      "mixture": "dev_n4_5683-2300-4992-8555",
+      "target": "5683",
+      "enrollment": "clean",
+      "fade_ms": 50,
+      "boundary_jump": 0.0280419062250258,
+      "overall_si_sdri_db": 11.355286815351167,
+      "target_alone_si_sdr_db": 14.99336205064429,
+      "si_sdri_by_overlap_db": {
+        "target_plus_1": 12.750862267618984,
+        "target_plus_2": 12.110149789736242,
+        "target_plus_3": 2.9582696362565484
+      },
+      "absent_vs_active_output_db": -20.297223289310768,
+      "absent_vs_active_input_db": -0.7357184579447527,
+      "absent_suppression_db": 19.561504831366015
+    },
+    {
+      "split": "dev",
+      "mixture": "dev_n4_5683-2300-4992-8555",
+      "target": "5683",
+      "enrollment": "discovered",
+      "fade_ms": 0,
+      "boundary_jump": 0.28471416165179103,
+      "overall_si_sdri_db": 2.24232899157752,
+      "target_alone_si_sdr_db": 0.8277368685661539,
+      "si_sdri_by_overlap_db": {
+        "target_plus_1": 0.5677521522995699,
+        "target_plus_2": 0.6957626231667495,
+        "target_plus_3": 3.055528948857549
+      },
+      "absent_vs_active_output_db": -9.88080521207955,
+      "absent_vs_active_input_db": -0.7357184579447527,
+      "absent_suppression_db": 9.145086754134798
+    },
+    {
+      "split": "dev",
+      "mixture": "dev_n4_5683-2300-4992-8555",
+      "target": "5683",
+      "enrollment": "discovered",
+      "fade_ms": 20,
+      "boundary_jump": 0.011389141463809337,
+      "overall_si_sdri_db": 2.3718115349056776,
+      "target_alone_si_sdr_db": 0.8278198432396786,
+      "si_sdri_by_overlap_db": {
+        "target_plus_1": 1.2538949637265433,
+        "target_plus_2": 0.6642837735327198,
+        "target_plus_3": 3.0206508070787863
+      },
+      "absent_vs_active_output_db": -9.99870290732957,
+      "absent_vs_active_input_db": -0.7357184579447527,
+      "absent_suppression_db": 9.262984449384817
+    },
+    {
+      "split": "dev",
+      "mixture": "dev_n4_5683-2300-4992-8555",
+      "target": "5683",
+      "enrollment": "discovered",
+      "fade_ms": 50,
+      "boundary_jump": 0.011578893868548998,
+      "overall_si_sdri_db": 2.5288456496562794,
+      "target_alone_si_sdr_db": 0.8273261366943606,
+      "si_sdri_by_overlap_db": {
+        "target_plus_1": 2.178148212322146,
+        "target_plus_2": 0.37556126542585133,
+        "target_plus_3": 2.9582696362565484
+      },
+      "absent_vs_active_output_db": -10.200112758757207,
+      "absent_vs_active_input_db": -0.7357184579447527,
+      "absent_suppression_db": 9.464394300812454
+    },
+    {
+      "split": "dev",
+      "mixture": "dev_n4_5683-2300-4992-8555",
+      "target": "2300",
+      "enrollment": "clean",
+      "fade_ms": 0,
+      "boundary_jump": 0.43346862337984243,
+      "overall_si_sdri_db": 19.96089695731255,
+      "target_alone_si_sdr_db": null,
+      "si_sdri_by_overlap_db": {
+        "target_plus_1": 17.69549002921113,
+        "target_plus_2": 16.325851416841203,
+        "target_plus_3": 18.237518360935468
+      },
+      "absent_vs_active_output_db": -42.44663617048423,
+      "absent_vs_active_input_db": -2.667257190639134,
+      "absent_suppression_db": 39.7793789798451
+    },
+    {
+      "split": "dev",
+      "mixture": "dev_n4_5683-2300-4992-8555",
+      "target": "2300",
+      "enrollment": "clean",
+      "fade_ms": 20,
+      "boundary_jump": 0.08623208584845371,
+      "overall_si_sdri_db": 19.968367206846484,
+      "target_alone_si_sdr_db": null,
+      "si_sdri_by_overlap_db": {
+        "target_plus_1": 17.728187177414963,
+        "target_plus_2": 16.298743189917143,
+        "target_plus_3": 18.332341212449194
+      },
+      "absent_vs_active_output_db": -42.29246107184715,
+      "absent_vs_active_input_db": -2.667257190639134,
+      "absent_suppression_db": 39.625203881208016
+    },
+    {
+      "split": "dev",
+      "mixture": "dev_n4_5683-2300-4992-8555",
+      "target": "2300",
+      "enrollment": "clean",
+      "fade_ms": 50,
+      "boundary_jump": 0.08848345879180616,
+      "overall_si_sdri_db": 19.85324679201316,
+      "target_alone_si_sdr_db": null,
+      "si_sdri_by_overlap_db": {
+        "target_plus_1": 17.73737144262227,
+        "target_plus_2": 16.088550887844246,
+        "target_plus_3": 18.340888162762344
+      },
+      "absent_vs_active_output_db": -42.19913438906453,
+      "absent_vs_active_input_db": -2.667257190639134,
+      "absent_suppression_db": 39.5318771984254
+    },
+    {
+      "split": "dev",
+      "mixture": "dev_n4_5683-2300-4992-8555",
+      "target": "2300",
+      "enrollment": "discovered",
+      "fade_ms": 0,
+      "boundary_jump": 0.45062983826375447,
+      "overall_si_sdri_db": 18.948138093904436,
+      "target_alone_si_sdr_db": null,
+      "si_sdri_by_overlap_db": {
+        "target_plus_1": 14.900545191113505,
+        "target_plus_2": 16.325851416841203,
+        "target_plus_3": 18.237518360935468
+      },
+      "absent_vs_active_output_db": -42.34070961279952,
+      "absent_vs_active_input_db": -2.667257190639134,
+      "absent_suppression_db": 39.67345242216039
+    },
+    {
+      "split": "dev",
+      "mixture": "dev_n4_5683-2300-4992-8555",
+      "target": "2300",
+      "enrollment": "discovered",
+      "fade_ms": 20,
+      "boundary_jump": 0.08969358984752965,
+      "overall_si_sdri_db": 18.900982564454573,
+      "target_alone_si_sdr_db": null,
+      "si_sdri_by_overlap_db": {
+        "target_plus_1": 14.796309275362788,
+        "target_plus_2": 16.298743189917143,
+        "target_plus_3": 18.332341212449194
+      },
+      "absent_vs_active_output_db": -42.18260218611347,
+      "absent_vs_active_input_db": -2.667257190639134,
+      "absent_suppression_db": 39.51534499547434
+    },
+    {
+      "split": "dev",
+      "mixture": "dev_n4_5683-2300-4992-8555",
+      "target": "2300",
+      "enrollment": "discovered",
+      "fade_ms": 50,
+      "boundary_jump": 0.09243047439240014,
+      "overall_si_sdri_db": 18.752711917598237,
+      "target_alone_si_sdr_db": null,
+      "si_sdri_by_overlap_db": {
+        "target_plus_1": 14.668352795889298,
+        "target_plus_2": 16.088550887844246,
+        "target_plus_3": 18.340888162762344
+      },
+      "absent_vs_active_output_db": -42.08723892591452,
+      "absent_vs_active_input_db": -2.667257190639134,
+      "absent_suppression_db": 39.419981735275385
+    },
+    {
+      "split": "dev",
+      "mixture": "dev_n4_5683-2300-4992-8555",
+      "target": "4992",
+      "enrollment": "clean",
+      "fade_ms": 0,
+      "boundary_jump": 0.32139822220450837,
+      "overall_si_sdri_db": 14.38694137410843,
+      "target_alone_si_sdr_db": null,
+      "si_sdri_by_overlap_db": {
+        "target_plus_1": 14.600528370441433,
+        "target_plus_2": 12.01862408682086,
+        "target_plus_3": 12.170021555585087
+      },
+      "absent_vs_active_output_db": -14.685666366610409,
+      "absent_vs_active_input_db": -2.475280419677869,
+      "absent_suppression_db": 12.21038594693254
+    },
+    {
+      "split": "dev",
+      "mixture": "dev_n4_5683-2300-4992-8555",
+      "target": "4992",
+      "enrollment": "clean",
+      "fade_ms": 20,
+      "boundary_jump": 0.05908025551904822,
+      "overall_si_sdri_db": 14.420776618381431,
+      "target_alone_si_sdr_db": null,
+      "si_sdri_by_overlap_db": {
+        "target_plus_1": 14.597873565642594,
+        "target_plus_2": 12.041468057944893,
+        "target_plus_3": 12.33097411828403
+      },
+      "absent_vs_active_output_db": -14.686073842546321,
+      "absent_vs_active_input_db": -2.475280419677869,
+      "absent_suppression_db": 12.210793422868452
+    },
+    {
+      "split": "dev",
+      "mixture": "dev_n4_5683-2300-4992-8555",
+      "target": "4992",
+      "enrollment": "clean",
+      "fade_ms": 50,
+      "boundary_jump": 0.06170085826027013,
+      "overall_si_sdri_db": 14.487732965801516,
+      "target_alone_si_sdr_db": null,
+      "si_sdri_by_overlap_db": {
+        "target_plus_1": 14.589249672450444,
+        "target_plus_2": 12.086912614370199,
+        "target_plus_3": 12.694028456098597
+      },
+      "absent_vs_active_output_db": -14.675129549345868,
+      "absent_vs_active_input_db": -2.475280419677869,
+      "absent_suppression_db": 12.199849129668
+    },
+    {
+      "split": "dev",
+      "mixture": "dev_n4_5683-2300-4992-8555",
+      "target": "4992",
+      "enrollment": "discovered",
+      "fade_ms": 0,
+      "boundary_jump": 0.23934690513956136,
+      "overall_si_sdri_db": 14.290090124741583,
+      "target_alone_si_sdr_db": null,
+      "si_sdri_by_overlap_db": {
+        "target_plus_1": 14.600528370441433,
+        "target_plus_2": 12.01862408682086,
+        "target_plus_3": 1.423164389521908
+      },
+      "absent_vs_active_output_db": -43.92811534860129,
+      "absent_vs_active_input_db": -2.475280419677869,
+      "absent_suppression_db": 41.45283492892342
+    },
+    {
+      "split": "dev",
+      "mixture": "dev_n4_5683-2300-4992-8555",
+      "target": "4992",
+      "enrollment": "discovered",
+      "fade_ms": 20,
+      "boundary_jump": 0.017943558977292128,
+      "overall_si_sdri_db": 14.303893568512239,
+      "target_alone_si_sdr_db": null,
+      "si_sdri_by_overlap_db": {
+        "target_plus_1": 14.597873565642594,
+        "target_plus_2": 12.041451546323735,
+        "target_plus_3": 1.4653243828992162
+      },
+      "absent_vs_active_output_db": -43.77476723958807,
+      "absent_vs_active_input_db": -2.475280419677869,
+      "absent_suppression_db": 41.2994868199102
+    },
+    {
+      "split": "dev",
+      "mixture": "dev_n4_5683-2300-4992-8555",
+      "target": "4992",
+      "enrollment": "discovered",
+      "fade_ms": 50,
+      "boundary_jump": 0.018655150357759175,
+      "overall_si_sdri_db": 14.328756893706021,
+      "target_alone_si_sdr_db": null,
+      "si_sdri_by_overlap_db": {
+        "target_plus_1": 14.589249672450444,
+        "target_plus_2": 12.08692093785126,
+        "target_plus_3": 1.533617319230288
+      },
+      "absent_vs_active_output_db": -43.722659696315745,
+      "absent_vs_active_input_db": -2.475280419677869,
+      "absent_suppression_db": 41.24737927663787
+    },
+    {
+      "split": "dev",
+      "mixture": "dev_n4_5683-2300-4992-8555",
+      "target": "8555",
+      "enrollment": "clean",
+      "fade_ms": 0,
+      "boundary_jump": 0.01825303546785854,
+      "overall_si_sdri_db": 10.875681291394411,
+      "target_alone_si_sdr_db": 22.079797891647935,
+      "si_sdri_by_overlap_db": {
+        "target_plus_1": 5.273662856357749,
+        "target_plus_2": 10.890214871083828,
+        "target_plus_3": 3.6960050811911547
+      },
+      "absent_vs_active_output_db": -43.91322278814985,
+      "absent_vs_active_input_db": 0.24801663726689327,
+      "absent_suppression_db": 44.161239425416746
+    },
+    {
+      "split": "dev",
+      "mixture": "dev_n4_5683-2300-4992-8555",
+      "target": "8555",
+      "enrollment": "clean",
+      "fade_ms": 20,
+      "boundary_jump": 0.0,
+      "overall_si_sdri_db": 10.864511970368442,
+      "target_alone_si_sdr_db": 22.078268357312503,
+      "si_sdri_by_overlap_db": {
+        "target_plus_1": 5.252523514057454,
+        "target_plus_2": 10.889550145095845,
+        "target_plus_3": 3.6960050811911547
+      },
+      "absent_vs_active_output_db": -34.209361663914756,
+      "absent_vs_active_input_db": 0.24801663726689327,
+      "absent_suppression_db": 34.45737830118165
+    },
+    {
+      "split": "dev",
+      "mixture": "dev_n4_5683-2300-4992-8555",
+      "target": "8555",
+      "enrollment": "clean",
+      "fade_ms": 50,
+      "boundary_jump": 0.0,
+      "overall_si_sdri_db": 10.809385907798045,
+      "target_alone_si_sdr_db": 22.085672722510296,
+      "si_sdri_by_overlap_db": {
+        "target_plus_1": 5.13730645905901,
+        "target_plus_2": 10.870107903466675,
+        "target_plus_3": 3.6960050811911547
+      },
+      "absent_vs_active_output_db": -27.274507455189877,
+      "absent_vs_active_input_db": 0.24801663726689327,
+      "absent_suppression_db": 27.52252409245677
+    },
+    {
+      "split": "dev",
+      "mixture": "dev_n4_5683-2300-4992-8555",
+      "target": "8555",
+      "enrollment": "discovered",
+      "fade_ms": 0,
+      "boundary_jump": 0.020049546222830224,
+      "overall_si_sdri_db": 6.053362496848462,
+      "target_alone_si_sdr_db": 5.110291712977569,
+      "si_sdri_by_overlap_db": {
+        "target_plus_1": 5.273662856357749,
+        "target_plus_2": 2.8355228193910733,
+        "target_plus_3": 3.6960050811911547
+      },
+      "absent_vs_active_output_db": -9.941980029055806,
+      "absent_vs_active_input_db": 0.24801663726689327,
+      "absent_suppression_db": 10.189996666322699
+    },
+    {
+      "split": "dev",
+      "mixture": "dev_n4_5683-2300-4992-8555",
+      "target": "8555",
+      "enrollment": "discovered",
+      "fade_ms": 20,
+      "boundary_jump": 0.0,
+      "overall_si_sdri_db": 6.098412342286258,
+      "target_alone_si_sdr_db": 5.102659891810641,
+      "si_sdri_by_overlap_db": {
+        "target_plus_1": 5.276716940167049,
+        "target_plus_2": 3.015765358706273,
+        "target_plus_3": 3.6960050811911547
+      },
+      "absent_vs_active_output_db": -9.96068050368886,
+      "absent_vs_active_input_db": 0.24801663726689327,
+      "absent_suppression_db": 10.208697140955753
+    },
+    {
+      "split": "dev",
+      "mixture": "dev_n4_5683-2300-4992-8555",
+      "target": "8555",
+      "enrollment": "discovered",
+      "fade_ms": 50,
+      "boundary_jump": 0.0,
+      "overall_si_sdri_db": 6.169531985049676,
+      "target_alone_si_sdr_db": 5.070885686493939,
+      "si_sdri_by_overlap_db": {
+        "target_plus_1": 5.275476922953116,
+        "target_plus_2": 3.341690182159555,
+        "target_plus_3": 3.6960050811911547
+      },
+      "absent_vs_active_output_db": -9.964407556280221,
+      "absent_vs_active_input_db": 0.24801663726689327,
+      "absent_suppression_db": 10.212424193547115
+    },
+    {
+      "split": "dev",
+      "mixture": "dev_n5_7021-260-2830-5639-1221",
+      "target": "7021",
+      "enrollment": "clean",
+      "fade_ms": 0,
+      "boundary_jump": 0.20834998904225469,
+      "overall_si_sdri_db": 8.428066729665208,
+      "target_alone_si_sdr_db": 21.42277301850227,
+      "si_sdri_by_overlap_db": {
+        "target_plus_1": 5.741442812548506,
+        "target_plus_2": 10.941765153255414,
+        "target_plus_3": -1.8039875127909806
+      },
+      "absent_vs_active_output_db": -12.323243306179414,
+      "absent_vs_active_input_db": -2.5931910621980947,
+      "absent_suppression_db": 9.73005224398132
+    },
+    {
+      "split": "dev",
+      "mixture": "dev_n5_7021-260-2830-5639-1221",
+      "target": "7021",
+      "enrollment": "clean",
+      "fade_ms": 20,
+      "boundary_jump": 0.001688609684244123,
+      "overall_si_sdri_db": 8.513918576701355,
+      "target_alone_si_sdr_db": 21.41447532419519,
+      "si_sdri_by_overlap_db": {
+        "target_plus_1": 5.760717933913701,
+        "target_plus_2": 11.036607756959118,
+        "target_plus_3": -1.5188209283677487
+      },
+      "absent_vs_active_output_db": -12.546185447339006,
+      "absent_vs_active_input_db": -2.5931910621980947,
+      "absent_suppression_db": 9.952994385140912
+    },
+    {
+      "split": "dev",
+      "mixture": "dev_n5_7021-260-2830-5639-1221",
+      "target": "7021",
+      "enrollment": "clean",
+      "fade_ms": 50,
+      "boundary_jump": 0.0017502191436345785,
+      "overall_si_sdri_db": 8.658290873526482,
+      "target_alone_si_sdr_db": 21.412848179243205,
+      "si_sdri_by_overlap_db": {
+        "target_plus_1": 5.804284198927297,
+        "target_plus_2": 11.146318239491766,
+        "target_plus_3": -1.0734650172985454
+      },
+      "absent_vs_active_output_db": -12.927226337913698,
+      "absent_vs_active_input_db": -2.5931910621980947,
+      "absent_suppression_db": 10.334035275715603
+    },
+    {
+      "split": "dev",
+      "mixture": "dev_n5_7021-260-2830-5639-1221",
+      "target": "7021",
+      "enrollment": "discovered",
+      "fade_ms": 0,
+      "boundary_jump": 0.08493467854259583,
+      "overall_si_sdri_db": 7.6185265946148295,
+      "target_alone_si_sdr_db": 21.410079963984483,
+      "si_sdri_by_overlap_db": {
+        "target_plus_1": 3.9425174755222905,
+        "target_plus_2": 10.941765153255414,
+        "target_plus_3": -0.17173794921490426
+      },
+      "absent_vs_active_output_db": -13.707578290270778,
+      "absent_vs_active_input_db": -2.5931910621980947,
+      "absent_suppression_db": 11.114387228072683
+    },
+    {
+      "split": "dev",
+      "mixture": "dev_n5_7021-260-2830-5639-1221",
+      "target": "7021",
+      "enrollment": "discovered",
+      "fade_ms": 20,
+      "boundary_jump": 0.0,
+      "overall_si_sdri_db": 7.638541837575895,
+      "target_alone_si_sdr_db": 21.402545158204997,
+      "si_sdri_by_overlap_db": {
+        "target_plus_1": 3.9585652959180573,
+        "target_plus_2": 11.036607756959118,
+        "target_plus_3": -0.15012347164594964
+      },
+      "absent_vs_active_output_db": -13.74582696756162,
+      "absent_vs_active_input_db": -2.5931910621980947,
+      "absent_suppression_db": 11.152635905363525
+    },
+    {
+      "split": "dev",
+      "mixture": "dev_n5_7021-260-2830-5639-1221",
+      "target": "7021",
+      "enrollment": "discovered",
+      "fade_ms": 50,
+      "boundary_jump": 0.0,
+      "overall_si_sdri_db": 7.69896532594141,
+      "target_alone_si_sdr_db": 21.401717596874683,
+      "si_sdri_by_overlap_db": {
+        "target_plus_1": 3.9946589212977086,
+        "target_plus_2": 11.146318239491766,
+        "target_plus_3": -0.08156401834715066
+      },
+      "absent_vs_active_output_db": -13.939447375083471,
+      "absent_vs_active_input_db": -2.5931910621980947,
+      "absent_suppression_db": 11.346256312885377
+    },
+    {
+      "split": "dev",
+      "mixture": "dev_n5_7021-260-2830-5639-1221",
+      "target": "260",
+      "enrollment": "clean",
+      "fade_ms": 0,
+      "boundary_jump": 0.020711402795126732,
+      "overall_si_sdri_db": 10.082960865607806,
+      "target_alone_si_sdr_db": 16.84735458891407,
+      "si_sdri_by_overlap_db": {
+        "target_plus_1": 18.100164002824148,
+        "target_plus_2": 5.647519880023037,
+        "target_plus_3": 2.927505156515823
+      },
+      "absent_vs_active_output_db": -15.641490859033127,
+      "absent_vs_active_input_db": -1.4832468976374678,
+      "absent_suppression_db": 14.158243961395659
+    },
+    {
+      "split": "dev",
+      "mixture": "dev_n5_7021-260-2830-5639-1221",
+      "target": "260",
+      "enrollment": "clean",
+      "fade_ms": 20,
+      "boundary_jump": 0.0,
+      "overall_si_sdri_db": 10.113608275889076,
+      "target_alone_si_sdr_db": 16.81953718059707,
+      "si_sdri_by_overlap_db": {
+        "target_plus_1": 18.103391338100355,
+        "target_plus_2": 5.701383514003902,
+        "target_plus_3": 2.937232212713513
+      },
+      "absent_vs_active_output_db": -15.645364532632616,
+      "absent_vs_active_input_db": -1.4832468976374678,
+      "absent_suppression_db": 14.162117634995148
+    },
+    {
+      "split": "dev",
+      "mixture": "dev_n5_7021-260-2830-5639-1221",
+      "target": "260",
+      "enrollment": "clean",
+      "fade_ms": 50,
+      "boundary_jump": 0.0,
+      "overall_si_sdri_db": 10.22398109532649,
+      "target_alone_si_sdr_db": 16.680568690798964,
+      "si_sdri_by_overlap_db": {
+        "target_plus_1": 18.10597344489261,
+        "target_plus_2": 5.850815293440139,
+        "target_plus_3": 3.0881535187123332
+      },
+      "absent_vs_active_output_db": -15.658040855308592,
+      "absent_vs_active_input_db": -1.4832468976374678,
+      "absent_suppression_db": 14.174793957671124
+    },
+    {
+      "split": "dev",
+      "mixture": "dev_n5_7021-260-2830-5639-1221",
+      "target": "260",
+      "enrollment": "discovered",
+      "fade_ms": 0,
+      "boundary_jump": 0.0,
+      "overall_si_sdri_db": 10.181264395268677,
+      "target_alone_si_sdr_db": 16.84735458891407,
+      "si_sdri_by_overlap_db": {
+        "target_plus_1": 18.100164002824148,
+        "target_plus_2": 5.647519880023037,
+        "target_plus_3": 2.927505156515823
+      },
+      "absent_vs_active_output_db": -16.3907409683083,
+      "absent_vs_active_input_db": -1.4832468976374678,
+      "absent_suppression_db": 14.907494070670833
+    },
+    {
+      "split": "dev",
+      "mixture": "dev_n5_7021-260-2830-5639-1221",
+      "target": "260",
+      "enrollment": "discovered",
+      "fade_ms": 20,
+      "boundary_jump": 0.0,
+      "overall_si_sdri_db": 10.209391192032419,
+      "target_alone_si_sdr_db": 16.84734491398769,
+      "si_sdri_by_overlap_db": {
+        "target_plus_1": 18.099706336291444,
+        "target_plus_2": 5.6975655529842175,
+        "target_plus_3": 2.9321349738502684
+      },
+      "absent_vs_active_output_db": -16.392376014438348,
+      "absent_vs_active_input_db": -1.4832468976374678,
+      "absent_suppression_db": 14.90912911680088
+    },
+    {
+      "split": "dev",
+      "mixture": "dev_n5_7021-260-2830-5639-1221",
+      "target": "260",
+      "enrollment": "discovered",
+      "fade_ms": 50,
+      "boundary_jump": 0.0,
+      "overall_si_sdri_db": 10.307811038299104,
+      "target_alone_si_sdr_db": 16.847375420353305,
+      "si_sdri_by_overlap_db": {
+        "target_plus_1": 18.088695105681147,
+        "target_plus_2": 5.8312093621194165,
+        "target_plus_3": 3.0522956387302846
+      },
+      "absent_vs_active_output_db": -16.399092564383025,
+      "absent_vs_active_input_db": -1.4832468976374678,
+      "absent_suppression_db": 14.915845666745557
+    },
+    {
+      "split": "dev",
+      "mixture": "dev_n5_7021-260-2830-5639-1221",
+      "target": "2830",
+      "enrollment": "clean",
+      "fade_ms": 0,
+      "boundary_jump": 0.09628593684371792,
+      "overall_si_sdri_db": 7.465903651256638,
+      "target_alone_si_sdr_db": 14.415496977151797,
+      "si_sdri_by_overlap_db": {
+        "target_plus_1": 2.6178448836886417,
+        "target_plus_2": 4.863388625591222
+      },
+      "absent_vs_active_output_db": -13.820877095506834,
+      "absent_vs_active_input_db": -3.2573668013608312,
+      "absent_suppression_db": 10.563510294146003
+    },
+    {
+      "split": "dev",
+      "mixture": "dev_n5_7021-260-2830-5639-1221",
+      "target": "2830",
+      "enrollment": "clean",
+      "fade_ms": 20,
+      "boundary_jump": 0.0,
+      "overall_si_sdri_db": 7.484411286860281,
+      "target_alone_si_sdr_db": 14.530240503751466,
+      "si_sdri_by_overlap_db": {
+        "target_plus_1": 2.6497714745292416,
+        "target_plus_2": 4.864339683735157
+      },
+      "absent_vs_active_output_db": -13.8329948570397,
+      "absent_vs_active_input_db": -3.2573668013608312,
+      "absent_suppression_db": 10.57562805567887
+    },
+    {
+      "split": "dev",
+      "mixture": "dev_n5_7021-260-2830-5639-1221",
+      "target": "2830",
+      "enrollment": "clean",
+      "fade_ms": 50,
+      "boundary_jump": 0.0,
+      "overall_si_sdri_db": 7.540668184024305,
+      "target_alone_si_sdr_db": 14.884547632016707,
+      "si_sdri_by_overlap_db": {
+        "target_plus_1": 2.7174457198559403,
+        "target_plus_2": 4.870410044404742
+      },
+      "absent_vs_active_output_db": -13.91404910973871,
+      "absent_vs_active_input_db": -3.2573668013608312,
+      "absent_suppression_db": 10.656682308377878
+    },
+    {
+      "split": "dev",
+      "mixture": "dev_n5_7021-260-2830-5639-1221",
+      "target": "2830",
+      "enrollment": "discovered",
+      "fade_ms": 0,
+      "boundary_jump": 0.09628593684371792,
+      "overall_si_sdri_db": 7.465903651256638,
+      "target_alone_si_sdr_db": 14.415496977151797,
+      "si_sdri_by_overlap_db": {
+        "target_plus_1": 2.6178448836886417,
+        "target_plus_2": 4.863388625591222
+      },
+      "absent_vs_active_output_db": -13.820877095506834,
+      "absent_vs_active_input_db": -3.2573668013608312,
+      "absent_suppression_db": 10.563510294146003
+    },
+    {
+      "split": "dev",
+      "mixture": "dev_n5_7021-260-2830-5639-1221",
+      "target": "2830",
+      "enrollment": "discovered",
+      "fade_ms": 20,
+      "boundary_jump": 0.0,
+      "overall_si_sdri_db": 7.484411286860281,
+      "target_alone_si_sdr_db": 14.530240503751466,
+      "si_sdri_by_overlap_db": {
+        "target_plus_1": 2.6497714745292416,
+        "target_plus_2": 4.864339683735157
+      },
+      "absent_vs_active_output_db": -13.8329948570397,
+      "absent_vs_active_input_db": -3.2573668013608312,
+      "absent_suppression_db": 10.57562805567887
+    },
+    {
+      "split": "dev",
+      "mixture": "dev_n5_7021-260-2830-5639-1221",
+      "target": "2830",
+      "enrollment": "discovered",
+      "fade_ms": 50,
+      "boundary_jump": 0.0,
+      "overall_si_sdri_db": 7.540668184024305,
+      "target_alone_si_sdr_db": 14.884547632016707,
+      "si_sdri_by_overlap_db": {
+        "target_plus_1": 2.7174457198559403,
+        "target_plus_2": 4.870410044404742
+      },
+      "absent_vs_active_output_db": -13.91404910973871,
+      "absent_vs_active_input_db": -3.2573668013608312,
+      "absent_suppression_db": 10.656682308377878
+    },
+    {
+      "split": "dev",
+      "mixture": "dev_n5_7021-260-2830-5639-1221",
+      "target": "5639",
+      "enrollment": "clean",
+      "fade_ms": 0,
+      "boundary_jump": 0.08139941123821949,
+      "overall_si_sdri_db": 12.320499244043887,
+      "target_alone_si_sdr_db": 11.105405896679015,
+      "si_sdri_by_overlap_db": {
+        "target_plus_1": 19.16646167700584,
+        "target_plus_3": 11.350304757544919
+      },
+      "absent_vs_active_output_db": -7.347523927452965,
+      "absent_vs_active_input_db": 2.7734857497962935,
+      "absent_suppression_db": 10.121009677249258
+    },
+    {
+      "split": "dev",
+      "mixture": "dev_n5_7021-260-2830-5639-1221",
+      "target": "5639",
+      "enrollment": "clean",
+      "fade_ms": 20,
+      "boundary_jump": 0.0,
+      "overall_si_sdri_db": 12.495914390960579,
+      "target_alone_si_sdr_db": 11.823215033517297,
+      "si_sdri_by_overlap_db": {
+        "target_plus_1": 19.16568577930056,
+        "target_plus_3": 11.5776808241777
+      },
+      "absent_vs_active_output_db": -7.373803275622791,
+      "absent_vs_active_input_db": 2.7734857497962935,
+      "absent_suppression_db": 10.147289025419084
+    },
+    {
+      "split": "dev",
+      "mixture": "dev_n5_7021-260-2830-5639-1221",
+      "target": "5639",
+      "enrollment": "clean",
+      "fade_ms": 50,
+      "boundary_jump": 0.0,
+      "overall_si_sdri_db": 12.72483415686904,
+      "target_alone_si_sdr_db": 12.744781022209796,
+      "si_sdri_by_overlap_db": {
+        "target_plus_1": 19.166320630295186,
+        "target_plus_3": 11.84724747994458
+      },
+      "absent_vs_active_output_db": -7.44372949847223,
+      "absent_vs_active_input_db": 2.7734857497962935,
+      "absent_suppression_db": 10.217215248268523
+    },
+    {
+      "split": "dev",
+      "mixture": "dev_n5_7021-260-2830-5639-1221",
+      "target": "5639",
+      "enrollment": "discovered",
+      "fade_ms": 0,
+      "boundary_jump": 0.019457686930431876,
+      "overall_si_sdri_db": 18.870248953544404,
+      "target_alone_si_sdr_db": 20.724622754716272,
+      "si_sdri_by_overlap_db": {
+        "target_plus_1": 19.16646167700584,
+        "target_plus_3": 9.946247760809863
+      },
+      "absent_vs_active_output_db": -22.93899391421374,
+      "absent_vs_active_input_db": 2.7734857497962935,
+      "absent_suppression_db": 25.712479664010033
+    },
+    {
+      "split": "dev",
+      "mixture": "dev_n5_7021-260-2830-5639-1221",
+      "target": "5639",
+      "enrollment": "discovered",
+      "fade_ms": 20,
+      "boundary_jump": 0.0,
+      "overall_si_sdri_db": 18.889390324698986,
+      "target_alone_si_sdr_db": 20.759921806554576,
+      "si_sdri_by_overlap_db": {
+        "target_plus_1": 19.165388027559455,
+        "target_plus_3": -32.73707825295255
+      },
+      "absent_vs_active_output_db": -23.11641548881366,
+      "absent_vs_active_input_db": 2.7734857497962935,
+      "absent_suppression_db": 25.889901238609955
+    },
+    {
+      "split": "dev",
+      "mixture": "dev_n5_7021-260-2830-5639-1221",
+      "target": "5639",
+      "enrollment": "discovered",
+      "fade_ms": 50,
+      "boundary_jump": 0.0,
+      "overall_si_sdri_db": 19.000114450087747,
+      "target_alone_si_sdr_db": 20.741374904439684,
+      "si_sdri_by_overlap_db": {
+        "target_plus_1": 19.16610811986858,
+        "target_plus_3": -40.22828273157632
+      },
+      "absent_vs_active_output_db": -24.566442626173995,
+      "absent_vs_active_input_db": 2.7734857497962935,
+      "absent_suppression_db": 27.33992837597029
+    },
+    {
+      "split": "dev",
+      "mixture": "dev_n5_7021-260-2830-5639-1221",
+      "target": "1221",
+      "enrollment": "clean",
+      "fade_ms": 0,
+      "boundary_jump": 0.6413551233069033,
+      "overall_si_sdri_db": 9.04273492959351,
+      "target_alone_si_sdr_db": null,
+      "si_sdri_by_overlap_db": {
+        "target_plus_1": 2.6743680490078785,
+        "target_plus_2": 11.964228000640095,
+        "target_plus_3": -3.0509668492155626
+      },
+      "absent_vs_active_output_db": -16.15979355529413,
+      "absent_vs_active_input_db": -1.462085970562935,
+      "absent_suppression_db": 14.697707584731194
+    },
+    {
+      "split": "dev",
+      "mixture": "dev_n5_7021-260-2830-5639-1221",
+      "target": "1221",
+      "enrollment": "clean",
+      "fade_ms": 20,
+      "boundary_jump": 0.035185152266748086,
+      "overall_si_sdri_db": 9.033999680669888,
+      "target_alone_si_sdr_db": null,
+      "si_sdri_by_overlap_db": {
+        "target_plus_1": 2.675452709279932,
+        "target_plus_2": 11.968869796615017,
+        "target_plus_3": -3.0463085992758225
+      },
+      "absent_vs_active_output_db": -16.067190483224202,
+      "absent_vs_active_input_db": -1.462085970562935,
+      "absent_suppression_db": 14.605104512661267
+    },
+    {
+      "split": "dev",
+      "mixture": "dev_n5_7021-260-2830-5639-1221",
+      "target": "1221",
+      "enrollment": "clean",
+      "fade_ms": 50,
+      "boundary_jump": 0.03542255008744424,
+      "overall_si_sdri_db": 9.007706740091505,
+      "target_alone_si_sdr_db": null,
+      "si_sdri_by_overlap_db": {
+        "target_plus_1": 2.6750029080737927,
+        "target_plus_2": 11.970413898870856,
+        "target_plus_3": -3.0233112746249873
+      },
+      "absent_vs_active_output_db": -15.81578731975474,
+      "absent_vs_active_input_db": -1.462085970562935,
+      "absent_suppression_db": 14.353701349191805
+    },
+    {
+      "split": "dev",
+      "mixture": "dev_n5_7021-260-2830-5639-1221",
+      "target": "1221",
+      "enrollment": "discovered",
+      "fade_ms": 0,
+      "boundary_jump": 0.3432983743501508,
+      "overall_si_sdri_db": 9.560069457906966,
+      "target_alone_si_sdr_db": null,
+      "si_sdri_by_overlap_db": {
+        "target_plus_1": 2.6743680490078785,
+        "target_plus_2": 11.964228000640095,
+        "target_plus_3": -3.0509668492155626
+      },
+      "absent_vs_active_output_db": -41.31006964498856,
+      "absent_vs_active_input_db": -1.462085970562935,
+      "absent_suppression_db": 39.84798367442562
+    },
+    {
+      "split": "dev",
+      "mixture": "dev_n5_7021-260-2830-5639-1221",
+      "target": "1221",
+      "enrollment": "discovered",
+      "fade_ms": 20,
+      "boundary_jump": 0.02094459543305183,
+      "overall_si_sdri_db": 9.56172648938212,
+      "target_alone_si_sdr_db": null,
+      "si_sdri_by_overlap_db": {
+        "target_plus_1": 2.675452709279932,
+        "target_plus_2": 11.968844096899511,
+        "target_plus_3": -3.0463085992758225
+      },
+      "absent_vs_active_output_db": -40.61351650228934,
+      "absent_vs_active_input_db": -1.462085970562935,
+      "absent_suppression_db": 39.151430531726405
+    },
+    {
+      "split": "dev",
+      "mixture": "dev_n5_7021-260-2830-5639-1221",
+      "target": "1221",
+      "enrollment": "discovered",
+      "fade_ms": 50,
+      "boundary_jump": 0.021413335392076464,
+      "overall_si_sdri_db": 9.564710280789786,
+      "target_alone_si_sdr_db": null,
+      "si_sdri_by_overlap_db": {
+        "target_plus_1": 2.6750029080737927,
+        "target_plus_2": 11.97026365075154,
+        "target_plus_3": -3.0233112746249873
+      },
+      "absent_vs_active_output_db": -39.38884117045998,
+      "absent_vs_active_input_db": -1.462085970562935,
+      "absent_suppression_db": 37.926755199897045
+    },
+    {
+      "split": "dev",
+      "mixture": "dev_n6_4507-2094-1580-672-3729-1320",
+      "target": "4507",
+      "enrollment": "clean",
+      "fade_ms": 0,
+      "boundary_jump": 0.0,
+      "overall_si_sdri_db": 5.765073590788948,
+      "target_alone_si_sdr_db": null,
+      "si_sdri_by_overlap_db": {
+        "target_plus_1": -1.0286440139884023,
+        "target_plus_3": 4.253460750441297
+      },
+      "absent_vs_active_output_db": -55.13347051968144,
+      "absent_vs_active_input_db": -0.9862496560739764,
+      "absent_suppression_db": 54.14722086360746
+    },
+    {
+      "split": "dev",
+      "mixture": "dev_n6_4507-2094-1580-672-3729-1320",
+      "target": "4507",
+      "enrollment": "clean",
+      "fade_ms": 20,
+      "boundary_jump": 0.0,
+      "overall_si_sdri_db": 5.793488736276856,
+      "target_alone_si_sdr_db": null,
+      "si_sdri_by_overlap_db": {
+        "target_plus_1": -0.9948605823673705,
+        "target_plus_3": 4.253369950541921
+      },
+      "absent_vs_active_output_db": -54.99520752065673,
+      "absent_vs_active_input_db": -0.9862496560739764,
+      "absent_suppression_db": 54.008957864582754
+    },
+    {
+      "split": "dev",
+      "mixture": "dev_n6_4507-2094-1580-672-3729-1320",
+      "target": "4507",
+      "enrollment": "clean",
+      "fade_ms": 50,
+      "boundary_jump": 0.0,
+      "overall_si_sdri_db": 5.869430135502031,
+      "target_alone_si_sdr_db": null,
+      "si_sdri_by_overlap_db": {
+        "target_plus_1": -0.8988271568583959,
+        "target_plus_3": 4.235780658330194
+      },
+      "absent_vs_active_output_db": -54.64990227028069,
+      "absent_vs_active_input_db": -0.9862496560739764,
+      "absent_suppression_db": 53.66365261420671
+    },
+    {
+      "split": "dev",
+      "mixture": "dev_n6_4507-2094-1580-672-3729-1320",
+      "target": "4507",
+      "enrollment": "discovered",
+      "fade_ms": 0,
+      "boundary_jump": 0.0,
+      "overall_si_sdri_db": 3.112359862593345,
+      "target_alone_si_sdr_db": null,
+      "si_sdri_by_overlap_db": {
+        "target_plus_1": -4.08214539123587,
+        "target_plus_3": 4.253460750441297
+      },
+      "absent_vs_active_output_db": -38.68298511151103,
+      "absent_vs_active_input_db": -0.9862496560739764,
+      "absent_suppression_db": 37.69673545543705
+    },
+    {
+      "split": "dev",
+      "mixture": "dev_n6_4507-2094-1580-672-3729-1320",
+      "target": "4507",
+      "enrollment": "discovered",
+      "fade_ms": 20,
+      "boundary_jump": 0.0,
+      "overall_si_sdri_db": 3.144014327829595,
+      "target_alone_si_sdr_db": null,
+      "si_sdri_by_overlap_db": {
+        "target_plus_1": -4.042134844551047,
+        "target_plus_3": 4.253251183317825
+      },
+      "absent_vs_active_output_db": -38.691239993270244,
+      "absent_vs_active_input_db": -0.9862496560739764,
+      "absent_suppression_db": 37.704990337196264
+    },
+    {
+      "split": "dev",
+      "mixture": "dev_n6_4507-2094-1580-672-3729-1320",
+      "target": "4507",
+      "enrollment": "discovered",
+      "fade_ms": 50,
+      "boundary_jump": 0.0,
+      "overall_si_sdri_db": 3.228969228640211,
+      "target_alone_si_sdr_db": null,
+      "si_sdri_by_overlap_db": {
+        "target_plus_1": -3.9291588478271953,
+        "target_plus_3": 4.245350676290886
+      },
+      "absent_vs_active_output_db": -38.702069099926476,
+      "absent_vs_active_input_db": -0.9862496560739764,
+      "absent_suppression_db": 37.715819443852496
+    },
+    {
+      "split": "dev",
+      "mixture": "dev_n6_4507-2094-1580-672-3729-1320",
+      "target": "2094",
+      "enrollment": "clean",
+      "fade_ms": 0,
+      "boundary_jump": 0.13306570967562456,
+      "overall_si_sdri_db": 7.081517494806936,
+      "target_alone_si_sdr_db": 12.50144679383996,
+      "si_sdri_by_overlap_db": {
+        "target_plus_1": 0.7947724906087865,
+        "target_plus_2": -5.345211943787696
+      },
+      "absent_vs_active_output_db": -7.717276233609077,
+      "absent_vs_active_input_db": 1.612449351082983,
+      "absent_suppression_db": 9.32972558469206
+    },
+    {
+      "split": "dev",
+      "mixture": "dev_n6_4507-2094-1580-672-3729-1320",
+      "target": "2094",
+      "enrollment": "clean",
+      "fade_ms": 20,
+      "boundary_jump": 0.006328160760402127,
+      "overall_si_sdri_db": 7.091998357245181,
+      "target_alone_si_sdr_db": 12.498947616910495,
+      "si_sdri_by_overlap_db": {
+        "target_plus_1": 0.7989720190366478,
+        "target_plus_2": -5.301366349577281
+      },
+      "absent_vs_active_output_db": -7.714255250312917,
+      "absent_vs_active_input_db": 1.612449351082983,
+      "absent_suppression_db": 9.3267046013959
+    },
+    {
+      "split": "dev",
+      "mixture": "dev_n6_4507-2094-1580-672-3729-1320",
+      "target": "2094",
+      "enrollment": "clean",
+      "fade_ms": 50,
+      "boundary_jump": 0.006445159619369196,
+      "overall_si_sdri_db": 7.1075611593407055,
+      "target_alone_si_sdr_db": 12.496275497358225,
+      "si_sdri_by_overlap_db": {
+        "target_plus_1": 0.7992659071477481,
+        "target_plus_2": -5.211913190034744
+      },
+      "absent_vs_active_output_db": -7.713117541834478,
+      "absent_vs_active_input_db": 1.612449351082983,
+      "absent_suppression_db": 9.325566892917461
+    },
+    {
+      "split": "dev",
+      "mixture": "dev_n6_4507-2094-1580-672-3729-1320",
+      "target": "2094",
+      "enrollment": "discovered",
+      "fade_ms": 0,
+      "boundary_jump": 0.026011023051863112,
+      "overall_si_sdri_db": 7.987883073054458,
+      "target_alone_si_sdr_db": 0.03515012092048409,
+      "si_sdri_by_overlap_db": {
+        "target_plus_1": 4.8376510009408795,
+        "target_plus_2": -1.185101094967731
+      },
+      "absent_vs_active_output_db": -16.39972309544518,
+      "absent_vs_active_input_db": 1.612449351082983,
+      "absent_suppression_db": 18.01217244652816
+    },
+    {
+      "split": "dev",
+      "mixture": "dev_n6_4507-2094-1580-672-3729-1320",
+      "target": "2094",
+      "enrollment": "discovered",
+      "fade_ms": 20,
+      "boundary_jump": 0.0,
+      "overall_si_sdri_db": 8.045633670904179,
+      "target_alone_si_sdr_db": 0.09295388687137085,
+      "si_sdri_by_overlap_db": {
+        "target_plus_1": 4.847630831030998,
+        "target_plus_2": -0.9009995086793552
+      },
+      "absent_vs_active_output_db": -16.4222631202594,
+      "absent_vs_active_input_db": 1.612449351082983,
+      "absent_suppression_db": 18.034712471342385
+    },
+    {
+      "split": "dev",
+      "mixture": "dev_n6_4507-2094-1580-672-3729-1320",
+      "target": "2094",
+      "enrollment": "discovered",
+      "fade_ms": 50,
+      "boundary_jump": 0.0,
+      "overall_si_sdri_db": 8.124465932096067,
+      "target_alone_si_sdr_db": 0.16683899639096617,
+      "si_sdri_by_overlap_db": {
+        "target_plus_1": 4.847438871309168,
+        "target_plus_2": -0.49693365651587573
+      },
+      "absent_vs_active_output_db": -16.462376281754867,
+      "absent_vs_active_input_db": 1.612449351082983,
+      "absent_suppression_db": 18.07482563283785
+    },
+    {
+      "split": "dev",
+      "mixture": "dev_n6_4507-2094-1580-672-3729-1320",
+      "target": "1580",
+      "enrollment": "clean",
+      "fade_ms": 0,
+      "boundary_jump": 0.0,
+      "overall_si_sdri_db": 7.230029169953571,
+      "target_alone_si_sdr_db": 8.610816959099477,
+      "si_sdri_by_overlap_db": {
+        "target_plus_1": 9.86199478387254,
+        "target_plus_2": -1.3072906191742804
+      },
+      "absent_vs_active_output_db": -11.93136913150796,
+      "absent_vs_active_input_db": -1.4552007903458168,
+      "absent_suppression_db": 10.476168341162143
+    },
+    {
+      "split": "dev",
+      "mixture": "dev_n6_4507-2094-1580-672-3729-1320",
+      "target": "1580",
+      "enrollment": "clean",
+      "fade_ms": 20,
+      "boundary_jump": 0.0,
+      "overall_si_sdri_db": 7.2589098420048845,
+      "target_alone_si_sdr_db": 8.610738748484877,
+      "si_sdri_by_overlap_db": {
+        "target_plus_1": 9.915808406131276,
+        "target_plus_2": -1.2260854971267832
+      },
+      "absent_vs_active_output_db": -11.94034341409795,
+      "absent_vs_active_input_db": -1.4552007903458168,
+      "absent_suppression_db": 10.485142623752132
+    },
+    {
+      "split": "dev",
+      "mixture": "dev_n6_4507-2094-1580-672-3729-1320",
+      "target": "1580",
+      "enrollment": "clean",
+      "fade_ms": 50,
+      "boundary_jump": 0.0,
+      "overall_si_sdri_db": 7.295339498785525,
+      "target_alone_si_sdr_db": 8.61079278192055,
+      "si_sdri_by_overlap_db": {
+        "target_plus_1": 10.038121834993959,
+        "target_plus_2": -1.1328905666027613
+      },
+      "absent_vs_active_output_db": -11.94882668880831,
+      "absent_vs_active_input_db": -1.4552007903458168,
+      "absent_suppression_db": 10.493625898462493
+    },
+    {
+      "split": "dev",
+      "mixture": "dev_n6_4507-2094-1580-672-3729-1320",
+      "target": "1580",
+      "enrollment": "discovered",
+      "fade_ms": 0,
+      "boundary_jump": 0.008653534120195414,
+      "overall_si_sdri_db": 10.795335015983419,
+      "target_alone_si_sdr_db": 8.610816959099477,
+      "si_sdri_by_overlap_db": {
+        "target_plus_1": 9.86199478387254,
+        "target_plus_2": 7.884771211694035
+      },
+      "absent_vs_active_output_db": -12.97999217539747,
+      "absent_vs_active_input_db": -1.4552007903458168,
+      "absent_suppression_db": 11.524791385051653
+    },
+    {
+      "split": "dev",
+      "mixture": "dev_n6_4507-2094-1580-672-3729-1320",
+      "target": "1580",
+      "enrollment": "discovered",
+      "fade_ms": 20,
+      "boundary_jump": 0.0,
+      "overall_si_sdri_db": 10.803219624975094,
+      "target_alone_si_sdr_db": 8.610738748484877,
+      "si_sdri_by_overlap_db": {
+        "target_plus_1": 9.915808406131276,
+        "target_plus_2": 7.892706972320264
+      },
+      "absent_vs_active_output_db": -12.981670308371502,
+      "absent_vs_active_input_db": -1.4552007903458168,
+      "absent_suppression_db": 11.526469518025685
+    },
+    {
+      "split": "dev",
+      "mixture": "dev_n6_4507-2094-1580-672-3729-1320",
+      "target": "1580",
+      "enrollment": "discovered",
+      "fade_ms": 50,
+      "boundary_jump": 0.0,
+      "overall_si_sdri_db": 10.817020174858934,
+      "target_alone_si_sdr_db": 8.61079278192055,
+      "si_sdri_by_overlap_db": {
+        "target_plus_1": 10.038121834993959,
+        "target_plus_2": 7.904864984645251
+      },
+      "absent_vs_active_output_db": -12.98103818353956,
+      "absent_vs_active_input_db": -1.4552007903458168,
+      "absent_suppression_db": 11.525837393193743
+    },
+    {
+      "split": "dev",
+      "mixture": "dev_n6_4507-2094-1580-672-3729-1320",
+      "target": "672",
+      "enrollment": "clean",
+      "fade_ms": 0,
+      "boundary_jump": 0.0,
+      "overall_si_sdri_db": 9.331400389356165,
+      "target_alone_si_sdr_db": 10.067347940101651,
+      "si_sdri_by_overlap_db": {
+        "target_plus_2": 3.841312879616567,
+        "target_plus_3": 4.226321477848864
+      },
+      "absent_vs_active_output_db": -44.10815598160906,
+      "absent_vs_active_input_db": -2.7798846172156573,
+      "absent_suppression_db": 41.3282713643934
+    },
+    {
+      "split": "dev",
+      "mixture": "dev_n6_4507-2094-1580-672-3729-1320",
+      "target": "672",
+      "enrollment": "clean",
+      "fade_ms": 20,
+      "boundary_jump": 0.0,
+      "overall_si_sdri_db": 9.383556469424569,
+      "target_alone_si_sdr_db": 10.190038279761405,
+      "si_sdri_by_overlap_db": {
+        "target_plus_2": 3.879685056617892,
+        "target_plus_3": 4.267272916776208
+      },
+      "absent_vs_active_output_db": -43.39336855524031,
+      "absent_vs_active_input_db": -2.7798846172156573,
+      "absent_suppression_db": 40.61348393802465
+    },
+    {
+      "split": "dev",
+      "mixture": "dev_n6_4507-2094-1580-672-3729-1320",
+      "target": "672",
+      "enrollment": "clean",
+      "fade_ms": 50,
+      "boundary_jump": 0.0,
+      "overall_si_sdri_db": 9.488272854555635,
+      "target_alone_si_sdr_db": 10.543326044901658,
+      "si_sdri_by_overlap_db": {
+        "target_plus_2": 3.933495850636598,
+        "target_plus_3": 4.346987284180387
+      },
+      "absent_vs_active_output_db": -43.12001696023465,
+      "absent_vs_active_input_db": -2.7798846172156573,
+      "absent_suppression_db": 40.34013234301899
+    },
+    {
+      "split": "dev",
+      "mixture": "dev_n6_4507-2094-1580-672-3729-1320",
+      "target": "672",
+      "enrollment": "discovered",
+      "fade_ms": 0,
+      "boundary_jump": 0.0,
+      "overall_si_sdri_db": 9.8133497818156,
+      "target_alone_si_sdr_db": 10.067347940101651,
+      "si_sdri_by_overlap_db": {
+        "target_plus_2": 4.41381909496871,
+        "target_plus_3": 4.226321477848864
+      },
+      "absent_vs_active_output_db": -43.76764559390529,
+      "absent_vs_active_input_db": -2.7798846172156573,
+      "absent_suppression_db": 40.987760976689636
+    },
+    {
+      "split": "dev",
+      "mixture": "dev_n6_4507-2094-1580-672-3729-1320",
+      "target": "672",
+      "enrollment": "discovered",
+      "fade_ms": 20,
+      "boundary_jump": 0.0,
+      "overall_si_sdri_db": 9.846578079472085,
+      "target_alone_si_sdr_db": 10.190038279761405,
+      "si_sdri_by_overlap_db": {
+        "target_plus_2": 4.425005206029298,
+        "target_plus_3": 4.267272916776208
+      },
+      "absent_vs_active_output_db": -43.06229898192737,
+      "absent_vs_active_input_db": -2.7798846172156573,
+      "absent_suppression_db": 40.28241436471171
+    },
+    {
+      "split": "dev",
+      "mixture": "dev_n6_4507-2094-1580-672-3729-1320",
+      "target": "672",
+      "enrollment": "discovered",
+      "fade_ms": 50,
+      "boundary_jump": 0.0,
+      "overall_si_sdri_db": 9.927947599456036,
+      "target_alone_si_sdr_db": 10.543326044901658,
+      "si_sdri_by_overlap_db": {
+        "target_plus_2": 4.442862562189131,
+        "target_plus_3": 4.346987284180387
+      },
+      "absent_vs_active_output_db": -42.80043001379217,
+      "absent_vs_active_input_db": -2.7798846172156573,
+      "absent_suppression_db": 40.020545396576516
+    },
+    {
+      "split": "dev",
+      "mixture": "dev_n6_4507-2094-1580-672-3729-1320",
+      "target": "3729",
+      "enrollment": "clean",
+      "fade_ms": 0,
+      "boundary_jump": 0.0,
+      "overall_si_sdri_db": 12.994054576131655,
+      "target_alone_si_sdr_db": 16.54617337750431,
+      "si_sdri_by_overlap_db": {
+        "target_plus_1": 9.599471926032608,
+        "target_plus_2": 18.270177568834185,
+        "target_plus_3": 3.9102253986980333
+      },
+      "absent_vs_active_output_db": -49.74591027628533,
+      "absent_vs_active_input_db": 0.79473413669065,
+      "absent_suppression_db": 50.54064441297598
+    },
+    {
+      "split": "dev",
+      "mixture": "dev_n6_4507-2094-1580-672-3729-1320",
+      "target": "3729",
+      "enrollment": "clean",
+      "fade_ms": 20,
+      "boundary_jump": 0.0,
+      "overall_si_sdri_db": 12.997824789929805,
+      "target_alone_si_sdr_db": 16.547508707173833,
+      "si_sdri_by_overlap_db": {
+        "target_plus_1": 9.611701113797372,
+        "target_plus_2": 18.2815351662464,
+        "target_plus_3": 3.9102253986980333
+      },
+      "absent_vs_active_output_db": -49.38626474574175,
+      "absent_vs_active_input_db": 0.79473413669065,
+      "absent_suppression_db": 50.1809988824324
+    },
+    {
+      "split": "dev",
+      "mixture": "dev_n6_4507-2094-1580-672-3729-1320",
+      "target": "3729",
+      "enrollment": "clean",
+      "fade_ms": 50,
+      "boundary_jump": 0.0,
+      "overall_si_sdri_db": 12.997775593419561,
+      "target_alone_si_sdr_db": 16.540081116166835,
+      "si_sdri_by_overlap_db": {
+        "target_plus_1": 9.612480152732468,
+        "target_plus_2": 18.28195320118514,
+        "target_plus_3": 3.9102253986980333
+      },
+      "absent_vs_active_output_db": -48.26788522242049,
+      "absent_vs_active_input_db": 0.79473413669065,
+      "absent_suppression_db": 49.06261935911114
+    },
+    {
+      "split": "dev",
+      "mixture": "dev_n6_4507-2094-1580-672-3729-1320",
+      "target": "3729",
+      "enrollment": "discovered",
+      "fade_ms": 0,
+      "boundary_jump": 0.0,
+      "overall_si_sdri_db": 1.753644918454924,
+      "target_alone_si_sdr_db": 0.9639523055657585,
+      "si_sdri_by_overlap_db": {
+        "target_plus_1": 3.0435987895440157,
+        "target_plus_2": 6.899859038163906,
+        "target_plus_3": 3.9102253986980333
+      },
+      "absent_vs_active_output_db": -163.07956729279533,
+      "absent_vs_active_input_db": 0.79473413669065,
+      "absent_suppression_db": 163.87430142948597
+    },
+    {
+      "split": "dev",
+      "mixture": "dev_n6_4507-2094-1580-672-3729-1320",
+      "target": "3729",
+      "enrollment": "discovered",
+      "fade_ms": 20,
+      "boundary_jump": 0.0,
+      "overall_si_sdri_db": 1.7448638359473154,
+      "target_alone_si_sdr_db": 0.9468549334168773,
+      "si_sdri_by_overlap_db": {
+        "target_plus_1": 3.0435987895440157,
+        "target_plus_2": 6.899859038163906,
+        "target_plus_3": 3.9102253986980333
+      },
+      "absent_vs_active_output_db": -74.21634359628972,
+      "absent_vs_active_input_db": 0.79473413669065,
+      "absent_suppression_db": 75.01107773298037
+    },
+    {
+      "split": "dev",
+      "mixture": "dev_n6_4507-2094-1580-672-3729-1320",
+      "target": "3729",
+      "enrollment": "discovered",
+      "fade_ms": 50,
+      "boundary_jump": 0.0,
+      "overall_si_sdri_db": 1.7133524618173226,
+      "target_alone_si_sdr_db": 0.885768479603204,
+      "si_sdri_by_overlap_db": {
+        "target_plus_1": 3.0435987895440157,
+        "target_plus_2": 6.899859038163906,
+        "target_plus_3": 3.9102253986980333
+      },
+      "absent_vs_active_output_db": -65.8752761638899,
+      "absent_vs_active_input_db": 0.79473413669065,
+      "absent_suppression_db": 66.67001030058054
+    },
+    {
+      "split": "dev",
+      "mixture": "dev_n6_4507-2094-1580-672-3729-1320",
+      "target": "1320",
+      "enrollment": "clean",
+      "fade_ms": 0,
+      "boundary_jump": 0.15357740964020447,
+      "overall_si_sdri_db": 13.153946633203857,
+      "target_alone_si_sdr_db": null,
+      "si_sdri_by_overlap_db": {
+        "target_plus_1": 14.67778704235881,
+        "target_plus_2": 7.7753664392648,
+        "target_plus_3": 3.061956963349012
+      },
+      "absent_vs_active_output_db": -44.630941894301365,
+      "absent_vs_active_input_db": -2.130749483068218,
+      "absent_suppression_db": 42.500192411233144
+    },
+    {
+      "split": "dev",
+      "mixture": "dev_n6_4507-2094-1580-672-3729-1320",
+      "target": "1320",
+      "enrollment": "clean",
+      "fade_ms": 20,
+      "boundary_jump": 0.0,
+      "overall_si_sdri_db": 13.205722668752632,
+      "target_alone_si_sdr_db": null,
+      "si_sdri_by_overlap_db": {
+        "target_plus_1": 14.681194553596582,
+        "target_plus_2": 7.882948533356441,
+        "target_plus_3": 3.062012149239755
+      },
+      "absent_vs_active_output_db": -44.7294729658898,
+      "absent_vs_active_input_db": -2.130749483068218,
+      "absent_suppression_db": 42.59872348282158
+    },
+    {
+      "split": "dev",
+      "mixture": "dev_n6_4507-2094-1580-672-3729-1320",
+      "target": "1320",
+      "enrollment": "clean",
+      "fade_ms": 50,
+      "boundary_jump": 0.0,
+      "overall_si_sdri_db": 13.284350741171359,
+      "target_alone_si_sdr_db": null,
+      "si_sdri_by_overlap_db": {
+        "target_plus_1": 14.6831790547041,
+        "target_plus_2": 8.011998270179213,
+        "target_plus_3": 3.135038794085033
+      },
+      "absent_vs_active_output_db": -44.74564919669045,
+      "absent_vs_active_input_db": -2.130749483068218,
+      "absent_suppression_db": 42.614899713622236
+    },
+    {
+      "split": "dev",
+      "mixture": "dev_n6_4507-2094-1580-672-3729-1320",
+      "target": "1320",
+      "enrollment": "discovered",
+      "fade_ms": 0,
+      "boundary_jump": 0.15073359285872592,
+      "overall_si_sdri_db": 15.126186412455446,
+      "target_alone_si_sdr_db": null,
+      "si_sdri_by_overlap_db": {
+        "target_plus_1": 14.67778704235881,
+        "target_plus_2": 12.643872222599164,
+        "target_plus_3": 3.061956963349012
+      },
+      "absent_vs_active_output_db": -45.185614806388315,
+      "absent_vs_active_input_db": -2.130749483068218,
+      "absent_suppression_db": 43.0548653233201
+    },
+    {
+      "split": "dev",
+      "mixture": "dev_n6_4507-2094-1580-672-3729-1320",
+      "target": "1320",
+      "enrollment": "discovered",
+      "fade_ms": 20,
+      "boundary_jump": 0.0,
+      "overall_si_sdri_db": 15.12740540775965,
+      "target_alone_si_sdr_db": null,
+      "si_sdri_by_overlap_db": {
+        "target_plus_1": 14.681194553596582,
+        "target_plus_2": 12.648447327313217,
+        "target_plus_3": 3.062012149239755
+      },
+      "absent_vs_active_output_db": -45.26786409999661,
+      "absent_vs_active_input_db": -2.130749483068218,
+      "absent_suppression_db": 43.137114616928386
+    },
+    {
+      "split": "dev",
+      "mixture": "dev_n6_4507-2094-1580-672-3729-1320",
+      "target": "1320",
+      "enrollment": "discovered",
+      "fade_ms": 50,
+      "boundary_jump": 0.0,
+      "overall_si_sdri_db": 15.153833009439072,
+      "target_alone_si_sdr_db": null,
+      "si_sdri_by_overlap_db": {
+        "target_plus_1": 14.6831790547041,
+        "target_plus_2": 12.666819733377967,
+        "target_plus_3": 3.135038794085033
+      },
+      "absent_vs_active_output_db": -45.259033225236166,
+      "absent_vs_active_input_db": -2.130749483068218,
+      "absent_suppression_db": 43.12828374216795
+    },
+    {
+      "split": "test",
+      "mixture": "test_n4_8230-237-7729-6930",
+      "target": "8230",
+      "enrollment": "clean",
+      "fade_ms": 0,
+      "boundary_jump": 0.3537031177415134,
+      "overall_si_sdri_db": 10.208485292508952,
+      "target_alone_si_sdr_db": 20.10351908762583,
+      "si_sdri_by_overlap_db": {
+        "target_plus_1": 19.882078259086413,
+        "target_plus_2": 10.950694016761851,
+        "target_plus_3": 9.519073905490018
+      },
+      "absent_vs_active_output_db": -5.381921520874737,
+      "absent_vs_active_input_db": -1.168666702105746,
+      "absent_suppression_db": 4.213254818768991
+    },
+    {
+      "split": "test",
+      "mixture": "test_n4_8230-237-7729-6930",
+      "target": "8230",
+      "enrollment": "clean",
+      "fade_ms": 20,
+      "boundary_jump": 0.026868240273335547,
+      "overall_si_sdri_db": 10.323829217705278,
+      "target_alone_si_sdr_db": 20.115037020944975,
+      "si_sdri_by_overlap_db": {
+        "target_plus_1": 19.883818130449136,
+        "target_plus_2": 11.07724106020142,
+        "target_plus_3": -56.828602546465646
+      },
+      "absent_vs_active_output_db": -5.534575837233625,
+      "absent_vs_active_input_db": -1.168666702105746,
+      "absent_suppression_db": 4.365909135127879
+    },
+    {
+      "split": "test",
+      "mixture": "test_n4_8230-237-7729-6930",
+      "target": "8230",
+      "enrollment": "clean",
+      "fade_ms": 50,
+      "boundary_jump": 0.027601417219546426,
+      "overall_si_sdri_db": 10.38614016862841,
+      "target_alone_si_sdr_db": 20.160526674926675,
+      "si_sdri_by_overlap_db": {
+        "target_plus_1": 19.882595407955257,
+        "target_plus_2": 11.070222416949623,
+        "target_plus_3": -62.366579444220136
+      },
+      "absent_vs_active_output_db": -5.694324521048447,
+      "absent_vs_active_input_db": -1.168666702105746,
+      "absent_suppression_db": 4.525657818942701
+    },
+    {
+      "split": "test",
+      "mixture": "test_n4_8230-237-7729-6930",
+      "target": "8230",
+      "enrollment": "discovered",
+      "fade_ms": 0,
+      "boundary_jump": 0.30057907211249774,
+      "overall_si_sdri_db": 13.70791414673371,
+      "target_alone_si_sdr_db": 20.10351908762583,
+      "si_sdri_by_overlap_db": {
+        "target_plus_1": 19.882078259086413,
+        "target_plus_2": 10.950694016761851,
+        "target_plus_3": 9.519073905490018
+      },
+      "absent_vs_active_output_db": -40.44356076625881,
+      "absent_vs_active_input_db": -1.168666702105746,
+      "absent_suppression_db": 39.27489406415307
+    },
+    {
+      "split": "test",
+      "mixture": "test_n4_8230-237-7729-6930",
+      "target": "8230",
+      "enrollment": "discovered",
+      "fade_ms": 20,
+      "boundary_jump": 0.03947045231840101,
+      "overall_si_sdri_db": 13.762159128326328,
+      "target_alone_si_sdr_db": 20.115037020944975,
+      "si_sdri_by_overlap_db": {
+        "target_plus_1": 19.883573917636536,
+        "target_plus_2": 11.07724106020142,
+        "target_plus_3": -56.828602546465646
+      },
+      "absent_vs_active_output_db": -40.48835462944892,
+      "absent_vs_active_input_db": -1.168666702105746,
+      "absent_suppression_db": 39.319687927343175
+    },
+    {
+      "split": "test",
+      "mixture": "test_n4_8230-237-7729-6930",
+      "target": "8230",
+      "enrollment": "discovered",
+      "fade_ms": 50,
+      "boundary_jump": 0.04040152154097883,
+      "overall_si_sdri_db": 13.72058664752054,
+      "target_alone_si_sdr_db": 20.160526674926675,
+      "si_sdri_by_overlap_db": {
+        "target_plus_1": 19.878993581942957,
+        "target_plus_2": 11.070222416949623,
+        "target_plus_3": -62.366579444220136
+      },
+      "absent_vs_active_output_db": -40.50710782942801,
+      "absent_vs_active_input_db": -1.168666702105746,
+      "absent_suppression_db": 39.33844112732226
+    },
+    {
+      "split": "test",
+      "mixture": "test_n4_8230-237-7729-6930",
+      "target": "237",
+      "enrollment": "clean",
+      "fade_ms": 0,
+      "boundary_jump": 0.35804640591988873,
+      "overall_si_sdri_db": 18.958660621722434,
+      "target_alone_si_sdr_db": 24.539952699561447,
+      "si_sdri_by_overlap_db": {
+        "target_plus_1": 18.25717666490256,
+        "target_plus_2": 17.143625351776624,
+        "target_plus_3": 12.357911927373898
+      },
+      "absent_vs_active_output_db": -44.91785390299107,
+      "absent_vs_active_input_db": -1.7019616772165662,
+      "absent_suppression_db": 43.2158922257745
+    },
+    {
+      "split": "test",
+      "mixture": "test_n4_8230-237-7729-6930",
+      "target": "237",
+      "enrollment": "clean",
+      "fade_ms": 20,
+      "boundary_jump": 0.034640901886050735,
+      "overall_si_sdri_db": 18.924682554480697,
+      "target_alone_si_sdr_db": 24.55507406167607,
+      "si_sdri_by_overlap_db": {
+        "target_plus_1": 18.25891492397475,
+        "target_plus_2": 17.138548602799204,
+        "target_plus_3": 12.27036038783664
+      },
+      "absent_vs_active_output_db": -44.949724316666554,
+      "absent_vs_active_input_db": -1.7019616772165662,
+      "absent_suppression_db": 43.24776263944999
+    },
+    {
+      "split": "test",
+      "mixture": "test_n4_8230-237-7729-6930",
+      "target": "237",
+      "enrollment": "clean",
+      "fade_ms": 50,
+      "boundary_jump": 0.035833501269626776,
+      "overall_si_sdri_db": 18.66892454928829,
+      "target_alone_si_sdr_db": 24.567471418119954,
+      "si_sdri_by_overlap_db": {
+        "target_plus_1": 18.269532008232808,
+        "target_plus_2": 17.04862354399657,
+        "target_plus_3": 11.723752723523177
+      },
+      "absent_vs_active_output_db": -44.93248176236159,
+      "absent_vs_active_input_db": -1.7019616772165662,
+      "absent_suppression_db": 43.230520085145024
+    },
+    {
+      "split": "test",
+      "mixture": "test_n4_8230-237-7729-6930",
+      "target": "237",
+      "enrollment": "discovered",
+      "fade_ms": 0,
+      "boundary_jump": 0.441228636066798,
+      "overall_si_sdri_db": 14.582693443451216,
+      "target_alone_si_sdr_db": 24.539952699561447,
+      "si_sdri_by_overlap_db": {
+        "target_plus_1": 18.25717666490256,
+        "target_plus_2": 11.288901186163887,
+        "target_plus_3": 6.617858559822642
+      },
+      "absent_vs_active_output_db": -44.45428375150371,
+      "absent_vs_active_input_db": -1.7019616772165662,
+      "absent_suppression_db": 42.75232207428714
+    },
+    {
+      "split": "test",
+      "mixture": "test_n4_8230-237-7729-6930",
+      "target": "237",
+      "enrollment": "discovered",
+      "fade_ms": 20,
+      "boundary_jump": 0.039990879870082804,
+      "overall_si_sdri_db": 14.578858825169615,
+      "target_alone_si_sdr_db": 24.55507406167607,
+      "si_sdri_by_overlap_db": {
+        "target_plus_1": 18.25891492397475,
+        "target_plus_2": 11.287544341105258,
+        "target_plus_3": 6.605345792496612
+      },
+      "absent_vs_active_output_db": -44.49153604638535,
+      "absent_vs_active_input_db": -1.7019616772165662,
+      "absent_suppression_db": 42.78957436916878
+    },
+    {
+      "split": "test",
+      "mixture": "test_n4_8230-237-7729-6930",
+      "target": "237",
+      "enrollment": "discovered",
+      "fade_ms": 50,
+      "boundary_jump": 0.040595059093876125,
+      "overall_si_sdri_db": 14.499186778027681,
+      "target_alone_si_sdr_db": 24.567471418119954,
+      "si_sdri_by_overlap_db": {
+        "target_plus_1": 18.269532008232808,
+        "target_plus_2": 11.28484036023747,
+        "target_plus_3": 6.3440400313226375
+      },
+      "absent_vs_active_output_db": -44.483244819725684,
+      "absent_vs_active_input_db": -1.7019616772165662,
+      "absent_suppression_db": 42.78128314250912
+    },
+    {
+      "split": "test",
+      "mixture": "test_n4_8230-237-7729-6930",
+      "target": "7729",
+      "enrollment": "clean",
+      "fade_ms": 0,
+      "boundary_jump": 0.1887708967263902,
+      "overall_si_sdri_db": 18.941257427412346,
+      "target_alone_si_sdr_db": 21.104134047348477,
+      "si_sdri_by_overlap_db": {
+        "target_plus_1": 17.455305463054803,
+        "target_plus_2": 17.319538380915375,
+        "target_plus_3": 13.345524257707703
+      },
+      "absent_vs_active_output_db": -25.573186991295213,
+      "absent_vs_active_input_db": -1.1396897586429375,
+      "absent_suppression_db": 24.433497232652275
+    },
+    {
+      "split": "test",
+      "mixture": "test_n4_8230-237-7729-6930",
+      "target": "7729",
+      "enrollment": "clean",
+      "fade_ms": 20,
+      "boundary_jump": 0.025789278148787703,
+      "overall_si_sdri_db": 18.94035784847383,
+      "target_alone_si_sdr_db": 21.112073367224102,
+      "si_sdri_by_overlap_db": {
+        "target_plus_1": 17.46520928202856,
+        "target_plus_2": 17.323286011254744,
+        "target_plus_3": 13.337353804969743
+      },
+      "absent_vs_active_output_db": -25.563966683602953,
+      "absent_vs_active_input_db": -1.1396897586429375,
+      "absent_suppression_db": 24.424276924960015
+    },
+    {
+      "split": "test",
+      "mixture": "test_n4_8230-237-7729-6930",
+      "target": "7729",
+      "enrollment": "clean",
+      "fade_ms": 50,
+      "boundary_jump": 0.026354681777542938,
+      "overall_si_sdri_db": 18.924118959667624,
+      "target_alone_si_sdr_db": 21.112327322231316,
+      "si_sdri_by_overlap_db": {
+        "target_plus_1": 17.457747952689257,
+        "target_plus_2": 17.324423116573158,
+        "target_plus_3": 13.318426168589593
+      },
+      "absent_vs_active_output_db": -25.50261386700881,
+      "absent_vs_active_input_db": -1.1396897586429375,
+      "absent_suppression_db": 24.362924108365874
+    },
+    {
+      "split": "test",
+      "mixture": "test_n4_8230-237-7729-6930",
+      "target": "7729",
+      "enrollment": "discovered",
+      "fade_ms": 0,
+      "boundary_jump": 0.17208543515917785,
+      "overall_si_sdri_db": 14.42683184025351,
+      "target_alone_si_sdr_db": 9.3240837305026,
+      "si_sdri_by_overlap_db": {
+        "target_plus_1": 17.455305463054803,
+        "target_plus_2": 17.319538380915375,
+        "target_plus_3": 13.345524257707703
+      },
+      "absent_vs_active_output_db": -25.39242190622558,
+      "absent_vs_active_input_db": -1.1396897586429375,
+      "absent_suppression_db": 24.25273214758264
+    },
+    {
+      "split": "test",
+      "mixture": "test_n4_8230-237-7729-6930",
+      "target": "7729",
+      "enrollment": "discovered",
+      "fade_ms": 20,
+      "boundary_jump": 0.02619514378986825,
+      "overall_si_sdri_db": 14.426762714713227,
+      "target_alone_si_sdr_db": 9.324727790060166,
+      "si_sdri_by_overlap_db": {
+        "target_plus_1": 17.46520928202856,
+        "target_plus_2": 17.323286011254744,
+        "target_plus_3": 13.337353804969743
+      },
+      "absent_vs_active_output_db": -25.389268368130658,
+      "absent_vs_active_input_db": -1.1396897586429375,
+      "absent_suppression_db": 24.24957860948772
+    },
+    {
+      "split": "test",
+      "mixture": "test_n4_8230-237-7729-6930",
+      "target": "7729",
+      "enrollment": "discovered",
+      "fade_ms": 50,
+      "boundary_jump": 0.026927638234047046,
+      "overall_si_sdri_db": 14.421934837999169,
+      "target_alone_si_sdr_db": 9.324749097058366,
+      "si_sdri_by_overlap_db": {
+        "target_plus_1": 17.457747952689257,
+        "target_plus_2": 17.324423116573158,
+        "target_plus_3": 13.318426168589593
+      },
+      "absent_vs_active_output_db": -25.358897924410986,
+      "absent_vs_active_input_db": -1.1396897586429375,
+      "absent_suppression_db": 24.21920816576805
+    },
+    {
+      "split": "test",
+      "mixture": "test_n4_8230-237-7729-6930",
+      "target": "6930",
+      "enrollment": "clean",
+      "fade_ms": 0,
+      "boundary_jump": 0.04058236081083834,
+      "overall_si_sdri_db": 7.2044231185170675,
+      "target_alone_si_sdr_db": 1.6549055522227216,
+      "si_sdri_by_overlap_db": {
+        "target_plus_1": 6.892017658749233,
+        "target_plus_2": 8.834569584274302,
+        "target_plus_3": 6.434094143322613
+      },
+      "absent_vs_active_output_db": -15.190255134568986,
+      "absent_vs_active_input_db": -2.868715662253102,
+      "absent_suppression_db": 12.321539472315884
+    },
+    {
+      "split": "test",
+      "mixture": "test_n4_8230-237-7729-6930",
+      "target": "6930",
+      "enrollment": "clean",
+      "fade_ms": 20,
+      "boundary_jump": 0.002090077930904773,
+      "overall_si_sdri_db": 7.2666557943225305,
+      "target_alone_si_sdr_db": 1.776055421627353,
+      "si_sdri_by_overlap_db": {
+        "target_plus_1": 6.903381781280315,
+        "target_plus_2": 8.830333816675083,
+        "target_plus_3": 6.410426518027375
+      },
+      "absent_vs_active_output_db": -15.352039907481021,
+      "absent_vs_active_input_db": -2.868715662253102,
+      "absent_suppression_db": 12.48332424522792
+    },
+    {
+      "split": "test",
+      "mixture": "test_n4_8230-237-7729-6930",
+      "target": "6930",
+      "enrollment": "clean",
+      "fade_ms": 50,
+      "boundary_jump": 0.0021168557321202363,
+      "overall_si_sdri_db": 7.271287427448124,
+      "target_alone_si_sdr_db": 1.9051245959899838,
+      "si_sdri_by_overlap_db": {
+        "target_plus_1": 6.907666985932935,
+        "target_plus_2": 8.791581145868848,
+        "target_plus_3": 6.172373450407035
+      },
+      "absent_vs_active_output_db": -15.363162972154974,
+      "absent_vs_active_input_db": -2.868715662253102,
+      "absent_suppression_db": 12.494447309901872
+    },
+    {
+      "split": "test",
+      "mixture": "test_n4_8230-237-7729-6930",
+      "target": "6930",
+      "enrollment": "discovered",
+      "fade_ms": 0,
+      "boundary_jump": 0.017604009355426335,
+      "overall_si_sdri_db": 6.167611460699376,
+      "target_alone_si_sdr_db": 1.6514515525190177,
+      "si_sdri_by_overlap_db": {
+        "target_plus_1": 2.3320339941120376,
+        "target_plus_2": 8.834569584274302,
+        "target_plus_3": 6.434094143322613
+      },
+      "absent_vs_active_output_db": -14.878716246658364,
+      "absent_vs_active_input_db": -2.868715662253102,
+      "absent_suppression_db": 12.010000584405262
+    },
+    {
+      "split": "test",
+      "mixture": "test_n4_8230-237-7729-6930",
+      "target": "6930",
+      "enrollment": "discovered",
+      "fade_ms": 20,
+      "boundary_jump": 0.0,
+      "overall_si_sdri_db": 6.259703561736261,
+      "target_alone_si_sdr_db": 1.7728050302683405,
+      "si_sdri_by_overlap_db": {
+        "target_plus_1": 2.4672155981855095,
+        "target_plus_2": 8.830333816675083,
+        "target_plus_3": 6.418785111052323
+      },
+      "absent_vs_active_output_db": -15.044718719521349,
+      "absent_vs_active_input_db": -2.868715662253102,
+      "absent_suppression_db": 12.176003057268247
+    },
+    {
+      "split": "test",
+      "mixture": "test_n4_8230-237-7729-6930",
+      "target": "6930",
+      "enrollment": "discovered",
+      "fade_ms": 50,
+      "boundary_jump": 0.0,
+      "overall_si_sdri_db": 6.331757570117228,
+      "target_alone_si_sdr_db": 1.9020449164937603,
+      "si_sdri_by_overlap_db": {
+        "target_plus_1": 2.6413341807490776,
+        "target_plus_2": 8.791581145868848,
+        "target_plus_3": 6.319057623326254
+      },
+      "absent_vs_active_output_db": -15.056166626904371,
+      "absent_vs_active_input_db": -2.868715662253102,
+      "absent_suppression_db": 12.18745096465127
+    },
+    {
+      "split": "test",
+      "mixture": "test_n5_908-1188-1089-7176-4970",
+      "target": "908",
+      "enrollment": "clean",
+      "fade_ms": 0,
+      "boundary_jump": 0.06078990794331257,
+      "overall_si_sdri_db": 13.96240862357914,
+      "target_alone_si_sdr_db": null,
+      "si_sdri_by_overlap_db": {
+        "target_plus_1": 16.54862547965699,
+        "target_plus_2": 11.083115330816813,
+        "target_plus_3": 10.509936489422941
+      },
+      "absent_vs_active_output_db": -15.59583392847118,
+      "absent_vs_active_input_db": -2.8234779343491745,
+      "absent_suppression_db": 12.772355994122005
+    },
+    {
+      "split": "test",
+      "mixture": "test_n5_908-1188-1089-7176-4970",
+      "target": "908",
+      "enrollment": "clean",
+      "fade_ms": 20,
+      "boundary_jump": 0.0,
+      "overall_si_sdri_db": 13.947610970755534,
+      "target_alone_si_sdr_db": null,
+      "si_sdri_by_overlap_db": {
+        "target_plus_1": 16.222666062398133,
+        "target_plus_2": 11.08599184222916,
+        "target_plus_3": 10.526061139593384
+      },
+      "absent_vs_active_output_db": -15.592224474676538,
+      "absent_vs_active_input_db": -2.8234779343491745,
+      "absent_suppression_db": 12.768746540327363
+    },
+    {
+      "split": "test",
+      "mixture": "test_n5_908-1188-1089-7176-4970",
+      "target": "908",
+      "enrollment": "clean",
+      "fade_ms": 50,
+      "boundary_jump": 0.0,
+      "overall_si_sdri_db": 13.893536241989151,
+      "target_alone_si_sdr_db": null,
+      "si_sdri_by_overlap_db": {
+        "target_plus_1": 15.20893589519032,
+        "target_plus_2": 11.089246255461731,
+        "target_plus_3": 10.5386991255002
+      },
+      "absent_vs_active_output_db": -15.585700988853617,
+      "absent_vs_active_input_db": -2.8234779343491745,
+      "absent_suppression_db": 12.762223054504442
+    },
+    {
+      "split": "test",
+      "mixture": "test_n5_908-1188-1089-7176-4970",
+      "target": "908",
+      "enrollment": "discovered",
+      "fade_ms": 0,
+      "boundary_jump": 0.06916321878835126,
+      "overall_si_sdri_db": 12.266129306935909,
+      "target_alone_si_sdr_db": null,
+      "si_sdri_by_overlap_db": {
+        "target_plus_1": 5.3777627331153885,
+        "target_plus_2": 11.454817374801948,
+        "target_plus_3": 10.509936489422941
+      },
+      "absent_vs_active_output_db": -15.40057350594239,
+      "absent_vs_active_input_db": -2.8234779343491745,
+      "absent_suppression_db": 12.577095571593215
+    },
+    {
+      "split": "test",
+      "mixture": "test_n5_908-1188-1089-7176-4970",
+      "target": "908",
+      "enrollment": "discovered",
+      "fade_ms": 20,
+      "boundary_jump": 0.0,
+      "overall_si_sdri_db": 12.263196900780803,
+      "target_alone_si_sdr_db": null,
+      "si_sdri_by_overlap_db": {
+        "target_plus_1": 5.369997934849565,
+        "target_plus_2": 11.457858731822057,
+        "target_plus_3": 10.526061139593384
+      },
+      "absent_vs_active_output_db": -15.397346541228679,
+      "absent_vs_active_input_db": -2.8234779343491745,
+      "absent_suppression_db": 12.573868606879504
+    },
+    {
+      "split": "test",
+      "mixture": "test_n5_908-1188-1089-7176-4970",
+      "target": "908",
+      "enrollment": "discovered",
+      "fade_ms": 50,
+      "boundary_jump": 0.0,
+      "overall_si_sdri_db": 12.26952413274627,
+      "target_alone_si_sdr_db": null,
+      "si_sdri_by_overlap_db": {
+        "target_plus_1": 5.391552644680181,
+        "target_plus_2": 11.461355980521127,
+        "target_plus_3": 10.5386991255002
+      },
+      "absent_vs_active_output_db": -15.39477369102189,
+      "absent_vs_active_input_db": -2.8234779343491745,
+      "absent_suppression_db": 12.571295756672715
+    },
+    {
+      "split": "test",
+      "mixture": "test_n5_908-1188-1089-7176-4970",
+      "target": "1188",
+      "enrollment": "clean",
+      "fade_ms": 0,
+      "boundary_jump": 0.49908201179747824,
+      "overall_si_sdri_db": 15.931955811899527,
+      "target_alone_si_sdr_db": null,
+      "si_sdri_by_overlap_db": {
+        "target_plus_1": 11.011528491704595,
+        "target_plus_2": 11.816299135714239
+      },
+      "absent_vs_active_output_db": -22.222925858977284,
+      "absent_vs_active_input_db": -2.8309475537316544,
+      "absent_suppression_db": 19.39197830524563
+    },
+    {
+      "split": "test",
+      "mixture": "test_n5_908-1188-1089-7176-4970",
+      "target": "1188",
+      "enrollment": "clean",
+      "fade_ms": 20,
+      "boundary_jump": 7.397908857762873e-05,
+      "overall_si_sdri_db": 15.90375463017664,
+      "target_alone_si_sdr_db": null,
+      "si_sdri_by_overlap_db": {
+        "target_plus_1": 10.927703650787528,
+        "target_plus_2": 11.802222142283158
+      },
+      "absent_vs_active_output_db": -22.22905800026127,
+      "absent_vs_active_input_db": -2.8309475537316544,
+      "absent_suppression_db": 19.398110446529614
+    },
+    {
+      "split": "test",
+      "mixture": "test_n5_908-1188-1089-7176-4970",
+      "target": "1188",
+      "enrollment": "clean",
+      "fade_ms": 50,
+      "boundary_jump": 7.881513141025934e-05,
+      "overall_si_sdri_db": 15.796136165601691,
+      "target_alone_si_sdr_db": null,
+      "si_sdri_by_overlap_db": {
+        "target_plus_1": 10.60803972273466,
+        "target_plus_2": 11.755477026913038
+      },
+      "absent_vs_active_output_db": -22.248776364689036,
+      "absent_vs_active_input_db": -2.8309475537316544,
+      "absent_suppression_db": 19.41782881095738
+    },
+    {
+      "split": "test",
+      "mixture": "test_n5_908-1188-1089-7176-4970",
+      "target": "1188",
+      "enrollment": "discovered",
+      "fade_ms": 0,
+      "boundary_jump": 0.602977253649864,
+      "overall_si_sdri_db": 10.827720885562089,
+      "target_alone_si_sdr_db": null,
+      "si_sdri_by_overlap_db": {
+        "target_plus_1": 0.6207074635844974,
+        "target_plus_2": 12.630427429322406
+      },
+      "absent_vs_active_output_db": -21.77564555984209,
+      "absent_vs_active_input_db": -2.8309475537316544,
+      "absent_suppression_db": 18.944698006110436
+    },
+    {
+      "split": "test",
+      "mixture": "test_n5_908-1188-1089-7176-4970",
+      "target": "1188",
+      "enrollment": "discovered",
+      "fade_ms": 20,
+      "boundary_jump": 0.0,
+      "overall_si_sdri_db": 10.94061954374354,
+      "target_alone_si_sdr_db": null,
+      "si_sdri_by_overlap_db": {
+        "target_plus_1": 0.7877104520645295,
+        "target_plus_2": 12.615266702300106
+      },
+      "absent_vs_active_output_db": -21.790326559345065,
+      "absent_vs_active_input_db": -2.8309475537316544,
+      "absent_suppression_db": 18.95937900561341
+    },
+    {
+      "split": "test",
+      "mixture": "test_n5_908-1188-1089-7176-4970",
+      "target": "1188",
+      "enrollment": "discovered",
+      "fade_ms": 50,
+      "boundary_jump": 0.0,
+      "overall_si_sdri_db": 11.04367512665384,
+      "target_alone_si_sdr_db": null,
+      "si_sdri_by_overlap_db": {
+        "target_plus_1": 0.9491601351523071,
+        "target_plus_2": 12.561482415642613
+      },
+      "absent_vs_active_output_db": -21.8150403736567,
+      "absent_vs_active_input_db": -2.8309475537316544,
+      "absent_suppression_db": 18.984092819925046
+    },
+    {
+      "split": "test",
+      "mixture": "test_n5_908-1188-1089-7176-4970",
+      "target": "1089",
+      "enrollment": "clean",
+      "fade_ms": 0,
+      "boundary_jump": 0.006431187210733176,
+      "overall_si_sdri_db": 12.312831241272175,
+      "target_alone_si_sdr_db": 30.288229392768,
+      "si_sdri_by_overlap_db": {
+        "target_plus_1": 7.357144543098119,
+        "target_plus_2": 17.225520681176,
+        "target_plus_3": 5.127187032518724
+      },
+      "absent_vs_active_output_db": -49.322333612043195,
+      "absent_vs_active_input_db": -1.8774384684493945,
+      "absent_suppression_db": 47.4448951435938
+    },
+    {
+      "split": "test",
+      "mixture": "test_n5_908-1188-1089-7176-4970",
+      "target": "1089",
+      "enrollment": "clean",
+      "fade_ms": 20,
+      "boundary_jump": 0.0,
+      "overall_si_sdri_db": 12.343453785740929,
+      "target_alone_si_sdr_db": 30.5039228382129,
+      "si_sdri_by_overlap_db": {
+        "target_plus_1": 7.372813461974744,
+        "target_plus_2": 17.224171746393125,
+        "target_plus_3": 5.174748331307441
+      },
+      "absent_vs_active_output_db": -38.59309318608082,
+      "absent_vs_active_input_db": -1.8774384684493945,
+      "absent_suppression_db": 36.71565471763142
+    },
+    {
+      "split": "test",
+      "mixture": "test_n5_908-1188-1089-7176-4970",
+      "target": "1089",
+      "enrollment": "clean",
+      "fade_ms": 50,
+      "boundary_jump": 0.0,
+      "overall_si_sdri_db": 12.401518487690925,
+      "target_alone_si_sdr_db": 30.26187726780071,
+      "si_sdri_by_overlap_db": {
+        "target_plus_1": 7.4473113548279475,
+        "target_plus_2": 17.219529896689785,
+        "target_plus_3": 5.241915449973267
+      },
+      "absent_vs_active_output_db": -32.99320566837851,
+      "absent_vs_active_input_db": -1.8774384684493945,
+      "absent_suppression_db": 31.115767199929113
+    },
+    {
+      "split": "test",
+      "mixture": "test_n5_908-1188-1089-7176-4970",
+      "target": "1089",
+      "enrollment": "discovered",
+      "fade_ms": 0,
+      "boundary_jump": 0.0,
+      "overall_si_sdri_db": 12.646786881759155,
+      "target_alone_si_sdr_db": 30.288229392768,
+      "si_sdri_by_overlap_db": {
+        "target_plus_1": 7.357144543098119,
+        "target_plus_2": 11.362685995562128,
+        "target_plus_3": 7.362859859920964
+      },
+      "absent_vs_active_output_db": -48.89792201658315,
+      "absent_vs_active_input_db": -1.8774384684493945,
+      "absent_suppression_db": 47.020483548133754
+    },
+    {
+      "split": "test",
+      "mixture": "test_n5_908-1188-1089-7176-4970",
+      "target": "1089",
+      "enrollment": "discovered",
+      "fade_ms": 20,
+      "boundary_jump": 0.0,
+      "overall_si_sdri_db": 12.649494157011278,
+      "target_alone_si_sdr_db": 30.5039228382129,
+      "si_sdri_by_overlap_db": {
+        "target_plus_1": 7.372782570193248,
+        "target_plus_2": 11.362685995562128,
+        "target_plus_3": 7.363000123288793
+      },
+      "absent_vs_active_output_db": -37.57963835576972,
+      "absent_vs_active_input_db": -1.8774384684493945,
+      "absent_suppression_db": 35.70219988732032
+    },
+    {
+      "split": "test",
+      "mixture": "test_n5_908-1188-1089-7176-4970",
+      "target": "1089",
+      "enrollment": "discovered",
+      "fade_ms": 50,
+      "boundary_jump": 0.0,
+      "overall_si_sdri_db": 12.668514255149859,
+      "target_alone_si_sdr_db": 30.26187726780071,
+      "si_sdri_by_overlap_db": {
+        "target_plus_1": 7.447118331027594,
+        "target_plus_2": 11.362685995562128,
+        "target_plus_3": 7.360353258270796
+      },
+      "absent_vs_active_output_db": -31.94859536340844,
+      "absent_vs_active_input_db": -1.8774384684493945,
+      "absent_suppression_db": 30.071156894959046
+    },
+    {
+      "split": "test",
+      "mixture": "test_n5_908-1188-1089-7176-4970",
+      "target": "7176",
+      "enrollment": "clean",
+      "fade_ms": 0,
+      "boundary_jump": 0.11127659804597119,
+      "overall_si_sdri_db": 9.70837188340637,
+      "target_alone_si_sdr_db": 22.146234295446053,
+      "si_sdri_by_overlap_db": {
+        "target_plus_1": -1.5838176857703572,
+        "target_plus_3": -3.0217229430869845
+      },
+      "absent_vs_active_output_db": -13.526417323652154,
+      "absent_vs_active_input_db": 1.4909332397257096,
+      "absent_suppression_db": 15.017350563377864
+    },
+    {
+      "split": "test",
+      "mixture": "test_n5_908-1188-1089-7176-4970",
+      "target": "7176",
+      "enrollment": "clean",
+      "fade_ms": 20,
+      "boundary_jump": 0.0,
+      "overall_si_sdri_db": 9.745342867020668,
+      "target_alone_si_sdr_db": 22.171434664031032,
+      "si_sdri_by_overlap_db": {
+        "target_plus_1": -1.5724757669530929,
+        "target_plus_3": -2.8448336855497085
+      },
+      "absent_vs_active_output_db": -13.532870045394397,
+      "absent_vs_active_input_db": 1.4909332397257096,
+      "absent_suppression_db": 15.023803285120106
+    },
+    {
+      "split": "test",
+      "mixture": "test_n5_908-1188-1089-7176-4970",
+      "target": "7176",
+      "enrollment": "clean",
+      "fade_ms": 50,
+      "boundary_jump": 0.0,
+      "overall_si_sdri_db": 9.819269649700004,
+      "target_alone_si_sdr_db": 22.243888812639852,
+      "si_sdri_by_overlap_db": {
+        "target_plus_1": -1.5325672061762874,
+        "target_plus_3": -2.5906048106828417
+      },
+      "absent_vs_active_output_db": -13.594310592293695,
+      "absent_vs_active_input_db": 1.4909332397257096,
+      "absent_suppression_db": 15.085243832019405
+    },
+    {
+      "split": "test",
+      "mixture": "test_n5_908-1188-1089-7176-4970",
+      "target": "7176",
+      "enrollment": "discovered",
+      "fade_ms": 0,
+      "boundary_jump": 0.013391114666272725,
+      "overall_si_sdri_db": 9.314333729120294,
+      "target_alone_si_sdr_db": 8.552726526127362,
+      "si_sdri_by_overlap_db": {
+        "target_plus_1": -1.5838176857703572,
+        "target_plus_3": -3.0217229430869845
+      },
+      "absent_vs_active_output_db": -44.96939519204155,
+      "absent_vs_active_input_db": 1.4909332397257096,
+      "absent_suppression_db": 46.460328431767266
+    },
+    {
+      "split": "test",
+      "mixture": "test_n5_908-1188-1089-7176-4970",
+      "target": "7176",
+      "enrollment": "discovered",
+      "fade_ms": 20,
+      "boundary_jump": 0.0,
+      "overall_si_sdri_db": 9.352119703574413,
+      "target_alone_si_sdr_db": 8.55844427278862,
+      "si_sdri_by_overlap_db": {
+        "target_plus_1": -1.5724757669530929,
+        "target_plus_3": -2.8448336855497085
+      },
+      "absent_vs_active_output_db": -44.67824187418128,
+      "absent_vs_active_input_db": 1.4909332397257096,
+      "absent_suppression_db": 46.16917511390699
+    },
+    {
+      "split": "test",
+      "mixture": "test_n5_908-1188-1089-7176-4970",
+      "target": "7176",
+      "enrollment": "discovered",
+      "fade_ms": 50,
+      "boundary_jump": 0.0,
+      "overall_si_sdri_db": 9.412912482070237,
+      "target_alone_si_sdr_db": 8.566995143452276,
+      "si_sdri_by_overlap_db": {
+        "target_plus_1": -1.5325672061762874,
+        "target_plus_3": -2.5906048106828417
+      },
+      "absent_vs_active_output_db": -43.089850398668574,
+      "absent_vs_active_input_db": 1.4909332397257096,
+      "absent_suppression_db": 44.58078363839428
+    },
+    {
+      "split": "test",
+      "mixture": "test_n5_908-1188-1089-7176-4970",
+      "target": "4970",
+      "enrollment": "clean",
+      "fade_ms": 0,
+      "boundary_jump": 0.5291609586687089,
+      "overall_si_sdri_db": 14.983896828508286,
+      "target_alone_si_sdr_db": 15.306219607660129,
+      "si_sdri_by_overlap_db": {
+        "target_plus_1": 23.322895765868896,
+        "target_plus_2": 7.693748039572466,
+        "target_plus_3": 12.595254928116912
+      },
+      "absent_vs_active_output_db": -24.15182933058948,
+      "absent_vs_active_input_db": -0.5099816553943164,
+      "absent_suppression_db": 23.641847675195162
+    },
+    {
+      "split": "test",
+      "mixture": "test_n5_908-1188-1089-7176-4970",
+      "target": "4970",
+      "enrollment": "clean",
+      "fade_ms": 20,
+      "boundary_jump": 0.0,
+      "overall_si_sdri_db": 14.994273346251578,
+      "target_alone_si_sdr_db": 15.315499493563818,
+      "si_sdri_by_overlap_db": {
+        "target_plus_1": 23.349033351838592,
+        "target_plus_2": 7.70024309298894,
+        "target_plus_3": 12.60976418226516
+      },
+      "absent_vs_active_output_db": -24.242091969944244,
+      "absent_vs_active_input_db": -0.5099816553943164,
+      "absent_suppression_db": 23.732110314549928
+    },
+    {
+      "split": "test",
+      "mixture": "test_n5_908-1188-1089-7176-4970",
+      "target": "4970",
+      "enrollment": "clean",
+      "fade_ms": 50,
+      "boundary_jump": 0.0,
+      "overall_si_sdri_db": 15.010688990501075,
+      "target_alone_si_sdr_db": 15.321523661385948,
+      "si_sdri_by_overlap_db": {
+        "target_plus_1": 23.354188095146696,
+        "target_plus_2": 7.704098666816094,
+        "target_plus_3": 12.61923530534089
+      },
+      "absent_vs_active_output_db": -24.60876486700758,
+      "absent_vs_active_input_db": -0.5099816553943164,
+      "absent_suppression_db": 24.098783211613263
+    },
+    {
+      "split": "test",
+      "mixture": "test_n5_908-1188-1089-7176-4970",
+      "target": "4970",
+      "enrollment": "discovered",
+      "fade_ms": 0,
+      "boundary_jump": null,
+      "overall_si_sdri_db": 8.442728498811958,
+      "target_alone_si_sdr_db": 0.0,
+      "si_sdri_by_overlap_db": {
+        "target_plus_1": 9.957681501442075,
+        "target_plus_2": 4.874141197626081,
+        "target_plus_3": 5.870936692245197
+      },
+      "absent_vs_active_output_db": 0.0,
+      "absent_vs_active_input_db": -0.5099816553943164,
+      "absent_suppression_db": -0.5099816553943164
+    },
+    {
+      "split": "test",
+      "mixture": "test_n5_908-1188-1089-7176-4970",
+      "target": "4970",
+      "enrollment": "discovered",
+      "fade_ms": 20,
+      "boundary_jump": null,
+      "overall_si_sdri_db": 8.442728498811958,
+      "target_alone_si_sdr_db": 0.0,
+      "si_sdri_by_overlap_db": {
+        "target_plus_1": 9.957681501442075,
+        "target_plus_2": 4.874141197626081,
+        "target_plus_3": 5.870936692245197
+      },
+      "absent_vs_active_output_db": 0.0,
+      "absent_vs_active_input_db": -0.5099816553943164,
+      "absent_suppression_db": -0.5099816553943164
+    },
+    {
+      "split": "test",
+      "mixture": "test_n5_908-1188-1089-7176-4970",
+      "target": "4970",
+      "enrollment": "discovered",
+      "fade_ms": 50,
+      "boundary_jump": null,
+      "overall_si_sdri_db": 8.442728498811958,
+      "target_alone_si_sdr_db": 0.0,
+      "si_sdri_by_overlap_db": {
+        "target_plus_1": 9.957681501442075,
+        "target_plus_2": 4.874141197626081,
+        "target_plus_3": 5.870936692245197
+      },
+      "absent_vs_active_output_db": 0.0,
+      "absent_vs_active_input_db": -0.5099816553943164,
+      "absent_suppression_db": -0.5099816553943164
+    },
+    {
+      "split": "test",
+      "mixture": "test_n6_8455-4446-4077-5105-2961-121",
+      "target": "8455",
+      "enrollment": "clean",
+      "fade_ms": 0,
+      "boundary_jump": 0.013269103319231212,
+      "overall_si_sdri_db": 11.830003781913812,
+      "target_alone_si_sdr_db": 20.871414271967595,
+      "si_sdri_by_overlap_db": {
+        "target_plus_1": 0.9136430107174671,
+        "target_plus_2": 19.806967765775568
+      },
+      "absent_vs_active_output_db": -9.091189641472447,
+      "absent_vs_active_input_db": 0.5264776625958056,
+      "absent_suppression_db": 9.617667304068252
+    },
+    {
+      "split": "test",
+      "mixture": "test_n6_8455-4446-4077-5105-2961-121",
+      "target": "8455",
+      "enrollment": "clean",
+      "fade_ms": 20,
+      "boundary_jump": 0.0,
+      "overall_si_sdri_db": 11.762872151915506,
+      "target_alone_si_sdr_db": 19.914873717636304,
+      "si_sdri_by_overlap_db": {
+        "target_plus_1": 0.9104059035107681,
+        "target_plus_2": 19.173912718389552
+      },
+      "absent_vs_active_output_db": -9.046540768917342,
+      "absent_vs_active_input_db": 0.5264776625958056,
+      "absent_suppression_db": 9.573018431513148
+    },
+    {
+      "split": "test",
+      "mixture": "test_n6_8455-4446-4077-5105-2961-121",
+      "target": "8455",
+      "enrollment": "clean",
+      "fade_ms": 50,
+      "boundary_jump": 0.0,
+      "overall_si_sdri_db": 11.516211906571872,
+      "target_alone_si_sdr_db": 17.999853820484727,
+      "si_sdri_by_overlap_db": {
+        "target_plus_1": 0.8606805973564968,
+        "target_plus_2": 17.268682168267176
+      },
+      "absent_vs_active_output_db": -8.896848918890996,
+      "absent_vs_active_input_db": 0.5264776625958056,
+      "absent_suppression_db": 9.423326581486801
+    },
+    {
+      "split": "test",
+      "mixture": "test_n6_8455-4446-4077-5105-2961-121",
+      "target": "8455",
+      "enrollment": "discovered",
+      "fade_ms": 0,
+      "boundary_jump": 0.0,
+      "overall_si_sdri_db": 11.833726990747246,
+      "target_alone_si_sdr_db": 20.871414271967595,
+      "si_sdri_by_overlap_db": {
+        "target_plus_1": 0.9136430107174671,
+        "target_plus_2": 19.806967765775568
+      },
+      "absent_vs_active_output_db": -9.098402797764685,
+      "absent_vs_active_input_db": 0.5264776625958056,
+      "absent_suppression_db": 9.62488046036049
+    },
+    {
+      "split": "test",
+      "mixture": "test_n6_8455-4446-4077-5105-2961-121",
+      "target": "8455",
+      "enrollment": "discovered",
+      "fade_ms": 20,
+      "boundary_jump": 0.0,
+      "overall_si_sdri_db": 11.766722942700383,
+      "target_alone_si_sdr_db": 19.914873717636304,
+      "si_sdri_by_overlap_db": {
+        "target_plus_1": 0.9104059035107681,
+        "target_plus_2": 19.17770314787152
+      },
+      "absent_vs_active_output_db": -9.053649901580574,
+      "absent_vs_active_input_db": 0.5264776625958056,
+      "absent_suppression_db": 9.58012756417638
+    },
+    {
+      "split": "test",
+      "mixture": "test_n6_8455-4446-4077-5105-2961-121",
+      "target": "8455",
+      "enrollment": "discovered",
+      "fade_ms": 50,
+      "boundary_jump": 0.0,
+      "overall_si_sdri_db": 11.519995110158494,
+      "target_alone_si_sdr_db": 17.999853820484727,
+      "si_sdri_by_overlap_db": {
+        "target_plus_1": 0.8606805973564968,
+        "target_plus_2": 17.271862245031002
+      },
+      "absent_vs_active_output_db": -8.903782641292995,
+      "absent_vs_active_input_db": 0.5264776625958056,
+      "absent_suppression_db": 9.4302603038888
+    },
+    {
+      "split": "test",
+      "mixture": "test_n6_8455-4446-4077-5105-2961-121",
+      "target": "4446",
+      "enrollment": "clean",
+      "fade_ms": 0,
+      "boundary_jump": 0.4626877208433196,
+      "overall_si_sdri_db": 14.851654596414077,
+      "target_alone_si_sdr_db": 18.0625101272931,
+      "si_sdri_by_overlap_db": {
+        "target_plus_1": 4.122927048150744,
+        "target_plus_2": 17.52456031515344
+      },
+      "absent_vs_active_output_db": -35.01649861525166,
+      "absent_vs_active_input_db": -1.0992900698457717,
+      "absent_suppression_db": 33.91720854540589
+    },
+    {
+      "split": "test",
+      "mixture": "test_n6_8455-4446-4077-5105-2961-121",
+      "target": "4446",
+      "enrollment": "clean",
+      "fade_ms": 20,
+      "boundary_jump": 0.0,
+      "overall_si_sdri_db": 14.879974242800682,
+      "target_alone_si_sdr_db": 18.405759566093224,
+      "si_sdri_by_overlap_db": {
+        "target_plus_1": 4.229911320948282,
+        "target_plus_2": 16.72816124445403
+      },
+      "absent_vs_active_output_db": -31.31078373026364,
+      "absent_vs_active_input_db": -1.0992900698457717,
+      "absent_suppression_db": 30.21149366041787
+    },
+    {
+      "split": "test",
+      "mixture": "test_n6_8455-4446-4077-5105-2961-121",
+      "target": "4446",
+      "enrollment": "clean",
+      "fade_ms": 50,
+      "boundary_jump": 0.0,
+      "overall_si_sdri_db": 14.58372356970732,
+      "target_alone_si_sdr_db": 19.512499885754558,
+      "si_sdri_by_overlap_db": {
+        "target_plus_1": 4.240050851591289,
+        "target_plus_2": 13.979208792543991
+      },
+      "absent_vs_active_output_db": -25.850747906095606,
+      "absent_vs_active_input_db": -1.0992900698457717,
+      "absent_suppression_db": 24.751457836249834
+    },
+    {
+      "split": "test",
+      "mixture": "test_n6_8455-4446-4077-5105-2961-121",
+      "target": "4446",
+      "enrollment": "discovered",
+      "fade_ms": 0,
+      "boundary_jump": 0.02506165851131444,
+      "overall_si_sdri_db": 14.822785367325775,
+      "target_alone_si_sdr_db": 17.660489915552464,
+      "si_sdri_by_overlap_db": {
+        "target_plus_1": 4.122927048150744,
+        "target_plus_2": 17.52456031515344
+      },
+      "absent_vs_active_output_db": -35.91408086855071,
+      "absent_vs_active_input_db": -1.0992900698457717,
+      "absent_suppression_db": 34.81479079870494
+    },
+    {
+      "split": "test",
+      "mixture": "test_n6_8455-4446-4077-5105-2961-121",
+      "target": "4446",
+      "enrollment": "discovered",
+      "fade_ms": 20,
+      "boundary_jump": 0.0,
+      "overall_si_sdri_db": 14.886093852227125,
+      "target_alone_si_sdr_db": 17.895756124310484,
+      "si_sdri_by_overlap_db": {
+        "target_plus_1": 4.22670405964553,
+        "target_plus_2": 16.72816124445403
+      },
+      "absent_vs_active_output_db": -35.27029049136561,
+      "absent_vs_active_input_db": -1.0992900698457717,
+      "absent_suppression_db": 34.171000421519835
+    },
+    {
+      "split": "test",
+      "mixture": "test_n6_8455-4446-4077-5105-2961-121",
+      "target": "4446",
+      "enrollment": "discovered",
+      "fade_ms": 50,
+      "boundary_jump": 0.0,
+      "overall_si_sdri_db": 14.718487923415617,
+      "target_alone_si_sdr_db": 18.76618993062856,
+      "si_sdri_by_overlap_db": {
+        "target_plus_1": 4.206723189629639,
+        "target_plus_2": 13.979208792543991
+      },
+      "absent_vs_active_output_db": -31.530796136446554,
+      "absent_vs_active_input_db": -1.0992900698457717,
+      "absent_suppression_db": 30.431506066600782
+    },
+    {
+      "split": "test",
+      "mixture": "test_n6_8455-4446-4077-5105-2961-121",
+      "target": "4077",
+      "enrollment": "clean",
+      "fade_ms": 0,
+      "boundary_jump": 0.32273371561945524,
+      "overall_si_sdri_db": 10.274774418609603,
+      "target_alone_si_sdr_db": 12.105368497229591,
+      "si_sdri_by_overlap_db": {
+        "target_plus_1": 16.702134441589457,
+        "target_plus_2": 10.87850740720266,
+        "target_plus_3": 8.50105976209639
+      },
+      "absent_vs_active_output_db": -8.135104770779492,
+      "absent_vs_active_input_db": -0.785336108051272,
+      "absent_suppression_db": 7.34976866272822
+    },
+    {
+      "split": "test",
+      "mixture": "test_n6_8455-4446-4077-5105-2961-121",
+      "target": "4077",
+      "enrollment": "clean",
+      "fade_ms": 20,
+      "boundary_jump": 0.006999447572910498,
+      "overall_si_sdri_db": 10.303322102108599,
+      "target_alone_si_sdr_db": 12.10480779247576,
+      "si_sdri_by_overlap_db": {
+        "target_plus_1": 16.887522319129012,
+        "target_plus_2": 10.861348286363945,
+        "target_plus_3": 8.50420294710052
+      },
+      "absent_vs_active_output_db": -8.177182803498802,
+      "absent_vs_active_input_db": -0.785336108051272,
+      "absent_suppression_db": 7.39184669544753
+    },
+    {
+      "split": "test",
+      "mixture": "test_n6_8455-4446-4077-5105-2961-121",
+      "target": "4077",
+      "enrollment": "clean",
+      "fade_ms": 50,
+      "boundary_jump": 0.007245367757472875,
+      "overall_si_sdri_db": 10.321341844437757,
+      "target_alone_si_sdr_db": 12.103343931243721,
+      "si_sdri_by_overlap_db": {
+        "target_plus_1": 16.928632124817913,
+        "target_plus_2": 10.78698152011007,
+        "target_plus_3": 8.504940656490481
+      },
+      "absent_vs_active_output_db": -8.214604717604132,
+      "absent_vs_active_input_db": -0.785336108051272,
+      "absent_suppression_db": 7.42926860955286
+    },
+    {
+      "split": "test",
+      "mixture": "test_n6_8455-4446-4077-5105-2961-121",
+      "target": "4077",
+      "enrollment": "discovered",
+      "fade_ms": 0,
+      "boundary_jump": 0.000602608957348105,
+      "overall_si_sdri_db": 11.21451412329514,
+      "target_alone_si_sdr_db": 12.107698966833716,
+      "si_sdri_by_overlap_db": {
+        "target_plus_1": 16.702134441589457,
+        "target_plus_2": -1.9691192056323148,
+        "target_plus_3": 8.50105976209639
+      },
+      "absent_vs_active_output_db": -13.84847340463035,
+      "absent_vs_active_input_db": -0.785336108051272,
+      "absent_suppression_db": 13.063137296579079
+    },
+    {
+      "split": "test",
+      "mixture": "test_n6_8455-4446-4077-5105-2961-121",
+      "target": "4077",
+      "enrollment": "discovered",
+      "fade_ms": 20,
+      "boundary_jump": 0.0,
+      "overall_si_sdri_db": 11.217253968903393,
+      "target_alone_si_sdr_db": 12.104675854118836,
+      "si_sdri_by_overlap_db": {
+        "target_plus_1": 16.887522319129012,
+        "target_plus_2": -1.9817574998806098,
+        "target_plus_3": 8.50420294710052
+      },
+      "absent_vs_active_output_db": -13.857910319509251,
+      "absent_vs_active_input_db": -0.785336108051272,
+      "absent_suppression_db": 13.07257421145798
+    },
+    {
+      "split": "test",
+      "mixture": "test_n6_8455-4446-4077-5105-2961-121",
+      "target": "4077",
+      "enrollment": "discovered",
+      "fade_ms": 50,
+      "boundary_jump": 0.0,
+      "overall_si_sdri_db": 11.206200042854515,
+      "target_alone_si_sdr_db": 12.082488195101906,
+      "si_sdri_by_overlap_db": {
+        "target_plus_1": 16.928632124817913,
+        "target_plus_2": -2.031329196712268,
+        "target_plus_3": 8.504940656490481
+      },
+      "absent_vs_active_output_db": -13.848644137714736,
+      "absent_vs_active_input_db": -0.785336108051272,
+      "absent_suppression_db": 13.063308029663464
+    },
+    {
+      "split": "test",
+      "mixture": "test_n6_8455-4446-4077-5105-2961-121",
+      "target": "5105",
+      "enrollment": "clean",
+      "fade_ms": 0,
+      "boundary_jump": 0.024164585208619416,
+      "overall_si_sdri_db": 8.365537877376669,
+      "target_alone_si_sdr_db": null,
+      "si_sdri_by_overlap_db": {
+        "target_plus_1": 18.2357140558576,
+        "target_plus_2": 9.355908659395539,
+        "target_plus_3": -1.3665172468167759
+      },
+      "absent_vs_active_output_db": -51.63852187180193,
+      "absent_vs_active_input_db": -3.4836259957553573,
+      "absent_suppression_db": 48.15489587604657
+    },
+    {
+      "split": "test",
+      "mixture": "test_n6_8455-4446-4077-5105-2961-121",
+      "target": "5105",
+      "enrollment": "clean",
+      "fade_ms": 20,
+      "boundary_jump": 0.0,
+      "overall_si_sdri_db": 8.360977028357556,
+      "target_alone_si_sdr_db": null,
+      "si_sdri_by_overlap_db": {
+        "target_plus_1": 18.315149602075216,
+        "target_plus_2": 9.345816890015694,
+        "target_plus_3": -1.3656173653518628
+      },
+      "absent_vs_active_output_db": -49.73064476294843,
+      "absent_vs_active_input_db": -3.4836259957553573,
+      "absent_suppression_db": 46.24701876719307
+    },
+    {
+      "split": "test",
+      "mixture": "test_n6_8455-4446-4077-5105-2961-121",
+      "target": "5105",
+      "enrollment": "clean",
+      "fade_ms": 50,
+      "boundary_jump": 0.0,
+      "overall_si_sdri_db": 8.327849087231884,
+      "target_alone_si_sdr_db": null,
+      "si_sdri_by_overlap_db": {
+        "target_plus_1": 18.298036620155155,
+        "target_plus_2": 9.26198667901926,
+        "target_plus_3": -1.3628594198471946
+      },
+      "absent_vs_active_output_db": -45.65917209668598,
+      "absent_vs_active_input_db": -3.4836259957553573,
+      "absent_suppression_db": 42.17554610093062
+    },
+    {
+      "split": "test",
+      "mixture": "test_n6_8455-4446-4077-5105-2961-121",
+      "target": "5105",
+      "enrollment": "discovered",
+      "fade_ms": 0,
+      "boundary_jump": 0.04284157592862175,
+      "overall_si_sdri_db": 8.655196108011538,
+      "target_alone_si_sdr_db": null,
+      "si_sdri_by_overlap_db": {
+        "target_plus_1": 18.432061568553,
+        "target_plus_2": 8.9066637977129,
+        "target_plus_3": -1.3665172468167759
+      },
+      "absent_vs_active_output_db": -52.237048659424545,
+      "absent_vs_active_input_db": -3.4836259957553573,
+      "absent_suppression_db": 48.753422663669184
+    },
+    {
+      "split": "test",
+      "mixture": "test_n6_8455-4446-4077-5105-2961-121",
+      "target": "5105",
+      "enrollment": "discovered",
+      "fade_ms": 20,
+      "boundary_jump": 0.0,
+      "overall_si_sdri_db": 8.649376472260673,
+      "target_alone_si_sdr_db": null,
+      "si_sdri_by_overlap_db": {
+        "target_plus_1": 18.514516202758273,
+        "target_plus_2": 8.890714980494169,
+        "target_plus_3": -1.3656173653518628
+      },
+      "absent_vs_active_output_db": -49.50293213655209,
+      "absent_vs_active_input_db": -3.4836259957553573,
+      "absent_suppression_db": 46.01930614079673
+    },
+    {
+      "split": "test",
+      "mixture": "test_n6_8455-4446-4077-5105-2961-121",
+      "target": "5105",
+      "enrollment": "discovered",
+      "fade_ms": 50,
+      "boundary_jump": 0.0,
+      "overall_si_sdri_db": 8.612597355628546,
+      "target_alone_si_sdr_db": null,
+      "si_sdri_by_overlap_db": {
+        "target_plus_1": 18.497977249373488,
+        "target_plus_2": 8.796527483702082,
+        "target_plus_3": -1.3628594198471946
+      },
+      "absent_vs_active_output_db": -42.77517214011196,
+      "absent_vs_active_input_db": -3.4836259957553573,
+      "absent_suppression_db": 39.2915461443566
+    },
+    {
+      "split": "test",
+      "mixture": "test_n6_8455-4446-4077-5105-2961-121",
+      "target": "2961",
+      "enrollment": "clean",
+      "fade_ms": 0,
+      "boundary_jump": 0.0,
+      "overall_si_sdri_db": 14.723387678116936,
+      "target_alone_si_sdr_db": 17.643531572208122,
+      "si_sdri_by_overlap_db": {
+        "target_plus_1": 12.6749618000039,
+        "target_plus_3": 0.007173996100460656
+      },
+      "absent_vs_active_output_db": -40.58408125841794,
+      "absent_vs_active_input_db": -2.376422927800057,
+      "absent_suppression_db": 38.20765833061788
+    },
+    {
+      "split": "test",
+      "mixture": "test_n6_8455-4446-4077-5105-2961-121",
+      "target": "2961",
+      "enrollment": "clean",
+      "fade_ms": 20,
+      "boundary_jump": 0.0,
+      "overall_si_sdri_db": 14.693564977878186,
+      "target_alone_si_sdr_db": 17.64499604828239,
+      "si_sdri_by_overlap_db": {
+        "target_plus_1": 12.677031178851927,
+        "target_plus_3": 0.013529377038389967
+      },
+      "absent_vs_active_output_db": -32.28903729643502,
+      "absent_vs_active_input_db": -2.376422927800057,
+      "absent_suppression_db": 29.912614368634962
+    },
+    {
+      "split": "test",
+      "mixture": "test_n6_8455-4446-4077-5105-2961-121",
+      "target": "2961",
+      "enrollment": "clean",
+      "fade_ms": 50,
+      "boundary_jump": 0.0,
+      "overall_si_sdri_db": 14.503475724241124,
+      "target_alone_si_sdr_db": 17.645190700882626,
+      "si_sdri_by_overlap_db": {
+        "target_plus_1": 12.651262397114728,
+        "target_plus_3": -0.07908371375398282
+      },
+      "absent_vs_active_output_db": -24.621791201722896,
+      "absent_vs_active_input_db": -2.376422927800057,
+      "absent_suppression_db": 22.24536827392284
+    },
+    {
+      "split": "test",
+      "mixture": "test_n6_8455-4446-4077-5105-2961-121",
+      "target": "2961",
+      "enrollment": "discovered",
+      "fade_ms": 0,
+      "boundary_jump": 0.0,
+      "overall_si_sdri_db": 11.645586857694145,
+      "target_alone_si_sdr_db": -2.7548187175787846,
+      "si_sdri_by_overlap_db": {
+        "target_plus_1": 12.02898565810305,
+        "target_plus_3": 0.007173996100460656
+      },
+      "absent_vs_active_output_db": -36.84236907877489,
+      "absent_vs_active_input_db": -2.376422927800057,
+      "absent_suppression_db": 34.46594615097483
+    },
+    {
+      "split": "test",
+      "mixture": "test_n6_8455-4446-4077-5105-2961-121",
+      "target": "2961",
+      "enrollment": "discovered",
+      "fade_ms": 20,
+      "boundary_jump": 0.0,
+      "overall_si_sdri_db": 11.626276373535042,
+      "target_alone_si_sdr_db": -2.7548010101126335,
+      "si_sdri_by_overlap_db": {
+        "target_plus_1": 12.032923485329537,
+        "target_plus_3": 0.013529377038389967
+      },
+      "absent_vs_active_output_db": -31.010815006279415,
+      "absent_vs_active_input_db": -2.376422927800057,
+      "absent_suppression_db": 28.634392078479358
+    },
+    {
+      "split": "test",
+      "mixture": "test_n6_8455-4446-4077-5105-2961-121",
+      "target": "2961",
+      "enrollment": "discovered",
+      "fade_ms": 50,
+      "boundary_jump": 0.0,
+      "overall_si_sdri_db": 11.502831383688248,
+      "target_alone_si_sdr_db": -2.754976189739018,
+      "si_sdri_by_overlap_db": {
+        "target_plus_1": 12.026844701454834,
+        "target_plus_3": -0.07908371375398282
+      },
+      "absent_vs_active_output_db": -23.850656483910488,
+      "absent_vs_active_input_db": -2.376422927800057,
+      "absent_suppression_db": 21.47423355611043
+    },
+    {
+      "split": "test",
+      "mixture": "test_n6_8455-4446-4077-5105-2961-121",
+      "target": "121",
+      "enrollment": "clean",
+      "fade_ms": 0,
+      "boundary_jump": 0.0,
+      "overall_si_sdri_db": 8.911339353817311,
+      "target_alone_si_sdr_db": 12.208689318354205,
+      "si_sdri_by_overlap_db": {
+        "target_plus_1": 14.08142667887047,
+        "target_plus_2": 13.173014922881224,
+        "target_plus_3": 2.5371192043162436
+      },
+      "absent_vs_active_output_db": -39.96712376597688,
+      "absent_vs_active_input_db": -1.757154951173355,
+      "absent_suppression_db": 38.209968814803524
+    },
+    {
+      "split": "test",
+      "mixture": "test_n6_8455-4446-4077-5105-2961-121",
+      "target": "121",
+      "enrollment": "clean",
+      "fade_ms": 20,
+      "boundary_jump": 0.0,
+      "overall_si_sdri_db": 8.909295398267785,
+      "target_alone_si_sdr_db": 12.20335268894107,
+      "si_sdri_by_overlap_db": {
+        "target_plus_1": 14.078190602074311,
+        "target_plus_2": 13.15279404551622,
+        "target_plus_3": 2.5371192043162436
+      },
+      "absent_vs_active_output_db": -39.97224969336668,
+      "absent_vs_active_input_db": -1.757154951173355,
+      "absent_suppression_db": 38.21509474219332
+    },
+    {
+      "split": "test",
+      "mixture": "test_n6_8455-4446-4077-5105-2961-121",
+      "target": "121",
+      "enrollment": "clean",
+      "fade_ms": 50,
+      "boundary_jump": 0.0,
+      "overall_si_sdri_db": 8.883271806492878,
+      "target_alone_si_sdr_db": 12.207149491492189,
+      "si_sdri_by_overlap_db": {
+        "target_plus_1": 14.07295621878727,
+        "target_plus_2": 12.869743746694352,
+        "target_plus_3": 2.5371192043162436
+      },
+      "absent_vs_active_output_db": -39.966773348404175,
+      "absent_vs_active_input_db": -1.757154951173355,
+      "absent_suppression_db": 38.20961839723082
+    },
+    {
+      "split": "test",
+      "mixture": "test_n6_8455-4446-4077-5105-2961-121",
+      "target": "121",
+      "enrollment": "discovered",
+      "fade_ms": 0,
+      "boundary_jump": 0.0,
+      "overall_si_sdri_db": 8.911394510764447,
+      "target_alone_si_sdr_db": 12.208689318354205,
+      "si_sdri_by_overlap_db": {
+        "target_plus_1": 14.08142667887047,
+        "target_plus_2": 13.173014922881224,
+        "target_plus_3": 2.5371192043162436
+      },
+      "absent_vs_active_output_db": -40.147401836677744,
+      "absent_vs_active_input_db": -1.757154951173355,
+      "absent_suppression_db": 38.39024688550439
+    },
+    {
+      "split": "test",
+      "mixture": "test_n6_8455-4446-4077-5105-2961-121",
+      "target": "121",
+      "enrollment": "discovered",
+      "fade_ms": 20,
+      "boundary_jump": 0.0,
+      "overall_si_sdri_db": 8.909326621186596,
+      "target_alone_si_sdr_db": 12.20335268894107,
+      "si_sdri_by_overlap_db": {
+        "target_plus_1": 14.076741368334346,
+        "target_plus_2": 13.15279404551622,
+        "target_plus_3": 2.5371192043162436
+      },
+      "absent_vs_active_output_db": -40.151066961055044,
+      "absent_vs_active_input_db": -1.757154951173355,
+      "absent_suppression_db": 38.39391200988169
+    },
+    {
+      "split": "test",
+      "mixture": "test_n6_8455-4446-4077-5105-2961-121",
+      "target": "121",
+      "enrollment": "discovered",
+      "fade_ms": 50,
+      "boundary_jump": 0.0,
+      "overall_si_sdri_db": 8.883222774047287,
+      "target_alone_si_sdr_db": 12.207149491492189,
+      "si_sdri_by_overlap_db": {
+        "target_plus_1": 14.066477094637987,
+        "target_plus_2": 12.869743746694352,
+        "target_plus_3": 2.5371192043162436
+      },
+      "absent_vs_active_output_db": -40.143434102752316,
+      "absent_vs_active_input_db": -1.757154951173355,
+      "absent_suppression_db": 38.38627915157896
+    }
+  ]
+}
