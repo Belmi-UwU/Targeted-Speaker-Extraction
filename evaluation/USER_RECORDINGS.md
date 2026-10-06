@@ -37,3 +37,14 @@ The uploaded `Mix.wav`, `Nicker.wav`, `Mond.wav`, and `Sam.wav` were processed w
 - `nicker_and_mond.wav`, `nicker_and_sam.wav`, `mond_and_sam.wav` — two selected speakers each.
 
 The run's `results/run.json` records input hashes, model revisions, speaker-to-stream matches, gain fitting, and output hashes. There are no clean references from this mixed recording, so objective source-separation scores are unavailable. The model's selected-speaker outputs require listening checks, especially for unwanted-speaker leakage. This is offline processing, not a live-app latency test.
+
+## Discovery enrollment run
+
+[run_user_discovery.py](run_user_discovery.py) runs the next-phase flow on the same files. It finds the speakers in `Mix.wav` without using the separate recordings, then extracts a chosen discovered speaker with the three live models from the [discovery report](DISCOVERY_REPORT.md). The separate Nicker/Mond/Sam recordings only label the discovered tracks and provide a clean-enrollment comparison. It needs the synthetic experiment's `data/discovery/results/config_and_tuning.json` for its thresholds.
+
+```sh
+../speakerbeam_ss_verification/.venv/bin/python run_user_discovery.py
+open data/user_recordings/discovery/index.html
+```
+
+Results, listening copies, and the page stay in `data/user_recordings/discovery/`, which Git ignores. A summary is in the discovery report's "Real recording check" section.

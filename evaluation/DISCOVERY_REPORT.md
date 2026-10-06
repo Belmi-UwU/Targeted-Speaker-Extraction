@@ -150,6 +150,37 @@ Individual trials still lose up to 4.8 dB with the competitive selector at 4 rou
 
 **Reveal ground truth and scores** then shows who each track really was, the timeline of who talks when, the scores, the same speaker's results with a clean enrollment, and the ideal clean output. Ratings stay in the browser and **Export my ratings** saves them as JSON. Clips are peak-normalized individually, so compare clarity and leakage, not loudness. SepFormer outputs are band-limited to 8 kHz input.
 
+## Real recording check (Nicker, Mond, Sam)
+
+[run_user_discovery.py](run_user_discovery.py) ran the same flow on the user's own 23.1 s `Mix.wav`, a real 48 kHz stereo recording with three people. It used the thresholds tuned above, unchanged. Each person's separate recording (`Nicker.wav`, `Mond.wav`, `Sam.wav`) is used only to label discovered tracks and for the clean-enrollment comparison. There is no isolated track for each person in the mix, so the numbers below are ECAPA voice similarities, not SI-SDR. The audio, `run.json`, and a listening page stay in the Git-ignored `data/user_recordings/discovery/`.
+
+**Discovery.** Similarities to each person's own recording:
+
+| Run | Tracks found | Best match (cosine; margin over the next person) |
+| --- | ---: | --- |
+| Whole clip (23.1 s) | 3 | Nicker 0.51 (0.24), Sam 0.55 (0.17), Mond 0.46 (0.26) |
+| First half only (11.6 s) | 2 | Nicker 0.37 (0.23), Sam 0.54 (0.22); **Mond not found** |
+
+On the whole clip, each discovered track matched a different person with a clear margin. Mond's track appeared in only 4 of 11 windows. In the first half, Mond did not talk long enough to pass the 3-window minimum. That fits the provisional minimum of about 5 s of solo speech per person.
+
+Absolute similarities are lower than on LibriSpeech (about 0.5 vs 0.64). That is expected when the separate recordings and the mix come from different takes and rooms.
+
+**Live extraction on the whole clip.** Output similarity to the chosen person's recording vs the highest other person:
+
+| Chosen | SepFormer selector: discovered / clean recording | SepFormer competitive: discovered / clean recording | SpeakerBeam-SS: discovered / clean recording |
+| --- | --- | --- | --- |
+| Nicker | 0.50 vs 0.28 / 0.49 vs 0.35 | 0.46 vs 0.24 / 0.49 vs 0.27 | 0.17 vs 0.18 / 0.33 vs 0.28 |
+| Sam | 0.53 vs 0.35 / 0.53 vs 0.35 | 0.54 vs 0.36 / 0.56 vs 0.36 | 0.40 vs 0.19 / 0.14 vs 0.20 |
+| Mond | 0.46 vs 0.19 / 0.51 vs 0.19 | 0.47 vs 0.20 / 0.47 vs 0.19 | 0.11 vs 0.16 / 0.17 vs 0.14 |
+
+**Both SepFormer selectors** produce outputs that sound most like the chosen person, whether the target came from discovery or from the separate recording. The two enrollment types give similar similarities, consistent with the synthetic result.
+
+**SpeakerBeam-SS** outputs often resemble the chosen person no more than the others, and sometimes less. This matches its weak synthetic scores.
+
+In the half-and-half run, extraction from the second half also kept the chosen person most similar, but with more Nicker leakage in the Sam output (0.42 vs 0.36).
+
+Similarity only shows *who the output sounds like*, not intelligibility or artifacts. The user's ratings from the listening page are the real check.
+
 ## Limitations
 
 - **Clean, controlled audio.** All speech is clean read LibriSpeech with synthetic turn-taking, ±3 dB levels, no noise, no reverberation, and no real conversational overlap. Real recordings are the next check.

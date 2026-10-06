@@ -269,12 +269,16 @@ def select_streams_competitive(separation, candidates, target_index, floor):
     return overlap_add(separation, pieces)
 
 
+SPEAKERBEAM_STRIDE = 160  # encoder Conv1d stride; output drops a partial last frame
+
+
 def speakerbeam_extract(models, mix16, resemblyzer_embedding):
-    mixture = torch.from_numpy(mix16.astype("float32")).reshape(1, 1, -1)
+    padded = np.pad(mix16, (0, -len(mix16) % SPEAKERBEAM_STRIDE))
+    mixture = torch.from_numpy(padded.astype("float32")).reshape(1, 1, -1)
     embedding = torch.from_numpy(np.asarray(resemblyzer_embedding, dtype="float32")).reshape(1, -1)
     with torch.inference_mode():
         result = models.speakerbeam(mixture, embedding)
     out = result[0, 0].cpu().numpy().astype("float32")
-    if out.shape != mix16.shape or not np.isfinite(out).all():
+    if out.shape != padded.shape or not np.isfinite(out).all():
         raise ValueError(f"invalid SpeakerBeam-SS output {out.shape}")
-    return out
+    return out[:len(mix16)]
