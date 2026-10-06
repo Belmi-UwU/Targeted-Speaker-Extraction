@@ -1,0 +1,3524 @@
+{
+  "checkpoints": {
+    "spk_emb_causal_100": {
+      "declared_causal": true,
+      "parameters": 25049608,
+      "prefix_change_before_cut_relative": 0.1272021187531667
+    },
+    "tfmap_context_causal_100": {
+      "declared_causal": true,
+      "parameters": 27242122,
+      "prefix_change_before_cut_relative": 0.003051005142719274
+    },
+    "spk_emb_100": {
+      "declared_causal": false,
+      "parameters": 27617800,
+      "prefix_change_before_cut_relative": 1.6566366078263892
+    },
+    "tfmap_context_100": {
+      "declared_causal": false,
+      "parameters": 29810314,
+      "prefix_change_before_cut_relative": 1.2972670155978798
+    }
+  },
+  "full": [
+    {
+      "model": "spk_emb_causal_100",
+      "causal": true,
+      "split": "test",
+      "mixture": "test_n4_8230-237-7729-6930",
+      "target": "8230",
+      "enrollment": "clean",
+      "real_time_factor": 0.3317250872499926,
+      "overall_si_sdri_db": 4.752229760982333,
+      "target_alone_si_sdr_db": 32.493347764180896,
+      "si_sdri_by_overlap_db": {
+        "target_plus_1": 14.678117971722886,
+        "target_plus_2": 3.824878854423556,
+        "target_plus_3": 3.3350272512438153
+      },
+      "absent_vs_active_output_db": -2.004300759998852,
+      "absent_vs_active_input_db": -1.1686667021057424,
+      "absent_suppression_db": 0.8356340578931096
+    },
+    {
+      "model": "spk_emb_causal_100",
+      "causal": true,
+      "split": "test",
+      "mixture": "test_n4_8230-237-7729-6930",
+      "target": "8230",
+      "enrollment": "discovered",
+      "real_time_factor": 0.32541938803126413,
+      "overall_si_sdri_db": 4.030075086522952,
+      "target_alone_si_sdr_db": 34.07409466172807,
+      "si_sdri_by_overlap_db": {
+        "target_plus_1": 14.417976911394854,
+        "target_plus_2": 2.652492025335256,
+        "target_plus_3": 2.223281114130163
+      },
+      "absent_vs_active_output_db": -1.9930364164468024,
+      "absent_vs_active_input_db": -1.1686667021057424,
+      "absent_suppression_db": 0.82436971434106
+    },
+    {
+      "model": "spk_emb_causal_100",
+      "causal": true,
+      "split": "test",
+      "mixture": "test_n4_8230-237-7729-6930",
+      "target": "237",
+      "enrollment": "clean",
+      "real_time_factor": 0.3244807760625008,
+      "overall_si_sdri_db": 5.432594961589068,
+      "target_alone_si_sdr_db": 39.33990092775066,
+      "si_sdri_by_overlap_db": {
+        "target_plus_1": 13.179558533278957,
+        "target_plus_2": 5.6171473040819295,
+        "target_plus_3": 4.5332028441098355
+      },
+      "absent_vs_active_output_db": -4.540057890062208,
+      "absent_vs_active_input_db": -1.7019616772165662,
+      "absent_suppression_db": 2.8380962128456417
+    },
+    {
+      "model": "spk_emb_causal_100",
+      "causal": true,
+      "split": "test",
+      "mixture": "test_n4_8230-237-7729-6930",
+      "target": "237",
+      "enrollment": "discovered",
+      "real_time_factor": 0.3262679153750696,
+      "overall_si_sdri_db": 5.284439584065092,
+      "target_alone_si_sdr_db": 39.261348741232574,
+      "si_sdri_by_overlap_db": {
+        "target_plus_1": 13.376327887367182,
+        "target_plus_2": 5.215453464022278,
+        "target_plus_3": 4.175233440623923
+      },
+      "absent_vs_active_output_db": -4.616897929671662,
+      "absent_vs_active_input_db": -1.7019616772165662,
+      "absent_suppression_db": 2.914936252455096
+    },
+    {
+      "model": "spk_emb_causal_100",
+      "causal": true,
+      "split": "test",
+      "mixture": "test_n4_8230-237-7729-6930",
+      "target": "7729",
+      "enrollment": "clean",
+      "real_time_factor": 0.32601996093751495,
+      "overall_si_sdri_db": 1.2982490783975178,
+      "target_alone_si_sdr_db": -0.21290784924810988,
+      "si_sdri_by_overlap_db": {
+        "target_plus_1": 11.45502171875024,
+        "target_plus_2": -0.3015726855298561,
+        "target_plus_3": 1.4022907129520963
+      },
+      "absent_vs_active_output_db": -3.2906903699881696,
+      "absent_vs_active_input_db": -1.1396897586429482,
+      "absent_suppression_db": 2.1510006113452214
+    },
+    {
+      "model": "spk_emb_causal_100",
+      "causal": true,
+      "split": "test",
+      "mixture": "test_n4_8230-237-7729-6930",
+      "target": "7729",
+      "enrollment": "discovered",
+      "real_time_factor": 0.3264517265624818,
+      "overall_si_sdri_db": 2.4340722547747347,
+      "target_alone_si_sdr_db": 1.2531343745475507,
+      "si_sdri_by_overlap_db": {
+        "target_plus_1": 10.936954100401858,
+        "target_plus_2": -0.07290954261770488,
+        "target_plus_3": 2.2513485016127737
+      },
+      "absent_vs_active_output_db": -4.5142100861468215,
+      "absent_vs_active_input_db": -1.1396897586429482,
+      "absent_suppression_db": 3.3745203275038733
+    },
+    {
+      "model": "spk_emb_causal_100",
+      "causal": true,
+      "split": "test",
+      "mixture": "test_n4_8230-237-7729-6930",
+      "target": "6930",
+      "enrollment": "clean",
+      "real_time_factor": 0.3218806289062286,
+      "overall_si_sdri_db": 2.488754908811151,
+      "target_alone_si_sdr_db": 2.0247727071580774,
+      "si_sdri_by_overlap_db": {
+        "target_plus_1": 5.656790464788249,
+        "target_plus_2": 0.7121421723815033,
+        "target_plus_3": 2.6492963176454083
+      },
+      "absent_vs_active_output_db": -7.032295150755292,
+      "absent_vs_active_input_db": -2.8687156622531056,
+      "absent_suppression_db": 4.163579488502187
+    },
+    {
+      "model": "spk_emb_causal_100",
+      "causal": true,
+      "split": "test",
+      "mixture": "test_n4_8230-237-7729-6930",
+      "target": "6930",
+      "enrollment": "discovered",
+      "real_time_factor": 0.3217382942813174,
+      "overall_si_sdri_db": 1.3260411895357977,
+      "target_alone_si_sdr_db": 4.170343871754785,
+      "si_sdri_by_overlap_db": {
+        "target_plus_1": 0.45962122543183437,
+        "target_plus_2": 1.419253969630176,
+        "target_plus_3": -3.1958356772606393
+      },
+      "absent_vs_active_output_db": -6.172284083974002,
+      "absent_vs_active_input_db": -2.8687156622531056,
+      "absent_suppression_db": 3.3035684217208967
+    },
+    {
+      "model": "spk_emb_causal_100",
+      "causal": true,
+      "split": "test",
+      "mixture": "test_n5_908-1188-1089-7176-4970",
+      "target": "908",
+      "enrollment": "clean",
+      "real_time_factor": 0.3162458398437593,
+      "overall_si_sdri_db": 0.8802551101597142,
+      "target_alone_si_sdr_db": null,
+      "si_sdri_by_overlap_db": {
+        "target_plus_1": 16.20761553672075,
+        "target_plus_2": -1.2121850944157018,
+        "target_plus_3": -4.95586062670068
+      },
+      "absent_vs_active_output_db": -3.626011190574456,
+      "absent_vs_active_input_db": -2.823477934349178,
+      "absent_suppression_db": 0.8025332562252778
+    },
+    {
+      "model": "spk_emb_causal_100",
+      "causal": true,
+      "split": "test",
+      "mixture": "test_n5_908-1188-1089-7176-4970",
+      "target": "908",
+      "enrollment": "discovered",
+      "real_time_factor": 0.31854679425009635,
+      "overall_si_sdri_db": 0.9345573719609046,
+      "target_alone_si_sdr_db": null,
+      "si_sdri_by_overlap_db": {
+        "target_plus_1": 15.937015862954597,
+        "target_plus_2": -1.072847445880016,
+        "target_plus_3": -6.355377619682594
+      },
+      "absent_vs_active_output_db": -3.9101068555340888,
+      "absent_vs_active_input_db": -2.823477934349178,
+      "absent_suppression_db": 1.0866289211849107
+    },
+    {
+      "model": "spk_emb_causal_100",
+      "causal": true,
+      "split": "test",
+      "mixture": "test_n5_908-1188-1089-7176-4970",
+      "target": "1188",
+      "enrollment": "clean",
+      "real_time_factor": 0.31783610156253417,
+      "overall_si_sdri_db": -2.1041972451910205,
+      "target_alone_si_sdr_db": null,
+      "si_sdri_by_overlap_db": {
+        "target_plus_1": -6.101625458558498,
+        "target_plus_2": -6.055138887193392
+      },
+      "absent_vs_active_output_db": -7.2166896673031715,
+      "absent_vs_active_input_db": -2.8309475537316544,
+      "absent_suppression_db": 4.385742113571517
+    },
+    {
+      "model": "spk_emb_causal_100",
+      "causal": true,
+      "split": "test",
+      "mixture": "test_n5_908-1188-1089-7176-4970",
+      "target": "1188",
+      "enrollment": "discovered",
+      "real_time_factor": 0.3155292695312255,
+      "overall_si_sdri_db": 0.4690959641579795,
+      "target_alone_si_sdr_db": null,
+      "si_sdri_by_overlap_db": {
+        "target_plus_1": -3.8467373747640736,
+        "target_plus_2": 2.971647871985649
+      },
+      "absent_vs_active_output_db": -3.504009594395292,
+      "absent_vs_active_input_db": -2.8309475537316544,
+      "absent_suppression_db": 0.6730620406636376
+    },
+    {
+      "model": "spk_emb_causal_100",
+      "causal": true,
+      "split": "test",
+      "mixture": "test_n5_908-1188-1089-7176-4970",
+      "target": "1089",
+      "enrollment": "clean",
+      "real_time_factor": 0.31466832159378555,
+      "overall_si_sdri_db": -0.9731651194476933,
+      "target_alone_si_sdr_db": -4.885643893604753,
+      "si_sdri_by_overlap_db": {
+        "target_plus_1": 4.25345773221047,
+        "target_plus_2": 8.901632195899193,
+        "target_plus_3": 3.6301738254844746
+      },
+      "absent_vs_active_output_db": -0.4515611507304733,
+      "absent_vs_active_input_db": -1.8774384684493945,
+      "absent_suppression_db": -1.4258773177189212
+    },
+    {
+      "model": "spk_emb_causal_100",
+      "causal": true,
+      "split": "test",
+      "mixture": "test_n5_908-1188-1089-7176-4970",
+      "target": "1089",
+      "enrollment": "discovered",
+      "real_time_factor": 0.3159687747499902,
+      "overall_si_sdri_db": -0.3493401311813882,
+      "target_alone_si_sdr_db": -3.737753170490545,
+      "si_sdri_by_overlap_db": {
+        "target_plus_1": 3.113113401099628,
+        "target_plus_2": 8.992532950670185,
+        "target_plus_3": 4.314595980884377
+      },
+      "absent_vs_active_output_db": -0.8570468073642559,
+      "absent_vs_active_input_db": -1.8774384684493945,
+      "absent_suppression_db": -1.0203916610851387
+    },
+    {
+      "model": "spk_emb_causal_100",
+      "causal": true,
+      "split": "test",
+      "mixture": "test_n5_908-1188-1089-7176-4970",
+      "target": "7176",
+      "enrollment": "clean",
+      "real_time_factor": 0.3159966367187508,
+      "overall_si_sdri_db": 0.952182932040218,
+      "target_alone_si_sdr_db": 8.911546383918722,
+      "si_sdri_by_overlap_db": {
+        "target_plus_1": 0.6406869431788285,
+        "target_plus_3": 4.55290711130526
+      },
+      "absent_vs_active_output_db": 0.764954087678472,
+      "absent_vs_active_input_db": 1.4909332397257096,
+      "absent_suppression_db": 0.7259791520472376
+    },
+    {
+      "model": "spk_emb_causal_100",
+      "causal": true,
+      "split": "test",
+      "mixture": "test_n5_908-1188-1089-7176-4970",
+      "target": "7176",
+      "enrollment": "discovered",
+      "real_time_factor": 0.3204170403437274,
+      "overall_si_sdri_db": 0.16273506977795726,
+      "target_alone_si_sdr_db": 5.8031332991490245,
+      "si_sdri_by_overlap_db": {
+        "target_plus_1": 0.5285633887435193,
+        "target_plus_3": 4.2441602682541
+      },
+      "absent_vs_active_output_db": 1.0857523485589198,
+      "absent_vs_active_input_db": 1.4909332397257096,
+      "absent_suppression_db": 0.4051808911667898
+    },
+    {
+      "model": "spk_emb_causal_100",
+      "causal": true,
+      "split": "test",
+      "mixture": "test_n5_908-1188-1089-7176-4970",
+      "target": "4970",
+      "enrollment": "clean",
+      "real_time_factor": 0.31517898828121815,
+      "overall_si_sdri_db": 9.752919949624768,
+      "target_alone_si_sdr_db": 19.29801074706758,
+      "si_sdri_by_overlap_db": {
+        "target_plus_1": 22.855128332162757,
+        "target_plus_2": 9.471707749780956,
+        "target_plus_3": 8.050797787928186
+      },
+      "absent_vs_active_output_db": -6.100854910057759,
+      "absent_vs_active_input_db": -0.5099816553943199,
+      "absent_suppression_db": 5.590873254663439
+    },
+    {
+      "model": "spk_emb_causal_100",
+      "causal": true,
+      "split": "test",
+      "mixture": "test_n5_908-1188-1089-7176-4970",
+      "target": "4970",
+      "enrollment": "discovered",
+      "real_time_factor": 0.31427864062504796,
+      "overall_si_sdri_db": 10.012373301402675,
+      "target_alone_si_sdr_db": 23.35776900332315,
+      "si_sdri_by_overlap_db": {
+        "target_plus_1": 22.88352961950948,
+        "target_plus_2": 9.33278817792956,
+        "target_plus_3": 8.563906388529524
+      },
+      "absent_vs_active_output_db": -6.32971951179422,
+      "absent_vs_active_input_db": -0.5099816553943199,
+      "absent_suppression_db": 5.8197378563999
+    },
+    {
+      "model": "spk_emb_causal_100",
+      "causal": true,
+      "split": "test",
+      "mixture": "test_n6_8455-4446-4077-5105-2961-121",
+      "target": "8455",
+      "enrollment": "clean",
+      "real_time_factor": 0.31802866015618747,
+      "overall_si_sdri_db": 3.092634117602903,
+      "target_alone_si_sdr_db": 36.68373178527318,
+      "si_sdri_by_overlap_db": {
+        "target_plus_1": 2.3475700000221438,
+        "target_plus_2": 3.085210931299282
+      },
+      "absent_vs_active_output_db": -0.7275960455276653,
+      "absent_vs_active_input_db": 0.5264776625958092,
+      "absent_suppression_db": 1.2540737081234745
+    },
+    {
+      "model": "spk_emb_causal_100",
+      "causal": true,
+      "split": "test",
+      "mixture": "test_n6_8455-4446-4077-5105-2961-121",
+      "target": "8455",
+      "enrollment": "discovered",
+      "real_time_factor": 0.3170127174374784,
+      "overall_si_sdri_db": 3.3124119688780533,
+      "target_alone_si_sdr_db": 35.2333604554477,
+      "si_sdri_by_overlap_db": {
+        "target_plus_1": 2.309985790672575,
+        "target_plus_2": 3.6111697281754043
+      },
+      "absent_vs_active_output_db": -0.8973229530037727,
+      "absent_vs_active_input_db": 0.5264776625958092,
+      "absent_suppression_db": 1.423800615599582
+    },
+    {
+      "model": "spk_emb_causal_100",
+      "causal": true,
+      "split": "test",
+      "mixture": "test_n6_8455-4446-4077-5105-2961-121",
+      "target": "4446",
+      "enrollment": "clean",
+      "real_time_factor": 0.3195361757813089,
+      "overall_si_sdri_db": 3.5887355518730373,
+      "target_alone_si_sdr_db": 19.999399318246695,
+      "si_sdri_by_overlap_db": {
+        "target_plus_1": 4.168254137007405,
+        "target_plus_2": 9.375566663253727
+      },
+      "absent_vs_active_output_db": -3.355445588887008,
+      "absent_vs_active_input_db": -1.0992900698457717,
+      "absent_suppression_db": 2.2561555190412363
+    },
+    {
+      "model": "spk_emb_causal_100",
+      "causal": true,
+      "split": "test",
+      "mixture": "test_n6_8455-4446-4077-5105-2961-121",
+      "target": "4446",
+      "enrollment": "discovered",
+      "real_time_factor": 0.3090929700624656,
+      "overall_si_sdri_db": -0.22849860772323893,
+      "target_alone_si_sdr_db": -1.6671858985950951,
+      "si_sdri_by_overlap_db": {
+        "target_plus_1": 3.5787289100454522,
+        "target_plus_2": 9.841825945699389
+      },
+      "absent_vs_active_output_db": -1.3622454962703756,
+      "absent_vs_active_input_db": -1.0992900698457717,
+      "absent_suppression_db": 0.2629554264246039
+    },
+    {
+      "model": "spk_emb_causal_100",
+      "causal": true,
+      "split": "test",
+      "mixture": "test_n6_8455-4446-4077-5105-2961-121",
+      "target": "4077",
+      "enrollment": "clean",
+      "real_time_factor": 0.3042898906250002,
+      "overall_si_sdri_db": 3.4423554538447902,
+      "target_alone_si_sdr_db": 24.851843619351996,
+      "si_sdri_by_overlap_db": {
+        "target_plus_1": 0.04915273423058597,
+        "target_plus_2": 6.7445653699661365,
+        "target_plus_3": 1.757473645410474
+      },
+      "absent_vs_active_output_db": -2.3544861017743557,
+      "absent_vs_active_input_db": -0.785336108051272,
+      "absent_suppression_db": 1.5691499937230837
+    },
+    {
+      "model": "spk_emb_causal_100",
+      "causal": true,
+      "split": "test",
+      "mixture": "test_n6_8455-4446-4077-5105-2961-121",
+      "target": "4077",
+      "enrollment": "discovered",
+      "real_time_factor": 0.25731127471874515,
+      "overall_si_sdri_db": 3.7487558533872845,
+      "target_alone_si_sdr_db": 27.05367011921839,
+      "si_sdri_by_overlap_db": {
+        "target_plus_1": 0.21484296290265092,
+        "target_plus_2": 6.484803499902213,
+        "target_plus_3": 2.300612515722774
+      },
+      "absent_vs_active_output_db": -2.533874145911966,
+      "absent_vs_active_input_db": -0.785336108051272,
+      "absent_suppression_db": 1.748538037860694
+    },
+    {
+      "model": "spk_emb_causal_100",
+      "causal": true,
+      "split": "test",
+      "mixture": "test_n6_8455-4446-4077-5105-2961-121",
+      "target": "5105",
+      "enrollment": "clean",
+      "real_time_factor": 0.2605123424687008,
+      "overall_si_sdri_db": 3.001010958391177,
+      "target_alone_si_sdr_db": null,
+      "si_sdri_by_overlap_db": {
+        "target_plus_1": 14.241239923644965,
+        "target_plus_2": 1.9621295431624195,
+        "target_plus_3": 2.0038526545555997
+      },
+      "absent_vs_active_output_db": -4.919770373394048,
+      "absent_vs_active_input_db": -3.4836259957553537,
+      "absent_suppression_db": 1.4361443776386942
+    },
+    {
+      "model": "spk_emb_causal_100",
+      "causal": true,
+      "split": "test",
+      "mixture": "test_n6_8455-4446-4077-5105-2961-121",
+      "target": "5105",
+      "enrollment": "discovered",
+      "real_time_factor": 0.25613862762497774,
+      "overall_si_sdri_db": 1.3427846038650149,
+      "target_alone_si_sdr_db": null,
+      "si_sdri_by_overlap_db": {
+        "target_plus_1": 14.842428688395092,
+        "target_plus_2": 0.1997331078251574,
+        "target_plus_3": 2.1755900575887095
+      },
+      "absent_vs_active_output_db": -3.1672994490057675,
+      "absent_vs_active_input_db": -3.4836259957553537,
+      "absent_suppression_db": -0.31632654674958616
+    },
+    {
+      "model": "spk_emb_causal_100",
+      "causal": true,
+      "split": "test",
+      "mixture": "test_n6_8455-4446-4077-5105-2961-121",
+      "target": "2961",
+      "enrollment": "clean",
+      "real_time_factor": 0.2561037187499551,
+      "overall_si_sdri_db": 2.797774605075735,
+      "target_alone_si_sdr_db": 14.901431268791308,
+      "si_sdri_by_overlap_db": {
+        "target_plus_1": 8.43229032136115,
+        "target_plus_3": -3.0064946265445585
+      },
+      "absent_vs_active_output_db": -3.0152591827478155,
+      "absent_vs_active_input_db": -2.376422927800057,
+      "absent_suppression_db": 0.6388362549477584
+    },
+    {
+      "model": "spk_emb_causal_100",
+      "causal": true,
+      "split": "test",
+      "mixture": "test_n6_8455-4446-4077-5105-2961-121",
+      "target": "2961",
+      "enrollment": "discovered",
+      "real_time_factor": 0.2600505872500207,
+      "overall_si_sdri_db": 1.7678531800765693,
+      "target_alone_si_sdr_db": 1.3031124595005563,
+      "si_sdri_by_overlap_db": {
+        "target_plus_1": 4.415617662042602,
+        "target_plus_3": -3.0116153806901877
+      },
+      "absent_vs_active_output_db": -3.326769805675326,
+      "absent_vs_active_input_db": -2.376422927800057,
+      "absent_suppression_db": 0.9503468778752691
+    },
+    {
+      "model": "spk_emb_causal_100",
+      "causal": true,
+      "split": "test",
+      "mixture": "test_n6_8455-4446-4077-5105-2961-121",
+      "target": "121",
+      "enrollment": "clean",
+      "real_time_factor": 0.30304067709369065,
+      "overall_si_sdri_db": 4.189051495927318,
+      "target_alone_si_sdr_db": 32.59706656563694,
+      "si_sdri_by_overlap_db": {
+        "target_plus_1": 15.396776766523026,
+        "target_plus_2": 3.7135008818102873,
+        "target_plus_3": 1.6607097375686088
+      },
+      "absent_vs_active_output_db": -4.742043547603519,
+      "absent_vs_active_input_db": -1.7571549511733586,
+      "absent_suppression_db": 2.98488859643016
+    },
+    {
+      "model": "spk_emb_causal_100",
+      "causal": true,
+      "split": "test",
+      "mixture": "test_n6_8455-4446-4077-5105-2961-121",
+      "target": "121",
+      "enrollment": "discovered",
+      "real_time_factor": 0.30778782812501504,
+      "overall_si_sdri_db": 3.8739651208465817,
+      "target_alone_si_sdr_db": 32.818996851196644,
+      "si_sdri_by_overlap_db": {
+        "target_plus_1": 0.8399537783616664,
+        "target_plus_2": 3.8505359815302778,
+        "target_plus_3": 2.475216209694658
+      },
+      "absent_vs_active_output_db": -4.889423894924263,
+      "absent_vs_active_input_db": -1.7571549511733586,
+      "absent_suppression_db": 3.132268943750905
+    },
+    {
+      "model": "tfmap_context_causal_100",
+      "causal": true,
+      "split": "test",
+      "mixture": "test_n4_8230-237-7729-6930",
+      "target": "8230",
+      "enrollment": "clean",
+      "real_time_factor": 0.32822625912490366,
+      "overall_si_sdri_db": 5.59790563675281,
+      "target_alone_si_sdr_db": 37.66062902064562,
+      "si_sdri_by_overlap_db": {
+        "target_plus_1": 16.385447194839692,
+        "target_plus_2": 5.408328083167208,
+        "target_plus_3": 3.926924490801772
+      },
+      "absent_vs_active_output_db": -2.5726717087748128,
+      "absent_vs_active_input_db": -1.1686667021057424,
+      "absent_suppression_db": 1.4040050066690704
+    },
+    {
+      "model": "tfmap_context_causal_100",
+      "causal": true,
+      "split": "test",
+      "mixture": "test_n4_8230-237-7729-6930",
+      "target": "8230",
+      "enrollment": "discovered",
+      "real_time_factor": 0.3282589635311979,
+      "overall_si_sdri_db": 6.464869536825639,
+      "target_alone_si_sdr_db": 25.797426571061578,
+      "si_sdri_by_overlap_db": {
+        "target_plus_1": 15.947306493514386,
+        "target_plus_2": 5.583287011768769,
+        "target_plus_3": 3.593209522269083
+      },
+      "absent_vs_active_output_db": -4.478012336841033,
+      "absent_vs_active_input_db": -1.1686667021057424,
+      "absent_suppression_db": 3.3093456347352905
+    },
+    {
+      "model": "tfmap_context_causal_100",
+      "causal": true,
+      "split": "test",
+      "mixture": "test_n4_8230-237-7729-6930",
+      "target": "237",
+      "enrollment": "clean",
+      "real_time_factor": 0.3299891236874828,
+      "overall_si_sdri_db": 6.341437120587652,
+      "target_alone_si_sdr_db": 40.76844988901344,
+      "si_sdri_by_overlap_db": {
+        "target_plus_1": 15.06422062772345,
+        "target_plus_2": 5.880958949906142,
+        "target_plus_3": 6.87659178395693
+      },
+      "absent_vs_active_output_db": -5.101492157823795,
+      "absent_vs_active_input_db": -1.7019616772165662,
+      "absent_suppression_db": 3.399530480607229
+    },
+    {
+      "model": "tfmap_context_causal_100",
+      "causal": true,
+      "split": "test",
+      "mixture": "test_n4_8230-237-7729-6930",
+      "target": "237",
+      "enrollment": "discovered",
+      "real_time_factor": 0.3292201145624176,
+      "overall_si_sdri_db": 7.04096864028404,
+      "target_alone_si_sdr_db": 6.808539606129904,
+      "si_sdri_by_overlap_db": {
+        "target_plus_1": 13.71817410554669,
+        "target_plus_2": 6.103365825971215,
+        "target_plus_3": 6.577594528408065
+      },
+      "absent_vs_active_output_db": -6.596922039281939,
+      "absent_vs_active_input_db": -1.7019616772165662,
+      "absent_suppression_db": 4.8949603620653725
+    },
+    {
+      "model": "tfmap_context_causal_100",
+      "causal": true,
+      "split": "test",
+      "mixture": "test_n4_8230-237-7729-6930",
+      "target": "7729",
+      "enrollment": "clean",
+      "real_time_factor": 0.32924534765629687,
+      "overall_si_sdri_db": 6.241895694833717,
+      "target_alone_si_sdr_db": 39.35575422152628,
+      "si_sdri_by_overlap_db": {
+        "target_plus_1": 11.830061974363307,
+        "target_plus_2": 0.38548841031310727,
+        "target_plus_3": 3.32231042238116
+      },
+      "absent_vs_active_output_db": -6.51587457155517,
+      "absent_vs_active_input_db": -1.1396897586429482,
+      "absent_suppression_db": 5.376184812912221
+    },
+    {
+      "model": "tfmap_context_causal_100",
+      "causal": true,
+      "split": "test",
+      "mixture": "test_n4_8230-237-7729-6930",
+      "target": "7729",
+      "enrollment": "discovered",
+      "real_time_factor": 0.34499029946869086,
+      "overall_si_sdri_db": 6.528489836603812,
+      "target_alone_si_sdr_db": 25.586481209957903,
+      "si_sdri_by_overlap_db": {
+        "target_plus_1": 13.744595112833178,
+        "target_plus_2": 0.6817189629896774,
+        "target_plus_3": 2.05757223960565
+      },
+      "absent_vs_active_output_db": -7.1405279768567915,
+      "absent_vs_active_input_db": -1.1396897586429482,
+      "absent_suppression_db": 6.000838218213843
+    },
+    {
+      "model": "tfmap_context_causal_100",
+      "causal": true,
+      "split": "test",
+      "mixture": "test_n4_8230-237-7729-6930",
+      "target": "6930",
+      "enrollment": "clean",
+      "real_time_factor": 0.34328602996879454,
+      "overall_si_sdri_db": 7.104401774370628,
+      "target_alone_si_sdr_db": 36.01764690179969,
+      "si_sdri_by_overlap_db": {
+        "target_plus_1": 13.946655319807546,
+        "target_plus_2": 4.67511530401367,
+        "target_plus_3": 5.237998631358705
+      },
+      "absent_vs_active_output_db": -8.367252898805955,
+      "absent_vs_active_input_db": -2.8687156622531056,
+      "absent_suppression_db": 5.498537236552849
+    },
+    {
+      "model": "tfmap_context_causal_100",
+      "causal": true,
+      "split": "test",
+      "mixture": "test_n4_8230-237-7729-6930",
+      "target": "6930",
+      "enrollment": "discovered",
+      "real_time_factor": 0.3412244713438213,
+      "overall_si_sdri_db": 0.288650001635379,
+      "target_alone_si_sdr_db": 0.28001444349043564,
+      "si_sdri_by_overlap_db": {
+        "target_plus_1": -0.4560558925996536,
+        "target_plus_2": -0.33864394585917257,
+        "target_plus_3": 0.42873769868410294
+      },
+      "absent_vs_active_output_db": -6.43037980054358,
+      "absent_vs_active_input_db": -2.8687156622531056,
+      "absent_suppression_db": 3.5616641382904746
+    },
+    {
+      "model": "tfmap_context_causal_100",
+      "causal": true,
+      "split": "test",
+      "mixture": "test_n5_908-1188-1089-7176-4970",
+      "target": "908",
+      "enrollment": "clean",
+      "real_time_factor": 0.34168967318748855,
+      "overall_si_sdri_db": 0.8036601807945534,
+      "target_alone_si_sdr_db": null,
+      "si_sdri_by_overlap_db": {
+        "target_plus_1": 4.974487494540157,
+        "target_plus_2": -0.7427968550862687,
+        "target_plus_3": -7.241518375536845
+      },
+      "absent_vs_active_output_db": -3.9472172188371104,
+      "absent_vs_active_input_db": -2.823477934349178,
+      "absent_suppression_db": 1.1237392844879324
+    },
+    {
+      "model": "tfmap_context_causal_100",
+      "causal": true,
+      "split": "test",
+      "mixture": "test_n5_908-1188-1089-7176-4970",
+      "target": "908",
+      "enrollment": "discovered",
+      "real_time_factor": 0.34172628643750613,
+      "overall_si_sdri_db": -0.2691210691547523,
+      "target_alone_si_sdr_db": null,
+      "si_sdri_by_overlap_db": {
+        "target_plus_1": -1.219241846553238,
+        "target_plus_2": -1.1695682515121888,
+        "target_plus_3": -8.756119218256268
+      },
+      "absent_vs_active_output_db": -4.57277756990106,
+      "absent_vs_active_input_db": -2.823477934349178,
+      "absent_suppression_db": 1.749299635551882
+    },
+    {
+      "model": "tfmap_context_causal_100",
+      "causal": true,
+      "split": "test",
+      "mixture": "test_n5_908-1188-1089-7176-4970",
+      "target": "1188",
+      "enrollment": "clean",
+      "real_time_factor": 0.34369841146872204,
+      "overall_si_sdri_db": 2.712016065408443,
+      "target_alone_si_sdr_db": null,
+      "si_sdri_by_overlap_db": {
+        "target_plus_1": 1.6523299157547484,
+        "target_plus_2": 1.4505569331242836
+      },
+      "absent_vs_active_output_db": -5.7028750822260434,
+      "absent_vs_active_input_db": -2.8309475537316544,
+      "absent_suppression_db": 2.871927528494389
+    },
+    {
+      "model": "tfmap_context_causal_100",
+      "causal": true,
+      "split": "test",
+      "mixture": "test_n5_908-1188-1089-7176-4970",
+      "target": "1188",
+      "enrollment": "discovered",
+      "real_time_factor": 0.34526813931245215,
+      "overall_si_sdri_db": 2.086393140089581,
+      "target_alone_si_sdr_db": null,
+      "si_sdri_by_overlap_db": {
+        "target_plus_1": 1.3377427466446568,
+        "target_plus_2": 2.49931296394763
+      },
+      "absent_vs_active_output_db": -4.353998810250243,
+      "absent_vs_active_input_db": -2.8309475537316544,
+      "absent_suppression_db": 1.5230512565185883
+    },
+    {
+      "model": "tfmap_context_causal_100",
+      "causal": true,
+      "split": "test",
+      "mixture": "test_n5_908-1188-1089-7176-4970",
+      "target": "1089",
+      "enrollment": "clean",
+      "real_time_factor": 0.3444180911561716,
+      "overall_si_sdri_db": 3.7538233808192034,
+      "target_alone_si_sdr_db": 37.82725836192698,
+      "si_sdri_by_overlap_db": {
+        "target_plus_1": 7.004759010086383,
+        "target_plus_2": 8.928857577717984,
+        "target_plus_3": 2.5337914803844983
+      },
+      "absent_vs_active_output_db": -0.8761665674981707,
+      "absent_vs_active_input_db": -1.8774384684493945,
+      "absent_suppression_db": -1.0012719009512239
+    },
+    {
+      "model": "tfmap_context_causal_100",
+      "causal": true,
+      "split": "test",
+      "mixture": "test_n5_908-1188-1089-7176-4970",
+      "target": "1089",
+      "enrollment": "discovered",
+      "real_time_factor": 0.3367450091250248,
+      "overall_si_sdri_db": 1.279983023066868,
+      "target_alone_si_sdr_db": 31.133945489375986,
+      "si_sdri_by_overlap_db": {
+        "target_plus_1": -1.8087436360712035,
+        "target_plus_2": 1.5706570646389455,
+        "target_plus_3": 0.808998601253796
+      },
+      "absent_vs_active_output_db": -3.252145248914747,
+      "absent_vs_active_input_db": -1.8774384684493945,
+      "absent_suppression_db": 1.3747067804653526
+    },
+    {
+      "model": "tfmap_context_causal_100",
+      "causal": true,
+      "split": "test",
+      "mixture": "test_n5_908-1188-1089-7176-4970",
+      "target": "7176",
+      "enrollment": "clean",
+      "real_time_factor": 0.3391990000000078,
+      "overall_si_sdri_db": 0.9055501500115763,
+      "target_alone_si_sdr_db": 10.434711953961607,
+      "si_sdri_by_overlap_db": {
+        "target_plus_1": 2.633025017329809,
+        "target_plus_3": 5.514690795464248
+      },
+      "absent_vs_active_output_db": 1.2219838463595423,
+      "absent_vs_active_input_db": 1.4909332397257096,
+      "absent_suppression_db": 0.2689493933661673
+    },
+    {
+      "model": "tfmap_context_causal_100",
+      "causal": true,
+      "split": "test",
+      "mixture": "test_n5_908-1188-1089-7176-4970",
+      "target": "7176",
+      "enrollment": "discovered",
+      "real_time_factor": 0.3434955507811992,
+      "overall_si_sdri_db": 0.6179999627123616,
+      "target_alone_si_sdr_db": 9.423920382710445,
+      "si_sdri_by_overlap_db": {
+        "target_plus_1": 1.834281885279212,
+        "target_plus_3": 3.764406967660525
+      },
+      "absent_vs_active_output_db": 1.2242578765667957,
+      "absent_vs_active_input_db": 1.4909332397257096,
+      "absent_suppression_db": 0.2666753631589138
+    },
+    {
+      "model": "tfmap_context_causal_100",
+      "causal": true,
+      "split": "test",
+      "mixture": "test_n5_908-1188-1089-7176-4970",
+      "target": "4970",
+      "enrollment": "clean",
+      "real_time_factor": 0.3399714270625509,
+      "overall_si_sdri_db": 8.064397308421926,
+      "target_alone_si_sdr_db": 37.619365759905754,
+      "si_sdri_by_overlap_db": {
+        "target_plus_1": 24.330097325754622,
+        "target_plus_2": 10.299821381749364,
+        "target_plus_3": 4.854860437410677
+      },
+      "absent_vs_active_output_db": -4.336628139003313,
+      "absent_vs_active_input_db": -0.5099816553943199,
+      "absent_suppression_db": 3.826646483608993
+    },
+    {
+      "model": "tfmap_context_causal_100",
+      "causal": true,
+      "split": "test",
+      "mixture": "test_n5_908-1188-1089-7176-4970",
+      "target": "4970",
+      "enrollment": "discovered",
+      "real_time_factor": 0.3277998320312463,
+      "overall_si_sdri_db": 8.74549415629998,
+      "target_alone_si_sdr_db": 14.932600602314356,
+      "si_sdri_by_overlap_db": {
+        "target_plus_1": 20.90338112025737,
+        "target_plus_2": 9.872849700590784,
+        "target_plus_3": 6.060811728076437
+      },
+      "absent_vs_active_output_db": -5.123892822406123,
+      "absent_vs_active_input_db": -0.5099816553943199,
+      "absent_suppression_db": 4.613911167011803
+    },
+    {
+      "model": "tfmap_context_causal_100",
+      "causal": true,
+      "split": "test",
+      "mixture": "test_n6_8455-4446-4077-5105-2961-121",
+      "target": "8455",
+      "enrollment": "clean",
+      "real_time_factor": 0.3254728164062044,
+      "overall_si_sdri_db": 3.379200442323592,
+      "target_alone_si_sdr_db": 38.939889696978256,
+      "si_sdri_by_overlap_db": {
+        "target_plus_1": 4.828569300664468,
+        "target_plus_2": 3.704302333464232
+      },
+      "absent_vs_active_output_db": -0.3345254823667503,
+      "absent_vs_active_input_db": 0.5264776625958092,
+      "absent_suppression_db": 0.8610031449625595
+    },
+    {
+      "model": "tfmap_context_causal_100",
+      "causal": true,
+      "split": "test",
+      "mixture": "test_n6_8455-4446-4077-5105-2961-121",
+      "target": "8455",
+      "enrollment": "discovered",
+      "real_time_factor": 0.29726204687506197,
+      "overall_si_sdri_db": 4.206717773006097,
+      "target_alone_si_sdr_db": 31.918282402377113,
+      "si_sdri_by_overlap_db": {
+        "target_plus_1": 5.474819743918104,
+        "target_plus_2": 4.126042844241429
+      },
+      "absent_vs_active_output_db": -1.1714202989472575,
+      "absent_vs_active_input_db": 0.5264776625958092,
+      "absent_suppression_db": 1.6978979615430667
+    },
+    {
+      "model": "tfmap_context_causal_100",
+      "causal": true,
+      "split": "test",
+      "mixture": "test_n6_8455-4446-4077-5105-2961-121",
+      "target": "4446",
+      "enrollment": "clean",
+      "real_time_factor": 0.26911095443745126,
+      "overall_si_sdri_db": 4.100198800680009,
+      "target_alone_si_sdr_db": 24.781465330660232,
+      "si_sdri_by_overlap_db": {
+        "target_plus_1": 2.4331255358233435,
+        "target_plus_2": 10.763206290261339
+      },
+      "absent_vs_active_output_db": -4.124904332200028,
+      "absent_vs_active_input_db": -1.0992900698457717,
+      "absent_suppression_db": 3.0256142623542566
+    },
+    {
+      "model": "tfmap_context_causal_100",
+      "causal": true,
+      "split": "test",
+      "mixture": "test_n6_8455-4446-4077-5105-2961-121",
+      "target": "4446",
+      "enrollment": "discovered",
+      "real_time_factor": 0.26589804687500873,
+      "overall_si_sdri_db": 4.275665715759466,
+      "target_alone_si_sdr_db": 6.364037260200175,
+      "si_sdri_by_overlap_db": {
+        "target_plus_1": 10.845961530204761,
+        "target_plus_2": 11.937227660689766
+      },
+      "absent_vs_active_output_db": -4.212511594931829,
+      "absent_vs_active_input_db": -1.0992900698457717,
+      "absent_suppression_db": 3.1132215250860575
+    },
+    {
+      "model": "tfmap_context_causal_100",
+      "causal": true,
+      "split": "test",
+      "mixture": "test_n6_8455-4446-4077-5105-2961-121",
+      "target": "4077",
+      "enrollment": "clean",
+      "real_time_factor": 0.26586811978120295,
+      "overall_si_sdri_db": 3.78171408470139,
+      "target_alone_si_sdr_db": 27.658537599430858,
+      "si_sdri_by_overlap_db": {
+        "target_plus_1": -0.6903543095108251,
+        "target_plus_2": 5.1610497822505055,
+        "target_plus_3": 3.361499037458727
+      },
+      "absent_vs_active_output_db": -2.713692207327263,
+      "absent_vs_active_input_db": -0.785336108051272,
+      "absent_suppression_db": 1.928356099275991
+    },
+    {
+      "model": "tfmap_context_causal_100",
+      "causal": true,
+      "split": "test",
+      "mixture": "test_n6_8455-4446-4077-5105-2961-121",
+      "target": "4077",
+      "enrollment": "discovered",
+      "real_time_factor": 0.2656519270625495,
+      "overall_si_sdri_db": 2.7812215241948675,
+      "target_alone_si_sdr_db": 14.512991799203236,
+      "si_sdri_by_overlap_db": {
+        "target_plus_1": -2.035701615430506,
+        "target_plus_2": 5.327790471030469,
+        "target_plus_3": 2.3810038823125312
+      },
+      "absent_vs_active_output_db": -1.803919539264669,
+      "absent_vs_active_input_db": -0.785336108051272,
+      "absent_suppression_db": 1.018583431213397
+    },
+    {
+      "model": "tfmap_context_causal_100",
+      "causal": true,
+      "split": "test",
+      "mixture": "test_n6_8455-4446-4077-5105-2961-121",
+      "target": "5105",
+      "enrollment": "clean",
+      "real_time_factor": 0.27123891278131396,
+      "overall_si_sdri_db": 2.67033499479333,
+      "target_alone_si_sdr_db": null,
+      "si_sdri_by_overlap_db": {
+        "target_plus_1": 15.817902231421112,
+        "target_plus_2": 3.329924169530587,
+        "target_plus_3": 0.504059211938479
+      },
+      "absent_vs_active_output_db": -3.90435778927084,
+      "absent_vs_active_input_db": -3.4836259957553537,
+      "absent_suppression_db": 0.4207317935154862
+    },
+    {
+      "model": "tfmap_context_causal_100",
+      "causal": true,
+      "split": "test",
+      "mixture": "test_n6_8455-4446-4077-5105-2961-121",
+      "target": "5105",
+      "enrollment": "discovered",
+      "real_time_factor": 0.2622458450624663,
+      "overall_si_sdri_db": -0.11967198727989992,
+      "target_alone_si_sdr_db": null,
+      "si_sdri_by_overlap_db": {
+        "target_plus_1": 14.665910264094443,
+        "target_plus_2": 1.1114156116033573,
+        "target_plus_3": -3.805917565803327
+      },
+      "absent_vs_active_output_db": -2.26692925315238,
+      "absent_vs_active_input_db": -3.4836259957553537,
+      "absent_suppression_db": -1.2166967426029736
+    },
+    {
+      "model": "tfmap_context_causal_100",
+      "causal": true,
+      "split": "test",
+      "mixture": "test_n6_8455-4446-4077-5105-2961-121",
+      "target": "2961",
+      "enrollment": "clean",
+      "real_time_factor": 0.26144254425003055,
+      "overall_si_sdri_db": 3.854680164543323,
+      "target_alone_si_sdr_db": 29.024572990010057,
+      "si_sdri_by_overlap_db": {
+        "target_plus_1": 8.797602985375175,
+        "target_plus_3": -1.716060536700187
+      },
+      "absent_vs_active_output_db": -4.405187984253612,
+      "absent_vs_active_input_db": -2.376422927800057,
+      "absent_suppression_db": 2.0287650564535546
+    },
+    {
+      "model": "tfmap_context_causal_100",
+      "causal": true,
+      "split": "test",
+      "mixture": "test_n6_8455-4446-4077-5105-2961-121",
+      "target": "2961",
+      "enrollment": "discovered",
+      "real_time_factor": 0.26236072787503417,
+      "overall_si_sdri_db": 2.720404794497221,
+      "target_alone_si_sdr_db": 16.80158088302217,
+      "si_sdri_by_overlap_db": {
+        "target_plus_1": 0.642295462530244,
+        "target_plus_3": -2.6476881299314527
+      },
+      "absent_vs_active_output_db": -6.14753611185893,
+      "absent_vs_active_input_db": -2.376422927800057,
+      "absent_suppression_db": 3.7711131840588727
+    },
+    {
+      "model": "tfmap_context_causal_100",
+      "causal": true,
+      "split": "test",
+      "mixture": "test_n6_8455-4446-4077-5105-2961-121",
+      "target": "121",
+      "enrollment": "clean",
+      "real_time_factor": 0.2612926158750497,
+      "overall_si_sdri_db": 5.133809132894372,
+      "target_alone_si_sdr_db": 31.65651663046003,
+      "si_sdri_by_overlap_db": {
+        "target_plus_1": 18.71766206755473,
+        "target_plus_2": 2.902769698393779,
+        "target_plus_3": 3.252738668765656
+      },
+      "absent_vs_active_output_db": -5.7842064488203135,
+      "absent_vs_active_input_db": -1.7571549511733586,
+      "absent_suppression_db": 4.027051497646955
+    },
+    {
+      "model": "tfmap_context_causal_100",
+      "causal": true,
+      "split": "test",
+      "mixture": "test_n6_8455-4446-4077-5105-2961-121",
+      "target": "121",
+      "enrollment": "discovered",
+      "real_time_factor": 0.26211806121875725,
+      "overall_si_sdri_db": 3.6967050290649146,
+      "target_alone_si_sdr_db": 14.528894115142277,
+      "si_sdri_by_overlap_db": {
+        "target_plus_1": 15.933080983798952,
+        "target_plus_2": 2.943126939838829,
+        "target_plus_3": 2.7515855210444657
+      },
+      "absent_vs_active_output_db": -3.991437044264302,
+      "absent_vs_active_input_db": -1.7571549511733586,
+      "absent_suppression_db": 2.2342820930909433
+    },
+    {
+      "model": "spk_emb_100",
+      "causal": false,
+      "split": "test",
+      "mixture": "test_n4_8230-237-7729-6930",
+      "target": "8230",
+      "enrollment": "clean",
+      "real_time_factor": 0.3315062460936815,
+      "overall_si_sdri_db": 3.109793212231093,
+      "target_alone_si_sdr_db": 33.93368649452154,
+      "si_sdri_by_overlap_db": {
+        "target_plus_1": 4.726026953912276,
+        "target_plus_2": 4.545176906161826,
+        "target_plus_3": 2.5844253297202844
+      },
+      "absent_vs_active_output_db": -0.6429988627992174,
+      "absent_vs_active_input_db": -1.1686667021057424,
+      "absent_suppression_db": -0.525667839306525
+    },
+    {
+      "model": "spk_emb_100",
+      "causal": false,
+      "split": "test",
+      "mixture": "test_n4_8230-237-7729-6930",
+      "target": "8230",
+      "enrollment": "discovered",
+      "real_time_factor": 0.32576910675004456,
+      "overall_si_sdri_db": 3.058379404843568,
+      "target_alone_si_sdr_db": 34.43459066035202,
+      "si_sdri_by_overlap_db": {
+        "target_plus_1": 4.696874070666029,
+        "target_plus_2": 4.518893585565031,
+        "target_plus_3": 2.540018155622647
+      },
+      "absent_vs_active_output_db": -0.5156540583070388,
+      "absent_vs_active_input_db": -1.1686667021057424,
+      "absent_suppression_db": -0.6530126437987036
+    },
+    {
+      "model": "spk_emb_100",
+      "causal": false,
+      "split": "test",
+      "mixture": "test_n4_8230-237-7729-6930",
+      "target": "237",
+      "enrollment": "clean",
+      "real_time_factor": 0.3268270716249617,
+      "overall_si_sdri_db": 3.6130877830963044,
+      "target_alone_si_sdr_db": 44.317588774589574,
+      "si_sdri_by_overlap_db": {
+        "target_plus_1": 15.203196097783028,
+        "target_plus_2": 3.9805118796381516,
+        "target_plus_3": 2.797416825655527
+      },
+      "absent_vs_active_output_db": -3.0247071144323385,
+      "absent_vs_active_input_db": -1.7019616772165662,
+      "absent_suppression_db": 1.3227454372157723
+    },
+    {
+      "model": "spk_emb_100",
+      "causal": false,
+      "split": "test",
+      "mixture": "test_n4_8230-237-7729-6930",
+      "target": "237",
+      "enrollment": "discovered",
+      "real_time_factor": 0.32737735287503256,
+      "overall_si_sdri_db": 3.5311228032993327,
+      "target_alone_si_sdr_db": 44.28964307058129,
+      "si_sdri_by_overlap_db": {
+        "target_plus_1": 15.136522979628484,
+        "target_plus_2": 3.7256461897527515,
+        "target_plus_3": 2.756801847531532
+      },
+      "absent_vs_active_output_db": -3.0371895300842446,
+      "absent_vs_active_input_db": -1.7019616772165662,
+      "absent_suppression_db": 1.3352278528676784
+    },
+    {
+      "model": "spk_emb_100",
+      "causal": false,
+      "split": "test",
+      "mixture": "test_n4_8230-237-7729-6930",
+      "target": "7729",
+      "enrollment": "clean",
+      "real_time_factor": 0.32696403906254545,
+      "overall_si_sdri_db": 6.87718842948715,
+      "target_alone_si_sdr_db": 44.17370364949199,
+      "si_sdri_by_overlap_db": {
+        "target_plus_1": 15.088945574193424,
+        "target_plus_2": 4.346349373102013,
+        "target_plus_3": 5.604874888364065
+      },
+      "absent_vs_active_output_db": -6.012413210105315,
+      "absent_vs_active_input_db": -1.1396897586429482,
+      "absent_suppression_db": 4.872723451462367
+    },
+    {
+      "model": "spk_emb_100",
+      "causal": false,
+      "split": "test",
+      "mixture": "test_n4_8230-237-7729-6930",
+      "target": "7729",
+      "enrollment": "discovered",
+      "real_time_factor": 0.3274467591249959,
+      "overall_si_sdri_db": 7.295728086110021,
+      "target_alone_si_sdr_db": 43.342008780690506,
+      "si_sdri_by_overlap_db": {
+        "target_plus_1": 15.942405565134049,
+        "target_plus_2": 4.420415139842749,
+        "target_plus_3": 5.829570932535595
+      },
+      "absent_vs_active_output_db": -6.4985696053228,
+      "absent_vs_active_input_db": -1.1396897586429482,
+      "absent_suppression_db": 5.3588798466798515
+    },
+    {
+      "model": "spk_emb_100",
+      "causal": false,
+      "split": "test",
+      "mixture": "test_n4_8230-237-7729-6930",
+      "target": "6930",
+      "enrollment": "clean",
+      "real_time_factor": 0.3272320351562712,
+      "overall_si_sdri_db": 5.049915581563567,
+      "target_alone_si_sdr_db": 41.47171843350683,
+      "si_sdri_by_overlap_db": {
+        "target_plus_1": 16.930024969005977,
+        "target_plus_2": 2.874404185009544,
+        "target_plus_3": 4.949424630187304
+      },
+      "absent_vs_active_output_db": -6.032174865491626,
+      "absent_vs_active_input_db": -2.8687156622531056,
+      "absent_suppression_db": 3.1634592032385207
+    },
+    {
+      "model": "spk_emb_100",
+      "causal": false,
+      "split": "test",
+      "mixture": "test_n4_8230-237-7729-6930",
+      "target": "6930",
+      "enrollment": "discovered",
+      "real_time_factor": 0.3296729414062156,
+      "overall_si_sdri_db": 4.72222692091904,
+      "target_alone_si_sdr_db": 41.42454912441215,
+      "si_sdri_by_overlap_db": {
+        "target_plus_1": 17.091298949832275,
+        "target_plus_2": 2.1196425363982714,
+        "target_plus_3": 4.3564654128363225
+      },
+      "absent_vs_active_output_db": -6.088642931600482,
+      "absent_vs_active_input_db": -2.8687156622531056,
+      "absent_suppression_db": 3.2199272693473766
+    },
+    {
+      "model": "spk_emb_100",
+      "causal": false,
+      "split": "test",
+      "mixture": "test_n5_908-1188-1089-7176-4970",
+      "target": "908",
+      "enrollment": "clean",
+      "real_time_factor": 0.327030410156226,
+      "overall_si_sdri_db": -0.531360578508032,
+      "target_alone_si_sdr_db": null,
+      "si_sdri_by_overlap_db": {
+        "target_plus_1": 2.123311474571345,
+        "target_plus_2": -1.9256554426122152,
+        "target_plus_3": -0.6097206100707506
+      },
+      "absent_vs_active_output_db": -3.7119858463608146,
+      "absent_vs_active_input_db": -2.823477934349178,
+      "absent_suppression_db": 0.8885079120116366
+    },
+    {
+      "model": "spk_emb_100",
+      "causal": false,
+      "split": "test",
+      "mixture": "test_n5_908-1188-1089-7176-4970",
+      "target": "908",
+      "enrollment": "discovered",
+      "real_time_factor": 0.32681091406254836,
+      "overall_si_sdri_db": 4.885076693765999,
+      "target_alone_si_sdr_db": null,
+      "si_sdri_by_overlap_db": {
+        "target_plus_1": 9.526991995512892,
+        "target_plus_2": 6.4351390497194645,
+        "target_plus_3": 0.6977123630911137
+      },
+      "absent_vs_active_output_db": -4.0081221944457965,
+      "absent_vs_active_input_db": -2.823477934349178,
+      "absent_suppression_db": 1.1846442600966185
+    },
+    {
+      "model": "spk_emb_100",
+      "causal": false,
+      "split": "test",
+      "mixture": "test_n5_908-1188-1089-7176-4970",
+      "target": "1188",
+      "enrollment": "clean",
+      "real_time_factor": 0.3264439049376051,
+      "overall_si_sdri_db": 3.5981697471563714,
+      "target_alone_si_sdr_db": null,
+      "si_sdri_by_overlap_db": {
+        "target_plus_1": 13.054220519133427,
+        "target_plus_2": 4.981985853885731
+      },
+      "absent_vs_active_output_db": -4.370555818175287,
+      "absent_vs_active_input_db": -2.8309475537316544,
+      "absent_suppression_db": 1.5396082644436326
+    },
+    {
+      "model": "spk_emb_100",
+      "causal": false,
+      "split": "test",
+      "mixture": "test_n5_908-1188-1089-7176-4970",
+      "target": "1188",
+      "enrollment": "discovered",
+      "real_time_factor": 0.3265969778750559,
+      "overall_si_sdri_db": 3.5918715368508063,
+      "target_alone_si_sdr_db": null,
+      "si_sdri_by_overlap_db": {
+        "target_plus_1": 13.110071578507025,
+        "target_plus_2": 5.071117072879438
+      },
+      "absent_vs_active_output_db": -4.339104446912284,
+      "absent_vs_active_input_db": -2.8309475537316544,
+      "absent_suppression_db": 1.5081568931806295
+    },
+    {
+      "model": "spk_emb_100",
+      "causal": false,
+      "split": "test",
+      "mixture": "test_n5_908-1188-1089-7176-4970",
+      "target": "1089",
+      "enrollment": "clean",
+      "real_time_factor": 0.32612355859373565,
+      "overall_si_sdri_db": 4.6415519977976265,
+      "target_alone_si_sdr_db": 37.98016829453666,
+      "si_sdri_by_overlap_db": {
+        "target_plus_1": 16.39142373597683,
+        "target_plus_2": 10.146346124446154,
+        "target_plus_3": 0.2825406031182158
+      },
+      "absent_vs_active_output_db": -1.3570302143984065,
+      "absent_vs_active_input_db": -1.8774384684493945,
+      "absent_suppression_db": -0.520408254050988
+    },
+    {
+      "model": "spk_emb_100",
+      "causal": false,
+      "split": "test",
+      "mixture": "test_n5_908-1188-1089-7176-4970",
+      "target": "1089",
+      "enrollment": "discovered",
+      "real_time_factor": 0.325781876312476,
+      "overall_si_sdri_db": 4.79363365946058,
+      "target_alone_si_sdr_db": 39.72335571106641,
+      "si_sdri_by_overlap_db": {
+        "target_plus_1": 16.40847830565629,
+        "target_plus_2": 10.090760872390138,
+        "target_plus_3": 1.5119560315332023
+      },
+      "absent_vs_active_output_db": -1.3451783716977417,
+      "absent_vs_active_input_db": -1.8774384684493945,
+      "absent_suppression_db": -0.5322600967516529
+    },
+    {
+      "model": "spk_emb_100",
+      "causal": false,
+      "split": "test",
+      "mixture": "test_n5_908-1188-1089-7176-4970",
+      "target": "7176",
+      "enrollment": "clean",
+      "real_time_factor": 0.326619518218763,
+      "overall_si_sdri_db": 2.731781283199073,
+      "target_alone_si_sdr_db": 35.74505806986225,
+      "si_sdri_by_overlap_db": {
+        "target_plus_1": 11.159093523433912,
+        "target_plus_3": 5.932406354296086
+      },
+      "absent_vs_active_output_db": -0.04643920769563081,
+      "absent_vs_active_input_db": 1.4909332397257096,
+      "absent_suppression_db": 1.5373724474213404
+    },
+    {
+      "model": "spk_emb_100",
+      "causal": false,
+      "split": "test",
+      "mixture": "test_n5_908-1188-1089-7176-4970",
+      "target": "7176",
+      "enrollment": "discovered",
+      "real_time_factor": 0.32748494531244887,
+      "overall_si_sdri_db": 2.5557887165800857,
+      "target_alone_si_sdr_db": 36.37567624901149,
+      "si_sdri_by_overlap_db": {
+        "target_plus_1": 10.999261221349677,
+        "target_plus_3": 4.458503320975626
+      },
+      "absent_vs_active_output_db": -0.012976307020359457,
+      "absent_vs_active_input_db": 1.4909332397257096,
+      "absent_suppression_db": 1.503909546746069
+    },
+    {
+      "model": "spk_emb_100",
+      "causal": false,
+      "split": "test",
+      "mixture": "test_n5_908-1188-1089-7176-4970",
+      "target": "4970",
+      "enrollment": "clean",
+      "real_time_factor": 0.32751368618755805,
+      "overall_si_sdri_db": 8.06449366347229,
+      "target_alone_si_sdr_db": 37.788623243116625,
+      "si_sdri_by_overlap_db": {
+        "target_plus_1": 23.57167908989619,
+        "target_plus_2": 10.153905493973866,
+        "target_plus_3": 8.53268209644089
+      },
+      "absent_vs_active_output_db": -3.4747183146282126,
+      "absent_vs_active_input_db": -0.5099816553943199,
+      "absent_suppression_db": 2.9647366592338926
+    },
+    {
+      "model": "spk_emb_100",
+      "causal": false,
+      "split": "test",
+      "mixture": "test_n5_908-1188-1089-7176-4970",
+      "target": "4970",
+      "enrollment": "discovered",
+      "real_time_factor": 0.32615630728128053,
+      "overall_si_sdri_db": 9.565949937412537,
+      "target_alone_si_sdr_db": 35.51896234075697,
+      "si_sdri_by_overlap_db": {
+        "target_plus_1": 24.448159386509793,
+        "target_plus_2": 10.34606124122184,
+        "target_plus_3": 8.769647676294484
+      },
+      "absent_vs_active_output_db": -5.285554216455036,
+      "absent_vs_active_input_db": -0.5099816553943199,
+      "absent_suppression_db": 4.7755725610607165
+    },
+    {
+      "model": "spk_emb_100",
+      "causal": false,
+      "split": "test",
+      "mixture": "test_n6_8455-4446-4077-5105-2961-121",
+      "target": "8455",
+      "enrollment": "clean",
+      "real_time_factor": 0.3265915898437015,
+      "overall_si_sdri_db": 3.523762390679714,
+      "target_alone_si_sdr_db": 41.505521618783476,
+      "si_sdri_by_overlap_db": {
+        "target_plus_1": 6.04949097587812,
+        "target_plus_2": 4.0568359535946055
+      },
+      "absent_vs_active_output_db": -0.44932064960669393,
+      "absent_vs_active_input_db": 0.5264776625958092,
+      "absent_suppression_db": 0.9757983122025031
+    },
+    {
+      "model": "spk_emb_100",
+      "causal": false,
+      "split": "test",
+      "mixture": "test_n6_8455-4446-4077-5105-2961-121",
+      "target": "8455",
+      "enrollment": "discovered",
+      "real_time_factor": 0.3269165585936662,
+      "overall_si_sdri_db": 3.398612247933376,
+      "target_alone_si_sdr_db": 40.98876519949701,
+      "si_sdri_by_overlap_db": {
+        "target_plus_1": 4.660417623593711,
+        "target_plus_2": 3.8491886629993157
+      },
+      "absent_vs_active_output_db": -0.5005992731267881,
+      "absent_vs_active_input_db": 0.5264776625958092,
+      "absent_suppression_db": 1.0270769357225973
+    },
+    {
+      "model": "spk_emb_100",
+      "causal": false,
+      "split": "test",
+      "mixture": "test_n6_8455-4446-4077-5105-2961-121",
+      "target": "4446",
+      "enrollment": "clean",
+      "real_time_factor": 0.3260088150938145,
+      "overall_si_sdri_db": 3.3716817947799385,
+      "target_alone_si_sdr_db": 42.69084591627208,
+      "si_sdri_by_overlap_db": {
+        "target_plus_1": 5.139113687504767,
+        "target_plus_2": 12.575285655916767
+      },
+      "absent_vs_active_output_db": -2.8762479020785,
+      "absent_vs_active_input_db": -1.0992900698457717,
+      "absent_suppression_db": 1.7769578322327284
+    },
+    {
+      "model": "spk_emb_100",
+      "causal": false,
+      "split": "test",
+      "mixture": "test_n6_8455-4446-4077-5105-2961-121",
+      "target": "4446",
+      "enrollment": "discovered",
+      "real_time_factor": 0.32752222656256436,
+      "overall_si_sdri_db": 1.0638430357269648,
+      "target_alone_si_sdr_db": 43.72560620761219,
+      "si_sdri_by_overlap_db": {
+        "target_plus_1": -5.20246859967057,
+        "target_plus_2": 12.638757564011536
+      },
+      "absent_vs_active_output_db": -2.656360617964957,
+      "absent_vs_active_input_db": -1.0992900698457717,
+      "absent_suppression_db": 1.557070548119185
+    },
+    {
+      "model": "spk_emb_100",
+      "causal": false,
+      "split": "test",
+      "mixture": "test_n6_8455-4446-4077-5105-2961-121",
+      "target": "4077",
+      "enrollment": "clean",
+      "real_time_factor": 0.32748300390619534,
+      "overall_si_sdri_db": 3.071118774852547,
+      "target_alone_si_sdr_db": 34.59866256216544,
+      "si_sdri_by_overlap_db": {
+        "target_plus_1": -0.7352710667870825,
+        "target_plus_2": 4.462338356970569,
+        "target_plus_3": 1.7344951718669774
+      },
+      "absent_vs_active_output_db": -2.2450137006949475,
+      "absent_vs_active_input_db": -0.785336108051272,
+      "absent_suppression_db": 1.4596775926436756
+    },
+    {
+      "model": "spk_emb_100",
+      "causal": false,
+      "split": "test",
+      "mixture": "test_n6_8455-4446-4077-5105-2961-121",
+      "target": "4077",
+      "enrollment": "discovered",
+      "real_time_factor": 0.3268171835936755,
+      "overall_si_sdri_db": 3.2024447540456986,
+      "target_alone_si_sdr_db": 40.79080566146598,
+      "si_sdri_by_overlap_db": {
+        "target_plus_1": 1.5200384312921482,
+        "target_plus_2": 6.454381388791962,
+        "target_plus_3": 1.3216675402078781
+      },
+      "absent_vs_active_output_db": -2.05441670859593,
+      "absent_vs_active_input_db": -0.785336108051272,
+      "absent_suppression_db": 1.2690806005446582
+    },
+    {
+      "model": "spk_emb_100",
+      "causal": false,
+      "split": "test",
+      "mixture": "test_n6_8455-4446-4077-5105-2961-121",
+      "target": "5105",
+      "enrollment": "clean",
+      "real_time_factor": 0.3276142278749603,
+      "overall_si_sdri_db": 2.065156396826013,
+      "target_alone_si_sdr_db": null,
+      "si_sdri_by_overlap_db": {
+        "target_plus_1": 15.319302969896203,
+        "target_plus_2": 2.6249420726911437,
+        "target_plus_3": 0.7346535264553151
+      },
+      "absent_vs_active_output_db": -3.5357615123140924,
+      "absent_vs_active_input_db": -3.4836259957553537,
+      "absent_suppression_db": 0.052135516558738715
+    },
+    {
+      "model": "spk_emb_100",
+      "causal": false,
+      "split": "test",
+      "mixture": "test_n6_8455-4446-4077-5105-2961-121",
+      "target": "5105",
+      "enrollment": "discovered",
+      "real_time_factor": 0.3265508189999764,
+      "overall_si_sdri_db": 1.041790280525552,
+      "target_alone_si_sdr_db": null,
+      "si_sdri_by_overlap_db": {
+        "target_plus_1": 15.147780390120793,
+        "target_plus_2": 0.42525744647279806,
+        "target_plus_3": 1.93939592957318
+      },
+      "absent_vs_active_output_db": -2.668376536498336,
+      "absent_vs_active_input_db": -3.4836259957553537,
+      "absent_suppression_db": -0.8152494592570179
+    },
+    {
+      "model": "spk_emb_100",
+      "causal": false,
+      "split": "test",
+      "mixture": "test_n6_8455-4446-4077-5105-2961-121",
+      "target": "2961",
+      "enrollment": "clean",
+      "real_time_factor": 0.32707969531247727,
+      "overall_si_sdri_db": 2.5622606741955734,
+      "target_alone_si_sdr_db": 41.11550977401567,
+      "si_sdri_by_overlap_db": {
+        "target_plus_1": 15.512381995907928,
+        "target_plus_3": -1.0670778563570895
+      },
+      "absent_vs_active_output_db": -1.9994602227316065,
+      "absent_vs_active_input_db": -2.376422927800057,
+      "absent_suppression_db": -0.37696270506845053
+    },
+    {
+      "model": "spk_emb_100",
+      "causal": false,
+      "split": "test",
+      "mixture": "test_n6_8455-4446-4077-5105-2961-121",
+      "target": "2961",
+      "enrollment": "discovered",
+      "real_time_factor": 0.3270978645937248,
+      "overall_si_sdri_db": 3.2733849798207326,
+      "target_alone_si_sdr_db": 40.92129719960931,
+      "si_sdri_by_overlap_db": {
+        "target_plus_1": 7.916563333555743,
+        "target_plus_3": -1.4981052887130932
+      },
+      "absent_vs_active_output_db": -3.351145269688555,
+      "absent_vs_active_input_db": -2.376422927800057,
+      "absent_suppression_db": 0.9747223418884978
+    },
+    {
+      "model": "spk_emb_100",
+      "causal": false,
+      "split": "test",
+      "mixture": "test_n6_8455-4446-4077-5105-2961-121",
+      "target": "121",
+      "enrollment": "clean",
+      "real_time_factor": 0.3271540898437024,
+      "overall_si_sdri_db": 3.0193744473547515,
+      "target_alone_si_sdr_db": 30.426393283946492,
+      "si_sdri_by_overlap_db": {
+        "target_plus_1": 24.978402129856406,
+        "target_plus_2": 4.617049786981469,
+        "target_plus_3": 3.3593316751262288
+      },
+      "absent_vs_active_output_db": -2.439089470004994,
+      "absent_vs_active_input_db": -1.7571549511733586,
+      "absent_suppression_db": 0.6819345188316355
+    },
+    {
+      "model": "spk_emb_100",
+      "causal": false,
+      "split": "test",
+      "mixture": "test_n6_8455-4446-4077-5105-2961-121",
+      "target": "121",
+      "enrollment": "discovered",
+      "real_time_factor": 0.3287221236874984,
+      "overall_si_sdri_db": 2.7101129674341595,
+      "target_alone_si_sdr_db": 27.24023031891713,
+      "si_sdri_by_overlap_db": {
+        "target_plus_1": 24.94194380400347,
+        "target_plus_2": 4.622696157088072,
+        "target_plus_3": 3.4860599059194315
+      },
+      "absent_vs_active_output_db": -2.0334827116105814,
+      "absent_vs_active_input_db": -1.7571549511733586,
+      "absent_suppression_db": 0.27632776043722274
+    },
+    {
+      "model": "tfmap_context_100",
+      "causal": false,
+      "split": "test",
+      "mixture": "test_n4_8230-237-7729-6930",
+      "target": "8230",
+      "enrollment": "clean",
+      "real_time_factor": 0.34228820703117435,
+      "overall_si_sdri_db": 3.602582512759323,
+      "target_alone_si_sdr_db": 37.18744844971899,
+      "si_sdri_by_overlap_db": {
+        "target_plus_1": 10.284643220759374,
+        "target_plus_2": 5.236293353416872,
+        "target_plus_3": 2.410941990419599
+      },
+      "absent_vs_active_output_db": -0.15014501116731083,
+      "absent_vs_active_input_db": -1.1686667021057424,
+      "absent_suppression_db": -1.0185216909384316
+    },
+    {
+      "model": "tfmap_context_100",
+      "causal": false,
+      "split": "test",
+      "mixture": "test_n4_8230-237-7729-6930",
+      "target": "8230",
+      "enrollment": "discovered",
+      "real_time_factor": 0.33996020443760244,
+      "overall_si_sdri_db": 7.16856428074147,
+      "target_alone_si_sdr_db": 37.5230707120081,
+      "si_sdri_by_overlap_db": {
+        "target_plus_1": 17.40561989504955,
+        "target_plus_2": 5.109001368102335,
+        "target_plus_3": 3.588344401758537
+      },
+      "absent_vs_active_output_db": -6.362524027136892,
+      "absent_vs_active_input_db": -1.1686667021057424,
+      "absent_suppression_db": 5.19385732503115
+    },
+    {
+      "model": "tfmap_context_100",
+      "causal": false,
+      "split": "test",
+      "mixture": "test_n4_8230-237-7729-6930",
+      "target": "237",
+      "enrollment": "clean",
+      "real_time_factor": 0.3413519557187783,
+      "overall_si_sdri_db": 3.8825195740286764,
+      "target_alone_si_sdr_db": 43.286133133820414,
+      "si_sdri_by_overlap_db": {
+        "target_plus_1": 16.551982058559354,
+        "target_plus_2": 5.091475485382267,
+        "target_plus_3": 3.2719354679935746
+      },
+      "absent_vs_active_output_db": -2.8269619826730974,
+      "absent_vs_active_input_db": -1.7019616772165662,
+      "absent_suppression_db": 1.1250003054565312
+    },
+    {
+      "model": "tfmap_context_100",
+      "causal": false,
+      "split": "test",
+      "mixture": "test_n4_8230-237-7729-6930",
+      "target": "237",
+      "enrollment": "discovered",
+      "real_time_factor": 0.33996932681247927,
+      "overall_si_sdri_db": 3.9523246894195996,
+      "target_alone_si_sdr_db": 43.607250279542484,
+      "si_sdri_by_overlap_db": {
+        "target_plus_1": 16.668543023401178,
+        "target_plus_2": 5.244816713444212,
+        "target_plus_3": 3.431750766964854
+      },
+      "absent_vs_active_output_db": -2.862957533204053,
+      "absent_vs_active_input_db": -1.7019616772165662,
+      "absent_suppression_db": 1.160995855987487
+    },
+    {
+      "model": "tfmap_context_100",
+      "causal": false,
+      "split": "test",
+      "mixture": "test_n4_8230-237-7729-6930",
+      "target": "7729",
+      "enrollment": "clean",
+      "real_time_factor": 0.3364263072812719,
+      "overall_si_sdri_db": 6.703913770819945,
+      "target_alone_si_sdr_db": 42.464526126631185,
+      "si_sdri_by_overlap_db": {
+        "target_plus_1": 16.620192704158953,
+        "target_plus_2": 4.408231606467731,
+        "target_plus_3": 6.145255833420513
+      },
+      "absent_vs_active_output_db": -5.623206696448044,
+      "absent_vs_active_input_db": -1.1396897586429482,
+      "absent_suppression_db": 4.483516937805096
+    },
+    {
+      "model": "tfmap_context_100",
+      "causal": false,
+      "split": "test",
+      "mixture": "test_n4_8230-237-7729-6930",
+      "target": "7729",
+      "enrollment": "discovered",
+      "real_time_factor": 0.33949155468746994,
+      "overall_si_sdri_db": 6.720253097136228,
+      "target_alone_si_sdr_db": 43.3191933212848,
+      "si_sdri_by_overlap_db": {
+        "target_plus_1": 17.2889966078657,
+        "target_plus_2": 4.451873694549941,
+        "target_plus_3": 6.109974697700887
+      },
+      "absent_vs_active_output_db": -5.635226131033221,
+      "absent_vs_active_input_db": -1.1396897586429482,
+      "absent_suppression_db": 4.495536372390273
+    },
+    {
+      "model": "tfmap_context_100",
+      "causal": false,
+      "split": "test",
+      "mixture": "test_n4_8230-237-7729-6930",
+      "target": "6930",
+      "enrollment": "clean",
+      "real_time_factor": 0.33976893231249505,
+      "overall_si_sdri_db": 4.901565185255006,
+      "target_alone_si_sdr_db": 42.04390263259263,
+      "si_sdri_by_overlap_db": {
+        "target_plus_1": 18.031242208098305,
+        "target_plus_2": 2.0026454583698152,
+        "target_plus_3": 5.561762732545986
+      },
+      "absent_vs_active_output_db": -6.0271099075246966,
+      "absent_vs_active_input_db": -2.8687156622531056,
+      "absent_suppression_db": 3.158394245271591
+    },
+    {
+      "model": "tfmap_context_100",
+      "causal": false,
+      "split": "test",
+      "mixture": "test_n4_8230-237-7729-6930",
+      "target": "6930",
+      "enrollment": "discovered",
+      "real_time_factor": 0.33927091146881594,
+      "overall_si_sdri_db": 4.6175577673933,
+      "target_alone_si_sdr_db": 42.76625831995729,
+      "si_sdri_by_overlap_db": {
+        "target_plus_1": 18.03893331824957,
+        "target_plus_2": 1.288856049262661,
+        "target_plus_3": 5.435764817722683
+      },
+      "absent_vs_active_output_db": -6.049531832657507,
+      "absent_vs_active_input_db": -2.8687156622531056,
+      "absent_suppression_db": 3.180816170404402
+    },
+    {
+      "model": "tfmap_context_100",
+      "causal": false,
+      "split": "test",
+      "mixture": "test_n5_908-1188-1089-7176-4970",
+      "target": "908",
+      "enrollment": "clean",
+      "real_time_factor": 0.33995223828128474,
+      "overall_si_sdri_db": -2.2280727332099026,
+      "target_alone_si_sdr_db": null,
+      "si_sdri_by_overlap_db": {
+        "target_plus_1": -3.398101383299247,
+        "target_plus_2": -1.8194633714556598,
+        "target_plus_3": -11.05019472104262
+      },
+      "absent_vs_active_output_db": -2.6506394395447863,
+      "absent_vs_active_input_db": -2.823477934349178,
+      "absent_suppression_db": -0.17283849480439173
+    },
+    {
+      "model": "tfmap_context_100",
+      "causal": false,
+      "split": "test",
+      "mixture": "test_n5_908-1188-1089-7176-4970",
+      "target": "908",
+      "enrollment": "discovered",
+      "real_time_factor": 0.33920227343753595,
+      "overall_si_sdri_db": -3.7303554722685774,
+      "target_alone_si_sdr_db": null,
+      "si_sdri_by_overlap_db": {
+        "target_plus_1": -4.7909530826241795,
+        "target_plus_2": -3.6199360359528407,
+        "target_plus_3": -10.99686928360258
+      },
+      "absent_vs_active_output_db": -2.456830504285076,
+      "absent_vs_active_input_db": -2.823477934349178,
+      "absent_suppression_db": -0.36664743006410205
+    },
+    {
+      "model": "tfmap_context_100",
+      "causal": false,
+      "split": "test",
+      "mixture": "test_n5_908-1188-1089-7176-4970",
+      "target": "1188",
+      "enrollment": "clean",
+      "real_time_factor": 0.34016116534371577,
+      "overall_si_sdri_db": 3.1247235435361684,
+      "target_alone_si_sdr_db": null,
+      "si_sdri_by_overlap_db": {
+        "target_plus_1": 13.969540594371352,
+        "target_plus_2": 3.740967430690043
+      },
+      "absent_vs_active_output_db": -4.1695543643785875,
+      "absent_vs_active_input_db": -2.8309475537316544,
+      "absent_suppression_db": 1.338606810646933
+    },
+    {
+      "model": "tfmap_context_100",
+      "causal": false,
+      "split": "test",
+      "mixture": "test_n5_908-1188-1089-7176-4970",
+      "target": "1188",
+      "enrollment": "discovered",
+      "real_time_factor": 0.33998330209374217,
+      "overall_si_sdri_db": 2.215747411679723,
+      "target_alone_si_sdr_db": null,
+      "si_sdri_by_overlap_db": {
+        "target_plus_1": 13.653839269172416,
+        "target_plus_2": 4.433883968829303
+      },
+      "absent_vs_active_output_db": -2.89802058693418,
+      "absent_vs_active_input_db": -2.8309475537316544,
+      "absent_suppression_db": 0.06707303320252578
+    },
+    {
+      "model": "tfmap_context_100",
+      "causal": false,
+      "split": "test",
+      "mixture": "test_n5_908-1188-1089-7176-4970",
+      "target": "1089",
+      "enrollment": "clean",
+      "real_time_factor": 0.3411125429687445,
+      "overall_si_sdri_db": 3.474559902124148,
+      "target_alone_si_sdr_db": 42.96696709573382,
+      "si_sdri_by_overlap_db": {
+        "target_plus_1": 6.903050345516299,
+        "target_plus_2": 10.878189152637324,
+        "target_plus_3": 5.069284565177757
+      },
+      "absent_vs_active_output_db": -0.16888375153418167,
+      "absent_vs_active_input_db": -1.8774384684493945,
+      "absent_suppression_db": -1.7085547169152129
+    },
+    {
+      "model": "tfmap_context_100",
+      "causal": false,
+      "split": "test",
+      "mixture": "test_n5_908-1188-1089-7176-4970",
+      "target": "1089",
+      "enrollment": "discovered",
+      "real_time_factor": 0.34168330078125564,
+      "overall_si_sdri_db": 3.1309496781310786,
+      "target_alone_si_sdr_db": 43.42086815732182,
+      "si_sdri_by_overlap_db": {
+        "target_plus_1": 4.017292594528862,
+        "target_plus_2": 10.791819808469203,
+        "target_plus_3": 2.340605660504065
+      },
+      "absent_vs_active_output_db": -1.0710925477028255,
+      "absent_vs_active_input_db": -1.8774384684493945,
+      "absent_suppression_db": -0.8063459207465691
+    },
+    {
+      "model": "tfmap_context_100",
+      "causal": false,
+      "split": "test",
+      "mixture": "test_n5_908-1188-1089-7176-4970",
+      "target": "7176",
+      "enrollment": "clean",
+      "real_time_factor": 0.3367025065000462,
+      "overall_si_sdri_db": 1.6521165850649355,
+      "target_alone_si_sdr_db": 40.41303049492382,
+      "si_sdri_by_overlap_db": {
+        "target_plus_1": 12.227449798282613,
+        "target_plus_3": 4.381635590316476
+      },
+      "absent_vs_active_output_db": 0.9345312899561797,
+      "absent_vs_active_input_db": 1.4909332397257096,
+      "absent_suppression_db": 0.5564019497695298
+    },
+    {
+      "model": "tfmap_context_100",
+      "causal": false,
+      "split": "test",
+      "mixture": "test_n5_908-1188-1089-7176-4970",
+      "target": "7176",
+      "enrollment": "discovered",
+      "real_time_factor": 0.33961783721872507,
+      "overall_si_sdri_db": 1.6766174062817063,
+      "target_alone_si_sdr_db": 40.0445493693908,
+      "si_sdri_by_overlap_db": {
+        "target_plus_1": 11.620153184830151,
+        "target_plus_3": 4.026673942714565
+      },
+      "absent_vs_active_output_db": 0.8640865010009691,
+      "absent_vs_active_input_db": 1.4909332397257096,
+      "absent_suppression_db": 0.6268467387247405
+    },
+    {
+      "model": "tfmap_context_100",
+      "causal": false,
+      "split": "test",
+      "mixture": "test_n5_908-1188-1089-7176-4970",
+      "target": "4970",
+      "enrollment": "clean",
+      "real_time_factor": 0.33959508331247434,
+      "overall_si_sdri_db": 9.174108178696832,
+      "target_alone_si_sdr_db": 40.15190642003988,
+      "si_sdri_by_overlap_db": {
+        "target_plus_1": 25.55635900373458,
+        "target_plus_2": 10.038568306754897,
+        "target_plus_3": 7.8817591029938425
+      },
+      "absent_vs_active_output_db": -5.036995124012648,
+      "absent_vs_active_input_db": -0.5099816553943199,
+      "absent_suppression_db": 4.527013468618328
+    },
+    {
+      "model": "tfmap_context_100",
+      "causal": false,
+      "split": "test",
+      "mixture": "test_n5_908-1188-1089-7176-4970",
+      "target": "4970",
+      "enrollment": "discovered",
+      "real_time_factor": 0.3287612552187511,
+      "overall_si_sdri_db": 8.982376656206469,
+      "target_alone_si_sdr_db": 37.335354692277214,
+      "si_sdri_by_overlap_db": {
+        "target_plus_1": 25.11316187133788,
+        "target_plus_2": 10.198216457551382,
+        "target_plus_3": 7.621927751788398
+      },
+      "absent_vs_active_output_db": -4.794873268058023,
+      "absent_vs_active_input_db": -0.5099816553943199,
+      "absent_suppression_db": 4.284891612663703
+    },
+    {
+      "model": "tfmap_context_100",
+      "causal": false,
+      "split": "test",
+      "mixture": "test_n6_8455-4446-4077-5105-2961-121",
+      "target": "8455",
+      "enrollment": "clean",
+      "real_time_factor": 0.33905882940632637,
+      "overall_si_sdri_db": 4.424968932678138,
+      "target_alone_si_sdr_db": 37.82001536367098,
+      "si_sdri_by_overlap_db": {
+        "target_plus_1": 8.897786016934171,
+        "target_plus_2": 4.35502264665648
+      },
+      "absent_vs_active_output_db": -1.2728609351805282,
+      "absent_vs_active_input_db": 0.5264776625958092,
+      "absent_suppression_db": 1.7993385977763374
+    },
+    {
+      "model": "tfmap_context_100",
+      "causal": false,
+      "split": "test",
+      "mixture": "test_n6_8455-4446-4077-5105-2961-121",
+      "target": "8455",
+      "enrollment": "discovered",
+      "real_time_factor": 0.34012805337499685,
+      "overall_si_sdri_db": 4.407223397349078,
+      "target_alone_si_sdr_db": 34.1305541860462,
+      "si_sdri_by_overlap_db": {
+        "target_plus_1": 6.7282522675366145,
+        "target_plus_2": 5.922602644639653
+      },
+      "absent_vs_active_output_db": -0.7050587792194847,
+      "absent_vs_active_input_db": 0.5264776625958092,
+      "absent_suppression_db": 1.2315364418152939
+    },
+    {
+      "model": "tfmap_context_100",
+      "causal": false,
+      "split": "test",
+      "mixture": "test_n6_8455-4446-4077-5105-2961-121",
+      "target": "4446",
+      "enrollment": "clean",
+      "real_time_factor": 0.3363974557188385,
+      "overall_si_sdri_db": 5.4775088912359795,
+      "target_alone_si_sdr_db": 42.29684628414586,
+      "si_sdri_by_overlap_db": {
+        "target_plus_1": 11.348259590797024,
+        "target_plus_2": 13.106141008467908
+      },
+      "absent_vs_active_output_db": -4.648557803080383,
+      "absent_vs_active_input_db": -1.0992900698457717,
+      "absent_suppression_db": 3.549267733234611
+    },
+    {
+      "model": "tfmap_context_100",
+      "causal": false,
+      "split": "test",
+      "mixture": "test_n6_8455-4446-4077-5105-2961-121",
+      "target": "4446",
+      "enrollment": "discovered",
+      "real_time_factor": 0.33917343099994923,
+      "overall_si_sdri_db": 5.499487099902103,
+      "target_alone_si_sdr_db": 41.70802094822011,
+      "si_sdri_by_overlap_db": {
+        "target_plus_1": 11.230446545080842,
+        "target_plus_2": 13.125757685920071
+      },
+      "absent_vs_active_output_db": -4.675721837822227,
+      "absent_vs_active_input_db": -1.0992900698457717,
+      "absent_suppression_db": 3.5764317679764552
+    },
+    {
+      "model": "tfmap_context_100",
+      "causal": false,
+      "split": "test",
+      "mixture": "test_n6_8455-4446-4077-5105-2961-121",
+      "target": "4077",
+      "enrollment": "clean",
+      "real_time_factor": 0.34086198437489656,
+      "overall_si_sdri_db": 4.437681087284001,
+      "target_alone_si_sdr_db": 37.4640401803133,
+      "si_sdri_by_overlap_db": {
+        "target_plus_1": -2.562223087815804,
+        "target_plus_2": 9.838434689730741,
+        "target_plus_3": 5.89940090064178
+      },
+      "absent_vs_active_output_db": -2.469099075443033,
+      "absent_vs_active_input_db": -0.785336108051272,
+      "absent_suppression_db": 1.6837629673917611
+    },
+    {
+      "model": "tfmap_context_100",
+      "causal": false,
+      "split": "test",
+      "mixture": "test_n6_8455-4446-4077-5105-2961-121",
+      "target": "4077",
+      "enrollment": "discovered",
+      "real_time_factor": 0.3390184948125352,
+      "overall_si_sdri_db": 4.148010719031472,
+      "target_alone_si_sdr_db": 38.14848771654789,
+      "si_sdri_by_overlap_db": {
+        "target_plus_1": -2.8135125848313223,
+        "target_plus_2": 5.451013502219105,
+        "target_plus_3": 7.070837902416234
+      },
+      "absent_vs_active_output_db": -2.309911281523153,
+      "absent_vs_active_input_db": -0.785336108051272,
+      "absent_suppression_db": 1.5245751734718809
+    },
+    {
+      "model": "tfmap_context_100",
+      "causal": false,
+      "split": "test",
+      "mixture": "test_n6_8455-4446-4077-5105-2961-121",
+      "target": "5105",
+      "enrollment": "clean",
+      "real_time_factor": 0.3404240898437365,
+      "overall_si_sdri_db": 3.8668162054824893,
+      "target_alone_si_sdr_db": null,
+      "si_sdri_by_overlap_db": {
+        "target_plus_1": 16.488622619251714,
+        "target_plus_2": 6.649685428994491,
+        "target_plus_3": -0.21183205075212985
+      },
+      "absent_vs_active_output_db": -4.427315939674841,
+      "absent_vs_active_input_db": -3.4836259957553537,
+      "absent_suppression_db": 0.9436899439194875
+    },
+    {
+      "model": "tfmap_context_100",
+      "causal": false,
+      "split": "test",
+      "mixture": "test_n6_8455-4446-4077-5105-2961-121",
+      "target": "5105",
+      "enrollment": "discovered",
+      "real_time_factor": 0.34155192578123206,
+      "overall_si_sdri_db": 1.4538631507203732,
+      "target_alone_si_sdr_db": null,
+      "si_sdri_by_overlap_db": {
+        "target_plus_1": 16.70340308082456,
+        "target_plus_2": 3.7361495673930296,
+        "target_plus_3": -4.841229732467491
+      },
+      "absent_vs_active_output_db": -3.174645081736429,
+      "absent_vs_active_input_db": -3.4836259957553537,
+      "absent_suppression_db": -0.3089809140189246
+    },
+    {
+      "model": "tfmap_context_100",
+      "causal": false,
+      "split": "test",
+      "mixture": "test_n6_8455-4446-4077-5105-2961-121",
+      "target": "2961",
+      "enrollment": "clean",
+      "real_time_factor": 0.3380356223750596,
+      "overall_si_sdri_db": 2.681894577380139,
+      "target_alone_si_sdr_db": 38.375075781141376,
+      "si_sdri_by_overlap_db": {
+        "target_plus_1": 16.292057986289528,
+        "target_plus_3": -2.358363297276444
+      },
+      "absent_vs_active_output_db": -1.9406745316290177,
+      "absent_vs_active_input_db": -2.376422927800057,
+      "absent_suppression_db": -0.43574839617103933
+    },
+    {
+      "model": "tfmap_context_100",
+      "causal": false,
+      "split": "test",
+      "mixture": "test_n6_8455-4446-4077-5105-2961-121",
+      "target": "2961",
+      "enrollment": "discovered",
+      "real_time_factor": 0.3393682018124764,
+      "overall_si_sdri_db": 1.2533664934087465,
+      "target_alone_si_sdr_db": 36.232945297981004,
+      "si_sdri_by_overlap_db": {
+        "target_plus_1": 0.30091488517677467,
+        "target_plus_3": -1.55217003048252
+      },
+      "absent_vs_active_output_db": -3.636891982394026,
+      "absent_vs_active_input_db": -2.376422927800057,
+      "absent_suppression_db": 1.260469054593969
+    },
+    {
+      "model": "tfmap_context_100",
+      "causal": false,
+      "split": "test",
+      "mixture": "test_n6_8455-4446-4077-5105-2961-121",
+      "target": "121",
+      "enrollment": "clean",
+      "real_time_factor": 0.33902646093747535,
+      "overall_si_sdri_db": 4.630756431879533,
+      "target_alone_si_sdr_db": 33.527538463703536,
+      "si_sdri_by_overlap_db": {
+        "target_plus_1": 25.007994233040556,
+        "target_plus_2": 7.084162852668259,
+        "target_plus_3": 3.702152790623273
+      },
+      "absent_vs_active_output_db": -3.7138745958259705,
+      "absent_vs_active_input_db": -1.7571549511733586,
+      "absent_suppression_db": 1.9567196446526118
+    },
+    {
+      "model": "tfmap_context_100",
+      "causal": false,
+      "split": "test",
+      "mixture": "test_n6_8455-4446-4077-5105-2961-121",
+      "target": "121",
+      "enrollment": "discovered",
+      "real_time_factor": 0.33966969140624315,
+      "overall_si_sdri_db": -3.578974646241239,
+      "target_alone_si_sdr_db": -19.91082809054927,
+      "si_sdri_by_overlap_db": {
+        "target_plus_1": -44.51638307685291,
+        "target_plus_2": -2.6427246558019464,
+        "target_plus_3": 2.3474424907299194
+      },
+      "absent_vs_active_output_db": -0.7991419838425102,
+      "absent_vs_active_input_db": -1.7571549511733586,
+      "absent_suppression_db": -0.9580129673308484
+    }
+  ],
+  "block": [
+    {
+      "model": "tfmap_context_causal_100",
+      "block_seconds": 1.0,
+      "window_seconds": 2.0,
+      "mixture": "test_n4_8230-237-7729-6930",
+      "target": "8230",
+      "real_time_factor": 0.5027687294987118,
+      "compute_p90_s": 0.5067046464013402,
+      "overall_si_sdri_db": 6.368233259529518,
+      "target_alone_si_sdr_db": 23.249746446214278,
+      "si_sdri_by_overlap_db": {
+        "target_plus_1": 16.229850486736645,
+        "target_plus_2": 4.296770174460591,
+        "target_plus_3": 3.9530655606015017
+      },
+      "absent_vs_active_output_db": -5.1260135369933195,
+      "absent_vs_active_input_db": -1.1686667021057424,
+      "absent_suppression_db": 3.957346834887577
+    },
+    {
+      "model": "tfmap_context_causal_100",
+      "block_seconds": 1.0,
+      "window_seconds": 2.0,
+      "mixture": "test_n4_8230-237-7729-6930",
+      "target": "237",
+      "real_time_factor": 0.5018916874996648,
+      "compute_p90_s": 0.505124724999041,
+      "overall_si_sdri_db": 7.584326898504367,
+      "target_alone_si_sdr_db": 3.884261013965909,
+      "si_sdri_by_overlap_db": {
+        "target_plus_1": 13.191840151764925,
+        "target_plus_2": 7.373734731878204,
+        "target_plus_3": 7.099744040935267
+      },
+      "absent_vs_active_output_db": -7.02022536720267,
+      "absent_vs_active_input_db": -1.7019616772165662,
+      "absent_suppression_db": 5.318263689986104
+    },
+    {
+      "model": "tfmap_context_causal_100",
+      "block_seconds": 1.0,
+      "window_seconds": 2.0,
+      "mixture": "test_n4_8230-237-7729-6930",
+      "target": "7729",
+      "real_time_factor": 0.50143206300163,
+      "compute_p90_s": 0.5028433868992579,
+      "overall_si_sdri_db": 6.300792439097418,
+      "target_alone_si_sdr_db": 17.805866574175138,
+      "si_sdri_by_overlap_db": {
+        "target_plus_1": 12.963715195021948,
+        "target_plus_2": 0.20013876766095046,
+        "target_plus_3": 1.816233598033297
+      },
+      "absent_vs_active_output_db": -7.1444076806938845,
+      "absent_vs_active_input_db": -1.1396897586429482,
+      "absent_suppression_db": 6.004717922050936
+    },
+    {
+      "model": "tfmap_context_causal_100",
+      "block_seconds": 1.0,
+      "window_seconds": 2.0,
+      "mixture": "test_n4_8230-237-7729-6930",
+      "target": "6930",
+      "real_time_factor": 0.5008299585006171,
+      "compute_p90_s": 0.5019576458005759,
+      "overall_si_sdri_db": 1.0653548475732246,
+      "target_alone_si_sdr_db": 0.4583476837527618,
+      "si_sdri_by_overlap_db": {
+        "target_plus_1": 0.9560245429160875,
+        "target_plus_2": 1.8114902500077494,
+        "target_plus_3": 0.40909539288758
+      },
+      "absent_vs_active_output_db": -6.302509364750023,
+      "absent_vs_active_input_db": -2.8687156622531056,
+      "absent_suppression_db": 3.433793702496917
+    },
+    {
+      "model": "tfmap_context_causal_100",
+      "block_seconds": 1.0,
+      "window_seconds": 2.0,
+      "mixture": "test_n5_908-1188-1089-7176-4970",
+      "target": "908",
+      "real_time_factor": 0.5018832290006685,
+      "compute_p90_s": 0.5050210083001729,
+      "overall_si_sdri_db": 0.34770889846060893,
+      "target_alone_si_sdr_db": null,
+      "si_sdri_by_overlap_db": {
+        "target_plus_1": 0.8516084317162183,
+        "target_plus_2": -0.8777491775030102,
+        "target_plus_3": -7.380983217785614
+      },
+      "absent_vs_active_output_db": -4.436262030957543,
+      "absent_vs_active_input_db": -2.823477934349178,
+      "absent_suppression_db": 1.6127840966083653
+    },
+    {
+      "model": "tfmap_context_causal_100",
+      "block_seconds": 1.0,
+      "window_seconds": 2.0,
+      "mixture": "test_n5_908-1188-1089-7176-4970",
+      "target": "1188",
+      "real_time_factor": 0.5013393124991126,
+      "compute_p90_s": 0.5021364118998463,
+      "overall_si_sdri_db": 3.00400086791914,
+      "target_alone_si_sdr_db": null,
+      "si_sdri_by_overlap_db": {
+        "target_plus_1": 3.292322188233876,
+        "target_plus_2": 2.8539727088376354
+      },
+      "absent_vs_active_output_db": -5.074377641283778,
+      "absent_vs_active_input_db": -2.8309475537316544,
+      "absent_suppression_db": 2.243430087552124
+    },
+    {
+      "model": "tfmap_context_causal_100",
+      "block_seconds": 1.0,
+      "window_seconds": 2.0,
+      "mixture": "test_n5_908-1188-1089-7176-4970",
+      "target": "1089",
+      "real_time_factor": 0.5035100000004604,
+      "compute_p90_s": 0.5076661212002364,
+      "overall_si_sdri_db": 1.437760820406262,
+      "target_alone_si_sdr_db": 24.941827331920756,
+      "si_sdri_by_overlap_db": {
+        "target_plus_1": -1.5244776787509888,
+        "target_plus_2": 3.327754214265431,
+        "target_plus_3": 0.5753751849067008
+      },
+      "absent_vs_active_output_db": -2.5404808085639132,
+      "absent_vs_active_input_db": -1.8774384684493945,
+      "absent_suppression_db": 0.6630423401145187
+    },
+    {
+      "model": "tfmap_context_causal_100",
+      "block_seconds": 1.0,
+      "window_seconds": 2.0,
+      "mixture": "test_n5_908-1188-1089-7176-4970",
+      "target": "7176",
+      "real_time_factor": 0.5017712080025376,
+      "compute_p90_s": 0.5027288417000818,
+      "overall_si_sdri_db": 0.8570784077281726,
+      "target_alone_si_sdr_db": 9.73310359102461,
+      "si_sdri_by_overlap_db": {
+        "target_plus_1": 2.150051602287219,
+        "target_plus_3": 3.2237183395682196
+      },
+      "absent_vs_active_output_db": 0.9643136646762862,
+      "absent_vs_active_input_db": 1.4909332397257096,
+      "absent_suppression_db": 0.5266195750494234
+    },
+    {
+      "model": "tfmap_context_causal_100",
+      "block_seconds": 1.0,
+      "window_seconds": 2.0,
+      "mixture": "test_n5_908-1188-1089-7176-4970",
+      "target": "4970",
+      "real_time_factor": 0.46875139550138556,
+      "compute_p90_s": 0.46970306700131914,
+      "overall_si_sdri_db": 7.053499672501674,
+      "target_alone_si_sdr_db": 14.641250219160876,
+      "si_sdri_by_overlap_db": {
+        "target_plus_1": 20.849374789062416,
+        "target_plus_2": 9.989659261441524,
+        "target_plus_3": 2.6366228711468307
+      },
+      "absent_vs_active_output_db": -4.001178724248849,
+      "absent_vs_active_input_db": -0.5099816553943199,
+      "absent_suppression_db": 3.491197068854529
+    },
+    {
+      "model": "tfmap_context_causal_100",
+      "block_seconds": 1.0,
+      "window_seconds": 2.0,
+      "mixture": "test_n6_8455-4446-4077-5105-2961-121",
+      "target": "8455",
+      "real_time_factor": 0.5014207285003067,
+      "compute_p90_s": 0.5023602079992997,
+      "overall_si_sdri_db": 4.484342753362774,
+      "target_alone_si_sdr_db": 23.366255397732726,
+      "si_sdri_by_overlap_db": {
+        "target_plus_1": 5.5763802945457694,
+        "target_plus_2": 3.567292026657852
+      },
+      "absent_vs_active_output_db": -1.6345563740337035,
+      "absent_vs_active_input_db": 0.5264776625958092,
+      "absent_suppression_db": 2.1610340366295127
+    },
+    {
+      "model": "tfmap_context_causal_100",
+      "block_seconds": 1.0,
+      "window_seconds": 2.0,
+      "mixture": "test_n6_8455-4446-4077-5105-2961-121",
+      "target": "4446",
+      "real_time_factor": 0.501502145501945,
+      "compute_p90_s": 0.5021567037980276,
+      "overall_si_sdri_db": 3.5260419283371665,
+      "target_alone_si_sdr_db": 2.429302729878292,
+      "si_sdri_by_overlap_db": {
+        "target_plus_1": 11.475863410615776,
+        "target_plus_2": 12.189473826567767
+      },
+      "absent_vs_active_output_db": -4.059418165806118,
+      "absent_vs_active_input_db": -1.0992900698457717,
+      "absent_suppression_db": 2.9601280959603464
+    },
+    {
+      "model": "tfmap_context_causal_100",
+      "block_seconds": 1.0,
+      "window_seconds": 2.0,
+      "mixture": "test_n6_8455-4446-4077-5105-2961-121",
+      "target": "4077",
+      "real_time_factor": 0.501722625000184,
+      "compute_p90_s": 0.5023608714011061,
+      "overall_si_sdri_db": 2.006163002351876,
+      "target_alone_si_sdr_db": 11.954183793007576,
+      "si_sdri_by_overlap_db": {
+        "target_plus_1": 1.832073972127212,
+        "target_plus_2": 3.3005458655781146,
+        "target_plus_3": -0.3600211938712148
+      },
+      "absent_vs_active_output_db": -1.6209566519665017,
+      "absent_vs_active_input_db": -0.785336108051272,
+      "absent_suppression_db": 0.8356205439152298
+    },
+    {
+      "model": "tfmap_context_causal_100",
+      "block_seconds": 1.0,
+      "window_seconds": 2.0,
+      "mixture": "test_n6_8455-4446-4077-5105-2961-121",
+      "target": "5105",
+      "real_time_factor": 0.5019332499996381,
+      "compute_p90_s": 0.5023910874973808,
+      "overall_si_sdri_db": 1.6410096310685178,
+      "target_alone_si_sdr_db": null,
+      "si_sdri_by_overlap_db": {
+        "target_plus_1": 14.5120495919933,
+        "target_plus_2": 0.971275492122174,
+        "target_plus_3": 0.40127304915301876
+      },
+      "absent_vs_active_output_db": -3.982929246554022,
+      "absent_vs_active_input_db": -3.4836259957553537,
+      "absent_suppression_db": 0.49930325079866833
+    },
+    {
+      "model": "tfmap_context_causal_100",
+      "block_seconds": 1.0,
+      "window_seconds": 2.0,
+      "mixture": "test_n6_8455-4446-4077-5105-2961-121",
+      "target": "2961",
+      "real_time_factor": 0.5019639999991341,
+      "compute_p90_s": 0.5031457878019865,
+      "overall_si_sdri_db": 2.7612868398772408,
+      "target_alone_si_sdr_db": 16.838625397172144,
+      "si_sdri_by_overlap_db": {
+        "target_plus_1": 1.72502495312721,
+        "target_plus_3": -3.1892087144773047
+      },
+      "absent_vs_active_output_db": -5.243587864605381,
+      "absent_vs_active_input_db": -2.376422927800057,
+      "absent_suppression_db": 2.867164936805324
+    },
+    {
+      "model": "tfmap_context_causal_100",
+      "block_seconds": 1.0,
+      "window_seconds": 2.0,
+      "mixture": "test_n6_8455-4446-4077-5105-2961-121",
+      "target": "121",
+      "real_time_factor": 0.5021518334997381,
+      "compute_p90_s": 0.5079832961004286,
+      "overall_si_sdri_db": 3.8255888485956953,
+      "target_alone_si_sdr_db": 12.25989079841235,
+      "si_sdri_by_overlap_db": {
+        "target_plus_1": 15.76236648225338,
+        "target_plus_2": 3.3386103185604137,
+        "target_plus_3": 2.581071397991134
+      },
+      "absent_vs_active_output_db": -4.128632794775292,
+      "absent_vs_active_input_db": -1.7571549511733586,
+      "absent_suppression_db": 2.3714778436019337
+    },
+    {
+      "model": "tfmap_context_causal_100",
+      "block_seconds": 0.5,
+      "window_seconds": 1.0,
+      "mixture": "test_n4_8230-237-7729-6930",
+      "target": "8230",
+      "real_time_factor": 0.5341902510008367,
+      "compute_p90_s": 0.26800067079930157,
+      "overall_si_sdri_db": 7.065720619714998,
+      "target_alone_si_sdr_db": 23.577940438875924,
+      "si_sdri_by_overlap_db": {
+        "target_plus_1": 16.25967059948662,
+        "target_plus_2": 5.186953545167325,
+        "target_plus_3": 3.8993230552053486
+      },
+      "absent_vs_active_output_db": -5.306770881410401,
+      "absent_vs_active_input_db": -1.1686667021057424,
+      "absent_suppression_db": 4.1381041793046585
+    },
+    {
+      "model": "tfmap_context_causal_100",
+      "block_seconds": 0.5,
+      "window_seconds": 1.0,
+      "mixture": "test_n4_8230-237-7729-6930",
+      "target": "237",
+      "real_time_factor": 0.5336438749982335,
+      "compute_p90_s": 0.26748295000106737,
+      "overall_si_sdri_db": 7.290817516227406,
+      "target_alone_si_sdr_db": 0.6018749094106001,
+      "si_sdri_by_overlap_db": {
+        "target_plus_1": 14.06253480874225,
+        "target_plus_2": 7.575060254481048,
+        "target_plus_3": 7.525873404899214
+      },
+      "absent_vs_active_output_db": -6.80521676342137,
+      "absent_vs_active_input_db": -1.7019616772165662,
+      "absent_suppression_db": 5.103255086204804
+    },
+    {
+      "model": "tfmap_context_causal_100",
+      "block_seconds": 0.5,
+      "window_seconds": 1.0,
+      "mixture": "test_n4_8230-237-7729-6930",
+      "target": "7729",
+      "real_time_factor": 0.5333445010037394,
+      "compute_p90_s": 0.26755332499924406,
+      "overall_si_sdri_db": 5.277121969021989,
+      "target_alone_si_sdr_db": 17.407348076252987,
+      "si_sdri_by_overlap_db": {
+        "target_plus_1": 12.965249162890295,
+        "target_plus_2": -0.1254857210870831,
+        "target_plus_3": -1.366891123740837
+      },
+      "absent_vs_active_output_db": -6.23069621587128,
+      "absent_vs_active_input_db": -1.1396897586429482,
+      "absent_suppression_db": 5.091006457228332
+    },
+    {
+      "model": "tfmap_context_causal_100",
+      "block_seconds": 0.5,
+      "window_seconds": 1.0,
+      "mixture": "test_n4_8230-237-7729-6930",
+      "target": "6930",
+      "real_time_factor": 0.5333571669980302,
+      "compute_p90_s": 0.267576008801916,
+      "overall_si_sdri_db": 1.295214748382497,
+      "target_alone_si_sdr_db": 1.6343311945649208,
+      "si_sdri_by_overlap_db": {
+        "target_plus_1": 3.9860180578331343,
+        "target_plus_2": -0.9962840760799239,
+        "target_plus_3": -0.037470190306870155
+      },
+      "absent_vs_active_output_db": -6.00497788784207,
+      "absent_vs_active_input_db": -2.8687156622531056,
+      "absent_suppression_db": 3.1362622255889647
+    },
+    {
+      "model": "tfmap_context_causal_100",
+      "block_seconds": 0.5,
+      "window_seconds": 1.0,
+      "mixture": "test_n5_908-1188-1089-7176-4970",
+      "target": "908",
+      "real_time_factor": 0.5337166669996805,
+      "compute_p90_s": 0.26804132479810505,
+      "overall_si_sdri_db": 0.9168950900641839,
+      "target_alone_si_sdr_db": null,
+      "si_sdri_by_overlap_db": {
+        "target_plus_1": 4.015754418884846,
+        "target_plus_2": -1.2535202652716801,
+        "target_plus_3": -6.044778116995461
+      },
+      "absent_vs_active_output_db": -4.897441168469999,
+      "absent_vs_active_input_db": -2.823477934349178,
+      "absent_suppression_db": 2.0739632341208214
+    },
+    {
+      "model": "tfmap_context_causal_100",
+      "block_seconds": 0.5,
+      "window_seconds": 1.0,
+      "mixture": "test_n5_908-1188-1089-7176-4970",
+      "target": "1188",
+      "real_time_factor": 0.5340339579997817,
+      "compute_p90_s": 0.26772022490113156,
+      "overall_si_sdri_db": 2.551954275080715,
+      "target_alone_si_sdr_db": null,
+      "si_sdri_by_overlap_db": {
+        "target_plus_1": 2.621731880639108,
+        "target_plus_2": 2.33529402815355
+      },
+      "absent_vs_active_output_db": -4.796070947165202,
+      "absent_vs_active_input_db": -2.8309475537316544,
+      "absent_suppression_db": 1.9651233934335472
+    },
+    {
+      "model": "tfmap_context_causal_100",
+      "block_seconds": 0.5,
+      "window_seconds": 1.0,
+      "mixture": "test_n5_908-1188-1089-7176-4970",
+      "target": "1089",
+      "real_time_factor": 0.533625749998464,
+      "compute_p90_s": 0.2674914876995899,
+      "overall_si_sdri_db": 1.2737488589475543,
+      "target_alone_si_sdr_db": 25.13815866817825,
+      "si_sdri_by_overlap_db": {
+        "target_plus_1": -0.7840728986957766,
+        "target_plus_2": -0.36611281230635306,
+        "target_plus_3": -0.7239642865825848
+      },
+      "absent_vs_active_output_db": -2.958577389719629,
+      "absent_vs_active_input_db": -1.8774384684493945,
+      "absent_suppression_db": 1.0811389212702345
+    },
+    {
+      "model": "tfmap_context_causal_100",
+      "block_seconds": 0.5,
+      "window_seconds": 1.0,
+      "mixture": "test_n5_908-1188-1089-7176-4970",
+      "target": "7176",
+      "real_time_factor": 0.5337022499988961,
+      "compute_p90_s": 0.26774318360075994,
+      "overall_si_sdri_db": 1.2244167377567488,
+      "target_alone_si_sdr_db": 10.318983255482376,
+      "si_sdri_by_overlap_db": {
+        "target_plus_1": 3.889416393670856,
+        "target_plus_3": 3.675086846043776
+      },
+      "absent_vs_active_output_db": 0.7686161281513506,
+      "absent_vs_active_input_db": 1.4909332397257096,
+      "absent_suppression_db": 0.722317111574359
+    },
+    {
+      "model": "tfmap_context_causal_100",
+      "block_seconds": 0.5,
+      "window_seconds": 1.0,
+      "mixture": "test_n5_908-1188-1089-7176-4970",
+      "target": "4970",
+      "real_time_factor": 0.4858547500007262,
+      "compute_p90_s": 0.24379506599980233,
+      "overall_si_sdri_db": 7.4529929252301175,
+      "target_alone_si_sdr_db": 13.723269444076589,
+      "si_sdri_by_overlap_db": {
+        "target_plus_1": 19.981771805669588,
+        "target_plus_2": 9.92338298411787,
+        "target_plus_3": 4.324965799892298
+      },
+      "absent_vs_active_output_db": -3.9437548000600486,
+      "absent_vs_active_input_db": -0.5099816553943199,
+      "absent_suppression_db": 3.4337731446657287
+    },
+    {
+      "model": "tfmap_context_causal_100",
+      "block_seconds": 0.5,
+      "window_seconds": 1.0,
+      "mixture": "test_n6_8455-4446-4077-5105-2961-121",
+      "target": "8455",
+      "real_time_factor": 0.5336888740021095,
+      "compute_p90_s": 0.2679880286988919,
+      "overall_si_sdri_db": 4.520849785816846,
+      "target_alone_si_sdr_db": 28.912980258700927,
+      "si_sdri_by_overlap_db": {
+        "target_plus_1": 2.794493009521447,
+        "target_plus_2": 4.549276846313339
+      },
+      "absent_vs_active_output_db": -1.6458785351855525,
+      "absent_vs_active_input_db": 0.5264776625958092,
+      "absent_suppression_db": 2.1723561977813617
+    },
+    {
+      "model": "tfmap_context_causal_100",
+      "block_seconds": 0.5,
+      "window_seconds": 1.0,
+      "mixture": "test_n6_8455-4446-4077-5105-2961-121",
+      "target": "4446",
+      "real_time_factor": 0.5333943339974212,
+      "compute_p90_s": 0.26738526230255955,
+      "overall_si_sdri_db": 2.643338384919562,
+      "target_alone_si_sdr_db": -1.3615442602971906,
+      "si_sdri_by_overlap_db": {
+        "target_plus_1": 11.065609668075531,
+        "target_plus_2": 11.672050688024171
+      },
+      "absent_vs_active_output_db": -4.062138664006103,
+      "absent_vs_active_input_db": -1.0992900698457717,
+      "absent_suppression_db": 2.962848594160331
+    },
+    {
+      "model": "tfmap_context_causal_100",
+      "block_seconds": 0.5,
+      "window_seconds": 1.0,
+      "mixture": "test_n6_8455-4446-4077-5105-2961-121",
+      "target": "4077",
+      "real_time_factor": 0.5335909989989887,
+      "compute_p90_s": 0.26788279210231847,
+      "overall_si_sdri_db": 3.232873041951712,
+      "target_alone_si_sdr_db": 13.079245832851301,
+      "si_sdri_by_overlap_db": {
+        "target_plus_1": 7.428201302306906,
+        "target_plus_2": 5.016566143988,
+        "target_plus_3": 1.323110940866373
+      },
+      "absent_vs_active_output_db": -1.7984807024601217,
+      "absent_vs_active_input_db": -0.785336108051272,
+      "absent_suppression_db": 1.0131445944088497
+    },
+    {
+      "model": "tfmap_context_causal_100",
+      "block_seconds": 0.5,
+      "window_seconds": 1.0,
+      "mixture": "test_n6_8455-4446-4077-5105-2961-121",
+      "target": "5105",
+      "real_time_factor": 0.5337981250013399,
+      "compute_p90_s": 0.26783914550032933,
+      "overall_si_sdri_db": 2.9944435020596822,
+      "target_alone_si_sdr_db": null,
+      "si_sdri_by_overlap_db": {
+        "target_plus_1": 14.7078879654253,
+        "target_plus_2": 2.516554453787129,
+        "target_plus_3": 1.1568884862134636
+      },
+      "absent_vs_active_output_db": -4.759376373028399,
+      "absent_vs_active_input_db": -3.4836259957553537,
+      "absent_suppression_db": 1.2757503772730452
+    },
+    {
+      "model": "tfmap_context_causal_100",
+      "block_seconds": 0.5,
+      "window_seconds": 1.0,
+      "mixture": "test_n6_8455-4446-4077-5105-2961-121",
+      "target": "2961",
+      "real_time_factor": 0.534114583999326,
+      "compute_p90_s": 0.26839611690156745,
+      "overall_si_sdri_db": 2.3953152668024407,
+      "target_alone_si_sdr_db": 16.226290673690563,
+      "si_sdri_by_overlap_db": {
+        "target_plus_1": 0.9612211433674472,
+        "target_plus_3": -3.1899872812890315
+      },
+      "absent_vs_active_output_db": -5.297086397075162,
+      "absent_vs_active_input_db": -2.376422927800057,
+      "absent_suppression_db": 2.9206634692751052
+    },
+    {
+      "model": "tfmap_context_causal_100",
+      "block_seconds": 0.5,
+      "window_seconds": 1.0,
+      "mixture": "test_n6_8455-4446-4077-5105-2961-121",
+      "target": "121",
+      "real_time_factor": 0.533851333995699,
+      "compute_p90_s": 0.2678031212995847,
+      "overall_si_sdri_db": 3.320630690830664,
+      "target_alone_si_sdr_db": 11.007804099970041,
+      "si_sdri_by_overlap_db": {
+        "target_plus_1": 15.775070568800501,
+        "target_plus_2": 3.202806462403305,
+        "target_plus_3": 1.2349885614411242
+      },
+      "absent_vs_active_output_db": -3.9469968583742947,
+      "absent_vs_active_input_db": -1.7571549511733586,
+      "absent_suppression_db": 2.189841907200936
+    },
+    {
+      "model": "tfmap_context_causal_100",
+      "block_seconds": 0.25,
+      "window_seconds": 1.0,
+      "mixture": "test_n4_8230-237-7729-6930",
+      "target": "8230",
+      "real_time_factor": 1.0689209180054604,
+      "compute_p90_s": 0.2692559500992502,
+      "overall_si_sdri_db": 6.287397944624118,
+      "target_alone_si_sdr_db": 24.323924728345826,
+      "si_sdri_by_overlap_db": {
+        "target_plus_1": 16.205117441049914,
+        "target_plus_2": 3.802455962315173,
+        "target_plus_3": 3.7656426417779993
+      },
+      "absent_vs_active_output_db": -5.019833029279919,
+      "absent_vs_active_input_db": -1.1686667021057424,
+      "absent_suppression_db": 3.8511663271741767
+    },
+    {
+      "model": "tfmap_context_causal_100",
+      "block_seconds": 0.25,
+      "window_seconds": 1.0,
+      "mixture": "test_n4_8230-237-7729-6930",
+      "target": "237",
+      "real_time_factor": 1.0686442500082194,
+      "compute_p90_s": 0.267973254399476,
+      "overall_si_sdri_db": 6.7393561266405495,
+      "target_alone_si_sdr_db": 0.8010762266257723,
+      "si_sdri_by_overlap_db": {
+        "target_plus_1": 6.91566815301469,
+        "target_plus_2": 7.329814449941879,
+        "target_plus_3": 7.134526139432992
+      },
+      "absent_vs_active_output_db": -6.41090420843943,
+      "absent_vs_active_input_db": -1.7019616772165662,
+      "absent_suppression_db": 4.708942531222863
+    },
+    {
+      "model": "tfmap_context_causal_100",
+      "block_seconds": 0.25,
+      "window_seconds": 1.0,
+      "mixture": "test_n4_8230-237-7729-6930",
+      "target": "7729",
+      "real_time_factor": 1.0677656660045614,
+      "compute_p90_s": 0.2678228336983011,
+      "overall_si_sdri_db": 5.920058816689556,
+      "target_alone_si_sdr_db": 16.510991877575087,
+      "si_sdri_by_overlap_db": {
+        "target_plus_1": 12.812966655092275,
+        "target_plus_2": -0.4146453341338402,
+        "target_plus_3": 0.2839552312514866
+      },
+      "absent_vs_active_output_db": -7.094018486258722,
+      "absent_vs_active_input_db": -1.1396897586429482,
+      "absent_suppression_db": 5.954328727615774
+    },
+    {
+      "model": "tfmap_context_causal_100",
+      "block_seconds": 0.25,
+      "window_seconds": 1.0,
+      "mixture": "test_n4_8230-237-7729-6930",
+      "target": "6930",
+      "real_time_factor": 1.0682096660020761,
+      "compute_p90_s": 0.26799453309940874,
+      "overall_si_sdri_db": 0.7357396264354006,
+      "target_alone_si_sdr_db": 0.37532596835441634,
+      "si_sdri_by_overlap_db": {
+        "target_plus_1": 2.7544023290348827,
+        "target_plus_2": -1.1316868417905348,
+        "target_plus_3": 0.429706497989498
+      },
+      "absent_vs_active_output_db": -5.852403535867257,
+      "absent_vs_active_input_db": -2.8687156622531056,
+      "absent_suppression_db": 2.9836878736141514
+    },
+    {
+      "model": "tfmap_context_causal_100",
+      "block_seconds": 0.25,
+      "window_seconds": 1.0,
+      "mixture": "test_n5_908-1188-1089-7176-4970",
+      "target": "908",
+      "real_time_factor": 1.067924333998235,
+      "compute_p90_s": 0.2681271624031069,
+      "overall_si_sdri_db": 1.101071074168253,
+      "target_alone_si_sdr_db": null,
+      "si_sdri_by_overlap_db": {
+        "target_plus_1": 2.3608803958824405,
+        "target_plus_2": -0.934863730375386,
+        "target_plus_3": -5.488880118490593
+      },
+      "absent_vs_active_output_db": -5.406726591480577,
+      "absent_vs_active_input_db": -2.823477934349178,
+      "absent_suppression_db": 2.5832486571313993
+    },
+    {
+      "model": "tfmap_context_causal_100",
+      "block_seconds": 0.25,
+      "window_seconds": 1.0,
+      "mixture": "test_n5_908-1188-1089-7176-4970",
+      "target": "1188",
+      "real_time_factor": 1.0683712480022223,
+      "compute_p90_s": 0.2682081910996203,
+      "overall_si_sdri_db": 2.903668348683958,
+      "target_alone_si_sdr_db": null,
+      "si_sdri_by_overlap_db": {
+        "target_plus_1": 4.47694102645332,
+        "target_plus_2": 1.7796078647395552
+      },
+      "absent_vs_active_output_db": -5.19812443738045,
+      "absent_vs_active_input_db": -2.8309475537316544,
+      "absent_suppression_db": 2.3671768836487956
+    },
+    {
+      "model": "tfmap_context_causal_100",
+      "block_seconds": 0.25,
+      "window_seconds": 1.0,
+      "mixture": "test_n5_908-1188-1089-7176-4970",
+      "target": "1089",
+      "real_time_factor": 1.0679495000003953,
+      "compute_p90_s": 0.268049999901632,
+      "overall_si_sdri_db": 1.3708064269118152,
+      "target_alone_si_sdr_db": 24.02364226474186,
+      "si_sdri_by_overlap_db": {
+        "target_plus_1": -1.3785972009898169,
+        "target_plus_2": -0.3849290826604861,
+        "target_plus_3": 0.38378959913427213
+      },
+      "absent_vs_active_output_db": -3.1330612446012047,
+      "absent_vs_active_input_db": -1.8774384684493945,
+      "absent_suppression_db": 1.2556227761518102
+    },
+    {
+      "model": "tfmap_context_causal_100",
+      "block_seconds": 0.25,
+      "window_seconds": 1.0,
+      "mixture": "test_n5_908-1188-1089-7176-4970",
+      "target": "7176",
+      "real_time_factor": 1.0685693340055877,
+      "compute_p90_s": 0.2679494160984177,
+      "overall_si_sdri_db": 1.2681239000009557,
+      "target_alone_si_sdr_db": 9.687156024632346,
+      "si_sdri_by_overlap_db": {
+        "target_plus_1": 3.7781536757643663,
+        "target_plus_3": 3.6089162433874646
+      },
+      "absent_vs_active_output_db": 0.6517223917329282,
+      "absent_vs_active_input_db": 1.4909332397257096,
+      "absent_suppression_db": 0.8392108479927813
+    },
+    {
+      "model": "tfmap_context_causal_100",
+      "block_seconds": 0.25,
+      "window_seconds": 1.0,
+      "mixture": "test_n5_908-1188-1089-7176-4970",
+      "target": "4970",
+      "real_time_factor": 0.971105163996981,
+      "compute_p90_s": 0.24362776250163734,
+      "overall_si_sdri_db": 7.377198803640123,
+      "target_alone_si_sdr_db": 12.693059839886235,
+      "si_sdri_by_overlap_db": {
+        "target_plus_1": 20.53135966778233,
+        "target_plus_2": 10.36886876995436,
+        "target_plus_3": 3.542850639991571
+      },
+      "absent_vs_active_output_db": -4.09986190594136,
+      "absent_vs_active_input_db": -0.5099816553943199,
+      "absent_suppression_db": 3.58988025054704
+    },
+    {
+      "model": "tfmap_context_causal_100",
+      "block_seconds": 0.25,
+      "window_seconds": 1.0,
+      "mixture": "test_n6_8455-4446-4077-5105-2961-121",
+      "target": "8455",
+      "real_time_factor": 1.06721266599925,
+      "compute_p90_s": 0.2679331411996827,
+      "overall_si_sdri_db": 4.683615543821478,
+      "target_alone_si_sdr_db": 29.266008221570864,
+      "si_sdri_by_overlap_db": {
+        "target_plus_1": 2.7726317541780894,
+        "target_plus_2": 3.965037668979511
+      },
+      "absent_vs_active_output_db": -2.166389260162312,
+      "absent_vs_active_input_db": 0.5264776625958092,
+      "absent_suppression_db": 2.692866922758121
+    },
+    {
+      "model": "tfmap_context_causal_100",
+      "block_seconds": 0.25,
+      "window_seconds": 1.0,
+      "mixture": "test_n6_8455-4446-4077-5105-2961-121",
+      "target": "4446",
+      "real_time_factor": 1.0674643319944153,
+      "compute_p90_s": 0.26756849140110717,
+      "overall_si_sdri_db": 2.5150665464350777,
+      "target_alone_si_sdr_db": -1.0315367096733439,
+      "si_sdri_by_overlap_db": {
+        "target_plus_1": 11.345331456769394,
+        "target_plus_2": 11.618240610427915
+      },
+      "absent_vs_active_output_db": -3.7798207394951753,
+      "absent_vs_active_input_db": -1.0992900698457717,
+      "absent_suppression_db": 2.6805306696494036
+    },
+    {
+      "model": "tfmap_context_causal_100",
+      "block_seconds": 0.25,
+      "window_seconds": 1.0,
+      "mixture": "test_n6_8455-4446-4077-5105-2961-121",
+      "target": "4077",
+      "real_time_factor": 1.067225499995402,
+      "compute_p90_s": 0.2678757660989504,
+      "overall_si_sdri_db": 2.9936688149021666,
+      "target_alone_si_sdr_db": 12.907396259503063,
+      "si_sdri_by_overlap_db": {
+        "target_plus_1": 7.53472331323852,
+        "target_plus_2": 3.1185331596549846,
+        "target_plus_3": 0.40812160576269996
+      },
+      "absent_vs_active_output_db": -2.2336011214995466,
+      "absent_vs_active_input_db": -0.785336108051272,
+      "absent_suppression_db": 1.4482650134482746
+    },
+    {
+      "model": "tfmap_context_causal_100",
+      "block_seconds": 0.25,
+      "window_seconds": 1.0,
+      "mixture": "test_n6_8455-4446-4077-5105-2961-121",
+      "target": "5105",
+      "real_time_factor": 1.06709150000097,
+      "compute_p90_s": 0.26762368329946185,
+      "overall_si_sdri_db": 2.899749602354138,
+      "target_alone_si_sdr_db": null,
+      "si_sdri_by_overlap_db": {
+        "target_plus_1": 14.55768801239683,
+        "target_plus_2": 1.9165889913225236,
+        "target_plus_3": 2.0666007983300876
+      },
+      "absent_vs_active_output_db": -4.730291879306478,
+      "absent_vs_active_input_db": -3.4836259957553537,
+      "absent_suppression_db": 1.246665883551124
+    },
+    {
+      "model": "tfmap_context_causal_100",
+      "block_seconds": 0.25,
+      "window_seconds": 1.0,
+      "mixture": "test_n6_8455-4446-4077-5105-2961-121",
+      "target": "2961",
+      "real_time_factor": 1.0673902480048127,
+      "compute_p90_s": 0.26779259179784276,
+      "overall_si_sdri_db": 0.8928337030233333,
+      "target_alone_si_sdr_db": 15.03508065681948,
+      "si_sdri_by_overlap_db": {
+        "target_plus_1": -2.1887596712341684,
+        "target_plus_3": -3.2467105640921634
+      },
+      "absent_vs_active_output_db": -5.509791131382862,
+      "absent_vs_active_input_db": -2.376422927800057,
+      "absent_suppression_db": 3.1333682035828048
+    },
+    {
+      "model": "tfmap_context_causal_100",
+      "block_seconds": 0.25,
+      "window_seconds": 1.0,
+      "mixture": "test_n6_8455-4446-4077-5105-2961-121",
+      "target": "121",
+      "real_time_factor": 1.0671474999981,
+      "compute_p90_s": 0.2676148999998986,
+      "overall_si_sdri_db": 3.33555894109551,
+      "target_alone_si_sdr_db": 11.038697587159197,
+      "si_sdri_by_overlap_db": {
+        "target_plus_1": 15.707814660833161,
+        "target_plus_2": 3.671936654985012,
+        "target_plus_3": 1.0698924840868815
+      },
+      "absent_vs_active_output_db": -3.8723744310732755,
+      "absent_vs_active_input_db": -1.7571549511733586,
+      "absent_suppression_db": 2.115219479899917
+    },
+    {
+      "model": "tfmap_context_causal_100",
+      "block_seconds": 0.25,
+      "window_seconds": 0.5,
+      "mixture": "test_n4_8230-237-7729-6930",
+      "target": "8230",
+      "real_time_factor": 0.5903913340007421,
+      "compute_p90_s": 0.14956644569938363,
+      "overall_si_sdri_db": 7.099930459691937,
+      "target_alone_si_sdr_db": 16.53688762322708,
+      "si_sdri_by_overlap_db": {
+        "target_plus_1": 14.35565839011783,
+        "target_plus_2": 4.835998908869468,
+        "target_plus_3": 5.785722673621445
+      },
+      "absent_vs_active_output_db": -4.984581732745134,
+      "absent_vs_active_input_db": -1.1686667021057424,
+      "absent_suppression_db": 3.815915030639392
+    },
+    {
+      "model": "tfmap_context_causal_100",
+      "block_seconds": 0.25,
+      "window_seconds": 0.5,
+      "mixture": "test_n4_8230-237-7729-6930",
+      "target": "237",
+      "real_time_factor": 0.5894290840005851,
+      "compute_p90_s": 0.148015279502215,
+      "overall_si_sdri_db": 7.894667047828401,
+      "target_alone_si_sdr_db": 8.456280130040605,
+      "si_sdri_by_overlap_db": {
+        "target_plus_1": 10.732849911895514,
+        "target_plus_2": 7.404254460207441,
+        "target_plus_3": 7.429170093927936
+      },
+      "absent_vs_active_output_db": -7.16824111843448,
+      "absent_vs_active_input_db": -1.7019616772165662,
+      "absent_suppression_db": 5.466279441217914
+    },
+    {
+      "model": "tfmap_context_causal_100",
+      "block_seconds": 0.25,
+      "window_seconds": 0.5,
+      "mixture": "test_n4_8230-237-7729-6930",
+      "target": "7729",
+      "real_time_factor": 0.589184917997045,
+      "compute_p90_s": 0.14788241700080107,
+      "overall_si_sdri_db": 5.750878351018798,
+      "target_alone_si_sdr_db": 14.847391394488756,
+      "si_sdri_by_overlap_db": {
+        "target_plus_1": 9.801582879114823,
+        "target_plus_2": 3.281062840838294,
+        "target_plus_3": -0.839756548938074
+      },
+      "absent_vs_active_output_db": -6.722946073567446,
+      "absent_vs_active_input_db": -1.1396897586429482,
+      "absent_suppression_db": 5.583256314924498
+    },
+    {
+      "model": "tfmap_context_causal_100",
+      "block_seconds": 0.25,
+      "window_seconds": 0.5,
+      "mixture": "test_n4_8230-237-7729-6930",
+      "target": "6930",
+      "real_time_factor": 0.589590749994386,
+      "compute_p90_s": 0.14810624569872743,
+      "overall_si_sdri_db": 1.180829884974964,
+      "target_alone_si_sdr_db": 2.4294498135396614,
+      "si_sdri_by_overlap_db": {
+        "target_plus_1": 4.285797198296518,
+        "target_plus_2": -0.6266062103943031,
+        "target_plus_3": -2.148105606042386
+      },
+      "absent_vs_active_output_db": -6.1293251722389925,
+      "absent_vs_active_input_db": -2.8687156622531056,
+      "absent_suppression_db": 3.260609509985887
+    },
+    {
+      "model": "tfmap_context_causal_100",
+      "block_seconds": 0.25,
+      "window_seconds": 0.5,
+      "mixture": "test_n5_908-1188-1089-7176-4970",
+      "target": "908",
+      "real_time_factor": 0.589269668002089,
+      "compute_p90_s": 0.1478796668972791,
+      "overall_si_sdri_db": 0.3078792551979408,
+      "target_alone_si_sdr_db": null,
+      "si_sdri_by_overlap_db": {
+        "target_plus_1": 0.8218786953882591,
+        "target_plus_2": -1.5786505163720674,
+        "target_plus_3": -0.04926177980444102
+      },
+      "absent_vs_active_output_db": -4.125979735772724,
+      "absent_vs_active_input_db": -2.823477934349178,
+      "absent_suppression_db": 1.3025018014235457
+    },
+    {
+      "model": "tfmap_context_causal_100",
+      "block_seconds": 0.25,
+      "window_seconds": 0.5,
+      "mixture": "test_n5_908-1188-1089-7176-4970",
+      "target": "1188",
+      "real_time_factor": 0.5895604159959476,
+      "compute_p90_s": 0.14796080429878203,
+      "overall_si_sdri_db": 0.934592280763467,
+      "target_alone_si_sdr_db": null,
+      "si_sdri_by_overlap_db": {
+        "target_plus_1": -0.9581328524687298,
+        "target_plus_2": 1.7483051876132312
+      },
+      "absent_vs_active_output_db": -3.65199366419618,
+      "absent_vs_active_input_db": -2.8309475537316544,
+      "absent_suppression_db": 0.8210461104645255
+    },
+    {
+      "model": "tfmap_context_causal_100",
+      "block_seconds": 0.25,
+      "window_seconds": 0.5,
+      "mixture": "test_n5_908-1188-1089-7176-4970",
+      "target": "1089",
+      "real_time_factor": 0.5893044980039122,
+      "compute_p90_s": 0.1478502626014233,
+      "overall_si_sdri_db": 0.7261435407695602,
+      "target_alone_si_sdr_db": 15.018678501251959,
+      "si_sdri_by_overlap_db": {
+        "target_plus_1": -1.1988552532899144,
+        "target_plus_2": 0.11791137041781141,
+        "target_plus_3": 0.024270109363437875
+      },
+      "absent_vs_active_output_db": -2.5003472606815187,
+      "absent_vs_active_input_db": -1.8774384684493945,
+      "absent_suppression_db": 0.6229087922321241
+    },
+    {
+      "model": "tfmap_context_causal_100",
+      "block_seconds": 0.25,
+      "window_seconds": 0.5,
+      "mixture": "test_n5_908-1188-1089-7176-4970",
+      "target": "7176",
+      "real_time_factor": 0.5896783339994727,
+      "compute_p90_s": 0.1480493295006454,
+      "overall_si_sdri_db": 0.7451915013822958,
+      "target_alone_si_sdr_db": 11.303078778058842,
+      "si_sdri_by_overlap_db": {
+        "target_plus_1": -0.13823559160014653,
+        "target_plus_3": 3.678584607008017
+      },
+      "absent_vs_active_output_db": 1.1295782677857247,
+      "absent_vs_active_input_db": 1.4909332397257096,
+      "absent_suppression_db": 0.3613549719399849
+    },
+    {
+      "model": "tfmap_context_causal_100",
+      "block_seconds": 0.25,
+      "window_seconds": 0.5,
+      "mixture": "test_n5_908-1188-1089-7176-4970",
+      "target": "4970",
+      "real_time_factor": 0.512288167992665,
+      "compute_p90_s": 0.1286951626992959,
+      "overall_si_sdri_db": 7.706246367174165,
+      "target_alone_si_sdr_db": 11.247878629083061,
+      "si_sdri_by_overlap_db": {
+        "target_plus_1": 13.719769885640336,
+        "target_plus_2": 8.98056790573078,
+        "target_plus_3": 6.435829526763569
+      },
+      "absent_vs_active_output_db": -4.186285242873282,
+      "absent_vs_active_input_db": -0.5099816553943199,
+      "absent_suppression_db": 3.6763035874789622
+    },
+    {
+      "model": "tfmap_context_causal_100",
+      "block_seconds": 0.25,
+      "window_seconds": 0.5,
+      "mixture": "test_n6_8455-4446-4077-5105-2961-121",
+      "target": "8455",
+      "real_time_factor": 0.5890033340037917,
+      "compute_p90_s": 0.14787140000080398,
+      "overall_si_sdri_db": 3.732066206501731,
+      "target_alone_si_sdr_db": 16.936847045453664,
+      "si_sdri_by_overlap_db": {
+        "target_plus_1": 4.152115072852554,
+        "target_plus_2": 2.0600165905477628
+      },
+      "absent_vs_active_output_db": -1.4376920080246158,
+      "absent_vs_active_input_db": 0.5264776625958092,
+      "absent_suppression_db": 1.964169670620425
+    },
+    {
+      "model": "tfmap_context_causal_100",
+      "block_seconds": 0.25,
+      "window_seconds": 0.5,
+      "mixture": "test_n6_8455-4446-4077-5105-2961-121",
+      "target": "4446",
+      "real_time_factor": 0.5893253340036608,
+      "compute_p90_s": 0.14789547950094856,
+      "overall_si_sdri_db": 4.413110539461206,
+      "target_alone_si_sdr_db": 2.637319731251365,
+      "si_sdri_by_overlap_db": {
+        "target_plus_1": 11.509119286175228,
+        "target_plus_2": 11.60748660979346
+      },
+      "absent_vs_active_output_db": -5.1352661629374765,
+      "absent_vs_active_input_db": -1.0992900698457717,
+      "absent_suppression_db": 4.035976093091705
+    },
+    {
+      "model": "tfmap_context_causal_100",
+      "block_seconds": 0.25,
+      "window_seconds": 0.5,
+      "mixture": "test_n6_8455-4446-4077-5105-2961-121",
+      "target": "4077",
+      "real_time_factor": 0.5891248319967417,
+      "compute_p90_s": 0.14786020449755596,
+      "overall_si_sdri_db": 2.780460685392896,
+      "target_alone_si_sdr_db": 11.099259005781567,
+      "si_sdri_by_overlap_db": {
+        "target_plus_1": 4.845142185180657,
+        "target_plus_2": 4.668226482191545,
+        "target_plus_3": 0.7130514268599906
+      },
+      "absent_vs_active_output_db": -1.838057054396291,
+      "absent_vs_active_input_db": -0.785336108051272,
+      "absent_suppression_db": 1.0527209463450191
+    },
+    {
+      "model": "tfmap_context_causal_100",
+      "block_seconds": 0.25,
+      "window_seconds": 0.5,
+      "mixture": "test_n6_8455-4446-4077-5105-2961-121",
+      "target": "5105",
+      "real_time_factor": 0.5889049180041184,
+      "compute_p90_s": 0.1477722667990747,
+      "overall_si_sdri_db": 2.340604765827621,
+      "target_alone_si_sdr_db": null,
+      "si_sdri_by_overlap_db": {
+        "target_plus_1": 13.323073512472835,
+        "target_plus_2": 2.070740593361098,
+        "target_plus_3": 1.0459768748759712
+      },
+      "absent_vs_active_output_db": -4.087149283809996,
+      "absent_vs_active_input_db": -3.4836259957553537,
+      "absent_suppression_db": 0.6035232880546424
+    },
+    {
+      "model": "tfmap_context_causal_100",
+      "block_seconds": 0.25,
+      "window_seconds": 0.5,
+      "mixture": "test_n6_8455-4446-4077-5105-2961-121",
+      "target": "2961",
+      "real_time_factor": 0.5899534999989555,
+      "compute_p90_s": 0.14921163330182025,
+      "overall_si_sdri_db": 2.4620095375083775,
+      "target_alone_si_sdr_db": 13.723642871955494,
+      "si_sdri_by_overlap_db": {
+        "target_plus_1": 1.2994594423344101,
+        "target_plus_3": -3.115756290801423
+      },
+      "absent_vs_active_output_db": -5.4285043339896255,
+      "absent_vs_active_input_db": -2.376422927800057,
+      "absent_suppression_db": 3.0520814061895685
+    },
+    {
+      "model": "tfmap_context_causal_100",
+      "block_seconds": 0.25,
+      "window_seconds": 0.5,
+      "mixture": "test_n6_8455-4446-4077-5105-2961-121",
+      "target": "121",
+      "real_time_factor": 0.5893610839993926,
+      "compute_p90_s": 0.14828851269812732,
+      "overall_si_sdri_db": 3.59038547275768,
+      "target_alone_si_sdr_db": 13.200619345374571,
+      "si_sdri_by_overlap_db": {
+        "target_plus_1": 15.381889790781514,
+        "target_plus_2": 4.252889255752695,
+        "target_plus_3": 1.6310312211663085
+      },
+      "absent_vs_active_output_db": -3.8625491094366815,
+      "absent_vs_active_input_db": -1.7571549511733586,
+      "absent_suppression_db": 2.105394158263323
+    }
+  ],
+  "full_summary": [
+    {
+      "model": "spk_emb_100",
+      "split": "test",
+      "enrollment": "clean",
+      "runs": 15,
+      "median_si_sdri_db": 3.3716817947799385,
+      "p10_si_sdri_db": 2.2639981077738374,
+      "median_alone_si_sdr_db": 39.547839034276166,
+      "median_absent_suppression_db": 1.3227454372157723,
+      "median_real_time_factor": 0.327030410156226
+    },
+    {
+      "model": "spk_emb_100",
+      "split": "test",
+      "enrollment": "discovered",
+      "runs": 15,
+      "median_si_sdri_db": 3.398612247933376,
+      "p10_si_sdri_db": 1.6606213080682135,
+      "median_alone_si_sdr_db": 40.85605143053765,
+      "median_absent_suppression_db": 1.2690806005446582,
+      "median_real_time_factor": 0.3269165585936662
+    },
+    {
+      "model": "spk_emb_causal_100",
+      "split": "test",
+      "enrollment": "clean",
+      "runs": 15,
+      "median_si_sdri_db": 3.001010958391177,
+      "p10_si_sdri_db": -0.2317970276047301,
+      "median_alone_si_sdr_db": 19.648705032657137,
+      "median_absent_suppression_db": 1.5691499937230837,
+      "median_real_time_factor": 0.3162458398437593
+    },
+    {
+      "model": "spk_emb_causal_100",
+      "split": "test",
+      "enrollment": "discovered",
+      "runs": 15,
+      "median_si_sdri_db": 1.7678531800765693,
+      "p10_si_sdri_db": -0.0720051367227604,
+      "median_alone_si_sdr_db": 14.580451151236087,
+      "median_absent_suppression_db": 1.0866289211849107,
+      "median_real_time_factor": 0.3159687747499902
+    },
+    {
+      "model": "tfmap_context_100",
+      "split": "test",
+      "enrollment": "clean",
+      "runs": 15,
+      "median_si_sdri_db": 3.8825195740286764,
+      "p10_si_sdri_db": 2.064027781991017,
+      "median_alone_si_sdr_db": 40.28246845748185,
+      "median_absent_suppression_db": 1.338606810646933,
+      "median_real_time_factor": 0.33976893231249505
+    },
+    {
+      "model": "tfmap_context_100",
+      "split": "test",
+      "enrollment": "discovered",
+      "runs": 15,
+      "median_si_sdri_db": 3.9523246894195996,
+      "p10_si_sdri_db": -1.646038190381244,
+      "median_alone_si_sdr_db": 39.09651854296935,
+      "median_absent_suppression_db": 1.2315364418152939,
+      "median_real_time_factor": 0.33961783721872507
+    },
+    {
+      "model": "tfmap_context_causal_100",
+      "split": "test",
+      "enrollment": "clean",
+      "runs": 15,
+      "median_si_sdri_db": 3.854680164543323,
+      "p10_si_sdri_db": 1.6114640879242779,
+      "median_alone_si_sdr_db": 36.81850633085272,
+      "median_absent_suppression_db": 2.0287650564535546,
+      "median_real_time_factor": 0.32924534765629687
+    },
+    {
+      "model": "tfmap_context_causal_100",
+      "split": "test",
+      "enrollment": "discovered",
+      "runs": 15,
+      "median_si_sdri_db": 2.7812215241948675,
+      "p10_si_sdri_db": 0.04365680828621171,
+      "median_alone_si_sdr_db": 14.730747358728316,
+      "median_absent_suppression_db": 2.2342820930909433,
+      "median_real_time_factor": 0.3282589635311979
+    }
+  ],
+  "block_summary": [
+    {
+      "model": "tfmap_context_causal_100",
+      "block_seconds": 0.25,
+      "window_seconds": 0.5,
+      "runs": 15,
+      "median_si_sdri_db": 2.780460685392896,
+      "p10_si_sdri_db": 0.7337627250146544,
+      "median_alone_si_sdr_db": 12.251849061716706,
+      "median_absent_suppression_db": 2.105394158263323,
+      "median_real_time_factor": 0.5893253340036608
+    },
+    {
+      "model": "tfmap_context_causal_100",
+      "block_seconds": 0.25,
+      "window_seconds": 1.0,
+      "runs": 15,
+      "median_si_sdri_db": 2.903668348683958,
+      "p10_si_sdri_db": 0.9761286514813012,
+      "median_alone_si_sdr_db": 12.800228049694649,
+      "median_absent_suppression_db": 2.6805306696494036,
+      "median_real_time_factor": 1.0677656660045614
+    },
+    {
+      "model": "tfmap_context_causal_100",
+      "block_seconds": 0.5,
+      "window_seconds": 1.0,
+      "runs": 15,
+      "median_si_sdri_db": 2.9944435020596822,
+      "p10_si_sdri_db": 1.244149586233071,
+      "median_alone_si_sdr_db": 13.401257638463946,
+      "median_absent_suppression_db": 2.189841907200936,
+      "median_real_time_factor": 0.5336888740021095
+    },
+    {
+      "model": "tfmap_context_causal_100",
+      "block_seconds": 1.0,
+      "window_seconds": 2.0,
+      "runs": 15,
+      "median_si_sdri_db": 3.00400086791914,
+      "p10_si_sdri_db": 0.9403889836661934,
+      "median_alone_si_sdr_db": 13.450570508786612,
+      "median_absent_suppression_db": 2.3714778436019337,
+      "median_real_time_factor": 0.5017712080025376
+    }
+  ]
+}

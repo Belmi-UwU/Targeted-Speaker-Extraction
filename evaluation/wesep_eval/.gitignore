@@ -1,0 +1,5 @@
+# Third-party code, its environment, and downloaded weights stay local.
+.venv/
+upstream/
+checkpoints/
+outputs/
