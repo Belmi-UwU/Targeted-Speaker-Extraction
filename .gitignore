@@ -17,3 +17,6 @@ evaluation/data/user_recordings/
 *.pth
 evaluation/sepformer_libr3mix_loaded/
 evaluation/ecapa_loaded/
+
+# graphify knowledge-graph output (regenerated locally).
+graphify-out/

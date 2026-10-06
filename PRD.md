@@ -1,7 +1,7 @@
 # Product requirements document: Live target-speaker listening app
 
 **Status:** Draft for project alignment  
-**Version:** 0.2 — 6 October 2026  
+**Version:** 0.3 — 6 October 2026  
 **Owner:** Project team  
 **Current phase:** M1 complete; M2 offline model evaluation before app implementation
 
@@ -66,6 +66,24 @@ The [SpeakerBeam-SS paper](https://www.isca-archive.org/interspeech_2024/sato24_
 4. **Adjust and stop.** User controls output level, sees processing/route status, and stops immediately with one tap. No automatic storage of live conversation audio.
 5. **Recover from interruption.** If microphone permission, route, or processing fails, the app stops processed playback and clearly indicates the problem. It does not silently claim filtering is active.
 
+### Next phase: discover speakers from the live mix
+
+The next phase replaces the separate enrollment recording with **discovery enrollment**: the app learns voices from the conversation itself, and the user picks who to hear by listening.
+
+1. **Capture and separate.** The app buffers a short stretch of the live mixture, which may contain **any number of speakers, including more than three**. A blind separator splits it into one track per speaker, with no enrollment or target embedding.
+2. **Choose.** The user plays the discovered tracks and picks one speaker (several speakers is later work).
+3. **Embed.** A **separate speaker-encoder model**, such as the pinned ECAPA-TDNN, turns the chosen track into the target embedding. The extraction model does not create this embedding itself.
+4. **Listen live.** A causal TSE model conditioned on that embedding processes the live input and outputs only the chosen speaker.
+
+Only step 4 must run in real time. Steps 1–3 run once on a buffered clip, so the offline SepFormer + mixture-fit + ECAPA pipeline from M2 is the starting discovery stage. Because the Libri3Mix SepFormer always returns exactly three streams, discovery with more than three speakers needs short overlapping windows, separation per window, removal of near-silent streams, and clustering of stream embeddings into speakers. This handles any total number of speakers as long as at most three talk at once in a window.
+
+Requirements this adds:
+
+- The TSE model must be trained on, or adapted to, the **same embedding space** as the chosen encoder. An encoder cannot be swapped without retraining or a validated adapter.
+- A discovered track is a degraded enrollment: it can carry separation artifacts, leakage from other voices, and reduced bandwidth (8 kHz for the current SepFormer). Its effect must be measured with the separated-track enrollment test in Section 8 before this flow is adopted.
+- F2 applies to discovered tracks. If a speaker has too little clean solo speech in the buffer, the app keeps listening and says so instead of offering a weak profile.
+- A discovered embedding is a voiceprint of someone who did not enroll themselves. Keep it on the device, for the current session only by default; saving it requires an explicit user action.
+
 ## 6. Functional requirements
 
 | ID | Requirement | Acceptance evidence |
@@ -114,6 +132,26 @@ Do not download datasets until the evaluation workflow and storage budget are se
 
 The current checkpoint's training split is unknown. Dataset overlap must be checked before any public or comparative score is presented as independent generalization.
 
+### Separated-track enrollment test (next phase)
+
+This test measures how much worse an embedding from a discovered track is than one from a clean enrollment recording. It reuses the existing Libri3Mix trials and their clean sources, and later needs mixtures with four to six speakers. For each speaker in each mixture, compute encoder embeddings from three inputs:
+
+| Input | What it isolates |
+| --- | --- |
+| **Clean enrollment:** a separate LibriSpeech utterance by the same speaker (the current method) | Reference |
+| **Clean in-mix source:** that speaker's clean source for the mixture utterance | Effect of using a different utterance, with no separation damage |
+| **Discovered track:** the separator stream assigned to that speaker by the discovery pipeline | Effect of separation artifacts and leakage, plus the utterance change |
+
+Report the following, with the distribution and failures, not only the median:
+
+- **Embedding fidelity:** cosine similarity of the discovered-track embedding to the clean-enrollment embedding.
+- **Identification margin:** cosine to the correct clean enrollment minus the highest cosine to any other speaker's clean enrollment. A margin ≤ 0 means the discovered voice would be confused with someone else.
+- **Discovery correctness:** whether each discovered track contains exactly one speaker. Use the clean sources after inference only to audit this (oracle analysis). Count splits (one speaker over several tracks) and merges (several speakers in one track).
+- **Downstream cost:** once a TSE candidate exists, its SI-SDRi with discovered-track enrollment versus clean enrollment on the same trials. Provisional gate: median drop ≤ 1 dB, with no trial falling below 0 dB SI-SDRi only because of the enrollment source.
+- **Speech needed:** repeat the measurements using 2, 5, and 10 seconds of the speaker's solo speech in the discovery buffer, to set the minimum length used by F2.
+
+Record encoder and separator revisions and sample rates for every run. The current separator's streams are 8 kHz upsampled to 16 kHz before ECAPA, which is a confound that must be reported.
+
 ### Metrics and review artifacts
 
 - **Synthetic mixtures with clean references:** SI-SDRi relative to the mixture for one selected target; combined selected-source reference and per-speaker audibility for multiple targets; unselected-source leakage, target-only degradation, output clipping rate; optional intelligibility and perceptual quality measures when methods are validated.
@@ -144,6 +182,13 @@ Mic route -> capture buffer -> mono/resample -> causal selection model -> gain/l
                          route monitor   timing logs      clipping/underrun logs
 ```
 
+Next-phase discovery enrollment replaces the first line (see Section 5):
+
+```text
+Buffered mix -> windowed blind separation -> drop silent streams -> speaker encoder -> cluster per speaker
+             -> user picks a discovered speaker -> its embedding becomes the selected profile
+```
+
 For the first offline evaluation, a Python runner/notebook reads a trial manifest, invokes a pinned model, saves raw output plus a separate normalized listening copy, computes metrics, and writes a CSV/JSON result with per-trial errors. The notebook should call reusable functions; dataset handling, model inference, and scoring should not exist only as notebook cells.
 
 For the app, keep enrollment processing off the live audio callback. The streaming processor needs bounded memory, state reset on route change, deterministic frame accounting, and an explicit output gain/limiter. If multiple per-speaker streams are combined, the combiner needs its own clipping and leakage tests. Audio capture, resampling, model inference, and playback must each be measured separately. The phone microphone and Bluetooth microphone routes require separate validation; on Apple devices, selecting an HFP earbud mic can change the playback route too. [Apple documentation](https://developer.apple.com/documentation/avfaudio/avaudiosession/categoryoptions-swift.struct/allowbluetoothhfp)
@@ -159,8 +204,9 @@ For the app, keep enrollment processing off the live audio callback. The streami
 | M4 — causal streaming proof | Chunk/state inference integrated with audio path | Prefix-invariance check, sustained operation, and latency measured with model enabled. |
 | M5 — user prototype | Profile flow and live listening controls | Users can enroll several people, select one or more to hear, listen, bypass, recover from route changes, and delete profiles. |
 | M6 — pilot review | Structured listening study and issue log | Product gates reviewed with real device recordings; release scope and supported routes stated honestly. |
+| M7 — discovery enrollment (next phase) | Offline discovery pipeline for any number of speakers; separated-track enrollment test report | Discovery finds the correct speakers on mixtures with four or more speakers. The separated-track enrollment gate in Section 8 passes with the chosen TSE candidate. The user flow lets a listener pick a discovered speaker and listen live. |
 
-M1 and M3 can proceed in parallel after the basic contracts are fixed. M4 depends on selecting a causally valid model and validating the chosen audio route.
+M1 and M3 can proceed in parallel after the basic contracts are fixed. M4 depends on selecting a causally valid model and validating the chosen audio route. The offline parts of M7 (discovery and the embedding-fidelity measurements) reuse the M2 pipeline and can start alongside M2–M4. Its downstream gate waits for a TSE candidate.
 
 ## 12. Risks and decisions to close
 
@@ -174,7 +220,9 @@ M1 and M3 can proceed in parallel after the basic contracts are fixed. M4 depend
 | Checkpoint license | Code MIT; weights have no verified separate grant. | Obtain authoritative weight terms/provenance or exclude from distributed app. |
 | Dataset rights | Licenses differ across clean/noisy/real datasets. | Track rights per artifact and review before packaging or redistribution. |
 | Earbud mic route and fidelity | Platform route behavior may force HFP input/output pairing. | Physical device measurements, listening tests, and route fallback rules. |
-| User privacy | Live bystanders' voices are captured. | On-device processing, no default recording, explicit profile deletion, clear microphone indicator. |
+| User privacy | Live bystanders' voices are captured. Discovery enrollment would also create voiceprints of people who did not enroll. | On-device processing, no default recording, session-only discovered profiles unless the user saves them, explicit profile deletion, clear microphone indicator. |
+| Enrollment from separated tracks (next phase) | Proposed; unmeasured. Separation artifacts, leakage, 8 kHz bandwidth, and short solo speech may weaken embeddings. | Run the separated-track enrollment test in Section 8; set the minimum solo-speech duration from it. |
+| More than three speakers in the input | Required; the current separator outputs exactly three streams, and the evaluation manifest allows at most three sources. | Extend the manifest and builders to four–six speaker mixtures; test windowed separation with clustering for discovery and TSE robustness to four or more interferers. |
 | Monitoring comfort | Playback delay and speaker leakage can be distracting; open-air playback may cause feedback. | Test with headphones at safe levels and monitor for feedback, clipping, and delay discomfort. |
 
 ## 13. Immediate next work
@@ -183,6 +231,7 @@ M1 and M3 can proceed in parallel after the basic contracts are fixed. M4 depend
 2. Investigate the current demo gain path; the bundled output mismatch was explained by clipping, and playback quality remains to be measured.
 3. Build the smallest 16 kHz Libri2Mix evaluation manifest with a separate enrollment utterance and clean target, then add a three-speaker/two-selected manifest. Download only the selected test assets once the manifest and storage estimate are final.
 4. Produce a per-trial score report and listening examples, test a multiple-selected-speaker strategy, then compare a causal candidate before starting live integration.
+5. For the next phase, extend the manifest beyond three sources, build four–six speaker mixtures from the verified LibriSpeech test-clean audio, and run the embedding-fidelity part of the separated-track enrollment test with the existing SepFormer + ECAPA pipeline.
 
 ## References
 
