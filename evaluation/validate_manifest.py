@@ -14,6 +14,9 @@ REQUIRED_TRIAL = {"trial_id", "dataset", "dataset_revision", "speech_license",
                   "mixture_path", "selected_speaker_ids", "sources"}
 REQUIRED_SOURCE = {"speaker_id", "source_path", "source_utterance_id",
                    "enrollment_path", "enrollment_utterance_id"}
+# Allowed source counts per dataset; ControlledLibriNMix covers 4+ speakers.
+SOURCE_COUNTS = {"Libri2Mix": (2, 2), "Libri3Mix": (3, 3),
+                 "ControlledLibri3Mix": (3, 3), "ControlledLibriNMix": (4, 8)}
 
 
 def read_manifest(path: Path):
@@ -61,21 +64,22 @@ def audio_info(path: Path, sample_rate: int):
 
 def validate_trial(manifest: Path, trial: dict, check_mix_sum=False):
     trial_id = trial["trial_id"]
-    if trial["dataset"] not in ("Libri2Mix", "Libri3Mix", "ControlledLibri3Mix"):
+    if trial["dataset"] not in SOURCE_COUNTS:
         raise ValueError(f"{trial_id}: unsupported dataset")
     for key in ("dataset_revision", "speech_license"):
         if not isinstance(trial[key], str) or not trial[key]:
             raise ValueError(f"{trial_id}: {key} must be a nonempty string")
     allowed = {("Libri2Mix", "mix_clean"), ("Libri3Mix", "mix_clean"),
-               ("ControlledLibri3Mix", "turns_clean")}
+               ("ControlledLibri3Mix", "turns_clean"),
+               ("ControlledLibriNMix", "conversation_clean")}
     if trial["split"] != "test" or (trial["dataset"], trial["condition"]) not in allowed:
         raise ValueError(f"{trial_id}: unsupported split/dataset/condition combination")
     if trial["sample_rate_hz"] != 16000:
         raise ValueError(f"{trial_id}: M1 requires 16 kHz audio")
     sources = trial["sources"]
-    expected = 2 if trial["dataset"] == "Libri2Mix" else 3
-    if not isinstance(sources, list) or len(sources) != expected:
-        raise ValueError(f"{trial_id}: expected {expected} sources")
+    low, high = SOURCE_COUNTS[trial["dataset"]]
+    if not isinstance(sources, list) or not low <= len(sources) <= high:
+        raise ValueError(f"{trial_id}: expected {low}-{high} sources")
     selected = trial["selected_speaker_ids"]
     if not isinstance(selected, list) or not selected or any(
         not isinstance(s, str) or not s for s in selected

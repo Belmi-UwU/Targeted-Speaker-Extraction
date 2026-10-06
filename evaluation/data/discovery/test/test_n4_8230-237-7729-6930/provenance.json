@@ -1,0 +1,463 @@
+{
+  "type": "controlled conversation derivative of LibriSpeech test-clean; not an official LibriMix row",
+  "mixture_id": "test_n4_8230-237-7729-6930",
+  "split_role": "test",
+  "speakers": [
+    "8230",
+    "237",
+    "7729",
+    "6930"
+  ],
+  "seed": 2026,
+  "speaker_gain_db": {
+    "8230": -2.303371583424534,
+    "237": 1.1847835998518346,
+    "7729": 2.328192719921785,
+    "6930": 2.278003513785442
+  },
+  "enrollment_utterances": {
+    "8230": "8230-279154-0000",
+    "237": "237-126133-0000",
+    "7729": "7729-102255-0002",
+    "6930": "6930-75918-0001"
+  },
+  "construction": "per-section speaker RMS normalized to 0.05 times a +/-3 dB speaker gain; 10 ms fades per turn; common scale keeps mixture peak <= 0.9; sources sum exactly to mixture",
+  "sections": {
+    "discovery": {
+      "mixture_path": "audio/discovery_mix.wav",
+      "source_paths": {
+        "8230": "audio/discovery_s1_8230.wav",
+        "237": "audio/discovery_s2_237.wav",
+        "7729": "audio/discovery_s3_7729.wav",
+        "6930": "audio/discovery_s4_6930.wav"
+      },
+      "utterance_ids": {
+        "8230": [
+          "8230-279154-0001",
+          "8230-279154-0002"
+        ],
+        "237": [
+          "237-126133-0001",
+          "237-126133-0002",
+          "237-126133-0003"
+        ],
+        "7729": [
+          "7729-102255-0000",
+          "7729-102255-0001",
+          "7729-102255-0003"
+        ],
+        "6930": [
+          "6930-75918-0000",
+          "6930-75918-0002",
+          "6930-75918-0003"
+        ]
+      },
+      "segment_seconds": 2.5,
+      "segments": [
+        {
+          "label": "round1_solo",
+          "active_speaker_ids": [
+            "8230"
+          ],
+          "start_frame": 0,
+          "end_frame": 40000
+        },
+        {
+          "label": "round1_solo",
+          "active_speaker_ids": [
+            "237"
+          ],
+          "start_frame": 40000,
+          "end_frame": 80000
+        },
+        {
+          "label": "round1_solo",
+          "active_speaker_ids": [
+            "7729"
+          ],
+          "start_frame": 80000,
+          "end_frame": 120000
+        },
+        {
+          "label": "round1_solo",
+          "active_speaker_ids": [
+            "6930"
+          ],
+          "start_frame": 120000,
+          "end_frame": 160000
+        },
+        {
+          "label": "round1_overlap2",
+          "active_speaker_ids": [
+            "8230",
+            "237"
+          ],
+          "start_frame": 160000,
+          "end_frame": 200000
+        },
+        {
+          "label": "round1_overlap3",
+          "active_speaker_ids": [
+            "7729",
+            "6930",
+            "8230"
+          ],
+          "start_frame": 200000,
+          "end_frame": 240000
+        },
+        {
+          "label": "round2_solo",
+          "active_speaker_ids": [
+            "8230"
+          ],
+          "start_frame": 240000,
+          "end_frame": 280000
+        },
+        {
+          "label": "round2_solo",
+          "active_speaker_ids": [
+            "237"
+          ],
+          "start_frame": 280000,
+          "end_frame": 320000
+        },
+        {
+          "label": "round2_solo",
+          "active_speaker_ids": [
+            "7729"
+          ],
+          "start_frame": 320000,
+          "end_frame": 360000
+        },
+        {
+          "label": "round2_solo",
+          "active_speaker_ids": [
+            "6930"
+          ],
+          "start_frame": 360000,
+          "end_frame": 400000
+        },
+        {
+          "label": "round2_overlap2",
+          "active_speaker_ids": [
+            "237",
+            "7729"
+          ],
+          "start_frame": 400000,
+          "end_frame": 440000
+        },
+        {
+          "label": "round2_overlap3",
+          "active_speaker_ids": [
+            "6930",
+            "8230",
+            "237"
+          ],
+          "start_frame": 440000,
+          "end_frame": 480000
+        },
+        {
+          "label": "round3_solo",
+          "active_speaker_ids": [
+            "8230"
+          ],
+          "start_frame": 480000,
+          "end_frame": 520000
+        },
+        {
+          "label": "round3_solo",
+          "active_speaker_ids": [
+            "237"
+          ],
+          "start_frame": 520000,
+          "end_frame": 560000
+        },
+        {
+          "label": "round3_solo",
+          "active_speaker_ids": [
+            "7729"
+          ],
+          "start_frame": 560000,
+          "end_frame": 600000
+        },
+        {
+          "label": "round3_solo",
+          "active_speaker_ids": [
+            "6930"
+          ],
+          "start_frame": 600000,
+          "end_frame": 640000
+        },
+        {
+          "label": "round3_overlap2",
+          "active_speaker_ids": [
+            "7729",
+            "6930"
+          ],
+          "start_frame": 640000,
+          "end_frame": 680000
+        },
+        {
+          "label": "round3_overlap3",
+          "active_speaker_ids": [
+            "8230",
+            "237",
+            "7729"
+          ],
+          "start_frame": 680000,
+          "end_frame": 720000
+        },
+        {
+          "label": "round4_solo",
+          "active_speaker_ids": [
+            "8230"
+          ],
+          "start_frame": 720000,
+          "end_frame": 760000
+        },
+        {
+          "label": "round4_solo",
+          "active_speaker_ids": [
+            "237"
+          ],
+          "start_frame": 760000,
+          "end_frame": 800000
+        },
+        {
+          "label": "round4_solo",
+          "active_speaker_ids": [
+            "7729"
+          ],
+          "start_frame": 800000,
+          "end_frame": 840000
+        },
+        {
+          "label": "round4_solo",
+          "active_speaker_ids": [
+            "6930"
+          ],
+          "start_frame": 840000,
+          "end_frame": 880000
+        },
+        {
+          "label": "round4_overlap2",
+          "active_speaker_ids": [
+            "6930",
+            "8230"
+          ],
+          "start_frame": 880000,
+          "end_frame": 920000
+        },
+        {
+          "label": "round4_overlap3",
+          "active_speaker_ids": [
+            "237",
+            "7729",
+            "6930"
+          ],
+          "start_frame": 920000,
+          "end_frame": 960000
+        }
+      ],
+      "frames": 960000,
+      "common_scale": 0.9615210830426705,
+      "round_end_frames": [
+        240000,
+        480000,
+        720000,
+        960000
+      ]
+    },
+    "live": {
+      "mixture_path": "audio/live_mix.wav",
+      "source_paths": {
+        "8230": "audio/live_s1_8230.wav",
+        "237": "audio/live_s2_237.wav",
+        "7729": "audio/live_s3_7729.wav",
+        "6930": "audio/live_s4_6930.wav"
+      },
+      "utterance_ids": {
+        "8230": [
+          "8230-279154-0003",
+          "8230-279154-0004",
+          "8230-279154-0005"
+        ],
+        "237": [
+          "237-126133-0004",
+          "237-126133-0005",
+          "237-126133-0006"
+        ],
+        "7729": [
+          "7729-102255-0004"
+        ],
+        "6930": [
+          "6930-75918-0004",
+          "6930-75918-0005"
+        ]
+      },
+      "segment_seconds": 2.0,
+      "segments": [
+        {
+          "label": "live_1_active",
+          "active_speaker_ids": [
+            "7729"
+          ],
+          "start_frame": 0,
+          "end_frame": 32000
+        },
+        {
+          "label": "live_2_active",
+          "active_speaker_ids": [
+            "8230",
+            "237"
+          ],
+          "start_frame": 32000,
+          "end_frame": 64000
+        },
+        {
+          "label": "live_1_active",
+          "active_speaker_ids": [
+            "6930"
+          ],
+          "start_frame": 64000,
+          "end_frame": 96000
+        },
+        {
+          "label": "live_3_active",
+          "active_speaker_ids": [
+            "8230",
+            "237",
+            "6930"
+          ],
+          "start_frame": 96000,
+          "end_frame": 128000
+        },
+        {
+          "label": "live_2_active",
+          "active_speaker_ids": [
+            "8230",
+            "7729"
+          ],
+          "start_frame": 128000,
+          "end_frame": 160000
+        },
+        {
+          "label": "live_1_active",
+          "active_speaker_ids": [
+            "6930"
+          ],
+          "start_frame": 160000,
+          "end_frame": 192000
+        },
+        {
+          "label": "live_3_active",
+          "active_speaker_ids": [
+            "8230",
+            "237",
+            "7729"
+          ],
+          "start_frame": 192000,
+          "end_frame": 224000
+        },
+        {
+          "label": "live_1_active",
+          "active_speaker_ids": [
+            "237"
+          ],
+          "start_frame": 224000,
+          "end_frame": 256000
+        },
+        {
+          "label": "live_2_active",
+          "active_speaker_ids": [
+            "7729",
+            "6930"
+          ],
+          "start_frame": 256000,
+          "end_frame": 288000
+        },
+        {
+          "label": "live_4_active",
+          "active_speaker_ids": [
+            "8230",
+            "237",
+            "7729",
+            "6930"
+          ],
+          "start_frame": 288000,
+          "end_frame": 320000
+        },
+        {
+          "label": "live_1_active",
+          "active_speaker_ids": [
+            "8230"
+          ],
+          "start_frame": 320000,
+          "end_frame": 352000
+        },
+        {
+          "label": "live_2_active",
+          "active_speaker_ids": [
+            "7729",
+            "6930"
+          ],
+          "start_frame": 352000,
+          "end_frame": 384000
+        },
+        {
+          "label": "live_3_active",
+          "active_speaker_ids": [
+            "8230",
+            "237",
+            "6930"
+          ],
+          "start_frame": 384000,
+          "end_frame": 416000
+        },
+        {
+          "label": "live_1_active",
+          "active_speaker_ids": [
+            "7729"
+          ],
+          "start_frame": 416000,
+          "end_frame": 448000
+        },
+        {
+          "label": "live_2_active",
+          "active_speaker_ids": [
+            "8230",
+            "237"
+          ],
+          "start_frame": 448000,
+          "end_frame": 480000
+        },
+        {
+          "label": "live_1_active",
+          "active_speaker_ids": [
+            "7729"
+          ],
+          "start_frame": 480000,
+          "end_frame": 512000
+        }
+      ],
+      "frames": 512000,
+      "common_scale": 0.9971374197789292
+    }
+  },
+  "file_sha256": {
+    "audio/237_enrollment.wav": "600640180ec9918c158d5df8bcc9096fc9b75b46a94b85a03ffdba9a5cdadfe7",
+    "audio/6930_enrollment.wav": "7a0c28ad2cca523cd7e7d72e360a3f314eeb905688358dbf6f150c0a87b87f76",
+    "audio/7729_enrollment.wav": "f8e9574a4743df5adca62c99b13aeee6cd48082aed075708545a898435aabde3",
+    "audio/8230_enrollment.wav": "bf1fb0794515d16f958344a8145c04ee40fad8f820fafb9e80565a56fca3b58b",
+    "audio/discovery_mix.wav": "a986fe05a0edef5562abdf2373f6d3c7b622f69085fe21b23812ed4087002c16",
+    "audio/discovery_s1_8230.wav": "54667c05284f142a7ff08aa605a505ded751deafbdabb3d2860e9fe2de53643a",
+    "audio/discovery_s2_237.wav": "be890566f38623aae360e17576247158e9a3d997df8173f3a7a06703b4cb89b4",
+    "audio/discovery_s3_7729.wav": "b21556326d1724270d2136c5848d71eae459964799f7f78d116bf856da756b11",
+    "audio/discovery_s4_6930.wav": "bf7c8aab5f47996008bfd41478960bc4993a9526dfa638b1e20d3cd7efce988e",
+    "audio/live_mix.wav": "c40140b3d2739860f9ebb3ddf8892a877e2f139527e61fb615837302ff9db38e",
+    "audio/live_s1_8230.wav": "e69770fd3081aa6f71e655ce6122bcb51a45cc0b42d7a2acda6b45a21c60df52",
+    "audio/live_s2_237.wav": "4920f207bc16d29863e274c146fd5edb21657ea74e74350e764b0b3f1887b2f3",
+    "audio/live_s3_7729.wav": "0d7f255c11ddccdd03155a3a7b16ed7aa2cdbfe4cf11bab3990ef4b16ebba6bf",
+    "audio/live_s4_6930.wav": "92dc7c7a9d9d154cf7a0369d018f477d96372b5200cc2e209ff9d0cbb8aa5f41"
+  }
+}

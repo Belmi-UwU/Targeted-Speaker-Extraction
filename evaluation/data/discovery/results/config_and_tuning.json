@@ -1,0 +1,677 @@
+{
+  "scope": "Controlled clean LibriSpeech conversations; offline research models; not streaming or device timing",
+  "models": {
+    "separator": "SpeechBrain SepFormer Libri3Mix rev 1f2d824e2333aec9e60d0030fb144885c1afc426 (8 kHz, 3 streams)",
+    "ecapa": "SpeechBrain ECAPA-TDNN VoxCeleb rev 0f99f2d0ebe89ac095bcc5903c4dd8f72b367286",
+    "resemblyzer": "Resemblyzer VoiceEncoder 0.1.4",
+    "speakerbeam_ss": "OpenSpeakerBeam-SS independent checkpoint sha256 41c250587af2e947dc3e265cd6e7aa7de230048d408e93c53d8348d63cf75896",
+    "sepformer_selector": "windowed SepFormer; keep streams whose ECAPA cosine to the target is above a threshold",
+    "sepformer_competitive": "windowed SepFormer; keep streams whose closest known speaker (all discovered, or all enrolled) is the target"
+  },
+  "window_seconds": 4.0,
+  "hop_seconds": 2.0,
+  "stream_floor_db": -15.0,
+  "pure_share": 0.8,
+  "discovery_tuning": {
+    "ecapa": {
+      "chosen": {
+        "distance_threshold": 0.6,
+        "min_windows": 3,
+        "dev_errors": 1
+      },
+      "grid": [
+        {
+          "distance_threshold": 0.3,
+          "min_windows": 1,
+          "dev_errors": 170
+        },
+        {
+          "distance_threshold": 0.3,
+          "min_windows": 2,
+          "dev_errors": 63
+        },
+        {
+          "distance_threshold": 0.3,
+          "min_windows": 3,
+          "dev_errors": 12
+        },
+        {
+          "distance_threshold": 0.35,
+          "min_windows": 1,
+          "dev_errors": 143
+        },
+        {
+          "distance_threshold": 0.35,
+          "min_windows": 2,
+          "dev_errors": 58
+        },
+        {
+          "distance_threshold": 0.35,
+          "min_windows": 3,
+          "dev_errors": 12
+        },
+        {
+          "distance_threshold": 0.4,
+          "min_windows": 1,
+          "dev_errors": 117
+        },
+        {
+          "distance_threshold": 0.4,
+          "min_windows": 2,
+          "dev_errors": 47
+        },
+        {
+          "distance_threshold": 0.4,
+          "min_windows": 3,
+          "dev_errors": 12
+        },
+        {
+          "distance_threshold": 0.45,
+          "min_windows": 1,
+          "dev_errors": 90
+        },
+        {
+          "distance_threshold": 0.45,
+          "min_windows": 2,
+          "dev_errors": 35
+        },
+        {
+          "distance_threshold": 0.45,
+          "min_windows": 3,
+          "dev_errors": 14
+        },
+        {
+          "distance_threshold": 0.5,
+          "min_windows": 1,
+          "dev_errors": 61
+        },
+        {
+          "distance_threshold": 0.5,
+          "min_windows": 2,
+          "dev_errors": 19
+        },
+        {
+          "distance_threshold": 0.5,
+          "min_windows": 3,
+          "dev_errors": 7
+        },
+        {
+          "distance_threshold": 0.55,
+          "min_windows": 1,
+          "dev_errors": 43
+        },
+        {
+          "distance_threshold": 0.55,
+          "min_windows": 2,
+          "dev_errors": 13
+        },
+        {
+          "distance_threshold": 0.55,
+          "min_windows": 3,
+          "dev_errors": 3
+        },
+        {
+          "distance_threshold": 0.6,
+          "min_windows": 1,
+          "dev_errors": 29
+        },
+        {
+          "distance_threshold": 0.6,
+          "min_windows": 2,
+          "dev_errors": 7
+        },
+        {
+          "distance_threshold": 0.6,
+          "min_windows": 3,
+          "dev_errors": 1
+        },
+        {
+          "distance_threshold": 0.65,
+          "min_windows": 1,
+          "dev_errors": 13
+        },
+        {
+          "distance_threshold": 0.65,
+          "min_windows": 2,
+          "dev_errors": 4
+        },
+        {
+          "distance_threshold": 0.65,
+          "min_windows": 3,
+          "dev_errors": 2
+        },
+        {
+          "distance_threshold": 0.7,
+          "min_windows": 1,
+          "dev_errors": 11
+        },
+        {
+          "distance_threshold": 0.7,
+          "min_windows": 2,
+          "dev_errors": 8
+        },
+        {
+          "distance_threshold": 0.7,
+          "min_windows": 3,
+          "dev_errors": 7
+        },
+        {
+          "distance_threshold": 0.75,
+          "min_windows": 1,
+          "dev_errors": 12
+        },
+        {
+          "distance_threshold": 0.75,
+          "min_windows": 2,
+          "dev_errors": 10
+        },
+        {
+          "distance_threshold": 0.75,
+          "min_windows": 3,
+          "dev_errors": 10
+        },
+        {
+          "distance_threshold": 0.8,
+          "min_windows": 1,
+          "dev_errors": 13
+        },
+        {
+          "distance_threshold": 0.8,
+          "min_windows": 2,
+          "dev_errors": 11
+        },
+        {
+          "distance_threshold": 0.8,
+          "min_windows": 3,
+          "dev_errors": 12
+        },
+        {
+          "distance_threshold": 0.85,
+          "min_windows": 1,
+          "dev_errors": 14
+        },
+        {
+          "distance_threshold": 0.85,
+          "min_windows": 2,
+          "dev_errors": 15
+        },
+        {
+          "distance_threshold": 0.85,
+          "min_windows": 3,
+          "dev_errors": 15
+        }
+      ]
+    },
+    "resemblyzer": {
+      "chosen": {
+        "distance_threshold": 0.3,
+        "min_windows": 3,
+        "dev_errors": 4
+      },
+      "grid": [
+        {
+          "distance_threshold": 0.1,
+          "min_windows": 1,
+          "dev_errors": 194
+        },
+        {
+          "distance_threshold": 0.1,
+          "min_windows": 2,
+          "dev_errors": 46
+        },
+        {
+          "distance_threshold": 0.1,
+          "min_windows": 3,
+          "dev_errors": 13
+        },
+        {
+          "distance_threshold": 0.125,
+          "min_windows": 1,
+          "dev_errors": 168
+        },
+        {
+          "distance_threshold": 0.125,
+          "min_windows": 2,
+          "dev_errors": 62
+        },
+        {
+          "distance_threshold": 0.125,
+          "min_windows": 3,
+          "dev_errors": 11
+        },
+        {
+          "distance_threshold": 0.15,
+          "min_windows": 1,
+          "dev_errors": 137
+        },
+        {
+          "distance_threshold": 0.15,
+          "min_windows": 2,
+          "dev_errors": 62
+        },
+        {
+          "distance_threshold": 0.15,
+          "min_windows": 3,
+          "dev_errors": 11
+        },
+        {
+          "distance_threshold": 0.175,
+          "min_windows": 1,
+          "dev_errors": 100
+        },
+        {
+          "distance_threshold": 0.175,
+          "min_windows": 2,
+          "dev_errors": 52
+        },
+        {
+          "distance_threshold": 0.175,
+          "min_windows": 3,
+          "dev_errors": 17
+        },
+        {
+          "distance_threshold": 0.2,
+          "min_windows": 1,
+          "dev_errors": 67
+        },
+        {
+          "distance_threshold": 0.2,
+          "min_windows": 2,
+          "dev_errors": 33
+        },
+        {
+          "distance_threshold": 0.2,
+          "min_windows": 3,
+          "dev_errors": 11
+        },
+        {
+          "distance_threshold": 0.225,
+          "min_windows": 1,
+          "dev_errors": 45
+        },
+        {
+          "distance_threshold": 0.225,
+          "min_windows": 2,
+          "dev_errors": 16
+        },
+        {
+          "distance_threshold": 0.225,
+          "min_windows": 3,
+          "dev_errors": 9
+        },
+        {
+          "distance_threshold": 0.25,
+          "min_windows": 1,
+          "dev_errors": 29
+        },
+        {
+          "distance_threshold": 0.25,
+          "min_windows": 2,
+          "dev_errors": 10
+        },
+        {
+          "distance_threshold": 0.25,
+          "min_windows": 3,
+          "dev_errors": 6
+        },
+        {
+          "distance_threshold": 0.275,
+          "min_windows": 1,
+          "dev_errors": 15
+        },
+        {
+          "distance_threshold": 0.275,
+          "min_windows": 2,
+          "dev_errors": 7
+        },
+        {
+          "distance_threshold": 0.275,
+          "min_windows": 3,
+          "dev_errors": 6
+        },
+        {
+          "distance_threshold": 0.3,
+          "min_windows": 1,
+          "dev_errors": 7
+        },
+        {
+          "distance_threshold": 0.3,
+          "min_windows": 2,
+          "dev_errors": 5
+        },
+        {
+          "distance_threshold": 0.3,
+          "min_windows": 3,
+          "dev_errors": 4
+        },
+        {
+          "distance_threshold": 0.325,
+          "min_windows": 1,
+          "dev_errors": 8
+        },
+        {
+          "distance_threshold": 0.325,
+          "min_windows": 2,
+          "dev_errors": 8
+        },
+        {
+          "distance_threshold": 0.325,
+          "min_windows": 3,
+          "dev_errors": 7
+        },
+        {
+          "distance_threshold": 0.35,
+          "min_windows": 1,
+          "dev_errors": 9
+        },
+        {
+          "distance_threshold": 0.35,
+          "min_windows": 2,
+          "dev_errors": 9
+        },
+        {
+          "distance_threshold": 0.35,
+          "min_windows": 3,
+          "dev_errors": 8
+        },
+        {
+          "distance_threshold": 0.375,
+          "min_windows": 1,
+          "dev_errors": 8
+        },
+        {
+          "distance_threshold": 0.375,
+          "min_windows": 2,
+          "dev_errors": 8
+        },
+        {
+          "distance_threshold": 0.375,
+          "min_windows": 3,
+          "dev_errors": 8
+        },
+        {
+          "distance_threshold": 0.4,
+          "min_windows": 1,
+          "dev_errors": 12
+        },
+        {
+          "distance_threshold": 0.4,
+          "min_windows": 2,
+          "dev_errors": 12
+        },
+        {
+          "distance_threshold": 0.4,
+          "min_windows": 3,
+          "dev_errors": 12
+        },
+        {
+          "distance_threshold": 0.425,
+          "min_windows": 1,
+          "dev_errors": 12
+        },
+        {
+          "distance_threshold": 0.425,
+          "min_windows": 2,
+          "dev_errors": 12
+        },
+        {
+          "distance_threshold": 0.425,
+          "min_windows": 3,
+          "dev_errors": 12
+        },
+        {
+          "distance_threshold": 0.45,
+          "min_windows": 1,
+          "dev_errors": 13
+        },
+        {
+          "distance_threshold": 0.45,
+          "min_windows": 2,
+          "dev_errors": 13
+        },
+        {
+          "distance_threshold": 0.45,
+          "min_windows": 3,
+          "dev_errors": 13
+        },
+        {
+          "distance_threshold": 0.475,
+          "min_windows": 1,
+          "dev_errors": 15
+        },
+        {
+          "distance_threshold": 0.475,
+          "min_windows": 2,
+          "dev_errors": 15
+        },
+        {
+          "distance_threshold": 0.475,
+          "min_windows": 3,
+          "dev_errors": 15
+        },
+        {
+          "distance_threshold": 0.5,
+          "min_windows": 1,
+          "dev_errors": 15
+        },
+        {
+          "distance_threshold": 0.5,
+          "min_windows": 2,
+          "dev_errors": 15
+        },
+        {
+          "distance_threshold": 0.5,
+          "min_windows": 3,
+          "dev_errors": 15
+        }
+      ]
+    }
+  },
+  "live_tuning": {
+    "sepformer_selector": {
+      "clean": {
+        "chosen": {
+          "threshold": 0.3,
+          "dev_median_si_sdri_db": 10.548016252289528
+        },
+        "grid": [
+          {
+            "threshold": 0.15,
+            "dev_median_si_sdri_db": 5.903535570837639
+          },
+          {
+            "threshold": 0.2,
+            "dev_median_si_sdri_db": 9.492981430040862
+          },
+          {
+            "threshold": 0.25,
+            "dev_median_si_sdri_db": 9.74207142214143
+          },
+          {
+            "threshold": 0.3,
+            "dev_median_si_sdri_db": 10.548016252289528
+          },
+          {
+            "threshold": 0.35,
+            "dev_median_si_sdri_db": 8.367741574006107
+          },
+          {
+            "threshold": 0.4,
+            "dev_median_si_sdri_db": 8.98985257102051
+          },
+          {
+            "threshold": 0.45,
+            "dev_median_si_sdri_db": 6.680173114906607
+          },
+          {
+            "threshold": 0.5,
+            "dev_median_si_sdri_db": 6.110943082891753
+          },
+          {
+            "threshold": 0.55,
+            "dev_median_si_sdri_db": 5.774271882019729
+          },
+          {
+            "threshold": 0.6,
+            "dev_median_si_sdri_db": 6.053901863869406
+          }
+        ]
+      },
+      "discovered": {
+        "chosen": {
+          "threshold": 0.5,
+          "dev_median_si_sdri_db": 11.13932010921955
+        },
+        "grid": [
+          {
+            "threshold": 0.15,
+            "dev_median_si_sdri_db": 0.6538776664229804
+          },
+          {
+            "threshold": 0.2,
+            "dev_median_si_sdri_db": 1.6368358239148222
+          },
+          {
+            "threshold": 0.25,
+            "dev_median_si_sdri_db": 3.3503089168760183
+          },
+          {
+            "threshold": 0.3,
+            "dev_median_si_sdri_db": 4.314321334331673
+          },
+          {
+            "threshold": 0.35,
+            "dev_median_si_sdri_db": 5.987827111786629
+          },
+          {
+            "threshold": 0.4,
+            "dev_median_si_sdri_db": 7.039949389123931
+          },
+          {
+            "threshold": 0.45,
+            "dev_median_si_sdri_db": 8.446321368683833
+          },
+          {
+            "threshold": 0.5,
+            "dev_median_si_sdri_db": 11.13932010921955
+          },
+          {
+            "threshold": 0.55,
+            "dev_median_si_sdri_db": 11.127811872528335
+          },
+          {
+            "threshold": 0.6,
+            "dev_median_si_sdri_db": 10.548016252289528
+          }
+        ]
+      }
+    },
+    "sepformer_competitive": {
+      "clean": {
+        "chosen": {
+          "threshold": 0.0,
+          "dev_median_si_sdri_db": 11.99245305029183
+        },
+        "grid": [
+          {
+            "threshold": 0.0,
+            "dev_median_si_sdri_db": 11.99245305029183
+          },
+          {
+            "threshold": 0.05,
+            "dev_median_si_sdri_db": 11.99245305029183
+          },
+          {
+            "threshold": 0.1,
+            "dev_median_si_sdri_db": 11.99245305029183
+          },
+          {
+            "threshold": 0.15,
+            "dev_median_si_sdri_db": 11.99245305029183
+          },
+          {
+            "threshold": 0.2,
+            "dev_median_si_sdri_db": 11.99245305029183
+          },
+          {
+            "threshold": 0.25,
+            "dev_median_si_sdri_db": 11.835278353733122
+          },
+          {
+            "threshold": 0.3,
+            "dev_median_si_sdri_db": 10.548016252289528
+          },
+          {
+            "threshold": 0.35,
+            "dev_median_si_sdri_db": 8.769121044952213
+          },
+          {
+            "threshold": 0.4,
+            "dev_median_si_sdri_db": 8.98985257102051
+          },
+          {
+            "threshold": 0.45,
+            "dev_median_si_sdri_db": 6.680173114906607
+          },
+          {
+            "threshold": 0.5,
+            "dev_median_si_sdri_db": 6.110943082891753
+          }
+        ]
+      },
+      "discovered": {
+        "chosen": {
+          "threshold": 0.0,
+          "dev_median_si_sdri_db": 11.80632353883908
+        },
+        "grid": [
+          {
+            "threshold": 0.0,
+            "dev_median_si_sdri_db": 11.80632353883908
+          },
+          {
+            "threshold": 0.05,
+            "dev_median_si_sdri_db": 11.80632353883908
+          },
+          {
+            "threshold": 0.1,
+            "dev_median_si_sdri_db": 11.80632353883908
+          },
+          {
+            "threshold": 0.15,
+            "dev_median_si_sdri_db": 11.80632353883908
+          },
+          {
+            "threshold": 0.2,
+            "dev_median_si_sdri_db": 11.80632353883908
+          },
+          {
+            "threshold": 0.25,
+            "dev_median_si_sdri_db": 11.80632353883908
+          },
+          {
+            "threshold": 0.3,
+            "dev_median_si_sdri_db": 11.80632353883908
+          },
+          {
+            "threshold": 0.35,
+            "dev_median_si_sdri_db": 11.80632353883908
+          },
+          {
+            "threshold": 0.4,
+            "dev_median_si_sdri_db": 11.561042410868367
+          },
+          {
+            "threshold": 0.45,
+            "dev_median_si_sdri_db": 11.561042410868367
+          },
+          {
+            "threshold": 0.5,
+            "dev_median_si_sdri_db": 11.50323429252239
+          }
+        ]
+      }
+    }
+  },
+  "runtime_seconds": 894.0839436249989
+}

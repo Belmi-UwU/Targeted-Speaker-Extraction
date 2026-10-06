@@ -6,16 +6,16 @@
   "required": ["trial_id", "dataset", "dataset_revision", "speech_license", "split", "condition", "sample_rate_hz", "mixture_path", "selected_speaker_ids", "sources"],
   "properties": {
     "trial_id": {"type": "string", "minLength": 1, "description": "Portable output filename stem; unique within a manifest."},
-    "dataset": {"type": "string", "enum": ["Libri2Mix", "Libri3Mix", "ControlledLibri3Mix"]},
+    "dataset": {"type": "string", "enum": ["Libri2Mix", "Libri3Mix", "ControlledLibri3Mix", "ControlledLibriNMix"]},
     "dataset_revision": {"type": "string", "minLength": 1, "description": "Pinned metadata commit or dataset release identifier."},
     "speech_license": {"type": "string", "minLength": 1, "description": "License identifier for the underlying speech recordings."},
     "split": {"type": "string", "enum": ["test"]},
-    "condition": {"type": "string", "enum": ["mix_clean", "turns_clean"]},
+    "condition": {"type": "string", "enum": ["mix_clean", "turns_clean", "conversation_clean"]},
     "sample_rate_hz": {"type": "integer", "const": 16000},
     "mixture_path": {"type": "string", "minLength": 1},
     "selected_speaker_ids": {"type": "array", "minItems": 1, "uniqueItems": true, "items": {"type": "string", "minLength": 1}},
     "sources": {
-      "type": "array", "minItems": 2, "maxItems": 3,
+      "type": "array", "minItems": 2, "maxItems": 8,
       "items": {
         "type": "object",
         "required": ["speaker_id", "source_path", "source_utterance_id", "enrollment_path", "enrollment_utterance_id"],

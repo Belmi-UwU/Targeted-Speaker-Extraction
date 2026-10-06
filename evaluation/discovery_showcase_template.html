@@ -1,0 +1,242 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Discovery Enrollment Showcase</title>
+<style>
+:root {
+  --bg: #f7f6f2; --panel: #ffffff; --ink: #1d1f24; --muted: #5d6470; --line: #dedbd2;
+  --accent: #2f6f5e; --accent-ink: #ffffff; --warn: #9a5b12; --bad: #a33a2b; --good: #2f6f3e;
+  --chip: #eceae3;
+}
+@media (prefers-color-scheme: dark) {
+  :root:not([data-theme="light"]) {
+    --bg: #15171b; --panel: #1e2126; --ink: #e8e6e1; --muted: #a2a8b3; --line: #34383f;
+    --accent: #6cbfa6; --accent-ink: #0f1513; --warn: #e2a85a; --bad: #ef8a7a; --good: #8fd19e;
+    --chip: #2a2e35;
+  }
+}
+* { box-sizing: border-box; }
+body { margin: 0; background: var(--bg); color: var(--ink);
+  font: 15px/1.5 -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif; }
+main { max-width: 1100px; margin: 0 auto; padding: 24px 16px 64px; }
+h1 { font-size: 26px; margin: 0 0 4px; }
+h2 { font-size: 19px; margin: 32px 0 8px; }
+h3 { font-size: 15px; margin: 0 0 6px; }
+p.lead { color: var(--muted); margin: 0 0 16px; max-width: 75ch; }
+.note { border-left: 3px solid var(--warn); padding: 8px 12px; background: var(--panel); color: var(--muted); }
+.panel { background: var(--panel); border: 1px solid var(--line); border-radius: 10px; padding: 14px; }
+.grid { display: grid; gap: 12px; grid-template-columns: repeat(auto-fill, minmax(250px, 1fr)); }
+.row { display: flex; flex-wrap: wrap; gap: 8px; align-items: center; }
+.step { display: inline-block; background: var(--accent); color: var(--accent-ink); border-radius: 999px;
+  width: 24px; height: 24px; text-align: center; font-weight: 700; margin-right: 6px; }
+audio { width: 100%; margin: 6px 0; }
+button, select { font: inherit; border-radius: 8px; border: 1px solid var(--line); background: var(--panel);
+  color: var(--ink); padding: 6px 10px; cursor: pointer; }
+button.primary { background: var(--accent); color: var(--accent-ink); border-color: var(--accent); }
+button.chosen { outline: 2px solid var(--accent); }
+.chip { display: inline-block; background: var(--chip); border-radius: 6px; padding: 1px 7px; font-size: 13px; }
+.truth { display: none; font-size: 13px; color: var(--muted); }
+body.reveal .truth { display: block; }
+.good { color: var(--good); } .bad { color: var(--bad); }
+.table-wrap { overflow-x: auto; }
+table { border-collapse: collapse; width: 100%; font-size: 13.5px; font-variant-numeric: tabular-nums; }
+th, td { text-align: right; padding: 5px 8px; border-bottom: 1px solid var(--line); white-space: nowrap; }
+th:first-child, td:first-child, th.l, td.l { text-align: left; }
+.rating { display: flex; gap: 4px; align-items: center; font-size: 13px; color: var(--muted); margin-top: 4px; }
+.rating button { padding: 1px 7px; font-size: 13px; }
+.rating button.on { background: var(--accent); color: var(--accent-ink); }
+.timeline { display: grid; gap: 2px; font-size: 11px; }
+.timeline .cell { height: 14px; border-radius: 2px; background: var(--chip); }
+.timeline .on { background: var(--muted); }
+.timeline .target { background: var(--accent); }
+.tabs button { border-radius: 8px 8px 0 0; }
+</style>
+</head>
+<body>
+<main>
+  <h1>Discovery enrollment showcase</h1>
+  <p class="lead">Manual listening test for the next-phase flow: blind separation finds the speakers in a conversation, you pick one, and a live extraction model keeps only that voice. Controlled clean LibriSpeech conversations with 4–6 speakers; offline research models, not real-time or phone timing.</p>
+  <div class="note">Each clip is peak-normalized for listening, so compare <b>which voices remain, clarity, and leakage</b>, not loudness. SepFormer works at 8 kHz, so its outputs sound band-limited. Thresholds were tuned on <b>dev</b> mixtures; <b>test</b> mixtures use disjoint speakers.</div>
+
+  <h2>Results summary</h2>
+  <div id="summary"></div>
+
+  <h2>Manual test</h2>
+  <div class="panel">
+    <div class="row">
+      <label for="mixture">Conversation</label>
+      <select id="mixture"></select>
+      <label class="row"><input type="checkbox" id="reveal"> Reveal ground truth and scores</label>
+      <button id="export">Export my ratings (JSON)</button>
+    </div>
+  </div>
+  <div id="test"></div>
+</main>
+<script>
+const DATA = /*__DATA__*/null;
+const MODEL_NAMES = {speakerbeam_ss: "SpeakerBeam-SS", sepformer_selector: "SepFormer selector", sepformer_competitive: "SepFormer competitive"};
+const RATINGS_KEY = "discovery-showcase-ratings-v1";
+let ratings = {};
+try { ratings = JSON.parse(localStorage.getItem(RATINGS_KEY) || "{}"); } catch (e) { ratings = {}; }
+const fmt = (v, d = 1) => v === null || v === undefined || Number.isNaN(v) ? "–" : Number(v).toFixed(d);
+const el = (tag, attrs = {}, html) => { const n = document.createElement(tag); Object.assign(n, attrs); if (html !== undefined) n.innerHTML = html; return n; };
+
+function table(headers, rows) {
+  const head = headers.map(h => `<th class="${h.l ? "l" : ""}">${h.t}</th>`).join("");
+  const body = rows.map(r => `<tr>${r.map((c, i) => `<td class="${headers[i].l ? "l" : ""}">${c}</td>`).join("")}</tr>`).join("");
+  return `<div class="table-wrap"><table><thead><tr>${head}</tr></thead><tbody>${body}</tbody></table></div>`;
+}
+
+function renderSummary() {
+  const s = DATA.summary, cfg = DATA.config, box = document.getElementById("summary");
+  const d = cfg.discovery_tuning, lt = cfg.live_tuning;
+  const thr = (m, k) => lt[m][k].chosen.threshold;
+  box.innerHTML = `
+  <div class="panel"><h3>Discovery: are the right speakers found?</h3>
+  <p class="lead">Buffer = rounds of turns heard before choosing (each round gives every speaker ~2.5 s of solo speech). Clustering thresholds from dev: ECAPA distance ${d.ecapa.chosen.distance_threshold} (min ${d.ecapa.chosen.min_windows} windows), Resemblyzer ${d.resemblyzer.chosen.distance_threshold} (min ${d.resemblyzer.chosen.min_windows}).</p>
+  ${table([{t:"Split",l:1},{t:"Encoder",l:1},{t:"Buffer"},{t:"Exact mixtures"},{t:"Speakers found"},{t:"Missed"},{t:"Split"},{t:"Merged"},{t:"Extra tracks"}],
+    s.discovery.map(r => [r.split, r.encoder, `${r.buffer_rounds} round${r.buffer_rounds>1?"s":""}`, `${r.exact}/${r.mixtures}`, `${r.found}/${r.speakers}`, r.missed, r.splits, r.merged, r.extra]))}
+  </div>
+  <div class="panel" style="margin-top:12px"><h3>Embedding fidelity: discovered track vs clean enrollment</h3>
+  <p class="lead">Cosine of the discovered-track embedding to the speaker's clean enrollment ("in-mix" = clean source of the same buffer, no separation). Margin = similarity to the right speaker minus the best wrong speaker in the whole split; ≤ 0 is a confusion.</p>
+  ${table([{t:"Split",l:1},{t:"Buffer"},{t:"Discovered"},{t:"ECAPA cos (disc / in-mix)"},{t:"ECAPA margin"},{t:"ECAPA confusions"},{t:"Resemblyzer cos (disc / in-mix)"},{t:"Resemblyzer margin"},{t:"Resemblyzer confusions"}],
+    s.fidelity.map(r => [r.split, r.buffer_rounds, `${r.discovered}/${r.speakers}`, `${fmt(r.ecapa_cos_disc,2)} / ${fmt(r.ecapa_cos_inmix,2)}`, fmt(r.ecapa_margin_split,2), r.ecapa_confusions, `${fmt(r.resemblyzer_cos_disc,2)} / ${fmt(r.resemblyzer_cos_inmix,2)}`, fmt(r.resemblyzer_margin_split,2), r.resemblyzer_confusions]))}
+  </div>
+  <div class="panel" style="margin-top:12px"><h3>Live extraction on a separate stretch of the conversation</h3>
+  <p class="lead">SI-SDRi over the whole live section (dB, median and p10); "+1/+2/+3" score only spans where the target talks with that many others; "Alone" is the output SI-SDR while the target talks alone (target preservation; the input is already clean there). "Absent suppression" = how much more the output drops when the target is silent than the input does. Thresholds tuned on dev per enrollment type: selector ${thr("sepformer_selector","clean")} (clean) / ${thr("sepformer_selector","discovered")} (discovered); competitive floor ${thr("sepformer_competitive","clean")} / ${thr("sepformer_competitive","discovered")}. The competitive selector keeps a stream only when the chosen speaker is its closest known speaker (all discovered speakers, or all enrolled ones).</p>
+  ${table([{t:"Split",l:1},{t:"Live model",l:1},{t:"Enrollment",l:1},{t:"Runs"},{t:"Median SI-SDRi"},{t:"p10"},{t:"Drop vs clean"},{t:"Alone (SI-SDR)"},{t:"+1"},{t:"+2"},{t:"+3"},{t:"Absent suppression"}],
+    s.live.map(r => [r.split, MODEL_NAMES[r.model], r.enrollment, r.runs, fmt(r.median_si_sdri), fmt(r.p10_si_sdri), fmt(r.median_drop_vs_clean), fmt(r.median_alone_si_sdr), fmt(r.by_overlap.target_plus_1), fmt(r.by_overlap.target_plus_2), fmt(r.by_overlap.target_plus_3), fmt(r.median_absent_suppression)]))}
+  </div>`;
+}
+
+function ratingWidget(key, label) {
+  const wrap = el("div", {className: "rating"}, `<span>${label}</span>`);
+  for (let v = 1; v <= 5; v++) {
+    const b = el("button", {type: "button", textContent: v});
+    if (ratings[key] === v) b.classList.add("on");
+    b.onclick = () => { ratings[key] = v; try { localStorage.setItem(RATINGS_KEY, JSON.stringify(ratings)); } catch (e) {}
+      wrap.querySelectorAll("button").forEach(x => x.classList.toggle("on", Number(x.textContent) === v)); };
+    wrap.appendChild(b);
+  }
+  return wrap;
+}
+
+function audioCard(title, src, truthHtml, rateKeys) {
+  const card = el("div", {className: "panel"}, `<h3>${title}</h3>`);
+  card.appendChild(el("audio", {controls: true, preload: "none", src}));
+  if (truthHtml) card.appendChild(el("div", {className: "truth"}, truthHtml));
+  (rateKeys || []).forEach(([k, l]) => card.appendChild(ratingWidget(k, l)));
+  return card;
+}
+
+function timeline(m, target) {
+  const segs = m.live_segments, cols = segs.length;
+  const box = el("div", {className: "timeline truth"});
+  box.style.gridTemplateColumns = `90px repeat(${cols}, 1fr)`;
+  m.speakers.forEach(s => {
+    box.appendChild(el("div", {}, `${s}${s === target ? " ◀" : ""}`));
+    segs.forEach(seg => {
+      const on = seg.active_speaker_ids.includes(s);
+      box.appendChild(el("div", {className: `cell ${on ? (s === target ? "target" : "on") : ""}`, title: seg.label}));
+    });
+  });
+  return box;
+}
+
+function scoreLine(r) {
+  if (!r) return "";
+  const o = r.si_sdri_by_overlap_db;
+  const cls = r.overall_si_sdri_db > 0 ? "good" : "bad";
+  return `Target ${r.target}: SI-SDRi <b class="${cls}">${fmt(r.overall_si_sdri_db)} dB</b> · alone SI-SDR ${fmt(r.target_alone_si_sdr_db)} · +1 ${fmt(o.target_plus_1)} · +2 ${fmt(o.target_plus_2)} · +3 ${fmt(o.target_plus_3)} · absent suppression ${fmt(r.absent_suppression_db)} dB`;
+}
+
+function renderMixture(m) {
+  const box = document.getElementById("test");
+  box.innerHTML = "";
+  const id = m.id;
+  const s1 = el("div", {}, `<h2><span class="step">1</span>Listen to the conversation</h2>`);
+  const g1 = el("div", {className: "grid"});
+  g1.appendChild(audioCard(`Discovery buffer (${fmt(m.discovery_seconds, 0)} s)`, m.discovery_mix,
+    `${m.speakers.length} true speakers: ${m.speakers.join(", ")}. ${m.split === "dev" ? "Dev mixture (used for tuning)." : "Test mixture (held out)."}`));
+  g1.appendChild(audioCard(`Live input (${fmt(m.live_seconds, 0)} s, later in the conversation)`, m.live_mix, ""));
+  s1.appendChild(g1);
+  box.appendChild(s1);
+
+  const s2 = el("div", {}, `<h2><span class="step">2</span>Discovered speakers</h2><p class="lead">Each track should hold one person. Rate how clean each one sounds before revealing who it is. Pick one from the ECAPA discovery to continue; Resemblyzer discovery is shown for comparison.</p>`);
+  const tabs = el("div", {className: "row tabs"});
+  const panes = {};
+  ["ecapa", "resemblyzer"].forEach((enc, i) => {
+    const b = el("button", {type: "button", textContent: enc === "ecapa" ? "ECAPA clustering (used for live)" : "Resemblyzer clustering"});
+    const pane = el("div", {className: "grid"});
+    pane.style.display = i === 0 ? "" : "none";
+    panes[enc] = pane;
+    b.onclick = () => Object.entries(panes).forEach(([k, p]) => p.style.display = k === enc ? "" : "none");
+    tabs.appendChild(b);
+    m.discovery[enc].forEach(c => {
+      const n = c.cluster + 1;
+      const shares = Object.entries(c.share_by_speaker).sort((a, b) => b[1] - a[1]).filter(x => x[1] >= 0.05)
+        .map(([s, v]) => `${s} ${Math.round(v * 100)}%`).join(", ");
+      const card = audioCard(`Discovered speaker ${n}`, c.audio,
+        `Mostly <b>${c.dominant_speaker}</b> (purity ${Math.round(c.purity * 100)}%${c.purity < 0.8 ? ", <span class='bad'>merged</span>" : ""}); ${shares}; ${c.windows} windows.`,
+        [[`${id}|disc|${enc}|${n}|clean`, "One clean voice?"]]);
+      if (enc === "ecapa") {
+        const enroll = m.enrollments[c.dominant_speaker];
+        card.appendChild(el("div", {className: "truth"}, `Clean enrollment of ${c.dominant_speaker}: <audio controls preload="none" src="${enroll}"></audio>`));
+        const pick = el("button", {type: "button", className: "primary", textContent: "Choose this speaker"});
+        pick.onclick = () => { box.querySelectorAll("button.chosen").forEach(x => x.classList.remove("chosen")); pick.classList.add("chosen"); renderLive(m, c, s3); s3.scrollIntoView({behavior: "smooth"}); };
+        card.appendChild(pick);
+      }
+      pane.appendChild(card);
+    });
+  });
+  s2.appendChild(tabs);
+  Object.values(panes).forEach(p => s2.appendChild(p));
+  box.appendChild(s2);
+  const s3 = el("div", {}, `<h2><span class="step">3</span>Live extraction of your chosen speaker</h2><p class="lead">Choose a discovered speaker above.</p>`);
+  box.appendChild(s3);
+}
+
+function renderLive(m, cluster, s3) {
+  const n = cluster.cluster + 1, target = cluster.dominant_speaker, id = m.id;
+  const disc = m.live[`cluster:${n}`] || {}, clean = m.live[`clean:${target}`] || {};
+  s3.innerHTML = `<h2><span class="step">3</span>Live extraction of discovered speaker ${n}</h2>
+    <p class="lead">Both live models get only the embedding of the track you picked. Rate how clear your speaker is and how much of everyone else remains (5 = none).</p>`;
+  s3.appendChild(timeline(m, target));
+  const g = el("div", {className: "grid"});
+  for (const model of Object.keys(MODEL_NAMES)) {
+    if (disc[model]) g.appendChild(audioCard(`${MODEL_NAMES[model]} · discovered enrollment`, disc[model].audio, scoreLine(disc[model]),
+      [[`${id}|live|${model}|cluster${n}|clarity`, "Target clarity"], [`${id}|live|${model}|cluster${n}|leakage`, "No leakage"]]));
+  }
+  s3.appendChild(g);
+  const cmp = el("div", {className: "truth"}, `<h3 style="margin-top:14px">Comparison: same speaker (${target}) with a clean enrollment recording, and the ideal output</h3>`);
+  const g2 = el("div", {className: "grid"});
+  for (const model of Object.keys(MODEL_NAMES)) {
+    if (clean[model]) g2.appendChild(audioCard(`${MODEL_NAMES[model]} · clean enrollment`, clean[model].audio, scoreLine(clean[model]),
+      [[`${id}|live|${model}|clean-${target}|clarity`, "Target clarity"], [`${id}|live|${model}|clean-${target}|leakage`, "No leakage"]]));
+  }
+  g2.appendChild(audioCard(`Ideal: clean ${target} only`, m.references[target], ""));
+  cmp.appendChild(g2);
+  s3.appendChild(cmp);
+}
+
+function init() {
+  renderSummary();
+  const select = document.getElementById("mixture");
+  DATA.mixtures.forEach((m, i) => select.appendChild(el("option", {value: i, textContent: `${m.split} · conversation ${i + 1} (${m.split === "test" ? "held out" : "tuning"})`})));
+  select.onchange = () => renderMixture(DATA.mixtures[select.value]);
+  const testIndex = DATA.mixtures.findIndex(m => m.split === "test");
+  select.value = testIndex >= 0 ? testIndex : 0;
+  renderMixture(DATA.mixtures[select.value]);
+  document.getElementById("reveal").onchange = e => document.body.classList.toggle("reveal", e.target.checked);
+  document.getElementById("export").onclick = () => {
+    const blob = new Blob([JSON.stringify({exported: new Date().toISOString(), ratings}, null, 2)], {type: "application/json"});
+    const a = el("a", {href: URL.createObjectURL(blob), download: "discovery_listening_ratings.json"});
+    document.body.appendChild(a); a.click(); a.remove();
+  };
+}
+init();
+</script>
+</body>
+</html>

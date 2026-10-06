@@ -1,0 +1,6 @@
+# Keep the knowledge graph to code, reports, and pinned configuration.
+evaluation/data/raw/
+evaluation/data/archives/
+evaluation/data/discovery/
+*.wav
+*.flac

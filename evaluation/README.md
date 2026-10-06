@@ -49,6 +49,20 @@ tar -xzf data/archives/test-clean.tar.gz -C data/raw \
 
 The subsequent [M2 comparison](M2_MODEL_COMPARISON.md) adds [three speaker-disjoint official mixtures](build_m2_extended.py), [four further holdout mixtures](data/m2_holdout), and [one controlled speaking-turns clip](build_m2_turns.py). The [SpeechBrain Libri3Mix SepFormer model](https://huggingface.co/speechbrain/sepformer-libri3mix) is pinned at revision `1f2d824e2333aec9e60d0030fb144885c1afc426`; only its `encoder.ckpt`, `masknet.ckpt`, and `decoder.ckpt` are needed. Their SHA-256 hashes, code/dependency versions, and exact per-trial matches are in each `sepformer_run.json`. This model runs at 8 kHz and is an offline comparator, not a streaming TSE checkpoint. [ECAPA matching](evaluate_ecapa_matcher.py) replaces the original voice matcher for the current offline reference; its checkpoint is pinned at `0f99f2d0ebe89ac095bcc5903c4dd8f72b367286`. Use [run_sepformer_comparison.py](run_sepformer_comparison.py), [score_m2_common8k.py](score_m2_common8k.py), and [analyze_m2_matching.py](analyze_m2_matching.py) for inference, common-bandwidth scores, and clean-source diagnostics respectively. The [numbered listening set](data/listen_next) gives the easiest A/B comparison.
 
+### Discovery enrollment (next phase)
+
+The PRD's next-phase flow finds the speakers in a conversation without enrollment recordings. The user picks one discovered speaker, and a live model keeps only that voice. [build_discovery_conversations.py](build_discovery_conversations.py) builds six controlled 4–6 speaker conversations from LibriSpeech `test-clean`, split into speaker-disjoint **dev** (threshold tuning) and **test** (reporting) sets. Their live sections use the `ControlledLibriNMix` / `conversation_clean` manifest type. [discovery_pipeline.py](discovery_pipeline.py) holds windowed SepFormer discovery, the speaker clustering, and both offline live models. [run_discovery_experiment.py](run_discovery_experiment.py) runs the discovery audit, the separated-track enrollment test, and live extraction. [make_discovery_showcase.py](make_discovery_showcase.py) builds a local listening page. Results and their limits are in the [discovery report](DISCOVERY_REPORT.md).
+
+```sh
+../speakerbeam_ss_verification/.venv/bin/python build_discovery_conversations.py
+for f in data/discovery/*/*/single_trials.jsonl; do ../speakerbeam_ss_verification/.venv/bin/python validate_manifest.py "$f" --check-mix-sum; done
+../speakerbeam_ss_verification/.venv/bin/python run_discovery_experiment.py
+../speakerbeam_ss_verification/.venv/bin/python make_discovery_showcase.py
+open data/discovery/showcase/index.html
+```
+
+The builder reads from a fully extracted `test-clean` archive in `data/raw/LibriSpeech`, unlike M1/M2, which extracted single utterances.
+
 `validate_manifest.py` checks IDs, enrollment separation, route-independent audio properties, sample alignment, and optional mixture/source arithmetic. Run the sum check only on clean additive mixtures. Corpus metadata must establish that each enrollment really belongs to the stated speaker; the validator cannot determine identity from a filename. `score_outputs.py` expects `<trial_id>.wav` files and writes one result per trial to stdout in JSON Lines. It scores the **raw float model output**, not a clipped or peak-normalized listening copy.
 
 For one selected speaker, SI-SDR improvement compares that speaker's clean source with the estimate versus the same source with the mixture. For multiple selected speakers, the reference is the sum of selected clean sources. That combined score can hide the loss of a quieter selected speaker, so the three-speaker review also asks the listener to check each selected speaker's audibility. The per-source SI-SDR diagnostic is meaningful for one-target cases; in a multi-selected trial it treats the *other selected speaker* as distortion and must not be read as an individual retention score. A standard Libri3Mix full-overlap clip alone cannot establish turn-taking or target-absence behavior; [SparseLibriMix](https://github.com/popcornell/SparseLibriMix) or controlled recordings are needed for those conditions.
