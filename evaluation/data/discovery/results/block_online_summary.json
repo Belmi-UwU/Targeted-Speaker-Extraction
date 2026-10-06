@@ -1,0 +1,538 @@
+{
+  "scope": "Block-online SepFormer selection on the discovery conversations' live sections; no audio later than the output block is used; desktop CPU, 4 torch threads",
+  "thresholds_note": "tuned per configuration and per enrollment type on dev runs only",
+  "configs": {
+    "0.25_1.0": {
+      "block_seconds": 0.25,
+      "window_seconds": 1.0,
+      "worst_case_algorithmic_latency_ms": 250.0,
+      "compute_per_block_median_s": 0.7467142704990692,
+      "compute_per_block_p90_s": 1.3011766920009904,
+      "real_time_factor_median": 2.986857081996277,
+      "thresholds": {
+        "sepformer_selector": {
+          "clean": 0.6,
+          "discovered": 0.35
+        },
+        "sepformer_competitive": {
+          "clean": 0.05,
+          "discovered": 0.3
+        }
+      },
+      "results": {
+        "dev|sepformer_selector|clean": {
+          "runs": 15,
+          "median_si_sdri_db": 6.243317069471582,
+          "p10_si_sdri_db": 3.874169659443429,
+          "median_absent_suppression_db": -1.462085970562935,
+          "median_alone_si_sdr_db": 0.0
+        },
+        "dev|sepformer_selector|discovered": {
+          "runs": 15,
+          "median_si_sdri_db": 5.190880147703393,
+          "p10_si_sdri_db": -0.8622860201237822,
+          "median_absent_suppression_db": 6.859620941341085,
+          "median_alone_si_sdr_db": 2.1294573317753223
+        },
+        "dev|sepformer_competitive|clean": {
+          "runs": 15,
+          "median_si_sdri_db": 7.2763496126602085,
+          "p10_si_sdri_db": 5.646847894967422,
+          "median_absent_suppression_db": 14.613522512285726,
+          "median_alone_si_sdr_db": 3.559006279235369
+        },
+        "dev|sepformer_competitive|discovered": {
+          "runs": 15,
+          "median_si_sdri_db": 8.3496718487611,
+          "p10_si_sdri_db": 2.9498850780008348,
+          "median_absent_suppression_db": 16.36735120458864,
+          "median_alone_si_sdr_db": 2.5491311562842185
+        },
+        "test|sepformer_selector|clean": {
+          "runs": 15,
+          "median_si_sdri_db": 7.261039748984387,
+          "p10_si_sdri_db": 3.094969377878945,
+          "median_absent_suppression_db": -1.7019616772165662,
+          "median_alone_si_sdr_db": 0.0
+        },
+        "test|sepformer_selector|discovered": {
+          "runs": 15,
+          "median_si_sdri_db": 6.376678377189574,
+          "p10_si_sdri_db": 2.6589898762005157,
+          "median_absent_suppression_db": 10.919210295714418,
+          "median_alone_si_sdr_db": 3.5133240636930463
+        },
+        "test|sepformer_competitive|clean": {
+          "runs": 15,
+          "median_si_sdri_db": 7.749863928413662,
+          "p10_si_sdri_db": 6.802287125955413,
+          "median_absent_suppression_db": 12.119611883743826,
+          "median_alone_si_sdr_db": 6.03872461334507
+        },
+        "test|sepformer_competitive|discovered": {
+          "runs": 15,
+          "median_si_sdri_db": 7.4605126704342695,
+          "p10_si_sdri_db": 5.948352309207367,
+          "median_absent_suppression_db": 17.627742958284127,
+          "median_alone_si_sdr_db": 4.730968036634464
+        }
+      }
+    },
+    "0.25_2.0": {
+      "block_seconds": 0.25,
+      "window_seconds": 2.0,
+      "worst_case_algorithmic_latency_ms": 250.0,
+      "compute_per_block_median_s": 0.8502498329999071,
+      "compute_per_block_p90_s": 4.499631217099887,
+      "real_time_factor_median": 3.4009993319996283,
+      "thresholds": {
+        "sepformer_selector": {
+          "clean": 0.6,
+          "discovered": 0.45
+        },
+        "sepformer_competitive": {
+          "clean": 0.2,
+          "discovered": 0.0
+        }
+      },
+      "results": {
+        "dev|sepformer_selector|clean": {
+          "runs": 15,
+          "median_si_sdri_db": 5.774271882019729,
+          "p10_si_sdri_db": -7.018703164519993,
+          "median_absent_suppression_db": -1.4552007903458168,
+          "median_alone_si_sdr_db": 0.0
+        },
+        "dev|sepformer_selector|discovered": {
+          "runs": 15,
+          "median_si_sdri_db": 4.837815501635074,
+          "p10_si_sdri_db": 2.080173101713314,
+          "median_absent_suppression_db": 8.245250872440828,
+          "median_alone_si_sdr_db": 2.377991010620695
+        },
+        "dev|sepformer_competitive|clean": {
+          "runs": 15,
+          "median_si_sdri_db": 6.916321891510006,
+          "p10_si_sdri_db": 4.2293933282003975,
+          "median_absent_suppression_db": 12.911319784123911,
+          "median_alone_si_sdr_db": 6.25270303945926
+        },
+        "dev|sepformer_competitive|discovered": {
+          "runs": 15,
+          "median_si_sdri_db": 5.6335528552858785,
+          "p10_si_sdri_db": 4.59095378235916,
+          "median_absent_suppression_db": 9.83037294754686,
+          "median_alone_si_sdr_db": 4.96595201612722
+        },
+        "test|sepformer_selector|clean": {
+          "runs": 15,
+          "median_si_sdri_db": 4.506147317674644,
+          "p10_si_sdri_db": -11.021768304799213,
+          "median_absent_suppression_db": -1.168666702105746,
+          "median_alone_si_sdr_db": -1.338159698637718
+        },
+        "test|sepformer_selector|discovered": {
+          "runs": 15,
+          "median_si_sdri_db": 5.741932206925303,
+          "p10_si_sdri_db": 2.8805509096065682,
+          "median_absent_suppression_db": 13.607751660546743,
+          "median_alone_si_sdr_db": 3.968656403171871
+        },
+        "test|sepformer_competitive|clean": {
+          "runs": 15,
+          "median_si_sdri_db": 8.157227932030716,
+          "p10_si_sdri_db": 4.0748185354136774,
+          "median_absent_suppression_db": 9.783582535285316,
+          "median_alone_si_sdr_db": 6.545540894752101
+        },
+        "test|sepformer_competitive|discovered": {
+          "runs": 15,
+          "median_si_sdri_db": 8.164653753191988,
+          "p10_si_sdri_db": 4.1759679345699485,
+          "median_absent_suppression_db": 9.296169697357815,
+          "median_alone_si_sdr_db": 8.875840922674687
+        }
+      }
+    },
+    "0.5_1.0": {
+      "block_seconds": 0.5,
+      "window_seconds": 1.0,
+      "worst_case_algorithmic_latency_ms": 500.0,
+      "compute_per_block_median_s": 0.5913719375012079,
+      "compute_per_block_p90_s": 0.6072956832997078,
+      "real_time_factor_median": 1.1827438750024157,
+      "thresholds": {
+        "sepformer_selector": {
+          "clean": 0.25,
+          "discovered": 0.35
+        },
+        "sepformer_competitive": {
+          "clean": 0.15,
+          "discovered": 0.3
+        }
+      },
+      "results": {
+        "dev|sepformer_selector|clean": {
+          "runs": 15,
+          "median_si_sdri_db": 7.972591850250016,
+          "p10_si_sdri_db": 3.329178850169028,
+          "median_absent_suppression_db": 33.994525477778495,
+          "median_alone_si_sdr_db": 4.260608705355044
+        },
+        "dev|sepformer_selector|discovered": {
+          "runs": 15,
+          "median_si_sdri_db": 7.041003576426638,
+          "p10_si_sdri_db": 0.6899820976948592,
+          "median_absent_suppression_db": 8.246102561400676,
+          "median_alone_si_sdr_db": 4.432144487558691
+        },
+        "dev|sepformer_competitive|clean": {
+          "runs": 15,
+          "median_si_sdri_db": 9.933222685757878,
+          "p10_si_sdri_db": 7.094383897037239,
+          "median_absent_suppression_db": 34.59206060540377,
+          "median_alone_si_sdr_db": 11.22682156690995
+        },
+        "dev|sepformer_competitive|discovered": {
+          "runs": 15,
+          "median_si_sdri_db": 10.257252800049612,
+          "p10_si_sdri_db": 4.735472685934978,
+          "median_absent_suppression_db": 21.381877066664085,
+          "median_alone_si_sdr_db": 8.510886961489263
+        },
+        "test|sepformer_selector|clean": {
+          "runs": 15,
+          "median_si_sdri_db": 9.230148267077467,
+          "p10_si_sdri_db": 5.001556401629967,
+          "median_absent_suppression_db": 37.50255028786162,
+          "median_alone_si_sdr_db": 7.321064288475288
+        },
+        "test|sepformer_selector|discovered": {
+          "runs": 15,
+          "median_si_sdri_db": 8.026059734226786,
+          "p10_si_sdri_db": 4.578842145353155,
+          "median_absent_suppression_db": 8.826226705314443,
+          "median_alone_si_sdr_db": 4.687034111317668
+        },
+        "test|sepformer_competitive|clean": {
+          "runs": 15,
+          "median_si_sdri_db": 11.268476373793288,
+          "p10_si_sdri_db": 7.8900039669979005,
+          "median_absent_suppression_db": 19.626984757871274,
+          "median_alone_si_sdr_db": 9.170168194276375
+        },
+        "test|sepformer_competitive|discovered": {
+          "runs": 15,
+          "median_si_sdri_db": 10.962963785239683,
+          "p10_si_sdri_db": 7.543954952169858,
+          "median_absent_suppression_db": 40.097256006552925,
+          "median_alone_si_sdr_db": 4.111866278272262
+        }
+      }
+    },
+    "0.5_2.0": {
+      "block_seconds": 0.5,
+      "window_seconds": 2.0,
+      "worst_case_algorithmic_latency_ms": 500.0,
+      "compute_per_block_median_s": 0.8374402500012366,
+      "compute_per_block_p90_s": 0.8614760081003624,
+      "real_time_factor_median": 1.6748805000024731,
+      "thresholds": {
+        "sepformer_selector": {
+          "clean": 0.3,
+          "discovered": 0.4
+        },
+        "sepformer_competitive": {
+          "clean": 0.15,
+          "discovered": 0.0
+        }
+      },
+      "results": {
+        "dev|sepformer_selector|clean": {
+          "runs": 15,
+          "median_si_sdri_db": 5.936349351973209,
+          "p10_si_sdri_db": 3.0775027872311504,
+          "median_absent_suppression_db": 24.327161130566385,
+          "median_alone_si_sdr_db": 1.6174961021057346
+        },
+        "dev|sepformer_selector|discovered": {
+          "runs": 15,
+          "median_si_sdri_db": 5.694365922324298,
+          "p10_si_sdri_db": 1.5698962641135832,
+          "median_absent_suppression_db": 8.662372001541211,
+          "median_alone_si_sdr_db": 4.187315274838845
+        },
+        "dev|sepformer_competitive|clean": {
+          "runs": 15,
+          "median_si_sdri_db": 8.990223467182243,
+          "p10_si_sdri_db": 5.249568361932681,
+          "median_absent_suppression_db": 13.230620417001518,
+          "median_alone_si_sdr_db": 12.243133227902934
+        },
+        "dev|sepformer_competitive|discovered": {
+          "runs": 15,
+          "median_si_sdri_db": 7.5761511913945805,
+          "p10_si_sdri_db": 4.974380890065583,
+          "median_absent_suppression_db": 10.044464938741726,
+          "median_alone_si_sdr_db": 8.859183091384743
+        },
+        "test|sepformer_selector|clean": {
+          "runs": 15,
+          "median_si_sdri_db": 7.460842166991039,
+          "p10_si_sdri_db": 4.736415784190281,
+          "median_absent_suppression_db": 23.1478889106822,
+          "median_alone_si_sdr_db": 5.100061825612706
+        },
+        "test|sepformer_selector|discovered": {
+          "runs": 15,
+          "median_si_sdri_db": 8.417761804746245,
+          "p10_si_sdri_db": 4.915564119646678,
+          "median_absent_suppression_db": 9.846388652632513,
+          "median_alone_si_sdr_db": 6.705356778331856
+        },
+        "test|sepformer_competitive|clean": {
+          "runs": 15,
+          "median_si_sdri_db": 10.10920659156356,
+          "p10_si_sdri_db": 6.182080626749281,
+          "median_absent_suppression_db": 11.774149121217857,
+          "median_alone_si_sdr_db": 9.693148450544957
+        },
+        "test|sepformer_competitive|discovered": {
+          "runs": 15,
+          "median_si_sdri_db": 9.160771072283698,
+          "p10_si_sdri_db": 6.603960577428688,
+          "median_absent_suppression_db": 10.215311476799059,
+          "median_alone_si_sdr_db": 11.368978723164146
+        }
+      }
+    },
+    "1.0_2.0": {
+      "block_seconds": 1.0,
+      "window_seconds": 2.0,
+      "worst_case_algorithmic_latency_ms": 1000.0,
+      "compute_per_block_median_s": 0.8492293330009488,
+      "compute_per_block_p90_s": 0.8693143039003189,
+      "real_time_factor_median": 0.8492293330009488,
+      "thresholds": {
+        "sepformer_selector": {
+          "clean": 0.3,
+          "discovered": 0.5
+        },
+        "sepformer_competitive": {
+          "clean": 0.0,
+          "discovered": 0.4
+        }
+      },
+      "results": {
+        "dev|sepformer_selector|clean": {
+          "runs": 15,
+          "median_si_sdri_db": 8.555200703394014,
+          "p10_si_sdri_db": 3.624678523705286,
+          "median_absent_suppression_db": 39.84798367442562,
+          "median_alone_si_sdr_db": 9.339082449600564
+        },
+        "dev|sepformer_selector|discovered": {
+          "runs": 15,
+          "median_si_sdri_db": 8.244032155560438,
+          "p10_si_sdri_db": 3.9186534964340956,
+          "median_absent_suppression_db": 24.93633145498518,
+          "median_alone_si_sdr_db": 8.441692797473042
+        },
+        "dev|sepformer_competitive|clean": {
+          "runs": 15,
+          "median_si_sdri_db": 10.082960865607806,
+          "p10_si_sdri_db": 7.14092216486559,
+          "median_absent_suppression_db": 14.697707584731194,
+          "median_alone_si_sdr_db": 14.781859866995601
+        },
+        "dev|sepformer_competitive|discovered": {
+          "runs": 15,
+          "median_si_sdri_db": 9.560069457906966,
+          "p10_si_sdri_db": 2.5903413399838504,
+          "median_absent_suppression_db": 25.712479664010033,
+          "median_alone_si_sdr_db": 9.339082449600564
+        },
+        "test|sepformer_selector|clean": {
+          "runs": 15,
+          "median_si_sdri_db": 10.226705186923079,
+          "p10_si_sdri_db": 7.464411514110707,
+          "median_absent_suppression_db": 37.81112640334564,
+          "median_alone_si_sdr_db": 12.15819414259396
+        },
+        "test|sepformer_selector|discovered": {
+          "runs": 15,
+          "median_si_sdri_db": 8.234895056732045,
+          "p10_si_sdri_db": 2.8997030464688085,
+          "median_absent_suppression_db": 34.803727954943234,
+          "median_alone_si_sdr_db": 4.62328653686426
+        },
+        "test|sepformer_competitive|clean": {
+          "runs": 15,
+          "median_si_sdri_db": 12.312831241272175,
+          "p10_si_sdri_db": 8.583858467952926,
+          "median_absent_suppression_db": 23.641847675195162,
+          "median_alone_si_sdr_db": 19.083014607459464
+        },
+        "test|sepformer_competitive|discovered": {
+          "runs": 15,
+          "median_si_sdri_db": 11.645586857694145,
+          "p10_si_sdri_db": 8.527715542491789,
+          "median_absent_suppression_db": 34.46594615097483,
+          "median_alone_si_sdr_db": 12.15819414259396
+        }
+      }
+    },
+    "1.0_4.0": {
+      "block_seconds": 1.0,
+      "window_seconds": 4.0,
+      "worst_case_algorithmic_latency_ms": 1000.0,
+      "compute_per_block_median_s": 1.4223138745001052,
+      "compute_per_block_p90_s": 1.447460983300698,
+      "real_time_factor_median": 1.4223138745001052,
+      "thresholds": {
+        "sepformer_selector": {
+          "clean": 0.25,
+          "discovered": 0.6
+        },
+        "sepformer_competitive": {
+          "clean": 0.15,
+          "discovered": 0.0
+        }
+      },
+      "results": {
+        "dev|sepformer_selector|clean": {
+          "runs": 15,
+          "median_si_sdri_db": 6.402080016905745,
+          "p10_si_sdri_db": 3.4054811389676862,
+          "median_absent_suppression_db": 6.440031409212622,
+          "median_alone_si_sdr_db": 11.486455004587196
+        },
+        "dev|sepformer_selector|discovered": {
+          "runs": 15,
+          "median_si_sdri_db": 6.426898504859689,
+          "p10_si_sdri_db": 0.7667239264815275,
+          "median_absent_suppression_db": 8.838123528665488,
+          "median_alone_si_sdr_db": 4.1250551486547895
+        },
+        "dev|sepformer_competitive|clean": {
+          "runs": 15,
+          "median_si_sdri_db": 7.367485938326734,
+          "p10_si_sdri_db": 2.242328436387017,
+          "median_absent_suppression_db": 7.899534047263504,
+          "median_alone_si_sdr_db": 11.901355600622928
+        },
+        "dev|sepformer_competitive|discovered": {
+          "runs": 15,
+          "median_si_sdri_db": 7.593125672746984,
+          "p10_si_sdri_db": 2.450241219395349,
+          "median_absent_suppression_db": 9.198048786813104,
+          "median_alone_si_sdr_db": 11.901355600622928
+        },
+        "test|sepformer_selector|clean": {
+          "runs": 15,
+          "median_si_sdri_db": 6.768463884621713,
+          "p10_si_sdri_db": 3.355215434762528,
+          "median_absent_suppression_db": 7.190382355791822,
+          "median_alone_si_sdr_db": 19.28620973703474
+        },
+        "test|sepformer_selector|discovered": {
+          "runs": 15,
+          "median_si_sdri_db": 5.682593676271169,
+          "p10_si_sdri_db": -2.332649945934404,
+          "median_absent_suppression_db": 9.404141379613716,
+          "median_alone_si_sdr_db": 2.4639488933117364
+        },
+        "test|sepformer_competitive|clean": {
+          "runs": 15,
+          "median_si_sdri_db": 7.423776122230947,
+          "p10_si_sdri_db": 2.071970720821696,
+          "median_absent_suppression_db": 7.72740741770448,
+          "median_alone_si_sdr_db": 14.919726068498397
+        },
+        "test|sepformer_competitive|discovered": {
+          "runs": 15,
+          "median_si_sdri_db": 7.516926729173317,
+          "p10_si_sdri_db": 5.250036460975915,
+          "median_absent_suppression_db": 7.825196153597023,
+          "median_alone_si_sdr_db": 14.120154770929041
+        }
+      }
+    },
+    "2.0_4.0": {
+      "block_seconds": 2.0,
+      "window_seconds": 4.0,
+      "worst_case_algorithmic_latency_ms": 2000.0,
+      "compute_per_block_median_s": 1.4067887290002545,
+      "compute_per_block_p90_s": 1.4369036875004895,
+      "real_time_factor_median": 0.7033943645001273,
+      "thresholds": {
+        "sepformer_selector": {
+          "clean": 0.3,
+          "discovered": 0.6
+        },
+        "sepformer_competitive": {
+          "clean": 0.0,
+          "discovered": 0.0
+        }
+      },
+      "results": {
+        "dev|sepformer_selector|clean": {
+          "runs": 15,
+          "median_si_sdri_db": 10.580987659381941,
+          "p10_si_sdri_db": 7.066560622980779,
+          "median_absent_suppression_db": 13.738823812021732,
+          "median_alone_si_sdr_db": 16.80171301405312
+        },
+        "dev|sepformer_selector|discovered": {
+          "runs": 15,
+          "median_si_sdri_db": 10.528186911591295,
+          "p10_si_sdri_db": 6.520269734643361,
+          "median_absent_suppression_db": 14.258009911683338,
+          "median_alone_si_sdr_db": 16.448721671412766
+        },
+        "dev|sepformer_competitive|clean": {
+          "runs": 15,
+          "median_si_sdri_db": 11.10823208103502,
+          "p10_si_sdri_db": 5.40063630958569,
+          "median_absent_suppression_db": 15.474249097440158,
+          "median_alone_si_sdr_db": 16.80171301405312
+        },
+        "dev|sepformer_competitive|discovered": {
+          "runs": 15,
+          "median_si_sdri_db": 11.767300555177425,
+          "p10_si_sdri_db": 5.897194632841847,
+          "median_absent_suppression_db": 14.245232650509479,
+          "median_alone_si_sdr_db": 16.80171301405312
+        },
+        "test|sepformer_selector|clean": {
+          "runs": 15,
+          "median_si_sdri_db": 10.701148724378276,
+          "p10_si_sdri_db": 6.43003026638967,
+          "median_absent_suppression_db": 16.734822570111433,
+          "median_alone_si_sdr_db": 21.175906310138746
+        },
+        "test|sepformer_selector|discovered": {
+          "runs": 15,
+          "median_si_sdri_db": 8.442728498811958,
+          "p10_si_sdri_db": 0.9208018615560838,
+          "median_absent_suppression_db": 15.801668094979583,
+          "median_alone_si_sdr_db": 16.649456020716457
+        },
+        "test|sepformer_competitive|clean": {
+          "runs": 15,
+          "median_si_sdri_db": 9.453563507176813,
+          "p10_si_sdri_db": 5.407058416687438,
+          "median_absent_suppression_db": 13.880446327614742,
+          "median_alone_si_sdr_db": 19.22263740699608
+        },
+        "test|sepformer_competitive|discovered": {
+          "runs": 15,
+          "median_si_sdri_db": 9.768522030349283,
+          "p10_si_sdri_db": 6.250528335339466,
+          "median_absent_suppression_db": 16.734822570111433,
+          "median_alone_si_sdr_db": 21.175906310138746
+        }
+      }
+    }
+  }
+}

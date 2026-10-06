@@ -1,0 +1,14 @@
+B=0.25 W=1.0: RTF 2.99, test competitive discovered median 7.5 dB, suppression 17.6 dB, thresholds {'sepformer_selector': {'clean': 0.6, 'discovered': 0.35}, 'sepformer_competitive': {'clean': 0.05, 'discovered': 0.3}}
+B=0.25 W=2.0: RTF 3.40, test competitive discovered median 8.2 dB, suppression 9.3 dB, thresholds {'sepformer_selector': {'clean': 0.6, 'discovered': 0.45}, 'sepformer_competitive': {'clean': 0.2, 'discovered': 0.0}}
+B=0.5 W=1.0: RTF 1.18, test competitive discovered median 11.0 dB, suppression 40.1 dB, thresholds {'sepformer_selector': {'clean': 0.25, 'discovered': 0.35}, 'sepformer_competitive': {'clean': 0.15, 'discovered': 0.3}}
+B=0.5 W=2.0: RTF 1.67, test competitive discovered median 9.2 dB, suppression 10.2 dB, thresholds {'sepformer_selector': {'clean': 0.3, 'discovered': 0.4}, 'sepformer_competitive': {'clean': 0.15, 'discovered': 0.0}}
+B=1.0 W=2.0: RTF 0.85, test competitive discovered median 11.6 dB, suppression 34.5 dB, thresholds {'sepformer_selector': {'clean': 0.3, 'discovered': 0.5}, 'sepformer_competitive': {'clean': 0.0, 'discovered': 0.4}}
+B=1.0 W=4.0: RTF 1.42, test competitive discovered median 7.5 dB, suppression 7.8 dB, thresholds {'sepformer_selector': {'clean': 0.25, 'discovered': 0.6}, 'sepformer_competitive': {'clean': 0.15, 'discovered': 0.0}}
+B=2.0 W=4.0: RTF 0.70, test competitive discovered median 9.8 dB, suppression 16.7 dB, thresholds {'sepformer_selector': {'clean': 0.3, 'discovered': 0.6}, 'sepformer_competitive': {'clean': 0.0, 'discovered': 0.0}}
+user recording B=0.25 W=1.0 done
+user recording B=0.25 W=2.0 done
+user recording B=0.5 W=1.0 done
+user recording B=0.5 W=2.0 done
+user recording B=1.0 W=2.0 done
+user recording B=1.0 W=4.0 done
+user recording B=2.0 W=4.0 done

@@ -181,6 +181,40 @@ In the half-and-half run, extraction from the second half also kept the chosen p
 
 Similarity only shows *who the output sounds like*, not intelligibility or artifacts. The user's ratings from the listening page are the real check.
 
+## Without future audio (block-online check)
+
+The live results above use 4 s windows with overlap-add, so each output sample depends on up to about 4 s of later audio. That is impossible in a live app.
+
+[run_block_online_selector.py](run_block_online_selector.py) removes the future:
+- each block of **B** seconds is separated together with past context only, a window of **W** seconds ending at the block's last sample;
+- only that newest block is output;
+- worst-case algorithmic delay is **B**, plus compute time.
+
+The pretrained SepFormer is unchanged. Thresholds were re-tuned for each setting on dev and reported on test. Blocks are joined without crossfades, so boundary clicks are possible. Timing is a desktop CPU (Apple M5, 4 PyTorch threads), not a phone.
+
+**Real-time factor (RTF)** is median compute per block ÷ block length; above 1 means the system falls behind. All quality numbers are median SI-SDRi with discovered enrollment, test set:
+
+| Block B (worst-case delay) | Past window W | RTF | Competitive | Selector | Competitive: target-alone SI-SDR | Competitive: absent suppression |
+|---:|---:|---:|---:|---:|---:|---:|
+| 0.25 s | 1 s | 2.99 | 7.5 dB | 6.4 dB | 5 dB | 18 dB |
+| 0.25 s | 2 s | 3.40 | 8.2 dB | 5.7 dB | 9 dB | 9 dB |
+| 0.5 s | 1 s | 1.18 | 11.0 dB | 8.0 dB | 4 dB | 40 dB |
+| 0.5 s | 2 s | 1.67 | 9.2 dB | 8.4 dB | 11 dB | 10 dB |
+| 1 s | 2 s | **0.85** | **11.6 dB** | 8.2 dB | 12 dB | 34 dB |
+| 1 s | 4 s | 1.42 | 7.5 dB | 5.7 dB | 14 dB | 8 dB |
+| 2 s | 4 s | **0.70** | 9.8 dB | 8.4 dB | 21 dB | 17 dB |
+| *Offline reference (4 s windows, uses future audio)* | | – | *11.9 dB* | *12.0 dB* | *21 dB* | *14 dB* |
+
+What this shows:
+
+- **Short blocks cost too much.** At 0.25 s, quality roughly halves (about +7.5 dB) and the target is badly distorted even when talking alone (target-alone SI-SDR about 5 dB vs 21 dB offline). It also runs 3× slower than real time on this CPU.
+- **Only blocks of 1 s or more keep up in real time here.** The best setting (B = 1 s, W = 2 s) nearly matches the offline median (+11.6 vs +11.9 dB). Its target still sounds more distorted (target-alone SI-SDR 12 vs 21 dB). Its total delay is about 1 s of block plus up to about 0.9 s of compute (p90), so roughly **2 s**: usable as delayed listening, not as live conversation (PRD target ≤150 ms). A phone would be slower.
+- **A longer past window does not reliably help, and often hurts.** One likely reason, not tested here: in 4–6 speaker conversations a longer window contains more than three voices, which exceeds the 3-stream separator. The very high suppression in some short-window settings partly comes from blocks where no stream passed the threshold, so those blocks are silent.
+
+Conclusion: the SepFormer selector cannot meet a conversational delay. The live stage needs a model built to be causal. The [survey of causal candidates](CAUSAL_CANDIDATES.md) found no option with public causal weights under a clear licence, so a training run is needed. It ranks first the WeSep causal BSRNN recipe: 32 ms latency, published causal research checkpoints with no weights licence, Apache-2.0 code. In the WeSep paper, causal conditioning on a plain ECAPA embedding fell to 6.87 dB SI-SDRi on Libri2Mix, while conditioning on features of the enrollment audio kept 12.98 dB. The discovered track's **audio**, not just its embedding, should therefore condition the live model.
+
+Listening outputs from the real recording for every setting are on a local page, `data/user_recordings/discovery/block_online.html`, next to the offline output.
+
 ## Limitations
 
 - **Clean, controlled audio.** All speech is clean read LibriSpeech with synthetic turn-taking, ±3 dB levels, no noise, no reverberation, and no real conversational overlap. Real recordings are the next check.
