@@ -1,0 +1,122 @@
+{
+  "matcher": "SpeechBrain ECAPA-TDNN speaker embedding cosine similarity plus one-to-one selected-speaker assignment",
+  "matcher_source": "https://huggingface.co/speechbrain/spkrec-ecapa-voxceleb",
+  "matcher_revision": "0f99f2d0ebe89ac095bcc5903c4dd8f72b367286",
+  "model_card_license": "apache-2.0",
+  "checkpoint_sha256": {
+    "mean_var_norm_emb.ckpt": "cd70225b05b37be64fc5a95e24395d804231d43f74b2e1e5a513db7b69b34c33",
+    "embedding_model.ckpt": "0575cb64845e6b9a10db9bcb74d5ac32b326b8dc90352671d345e2ee3d0126a2",
+    "classifier.ckpt": "fd9e3634fe68bd0a427c95e354c0c677374f62b3f434e45b78599950d860d535"
+  },
+  "separator_streams_source": "cached SepFormer 8 kHz output streams; no separator rerun",
+  "stream_gain_source": "input-mixture least-squares fit in sepformer_run.json; no clean source used",
+  "sample_rate_for_matcher_hz": 16000,
+  "matching_enrollment_to_stream_cosine": [
+    [
+      0.11474460363388062,
+      0.5781599283218384,
+      0.062120452523231506
+    ],
+    [
+      0.18899260461330414,
+      0.14865291118621826,
+      0.44187578558921814
+    ],
+    [
+      0.38883668184280396,
+      -0.0054115112870931625,
+      0.18323099613189697
+    ]
+  ],
+  "speakers_in_source_order": [
+    "4077",
+    "5142",
+    "5683"
+  ],
+  "warnings": [
+    "no absent-speaker rejection threshold",
+    "offline/noncausal pipeline"
+  ],
+  "trials": [
+    {
+      "trial_id": "4077-13754-0001_5142-33396-0065_5683-32866-0012__speaker_4077",
+      "selected_speaker_ids": [
+        "4077"
+      ],
+      "matched_stream_by_speaker": {
+        "4077": 1
+      },
+      "output_sha256": "95ca62da67fd5ca118b85c7d9e6006462ef543a552311c7108372dc9ec9e7596"
+    },
+    {
+      "trial_id": "4077-13754-0001_5142-33396-0065_5683-32866-0012__speaker_5142",
+      "selected_speaker_ids": [
+        "5142"
+      ],
+      "matched_stream_by_speaker": {
+        "5142": 2
+      },
+      "output_sha256": "d91379a1823e11f7c7338445af91baf8929e482ec1483b3e82eb8aa13c753ca0"
+    },
+    {
+      "trial_id": "4077-13754-0001_5142-33396-0065_5683-32866-0012__speaker_5683",
+      "selected_speaker_ids": [
+        "5683"
+      ],
+      "matched_stream_by_speaker": {
+        "5683": 0
+      },
+      "output_sha256": "021d2c3b11c7ac8881a2a2e32baddbf489fd8e20db40ef94d674944aca5baa26"
+    },
+    {
+      "trial_id": "4077-13754-0001_5142-33396-0065_5683-32866-0012__selected_4077_5142",
+      "selected_speaker_ids": [
+        "4077",
+        "5142"
+      ],
+      "matched_stream_by_speaker": {
+        "4077": 1,
+        "5142": 2
+      },
+      "output_sha256": "540927004717a5d38963c9cc869661f2c1036487dbbc0d552a4dc2323df1ea8d"
+    },
+    {
+      "trial_id": "4077-13754-0001_5142-33396-0065_5683-32866-0012__selected_4077_5683",
+      "selected_speaker_ids": [
+        "4077",
+        "5683"
+      ],
+      "matched_stream_by_speaker": {
+        "4077": 1,
+        "5683": 0
+      },
+      "output_sha256": "083f0c5b69d8cc676ee31430194fdba88398f993339bb4bb67ad4ca451cf9396"
+    },
+    {
+      "trial_id": "4077-13754-0001_5142-33396-0065_5683-32866-0012__selected_5142_5683",
+      "selected_speaker_ids": [
+        "5142",
+        "5683"
+      ],
+      "matched_stream_by_speaker": {
+        "5142": 2,
+        "5683": 0
+      },
+      "output_sha256": "3b4d863a3d19e226d54a5d044d4415a404473af68f228d04e315efcf41b4aeb7"
+    },
+    {
+      "trial_id": "4077-13754-0001_5142-33396-0065_5683-32866-0012__selected_4077_5142_5683",
+      "selected_speaker_ids": [
+        "4077",
+        "5142",
+        "5683"
+      ],
+      "matched_stream_by_speaker": {
+        "4077": 1,
+        "5142": 2,
+        "5683": 0
+      },
+      "output_sha256": "4e1e2874eef9c49d9880602a284052ced49ca0b0b8c9d93085d3f26db982f057"
+    }
+  ]
+}

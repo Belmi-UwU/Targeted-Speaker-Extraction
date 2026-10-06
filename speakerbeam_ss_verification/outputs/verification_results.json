@@ -1,0 +1,89 @@
+{
+  "status": "passed_checkpoint_and_offline_inference",
+  "scope": "Repository demo only; not a quality benchmark",
+  "platform": "macOS-26.5.2-arm64-arm-64bit",
+  "python": "3.12.10 (v3.12.10:0cc81280367, Apr  8 2025, 08:46:59) [Clang 13.0.0 (clang-1300.0.29.30)]",
+  "device": "cpu",
+  "threads": 4,
+  "code_commit": "bbbae73f74fc14eafdf7abb93f9094eafccd21df",
+  "weights_revision": "82e6d7646126d1fa33b30c0b44f1d076496cca71",
+  "packages": {
+    "torch": "2.6.0",
+    "torchaudio": "2.6.0",
+    "asteroid": "0.7.0",
+    "resemblyzer": "0.1.4",
+    "numpy": "2.5.3",
+    "soundfile": "0.14.0",
+    "setuptools": "80.9.0"
+  },
+  "checkpoint_sha256": "41c250587af2e947dc3e265cd6e7aa7de230048d408e93c53d8348d63cf75896",
+  "strict_load": {
+    "missing_keys": [],
+    "unexpected_keys": []
+  },
+  "state_dict_entries": 136,
+  "parameter_count": 8249609,
+  "samples": {
+    "mixture_000001.wav": {
+      "sha256": "68613d483312b3a77fd69c137692e627ccd30a92e5b040ad35cb84bae1b46ff1",
+      "original_sample_rate": 16000,
+      "samples_16k": 160000,
+      "duration_seconds": 10.0
+    },
+    "enrollment_000001.wav": {
+      "sha256": "763c34e8a94ce3aebf2d4902c7718e487e9bc9e8c3476ce329d258f78643564b",
+      "original_sample_rate": 16000,
+      "samples_16k": 166400,
+      "duration_seconds": 10.4
+    },
+    "enrollment_000002.wav": {
+      "sha256": "82a2215573bcc61bc44d674721eeab776699ab9fc7104ad9c401581fe48c6605",
+      "original_sample_rate": 16000,
+      "samples_16k": 160000,
+      "duration_seconds": 10.0
+    },
+    "upstream_result_000001.wav": {
+      "sha256": "d12256ea3cea52a9ee49198f464567014af2cc267c604de823ff252c4da6d89d",
+      "original_sample_rate": 16000,
+      "samples_16k": 160000,
+      "duration_seconds": 10.0
+    }
+  },
+  "speaker_encoder_weights_sha256": "39373b86598fa3da9fcddee6142382efe09777e8d37dc9c0561f41f0070f134e",
+  "embedding_shape": [
+    1,
+    256
+  ],
+  "single_full_clip_inference_seconds": 0.11548312497325242,
+  "preview": {
+    "gain": 0.030987423889055038,
+    "note": "Peak normalized for listening; raw output retained separately."
+  },
+  "output": {
+    "shape": [
+      1,
+      1,
+      160000
+    ],
+    "finite": true,
+    "rms": 4.083444595336914,
+    "peak": 29.04404067993164
+  },
+  "bundled_output_comparison": {
+    "rmse": 3.61183500289917,
+    "correlation": 0.7504575047853344,
+    "clipped_raw_rmse": 1.2168394505351898e-06,
+    "clipped_raw_correlation": 0.9999999999983196,
+    "clipped_raw_max_abs_difference": 1.4960765838623047e-05,
+    "raw_fraction_outside_unit_range": 0.38319375,
+    "note": "Bundled output is another model output, not clean target ground truth."
+  },
+  "enrollment_sensitivity_relative_l2": 1.1727277040481567,
+  "future_dependence_check": {
+    "future_changed_from_seconds": 5.0,
+    "earlier_window_seconds": 1.0,
+    "early_output_relative_l2": 0.20173418521881104,
+    "early_output_max_abs_change": 12.443082809448242
+  },
+  "quality_metrics": "Not computed: repository demo has no isolated clean target here."
+}

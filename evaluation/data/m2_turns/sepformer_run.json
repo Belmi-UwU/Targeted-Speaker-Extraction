@@ -1,0 +1,155 @@
+{
+  "architecture": "SpeechBrain SepFormer, blind 3-speaker separation",
+  "model_source": "https://huggingface.co/speechbrain/sepformer-libri3mix",
+  "model_revision": "1f2d824e2333aec9e60d0030fb144885c1afc426",
+  "model_card_license": "apache-2.0",
+  "model_file_sha256": {
+    "decoder.ckpt": "9afdda4e4ecb9eefb5d49329193c7a9215ae7443aab206f2fe4eb0f50988ca53",
+    "encoder.ckpt": "e949e80c1a96965b723460209bb155eac1fdb2f6d2cf4e7b3e1d3152716f38d0",
+    "masknet.ckpt": "416af7b09d912c486261dd824788dd92d3b21373c8ec4d029209792522f4dbcb"
+  },
+  "speechbrain_version": "1.1.1",
+  "torch_version": "2.6.0",
+  "scipy_version": "1.18.1",
+  "device": "cpu",
+  "torch_threads": 4,
+  "sample_rate_hz": 8000,
+  "input_mix_16k_frames": 57600,
+  "resampled_mix_8k_frames": 28800,
+  "offline_model_forward_seconds": 1.1386537500075065,
+  "speaker_matching": "Resemblyzer embedding cosine similarity; Hungarian one-to-one assignment across selected enrollments and 3 streams; no clean sources or unselected enrollment used",
+  "speaker_ids_for_diagnostics": [
+    "4077",
+    "5142",
+    "5683"
+  ],
+  "enrollment_to_stream_cosine": [
+    [
+      0.4673437476158142,
+      0.6276525259017944,
+      0.573765218257904
+    ],
+    [
+      0.4992966651916504,
+      0.5547167062759399,
+      0.6639818549156189
+    ],
+    [
+      0.4644436538219452,
+      0.493443101644516,
+      0.45822468400001526
+    ]
+  ],
+  "preview_gain": 0.0697170063331387,
+  "preview_gain_policy": "one common gain for all selected-set model listening files; keeps PCM16 peak about 0.9 or lower",
+  "mixture_fit_gains_by_stream": [
+    -0.03673240889373081,
+    0.03982341472606195,
+    0.039827959483244905
+  ],
+  "mixture_fit_relative_error_8k": 0.008040422234486744,
+  "mixture_fit_matrix_condition_number": 4.038947022401693,
+  "mixture_fit_method": "unconstrained least squares of original 8 kHz mixture onto 3 separator streams; signed gains can fix inverted polarity; no clean source used",
+  "mixfit_preview_gain": 1.0,
+  "warnings": [
+    "offline/noncausal model",
+    "8 kHz input bandwidth",
+    "no absent-speaker threshold; matching always assigns a stream"
+  ],
+  "trials": [
+    {
+      "trial_id": "4077-13754-0001_5142-33396-0065_5683-32866-0012_controlled_turns__speaker_4077",
+      "selected_speaker_ids": [
+        "4077"
+      ],
+      "matched_stream_by_speaker": {
+        "4077": 1
+      },
+      "raw_peak": 4.667179584503174,
+      "output_sha256": "db26daee1618a0bbeabe830d3a73c0782f5ab32ad8db497cd0a2c7c542bfe70e",
+      "mixfit_output_sha256": "14eed3817937edd5992ec1fdbd7e72f3fcd64456be4a9fa6ed83a27ec8df157a"
+    },
+    {
+      "trial_id": "4077-13754-0001_5142-33396-0065_5683-32866-0012_controlled_turns__speaker_5142",
+      "selected_speaker_ids": [
+        "5142"
+      ],
+      "matched_stream_by_speaker": {
+        "5142": 2
+      },
+      "raw_peak": 3.750312328338623,
+      "output_sha256": "597d759fb796d7487d0b0b0251606210dff0a28b06857200ca8d86a6e0b1638c",
+      "mixfit_output_sha256": "57f5d5f299fd5cd62d482e769d94d13d7dfefb7941ec83bb525739df3c8c6459"
+    },
+    {
+      "trial_id": "4077-13754-0001_5142-33396-0065_5683-32866-0012_controlled_turns__speaker_5683",
+      "selected_speaker_ids": [
+        "5683"
+      ],
+      "matched_stream_by_speaker": {
+        "5683": 1
+      },
+      "raw_peak": 4.667179584503174,
+      "output_sha256": "db26daee1618a0bbeabe830d3a73c0782f5ab32ad8db497cd0a2c7c542bfe70e",
+      "mixfit_output_sha256": "14eed3817937edd5992ec1fdbd7e72f3fcd64456be4a9fa6ed83a27ec8df157a"
+    },
+    {
+      "trial_id": "4077-13754-0001_5142-33396-0065_5683-32866-0012_controlled_turns__selected_4077_5142",
+      "selected_speaker_ids": [
+        "4077",
+        "5142"
+      ],
+      "matched_stream_by_speaker": {
+        "4077": 1,
+        "5142": 2
+      },
+      "raw_peak": 4.664463043212891,
+      "output_sha256": "7a2fe530a6d5af3fcf28de9fee8af769d7f28691b70cd9329cde741362029c13",
+      "mixfit_output_sha256": "b6507eb43433793fe82f69c183da94723eb941a7e1eb72510755c724f9c5db3e"
+    },
+    {
+      "trial_id": "4077-13754-0001_5142-33396-0065_5683-32866-0012_controlled_turns__selected_4077_5683",
+      "selected_speaker_ids": [
+        "4077",
+        "5683"
+      ],
+      "matched_stream_by_speaker": {
+        "4077": 1,
+        "5683": 0
+      },
+      "raw_peak": 12.904845237731934,
+      "output_sha256": "72e3883d7ac7d7b25825feb7c710b7c662d6d45e6b2f2af1d93da6c2caab1428",
+      "mixfit_output_sha256": "1a085d6a0574634b4a1ac6b2ed4040283f7f43a622ec0b174470386affd1140c"
+    },
+    {
+      "trial_id": "4077-13754-0001_5142-33396-0065_5683-32866-0012_controlled_turns__selected_5142_5683",
+      "selected_speaker_ids": [
+        "5142",
+        "5683"
+      ],
+      "matched_stream_by_speaker": {
+        "5142": 2,
+        "5683": 1
+      },
+      "raw_peak": 4.664463043212891,
+      "output_sha256": "7a2fe530a6d5af3fcf28de9fee8af769d7f28691b70cd9329cde741362029c13",
+      "mixfit_output_sha256": "b6507eb43433793fe82f69c183da94723eb941a7e1eb72510755c724f9c5db3e"
+    },
+    {
+      "trial_id": "4077-13754-0001_5142-33396-0065_5683-32866-0012_controlled_turns__selected_4077_5142_5683",
+      "selected_speaker_ids": [
+        "4077",
+        "5142",
+        "5683"
+      ],
+      "matched_stream_by_speaker": {
+        "4077": 1,
+        "5142": 2,
+        "5683": 0
+      },
+      "raw_peak": 12.909332275390625,
+      "output_sha256": "3be01e68d46ad635ecb911eccd44fa6ed280182924c0cd417f4562c330740ede",
+      "mixfit_output_sha256": "8d3fea5cf07a1dfa70afc6c4037a909316a96b77e89700fa744999ea4e33162e"
+    }
+  ]
+}

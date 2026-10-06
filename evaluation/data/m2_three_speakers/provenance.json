@@ -1,0 +1,36 @@
+{
+  "dataset": "Libri3Mix 16k/min/test/mix_clean subset",
+  "mixture_id": "4077-13754-0001_5142-33396-0065_5683-32866-0012",
+  "librimix_metadata_revision": "b898ca375c03e4039cdb3dbe3dd485aad58ec7d1",
+  "librimix_metadata_source": "https://github.com/JorisCos/LibriMix/tree/b898ca375c03e4039cdb3dbe3dd485aad58ec7d1/metadata/Libri3Mix",
+  "librimix_mixing_source": "https://github.com/JorisCos/LibriMix/blob/b898ca375c03e4039cdb3dbe3dd485aad58ec7d1/scripts/create_librimix_from_metadata.py",
+  "librispeech_source": "https://www.openslr.org/12",
+  "librispeech_test_clean_archive_md5": "32fa31d27d2e1cad72775fee3f4849a9",
+  "speech_license": "CC-BY-4.0",
+  "noise_used": false,
+  "generation": "metadata gains, 16 kHz, min length, source sum, PCM16 WAV; clean branch only",
+  "source_gains": [
+    0.56479734539944,
+    0.7354752354920545,
+    0.5852776763488975
+  ],
+  "file_sha256": {
+    "data/raw/LibriSpeech/test-clean/4077/13754/4077-13754-0001.flac": "45a33624cbbe1069aa750b5646175194c90e653455baac9c67615688731290e7",
+    "data/raw/LibriSpeech/test-clean/4077/13751/4077-13751-0013.flac": "b3e16f623554220cbbe6cf7ef49e65f0d3cc6dde08c407e4a8f40668c25f4ea6",
+    "data/raw/LibriSpeech/test-clean/5142/33396/5142-33396-0065.flac": "67800641844bf8c9d654fc9a6099941ba97ff31b0ac0a579209378598c4ea09b",
+    "data/raw/LibriSpeech/test-clean/5142/33396/5142-33396-0056.flac": "15822b8230aa2bf1c8515633763ea0bd8e0e5f9db052eb7972aad5e117d5af0c",
+    "data/raw/LibriSpeech/test-clean/5683/32866/5683-32866-0012.flac": "c5eb505469ef1344b69a37f7fa0f0aa0e9e1a751ed7a07f2e9ecbea72ad9308e",
+    "data/raw/LibriSpeech/test-clean/5683/32865/5683-32865-0016.flac": "9c2a014368db04686fdc368eb47f0cc7f5e0c12dbaa32df23dffdc6edde4c36c",
+    "data/m2_three_speakers/audio/4077-13754-0001_5142-33396-0065_5683-32866-0012_mix.wav": "63cbdf84902890395277a97607bf974fbe27aa61a1ad3675dcd5cad63b5d2895",
+    "data/m2_three_speakers/audio/4077-13754-0001_5142-33396-0065_5683-32866-0012_s1.wav": "6546ba8430f348473414224486d67e9b6a629d94eb9bef73043012cb0f09d2cf",
+    "data/m2_three_speakers/audio/4077-13754-0001_5142-33396-0065_5683-32866-0012_s2.wav": "c2c15ec19263b13412d780cd96bfe304d7637c1a66676942726e72acd5388146",
+    "data/m2_three_speakers/audio/4077-13754-0001_5142-33396-0065_5683-32866-0012_s3.wav": "b022227a6a42a4418f28928c190305c2db3904c80ae51d96c351a5a12372259d",
+    "data/m2_three_speakers/audio/4077_enrollment.wav": "a55cf150487b51f440169550d0211087e36294993cc3262dd3a91691c242154c",
+    "data/m2_three_speakers/audio/5142_enrollment.wav": "09d2eed4d84d332e5dcb9e88ff03b3d32d30a816d65fd1a11c6e263ceb9f298c",
+    "data/m2_three_speakers/audio/5683_enrollment.wav": "9659de5e764024c9127acf5269dec699066e52f3cfc93f9724fb7ba6c9a0196e"
+  },
+  "manifest_sha256": {
+    "single_trials.jsonl": "e09add8c4696563c844352247c54473f35015132f7aa2f9d025fcbb93393ad67",
+    "selected_set_trials.jsonl": "c9be72d102dfd938c655da4c7fdac33f8d27a314ac662a56576b27fdb2ecc1d2"
+  }
+}

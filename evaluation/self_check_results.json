@@ -1,0 +1,43 @@
+{
+  "status": "passed_synthetic_contract_check",
+  "results": [
+    {
+      "trial_id": "synthetic_2mix",
+      "dataset": "Libri2Mix",
+      "dataset_revision": "synthetic-self-check",
+      "selected_speaker_ids": [
+        "speaker_1"
+      ],
+      "si_sdr_input_db": 6.8010457794399615e-09,
+      "si_sdr_output_db": 120.0,
+      "si_sdri_db": 119.99999999319895,
+      "output_si_sdr_by_source_db": {
+        "speaker_1": 120.0,
+        "speaker_2": -120.0
+      },
+      "output_peak": 0.11999999731779099,
+      "output_rms": 0.08485281379847774,
+      "output_fraction_outside_unit_range": 0.0
+    },
+    {
+      "trial_id": "synthetic_3mix",
+      "dataset": "Libri3Mix",
+      "dataset_revision": "synthetic-self-check",
+      "selected_speaker_ids": [
+        "speaker_1",
+        "speaker_3"
+      ],
+      "si_sdr_input_db": 3.0102999568864264,
+      "si_sdr_output_db": 119.99999999254217,
+      "si_sdri_db": 116.98970003565574,
+      "output_si_sdr_by_source_db": {
+        "speaker_1": 7.905276915119066e-10,
+        "speaker_2": -120.0,
+        "speaker_3": 1.0369336100412265e-09
+      },
+      "output_peak": 0.2399701029062271,
+      "output_rms": 0.11999999998260451,
+      "output_fraction_outside_unit_range": 0.0
+    }
+  ]
+}

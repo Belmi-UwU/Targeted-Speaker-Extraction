@@ -1,0 +1,50 @@
+[
+  {
+    "method": "speakerbeam_ss_sum",
+    "selected_speaker_ids": [
+      "4077",
+      "5142"
+    ],
+    "segment_guard_seconds": 0.1,
+    "target_absent_output_rms": 4.120002950232875,
+    "target_solo_output_rms": 1.8100479985590525,
+    "absent_to_target_solo_output_db": 7.144148708967681,
+    "input_absent_to_target_solo_db": 7.5796155582685865,
+    "absent_output_to_input_db": 36.35522822941044,
+    "4077_solo_si_sdr_db": 17.779885956933732,
+    "5142_solo_si_sdr_db": -11.866632792227383,
+    "all_overlap_si_sdri_db": 6.958928013846451
+  },
+  {
+    "method": "sepformer_raw_sum",
+    "selected_speaker_ids": [
+      "4077",
+      "5142"
+    ],
+    "segment_guard_seconds": 0.1,
+    "target_absent_output_rms": 0.009198802998079654,
+    "target_solo_output_rms": 0.6567453737685437,
+    "absent_to_target_solo_output_db": -37.07331408262155,
+    "input_absent_to_target_solo_db": 7.5796155582685865,
+    "absent_output_to_input_db": -16.668095949205096,
+    "4077_solo_si_sdr_db": 35.17763084902835,
+    "5142_solo_si_sdr_db": 28.387222061614867,
+    "all_overlap_si_sdri_db": 20.64318519525765
+  },
+  {
+    "method": "sepformer_mixfit",
+    "selected_speaker_ids": [
+      "4077",
+      "5142"
+    ],
+    "segment_guard_seconds": 0.1,
+    "target_absent_output_rms": 0.0003663461889459265,
+    "target_solo_output_rms": 0.02615469710312822,
+    "absent_to_target_solo_output_db": -37.07316033705263,
+    "input_absent_to_target_solo_db": 7.5796155582685865,
+    "absent_output_to_input_db": -44.66488875127129,
+    "4077_solo_si_sdr_db": 35.178283394509386,
+    "5142_solo_si_sdr_db": 28.38719734559698,
+    "all_overlap_si_sdri_db": 20.64314707680425
+  }
+]

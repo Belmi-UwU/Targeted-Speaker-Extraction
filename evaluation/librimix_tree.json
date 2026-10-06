@@ -1,0 +1,321 @@
+{
+  "sha": "b898ca375c03e4039cdb3dbe3dd485aad58ec7d1",
+  "url": "https://api.github.com/repos/JorisCos/LibriMix/git/trees/b898ca375c03e4039cdb3dbe3dd485aad58ec7d1",
+  "tree": [
+    {
+      "path": "LICENSE",
+      "mode": "100644",
+      "type": "blob",
+      "sha": "a5b66c95a7a33b4bcc9cce2ab79dc36d64504dad",
+      "size": 1065,
+      "url": "https://api.github.com/repos/JorisCos/LibriMix/git/blobs/a5b66c95a7a33b4bcc9cce2ab79dc36d64504dad"
+    },
+    {
+      "path": "README.md",
+      "mode": "100644",
+      "type": "blob",
+      "sha": "f32d8953fb8b362453705ba96ff80922ca18fe73",
+      "size": 3236,
+      "url": "https://api.github.com/repos/JorisCos/LibriMix/git/blobs/f32d8953fb8b362453705ba96ff80922ca18fe73"
+    },
+    {
+      "path": "generate_librimix.sh",
+      "mode": "100644",
+      "type": "blob",
+      "sha": "93145bdb7fd3bab81315001e123f1a8d5ad5ca56",
+      "size": 2989,
+      "url": "https://api.github.com/repos/JorisCos/LibriMix/git/blobs/93145bdb7fd3bab81315001e123f1a8d5ad5ca56"
+    },
+    {
+      "path": "metadata",
+      "mode": "040000",
+      "type": "tree",
+      "sha": "bfeb748263b2e846c98bf021e79bfe0c68a189c5",
+      "url": "https://api.github.com/repos/JorisCos/LibriMix/git/trees/bfeb748263b2e846c98bf021e79bfe0c68a189c5"
+    },
+    {
+      "path": "metadata/Libri2Mix",
+      "mode": "040000",
+      "type": "tree",
+      "sha": "d63d3d4f7d122ec696dec95ae040d69134cb9397",
+      "url": "https://api.github.com/repos/JorisCos/LibriMix/git/trees/d63d3d4f7d122ec696dec95ae040d69134cb9397"
+    },
+    {
+      "path": "metadata/Libri2Mix/Storage_info.txt",
+      "mode": "100644",
+      "type": "blob",
+      "sha": "d1df6a08c41c3eba31178a339df6b6fd39c6947d",
+      "size": 4640,
+      "url": "https://api.github.com/repos/JorisCos/LibriMix/git/blobs/d1df6a08c41c3eba31178a339df6b6fd39c6947d"
+    },
+    {
+      "path": "metadata/Libri2Mix/libri2mix_dev-clean.csv",
+      "mode": "100644",
+      "type": "blob",
+      "sha": "6d8f1058b9235f4606f591ad8dc7632b7e71a390",
+      "size": 648265,
+      "url": "https://api.github.com/repos/JorisCos/LibriMix/git/blobs/6d8f1058b9235f4606f591ad8dc7632b7e71a390"
+    },
+    {
+      "path": "metadata/Libri2Mix/libri2mix_dev-clean_info.csv",
+      "mode": "100644",
+      "type": "blob",
+      "sha": "16b0f745fad1536d6306e37727702c3dcc43975d",
+      "size": 151577,
+      "url": "https://api.github.com/repos/JorisCos/LibriMix/git/blobs/16b0f745fad1536d6306e37727702c3dcc43975d"
+    },
+    {
+      "path": "metadata/Libri2Mix/libri2mix_test-clean.csv",
+      "mode": "100644",
+      "type": "blob",
+      "sha": "ea28bb09d4f64e48bccb3649eec25091bd3d49ce",
+      "size": 646465,
+      "url": "https://api.github.com/repos/JorisCos/LibriMix/git/blobs/ea28bb09d4f64e48bccb3649eec25091bd3d49ce"
+    },
+    {
+      "path": "metadata/Libri2Mix/libri2mix_test-clean_info.csv",
+      "mode": "100644",
+      "type": "blob",
+      "sha": "b3040dd8fd667c62bc46cd625dc117e9fe469248",
+      "size": 148655,
+      "url": "https://api.github.com/repos/JorisCos/LibriMix/git/blobs/b3040dd8fd667c62bc46cd625dc117e9fe469248"
+    },
+    {
+      "path": "metadata/Libri2Mix/libri2mix_train-clean-100.csv",
+      "mode": "100644",
+      "type": "blob",
+      "sha": "393234e6c9035dac4b83cd973fbb92da06ad0999",
+      "size": 3152141,
+      "url": "https://api.github.com/repos/JorisCos/LibriMix/git/blobs/393234e6c9035dac4b83cd973fbb92da06ad0999"
+    },
+    {
+      "path": "metadata/Libri2Mix/libri2mix_train-clean-100_info.csv",
+      "mode": "100644",
+      "type": "blob",
+      "sha": "adcb77d115a3d80f324974c3e3f492b247572c2b",
+      "size": 693657,
+      "url": "https://api.github.com/repos/JorisCos/LibriMix/git/blobs/adcb77d115a3d80f324974c3e3f492b247572c2b"
+    },
+    {
+      "path": "metadata/Libri2Mix/libri2mix_train-clean-360.csv",
+      "mode": "100644",
+      "type": "blob",
+      "sha": "6190d44fad70a6890237323b3d3e0a97325eaf3a",
+      "size": 11693192,
+      "url": "https://api.github.com/repos/JorisCos/LibriMix/git/blobs/6190d44fad70a6890237323b3d3e0a97325eaf3a"
+    },
+    {
+      "path": "metadata/Libri2Mix/libri2mix_train-clean-360_info.csv",
+      "mode": "100644",
+      "type": "blob",
+      "sha": "2e6efe800f2132d3286b6ffa1e82bb53eea53361",
+      "size": 2555313,
+      "url": "https://api.github.com/repos/JorisCos/LibriMix/git/blobs/2e6efe800f2132d3286b6ffa1e82bb53eea53361"
+    },
+    {
+      "path": "metadata/Libri3Mix",
+      "mode": "040000",
+      "type": "tree",
+      "sha": "33f7414d5baf9cf363c8de10ab6a9c0dd1e32354",
+      "url": "https://api.github.com/repos/JorisCos/LibriMix/git/trees/33f7414d5baf9cf363c8de10ab6a9c0dd1e32354"
+    },
+    {
+      "path": "metadata/Libri3Mix/Storage_info.txt",
+      "mode": "100644",
+      "type": "blob",
+      "sha": "fc16bd74a0e8d1fe6a4305ada2c81b63f0271bd2",
+      "size": 5213,
+      "url": "https://api.github.com/repos/JorisCos/LibriMix/git/blobs/fc16bd74a0e8d1fe6a4305ada2c81b63f0271bd2"
+    },
+    {
+      "path": "metadata/Libri3Mix/libri3mix_dev-clean.csv",
+      "mode": "100644",
+      "type": "blob",
+      "sha": "0774a4f7afcbc43bda31ea297ab0b0c2d40f64fb",
+      "size": 883079,
+      "url": "https://api.github.com/repos/JorisCos/LibriMix/git/blobs/0774a4f7afcbc43bda31ea297ab0b0c2d40f64fb"
+    },
+    {
+      "path": "metadata/Libri3Mix/libri3mix_dev-clean_info.csv",
+      "mode": "100644",
+      "type": "blob",
+      "sha": "35070bf462b230210b87468ef8ef6b97b8e14bbe",
+      "size": 227329,
+      "url": "https://api.github.com/repos/JorisCos/LibriMix/git/blobs/35070bf462b230210b87468ef8ef6b97b8e14bbe"
+    },
+    {
+      "path": "metadata/Libri3Mix/libri3mix_test-clean.csv",
+      "mode": "100644",
+      "type": "blob",
+      "sha": "49ecb6faa8d8a1d9d0f982647f90432f388ef4d6",
+      "size": 880457,
+      "url": "https://api.github.com/repos/JorisCos/LibriMix/git/blobs/49ecb6faa8d8a1d9d0f982647f90432f388ef4d6"
+    },
+    {
+      "path": "metadata/Libri3Mix/libri3mix_test-clean_info.csv",
+      "mode": "100644",
+      "type": "blob",
+      "sha": "18d63c223b56fa869fc5925b830ac933e931432d",
+      "size": 222871,
+      "url": "https://api.github.com/repos/JorisCos/LibriMix/git/blobs/18d63c223b56fa869fc5925b830ac933e931432d"
+    },
+    {
+      "path": "metadata/Libri3Mix/libri3mix_train-clean-100.csv",
+      "mode": "100644",
+      "type": "blob",
+      "sha": "26799c5facabbeb08f8a88b4faa3435a52acfb66",
+      "size": 2887602,
+      "url": "https://api.github.com/repos/JorisCos/LibriMix/git/blobs/26799c5facabbeb08f8a88b4faa3435a52acfb66"
+    },
+    {
+      "path": "metadata/Libri3Mix/libri3mix_train-clean-100_info.csv",
+      "mode": "100644",
+      "type": "blob",
+      "sha": "159ce8cded9d4cc1cd112fe06171751443d2bde6",
+      "size": 696183,
+      "url": "https://api.github.com/repos/JorisCos/LibriMix/git/blobs/159ce8cded9d4cc1cd112fe06171751443d2bde6"
+    },
+    {
+      "path": "metadata/Libri3Mix/libri3mix_train-clean-360.csv",
+      "mode": "100644",
+      "type": "blob",
+      "sha": "547999833756e1689b9c1943c3c13a3fe138bcf8",
+      "size": 10656675,
+      "url": "https://api.github.com/repos/JorisCos/LibriMix/git/blobs/547999833756e1689b9c1943c3c13a3fe138bcf8"
+    },
+    {
+      "path": "metadata/Libri3Mix/libri3mix_train-clean-360_info.csv",
+      "mode": "100644",
+      "type": "blob",
+      "sha": "567850311352b0191ae594aca48b9ad182374924",
+      "size": 2557870,
+      "url": "https://api.github.com/repos/JorisCos/LibriMix/git/blobs/567850311352b0191ae594aca48b9ad182374924"
+    },
+    {
+      "path": "metadata/LibriSpeech",
+      "mode": "040000",
+      "type": "tree",
+      "sha": "9ec9289b53190ce612c0ef5f3183e911cbb3c8ac",
+      "url": "https://api.github.com/repos/JorisCos/LibriMix/git/trees/9ec9289b53190ce612c0ef5f3183e911cbb3c8ac"
+    },
+    {
+      "path": "metadata/LibriSpeech/dev-clean.csv",
+      "mode": "100644",
+      "type": "blob",
+      "sha": "084275235850436a998ebc6594687985853db19a",
+      "size": 152552,
+      "url": "https://api.github.com/repos/JorisCos/LibriMix/git/blobs/084275235850436a998ebc6594687985853db19a"
+    },
+    {
+      "path": "metadata/LibriSpeech/test-clean.csv",
+      "mode": "100644",
+      "type": "blob",
+      "sha": "a89034b282b561eb509f3cc9d87255c3b6afbf5e",
+      "size": 150260,
+      "url": "https://api.github.com/repos/JorisCos/LibriMix/git/blobs/a89034b282b561eb509f3cc9d87255c3b6afbf5e"
+    },
+    {
+      "path": "metadata/LibriSpeech/train-clean-100.csv",
+      "mode": "100644",
+      "type": "blob",
+      "sha": "564bf6143c51ab042d7f9da60a73bbf3f0b570c0",
+      "size": 2182835,
+      "url": "https://api.github.com/repos/JorisCos/LibriMix/git/blobs/564bf6143c51ab042d7f9da60a73bbf3f0b570c0"
+    },
+    {
+      "path": "metadata/LibriSpeech/train-clean-360.csv",
+      "mode": "100644",
+      "type": "blob",
+      "sha": "ec07e18f18364b8b0b2782a872dd735546f3e326",
+      "size": 7976481,
+      "url": "https://api.github.com/repos/JorisCos/LibriMix/git/blobs/ec07e18f18364b8b0b2782a872dd735546f3e326"
+    },
+    {
+      "path": "metadata/Wham_noise",
+      "mode": "040000",
+      "type": "tree",
+      "sha": "b79c7ecd657dbca3396d65a564be3815836cd722",
+      "url": "https://api.github.com/repos/JorisCos/LibriMix/git/trees/b79c7ecd657dbca3396d65a564be3815836cd722"
+    },
+    {
+      "path": "metadata/Wham_noise/dev.csv",
+      "mode": "100644",
+      "type": "blob",
+      "sha": "e37bbc67eace2443c48363767c035e811b480ed3",
+      "size": 471577,
+      "url": "https://api.github.com/repos/JorisCos/LibriMix/git/blobs/e37bbc67eace2443c48363767c035e811b480ed3"
+    },
+    {
+      "path": "metadata/Wham_noise/test.csv",
+      "mode": "100644",
+      "type": "blob",
+      "sha": "c18e4f047f7def9b35e00e787bd14df7273ad0ec",
+      "size": 283036,
+      "url": "https://api.github.com/repos/JorisCos/LibriMix/git/blobs/c18e4f047f7def9b35e00e787bd14df7273ad0ec"
+    },
+    {
+      "path": "metadata/Wham_noise/train.csv",
+      "mode": "100644",
+      "type": "blob",
+      "sha": "2ab26dd588d2440750ca291d678911c8b8c4310d",
+      "size": 5937105,
+      "url": "https://api.github.com/repos/JorisCos/LibriMix/git/blobs/2ab26dd588d2440750ca291d678911c8b8c4310d"
+    },
+    {
+      "path": "requirements.txt",
+      "mode": "100644",
+      "type": "blob",
+      "sha": "2c6809eedf94c6c6186a278c270da9d15ba0c359",
+      "size": 128,
+      "url": "https://api.github.com/repos/JorisCos/LibriMix/git/blobs/2c6809eedf94c6c6186a278c270da9d15ba0c359"
+    },
+    {
+      "path": "scripts",
+      "mode": "040000",
+      "type": "tree",
+      "sha": "f6c81e3e860997c76c8cac2fd367790c718ea36c",
+      "url": "https://api.github.com/repos/JorisCos/LibriMix/git/trees/f6c81e3e860997c76c8cac2fd367790c718ea36c"
+    },
+    {
+      "path": "scripts/augment_train_noise.py",
+      "mode": "100644",
+      "type": "blob",
+      "sha": "352c07d1a0424b5de6ace5b04d535c9d1494d295",
+      "size": 2242,
+      "url": "https://api.github.com/repos/JorisCos/LibriMix/git/blobs/352c07d1a0424b5de6ace5b04d535c9d1494d295"
+    },
+    {
+      "path": "scripts/create_librimix_from_metadata.py",
+      "mode": "100644",
+      "type": "blob",
+      "sha": "e20f19f7d34f436922fbe3b1ad8f9274b98ccbcf",
+      "size": 16113,
+      "url": "https://api.github.com/repos/JorisCos/LibriMix/git/blobs/e20f19f7d34f436922fbe3b1ad8f9274b98ccbcf"
+    },
+    {
+      "path": "scripts/create_librimix_metadata.py",
+      "mode": "100644",
+      "type": "blob",
+      "sha": "99e4a879e8efde7bb45ba99c878c36d4b448738a",
+      "size": 17644,
+      "url": "https://api.github.com/repos/JorisCos/LibriMix/git/blobs/99e4a879e8efde7bb45ba99c878c36d4b448738a"
+    },
+    {
+      "path": "scripts/create_librispeech_metadata.py",
+      "mode": "100644",
+      "type": "blob",
+      "sha": "0a3765e048c95c23e93ff34047070fb5c3edc1b8",
+      "size": 5771,
+      "url": "https://api.github.com/repos/JorisCos/LibriMix/git/blobs/0a3765e048c95c23e93ff34047070fb5c3edc1b8"
+    },
+    {
+      "path": "scripts/create_wham_metadata.py",
+      "mode": "100644",
+      "type": "blob",
+      "sha": "7871d40b33453650949f3feba80ed002616d9750",
+      "size": 3930,
+      "url": "https://api.github.com/repos/JorisCos/LibriMix/git/blobs/7871d40b33453650949f3feba80ed002616d9750"
+    }
+  ],
+  "truncated": false
+}

@@ -1,0 +1,56 @@
+{
+  "type": "controlled derivative, not an official Libri3Mix metadata row",
+  "base_mixture_id": "4077-13754-0001_5142-33396-0065_5683-32866-0012",
+  "source": "official LibriSpeech test-clean utterances, gains from pinned Libri3Mix metadata",
+  "metadata_revision": "b898ca375c03e4039cdb3dbe3dd485aad58ec7d1",
+  "construction": "four 0.9-second intervals with 10 ms source on/off fades, additive clean sources; no new speech or noise",
+  "segments": [
+    {
+      "label": "4077_only",
+      "active_speaker_ids": [
+        "4077"
+      ],
+      "start_frame": 0,
+      "end_frame": 14400
+    },
+    {
+      "label": "selected_absent_5683_only",
+      "active_speaker_ids": [
+        "5683"
+      ],
+      "start_frame": 14400,
+      "end_frame": 28800
+    },
+    {
+      "label": "all_three_overlap",
+      "active_speaker_ids": [
+        "4077",
+        "5142",
+        "5683"
+      ],
+      "start_frame": 28800,
+      "end_frame": 43200
+    },
+    {
+      "label": "5142_only",
+      "active_speaker_ids": [
+        "5142"
+      ],
+      "start_frame": 43200,
+      "end_frame": 57600
+    }
+  ],
+  "selected_pair_of_interest": [
+    "4077",
+    "5142"
+  ],
+  "file_sha256": {
+    "audio/4077-13754-0001_5142-33396-0065_5683-32866-0012_controlled_turns_mix.wav": "1c1b3faf2ad971cb079e826914356f3ac32fd90b7f39be5b8564bdcb3c7b8f9b",
+    "audio/4077-13754-0001_5142-33396-0065_5683-32866-0012_controlled_turns_s1.wav": "d273dce562205782a7c4ea725619884b816ba7a41a616ec428b868e35ca77489",
+    "audio/4077-13754-0001_5142-33396-0065_5683-32866-0012_controlled_turns_s2.wav": "14e8880cadac78495b535eefba0a2926feed29bca0fcb4f91983ac8b71c8c900",
+    "audio/4077-13754-0001_5142-33396-0065_5683-32866-0012_controlled_turns_s3.wav": "c6a0f0f145f3a4359fd2c53db7ed3b3bdb9991762f7359056392ce7b7c5cd079",
+    "audio/4077_enrollment.wav": "a55cf150487b51f440169550d0211087e36294993cc3262dd3a91691c242154c",
+    "audio/5142_enrollment.wav": "09d2eed4d84d332e5dcb9e88ff03b3d32d30a816d65fd1a11c6e263ceb9f298c",
+    "audio/5683_enrollment.wav": "9659de5e764024c9127acf5269dec699066e52f3cfc93f9724fb7ba6c9a0196e"
+  }
+}

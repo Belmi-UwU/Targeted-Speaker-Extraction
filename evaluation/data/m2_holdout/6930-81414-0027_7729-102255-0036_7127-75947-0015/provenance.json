@@ -1,0 +1,31 @@
+{
+  "source": "official Libri3Mix test-clean metadata, derived 16k/min/mix_clean",
+  "mixture_id": "6930-81414-0027_7729-102255-0036_7127-75947-0015",
+  "metadata_revision": "b898ca375c03e4039cdb3dbe3dd485aad58ec7d1",
+  "metadata_url": "https://github.com/JorisCos/LibriMix/tree/b898ca375c03e4039cdb3dbe3dd485aad58ec7d1/metadata/Libri3Mix",
+  "speech_archive": "https://www.openslr.org/12",
+  "archive_md5": "32fa31d27d2e1cad72775fee3f4849a9",
+  "speech_license": "CC-BY-4.0",
+  "source_gains": [
+    0.8419256796339148,
+    0.644799703993564,
+    0.6185292569534785
+  ],
+  "original_paths": [
+    "test-clean/6930/81414/6930-81414-0027.flac",
+    "test-clean/7729/102255/7729-102255-0036.flac",
+    "test-clean/7127/75947/7127-75947-0015.flac",
+    "test-clean/6930/76324/6930-76324-0000.flac",
+    "test-clean/7729/102255/7729-102255-0000.flac",
+    "test-clean/7127/75946/7127-75946-0011.flac"
+  ],
+  "file_sha256": {
+    "audio/6930-81414-0027_7729-102255-0036_7127-75947-0015_mix.wav": "67fc6ddc954b537a08bfec771e2cf5b9dd6fe066a768caa359c7bfe1dd36962c",
+    "audio/6930-81414-0027_7729-102255-0036_7127-75947-0015_s1.wav": "69383c23774fcf0226195706088e057e84b89953bc4ca03c3ea11f01c03e8ea9",
+    "audio/6930-81414-0027_7729-102255-0036_7127-75947-0015_s2.wav": "560205adba91b8c5811f2f105857f6e7e72e6ece3990a9e85421b134a275eafe",
+    "audio/6930-81414-0027_7729-102255-0036_7127-75947-0015_s3.wav": "96380f28db5c4e363e1d696bbd14704410b2fbba0a50d95c72725f45434cd3d7",
+    "audio/6930_enrollment.wav": "428b6bd1ef1f1bba4486d4717ab9b3431b20330a97e2cf6690d5d2454d38dab7",
+    "audio/7127_enrollment.wav": "57c5dcede14d4e0752c06c5b1c5c4314e3d53a042cd90e488d67a3116a98b380",
+    "audio/7729_enrollment.wav": "c65258289d72485624a5ea06b0defd2c4012e672ed83198a327c3f5fc6a1f42b"
+  }
+}

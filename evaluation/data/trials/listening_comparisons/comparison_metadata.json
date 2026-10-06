@@ -1,0 +1,18 @@
+{
+  "fixed_model_gain": 0.014,
+  "note": "Fixed gain estimated using the first clean trial; research listening only, not a deployable gain policy or quality metric.",
+  "trials": [
+    {
+      "trial_id": "4077-13754-0001_5142-33396-0065__speaker_4077",
+      "mix_peak": 0.399139404296875,
+      "clean_peak": 0.391815185546875,
+      "scaled_model_peak": 0.3855854868888855
+    },
+    {
+      "trial_id": "4077-13754-0001_5142-33396-0065__speaker_5142",
+      "mix_peak": 0.399139404296875,
+      "clean_peak": 0.383697509765625,
+      "scaled_model_peak": 0.32342320680618286
+    }
+  ]
+}

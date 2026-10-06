@@ -1,0 +1,68 @@
+{
+  "warning": "clean references used only for post-hoc diagnosis; oracle mappings and scores are not deployable or model outputs",
+  "speaker_ids": [
+    "4077",
+    "5142",
+    "5683"
+  ],
+  "stream_si_sdr_to_clean_source_db": [
+    [
+      -37.018302738666634,
+      13.810619746912636,
+      -44.34320188922568
+    ],
+    [
+      -42.861668272945224,
+      -37.525932034454314,
+      12.358435881493122
+    ],
+    [
+      20.147694225105827,
+      -34.41723221410909,
+      -37.184081062712636
+    ]
+  ],
+  "clean_oracle_mapping": {
+    "4077": 1,
+    "5142": 2,
+    "5683": 0
+  },
+  "pairs": [
+    {
+      "selected": [
+        "4077",
+        "5142"
+      ],
+      "actual_match": {
+        "4077": 1,
+        "5142": 2
+      },
+      "actual_matches_clean_oracle": true,
+      "clean_oracle_si_sdri_db": 20.071817644941333
+    },
+    {
+      "selected": [
+        "4077",
+        "5683"
+      ],
+      "actual_match": {
+        "4077": 1,
+        "5683": 0
+      },
+      "actual_matches_clean_oracle": true,
+      "clean_oracle_si_sdri_db": 12.530943285969256
+    },
+    {
+      "selected": [
+        "5142",
+        "5683"
+      ],
+      "actual_match": {
+        "5142": 2,
+        "5683": 0
+      },
+      "actual_matches_clean_oracle": true,
+      "clean_oracle_si_sdri_db": 13.900477907260132
+    }
+  ]
+}

@@ -1,0 +1,47 @@
+{
+  "model": "OpenSpeakerBeam-SS independent variant",
+  "model_code_commit": "bbbae73f74fc14eafdf7abb93f9094eafccd21df",
+  "checkpoint_sha256": "41c250587af2e947dc3e265cd6e7aa7de230048d408e93c53d8348d63cf75896",
+  "manifest_sha256": "5ad97684ac6234d5b631e6c7ef638b4947b5f4d746774ac6e87abb347b616511",
+  "device": "cpu",
+  "torch_threads": 4,
+  "scope": "offline single-target trials; not streaming or mobile timing",
+  "trials": [
+    {
+      "trial_id": "7176-88083-0000_4970-29095-0006_2094-142345-0034__speaker_7176",
+      "selected_speaker_id": "7176",
+      "embedding_shape": [
+        1,
+        256
+      ],
+      "offline_model_forward_seconds": 0.056179874984081835,
+      "raw_peak": 15.437190055847168,
+      "listening_preview_gain": 0.058300765666812894,
+      "raw_output_sha256": "185cec9f592f5bd904678ba01d969a8769fd19cca1d428498068451af1552f77"
+    },
+    {
+      "trial_id": "7176-88083-0000_4970-29095-0006_2094-142345-0034__speaker_4970",
+      "selected_speaker_id": "4970",
+      "embedding_shape": [
+        1,
+        256
+      ],
+      "offline_model_forward_seconds": 0.05310949997510761,
+      "raw_peak": 18.811546325683594,
+      "listening_preview_gain": 0.047842956895639194,
+      "raw_output_sha256": "f872b482ebe0ad2c4b7c137679f0f1d371e6e6a88db62b3b2564461f7b6501f9"
+    },
+    {
+      "trial_id": "7176-88083-0000_4970-29095-0006_2094-142345-0034__speaker_2094",
+      "selected_speaker_id": "2094",
+      "embedding_shape": [
+        1,
+        256
+      ],
+      "offline_model_forward_seconds": 0.05252775002736598,
+      "raw_peak": 19.737510681152344,
+      "listening_preview_gain": 0.04559845537458906,
+      "raw_output_sha256": "b82ece87a7eb9dc0fa9bdba9de51c364df148bc341c96d5ab64440ebc92cd52b"
+    }
+  ]
+}

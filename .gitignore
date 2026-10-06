@@ -1,0 +1,19 @@
+# Local machine and Python artifacts
+.DS_Store
+.venv/
+__pycache__/
+*.py[cod]
+.cache/
+
+# Large or personal audio assets stay on the local machine.
+*.wav
+*.flac
+evaluation/data/archives/*.tar.gz
+evaluation/data/raw/
+evaluation/data/user_recordings/
+
+# Downloaded model weights and SpeechBrain's loaded copies.
+*.ckpt
+*.pth
+evaluation/sepformer_libr3mix_loaded/
+evaluation/ecapa_loaded/

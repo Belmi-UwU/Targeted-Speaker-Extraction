@@ -1,0 +1,38 @@
+/Users/mumu/Apple/Final Challenge/TSE Trial1/speakerbeam_ss_verification/.venv/lib/python3.12/site-packages/webrtcvad.py:1: UserWarning: pkg_resources is deprecated as an API. See https://setuptools.pypa.io/en/latest/pkg_resources.html. The pkg_resources package is slated for removal as early as 2025-11-30. Refrain from using this package or pin to Setuptools<81.
+  import pkg_resources
+Loaded the voice encoder model on cpu in 0.01 seconds.
+{
+  "model": "OpenSpeakerBeam-SS independent variant",
+  "model_code_commit": "bbbae73f74fc14eafdf7abb93f9094eafccd21df",
+  "checkpoint_sha256": "41c250587af2e947dc3e265cd6e7aa7de230048d408e93c53d8348d63cf75896",
+  "manifest_sha256": "c7b9ba31e994f290c2bf07c6002a10b8accf6bf638278d074bd4eba4f87e4490",
+  "device": "cpu",
+  "torch_threads": 4,
+  "scope": "offline single-target trials; not streaming or mobile timing",
+  "trials": [
+    {
+      "trial_id": "4077-13754-0001_5142-33396-0065__speaker_4077",
+      "selected_speaker_id": "4077",
+      "embedding_shape": [
+        1,
+        256
+      ],
+      "offline_model_forward_seconds": 0.05033954099053517,
+      "raw_peak": 27.541820526123047,
+      "listening_preview_gain": 0.032677578417387554,
+      "raw_output_sha256": "8aa2ca9fe45c1bdcfdf4263fe670d141e7b1a0463615e8e4f79c109653571f8f"
+    },
+    {
+      "trial_id": "4077-13754-0001_5142-33396-0065__speaker_5142",
+      "selected_speaker_id": "5142",
+      "embedding_shape": [
+        1,
+        256
+      ],
+      "offline_model_forward_seconds": 0.038053000054787844,
+      "raw_peak": 23.10165786743164,
+      "listening_preview_gain": 0.03895824296094377,
+      "raw_output_sha256": "94ea269d13cb5c94b75c01fb312169b9852db9f645aff942a8f85c4695326434"
+    }
+  ]
+}

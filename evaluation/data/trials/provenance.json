@@ -1,0 +1,28 @@
+{
+  "dataset": "Libri2Mix 16k/min/test/mix_clean subset",
+  "mixture_id": "4077-13754-0001_5142-33396-0065",
+  "librimix_metadata_revision": "b898ca375c03e4039cdb3dbe3dd485aad58ec7d1",
+  "librimix_metadata_source": "https://github.com/JorisCos/LibriMix/tree/b898ca375c03e4039cdb3dbe3dd485aad58ec7d1/metadata/Libri2Mix",
+  "librimix_mixing_source": "https://github.com/JorisCos/LibriMix/blob/b898ca375c03e4039cdb3dbe3dd485aad58ec7d1/scripts/create_librimix_from_metadata.py",
+  "librispeech_source": "https://www.openslr.org/12",
+  "librispeech_test_clean_archive_md5": "32fa31d27d2e1cad72775fee3f4849a9",
+  "speech_license": "CC-BY-4.0",
+  "noise_used": false,
+  "generation": "metadata gains, 16 kHz, min length, source sum, PCM16 WAV; clean branch only",
+  "source_gains": [
+    0.7875413348848695,
+    1.4352834120507272
+  ],
+  "file_sha256": {
+    "data/raw/LibriSpeech/test-clean/4077/13754/4077-13754-0001.flac": "45a33624cbbe1069aa750b5646175194c90e653455baac9c67615688731290e7",
+    "data/raw/LibriSpeech/test-clean/4077/13751/4077-13751-0013.flac": "b3e16f623554220cbbe6cf7ef49e65f0d3cc6dde08c407e4a8f40668c25f4ea6",
+    "data/raw/LibriSpeech/test-clean/5142/33396/5142-33396-0065.flac": "67800641844bf8c9d654fc9a6099941ba97ff31b0ac0a579209378598c4ea09b",
+    "data/raw/LibriSpeech/test-clean/5142/33396/5142-33396-0056.flac": "15822b8230aa2bf1c8515633763ea0bd8e0e5f9db052eb7972aad5e117d5af0c",
+    "data/trials/audio/4077-13754-0001_5142-33396-0065_mix.wav": "c6fbb84b7cd1341452a42580a49d5af2c4e493cc05249932a67699afd7842f12",
+    "data/trials/audio/4077-13754-0001_5142-33396-0065_s1.wav": "a9137eaf484f62d4a7bbc801a270bc58f5c3f546ad97b59ea5af023afb7467c4",
+    "data/trials/audio/4077-13754-0001_5142-33396-0065_s2.wav": "bc11ca6a126fb2d515e64a150bf245f5fe7221ee41f6ce28cf7fce8e36ce6c33",
+    "data/trials/audio/4077_enrollment.wav": "a55cf150487b51f440169550d0211087e36294993cc3262dd3a91691c242154c",
+    "data/trials/audio/5142_enrollment.wav": "09d2eed4d84d332e5dcb9e88ff03b3d32d30a816d65fd1a11c6e263ceb9f298c"
+  },
+  "manifest_sha256": "c7b9ba31e994f290c2bf07c6002a10b8accf6bf638278d074bd4eba4f87e4490"
+}

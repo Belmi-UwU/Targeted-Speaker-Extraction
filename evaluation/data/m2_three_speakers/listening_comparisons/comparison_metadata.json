@@ -1,0 +1,13 @@
+{
+  "method": "direct sum of raw single-target outputs; no clean-reference calibration",
+  "preview_gain": 0.012780414735534944,
+  "preview_gain_policy": "M1 fixed gain 0.014, reduced if needed to keep combined PCM16 peaks about 0.9 or lower",
+  "max_raw_combined_peak": 70.42024993896484,
+  "trials": [
+    "4077-13754-0001_5142-33396-0065_5683-32866-0012__selected_4077_5142",
+    "4077-13754-0001_5142-33396-0065_5683-32866-0012__selected_4077_5683",
+    "4077-13754-0001_5142-33396-0065_5683-32866-0012__selected_5142_5683",
+    "4077-13754-0001_5142-33396-0065_5683-32866-0012__selected_4077_5142_5683"
+  ],
+  "warning": "preview gain is for listening only; scoring uses raw float outputs"
+}

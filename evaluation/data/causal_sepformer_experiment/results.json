@@ -1,0 +1,161 @@
+{
+  "scope": "One clean Libri3Mix mixture; diagnostic inference-time edits; no retraining",
+  "model_revision": "1f2d824e2333aec9e60d0030fb144885c1afc426",
+  "trial_id": "4077-13754-0001_5142-33396-0065_5683-32866-0012__speaker_4077",
+  "mixture_seconds": 3.77,
+  "hardware": "local CPU, torch 4 threads",
+  "variants": {
+    "original": {
+      "prefix_test": {
+        "short_seconds": 1.5,
+        "long_seconds": 2.5,
+        "boundary_samples_excluded": 8,
+        "before_boundary_error_rms": 0.028341365978121758,
+        "before_boundary_error_rms_relative_to_short_output": 0.028590235859155655,
+        "before_boundary_max_absolute_error": 0.7589809894561768,
+        "including_boundary_max_absolute_error": 0.7589809894561768,
+        "samples_with_error_over_1e_minus_4": 12000
+      },
+      "si_sdr_db_by_speaker_oracle_assignment": {
+        "4077": 13.810619682580684,
+        "5142": 12.358435796251339,
+        "5683": 20.147694187041097
+      },
+      "mean_si_sdr_db": 15.438916555291039,
+      "oracle_stream_by_speaker": {
+        "4077": 1,
+        "5142": 2,
+        "5683": 0
+      },
+      "preview_gain": 0.07145791599251043,
+      "benchmark": {
+        "0.25": {
+          "runs_seconds": [
+            0.3141,
+            0.3445,
+            0.3244
+          ],
+          "median_seconds": 0.3244
+        },
+        "0.5": {
+          "runs_seconds": [
+            0.3859,
+            0.3801,
+            0.3837
+          ],
+          "median_seconds": 0.3837
+        },
+        "1.0": {
+          "runs_seconds": [
+            0.5147,
+            0.4923,
+            0.511
+          ],
+          "median_seconds": 0.511
+        }
+      }
+    },
+    "masked_only": {
+      "prefix_test": {
+        "short_seconds": 1.5,
+        "long_seconds": 2.5,
+        "boundary_samples_excluded": 8,
+        "before_boundary_error_rms": 0.03407208248972893,
+        "before_boundary_error_rms_relative_to_short_output": 0.047872304916381836,
+        "before_boundary_max_absolute_error": 0.5028295516967773,
+        "including_boundary_max_absolute_error": 0.5028295516967773,
+        "samples_with_error_over_1e_minus_4": 11797
+      },
+      "si_sdr_db_by_speaker_oracle_assignment": {
+        "4077": -2.3224016721716465,
+        "5142": -3.6829366641109456,
+        "5683": 6.092244793284972
+      },
+      "mean_si_sdr_db": 0.02896881900079329,
+      "oracle_stream_by_speaker": {
+        "4077": 1,
+        "5142": 2,
+        "5683": 0
+      },
+      "preview_gain": 0.07369232255290153,
+      "benchmark": {
+        "0.25": {
+          "runs_seconds": [
+            0.3285,
+            0.3285,
+            0.3378
+          ],
+          "median_seconds": 0.3285
+        },
+        "0.5": {
+          "runs_seconds": [
+            0.3917,
+            0.3894,
+            0.388
+          ],
+          "median_seconds": 0.3894
+        },
+        "1.0": {
+          "runs_seconds": [
+            0.5457,
+            0.5085,
+            0.5059
+          ],
+          "median_seconds": 0.5085
+        }
+      }
+    },
+    "masked_local_norm": {
+      "prefix_test": {
+        "short_seconds": 1.5,
+        "long_seconds": 2.5,
+        "boundary_samples_excluded": 8,
+        "before_boundary_error_rms": 1.6098747437354177e-06,
+        "before_boundary_error_rms_relative_to_short_output": 2.6439838620717637e-06,
+        "before_boundary_max_absolute_error": 2.4080276489257812e-05,
+        "including_boundary_max_absolute_error": 0.1359935998916626,
+        "samples_with_error_over_1e_minus_4": 8
+      },
+      "si_sdr_db_by_speaker_oracle_assignment": {
+        "4077": -4.990677960016854,
+        "5142": -10.58347569467367,
+        "5683": 2.746676298737092
+      },
+      "mean_si_sdr_db": -4.27582578531781,
+      "oracle_stream_by_speaker": {
+        "4077": 0,
+        "5142": 2,
+        "5683": 1
+      },
+      "preview_gain": 0.09291551931644182,
+      "benchmark": {
+        "0.25": {
+          "runs_seconds": [
+            0.3373,
+            0.343,
+            0.3459
+          ],
+          "median_seconds": 0.343
+        },
+        "0.5": {
+          "runs_seconds": [
+            0.417,
+            0.436,
+            0.3993
+          ],
+          "median_seconds": 0.417
+        },
+        "1.0": {
+          "runs_seconds": [
+            0.5404,
+            0.5314,
+            0.5276
+          ],
+          "median_seconds": 0.5314
+        }
+      }
+    }
+  },
+  "transformer_blocks_masked": 4,
+  "global_norms_replaced": 5
+}
