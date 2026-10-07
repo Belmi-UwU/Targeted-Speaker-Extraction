@@ -19,7 +19,9 @@
 # 1. Upload this notebook. For R1, also upload the `tfmap_context_causal_100/` checkpoint folder.
 #    For evaluation, upload `eval_pack.zip` (built by `training/make_eval_pack.py`).
 # 2. Edit the **Config** cell. Run with `SMOKE = True` once (a few minutes), then set `SMOKE = False`.
-# 3. Run all cells. Training resumes from `last.pt` if the kernel restarts. Re-run the training cell to continue.
+# 3. Run all cells. If anything stops it (kernel crash, reboot, power loss), just run all cells again: finished
+#    steps are skipped and training resumes from the last checkpoint (at most ~10 minutes lost).
+#    For unattended runs, `run_until_done.sh` runs this same code as a script and restarts it automatically.
 #
 # Metal note: PyTorch does not implement `torch.angle` for complex tensors on MPS yet. The first code cell enables
 # `PYTORCH_ENABLE_MPS_FALLBACK`, which runs only that op on the CPU.
@@ -51,6 +53,14 @@ import zipfile
 from hashlib import md5
 from pathlib import Path
 
+
+def atomic(path, write):
+    """Write `path` via a temporary file and an atomic rename, so a crash never leaves it half-written."""
+    path = Path(path)
+    tmp = path.with_name(path.name + ".tmp")
+    write(tmp)
+    os.replace(tmp, path)
+
 # %% [markdown]
 # ## Config
 
@@ -74,6 +84,8 @@ STEPS = {"finetune_research": 20_000, "scratch_small": 150_000, "scratch_base": 
 LR = {"finetune_research": 2e-4, "scratch_small": 1e-3, "scratch_base": 1e-3}[MODE]
 WARMUP = 1_000
 LOG_EVERY, VAL_EVERY, CKPT_EVERY = 50, 2_000, 1_000
+CKPT_MINUTES = 10  # also checkpoint at least this often, so a crash loses at most ~10 minutes
+MAX_BAD_STEPS = 20  # stop (keeping the last good checkpoint) after this many non-finite losses in a row
 NUM_WORKERS = 6
 VAL_EXAMPLES = 200
 FREEZE_SPEAKER_ENCODER = MODE != "finetune_research"  # cheaper from-scratch training; ECAPA stays pretrained
@@ -89,7 +101,7 @@ DISCOVERED_STYLE_PROB = 0.6  # enrollment looks like a SepFormer-discovered trac
 if SMOKE:
     TRAIN_SETS, VAL_SET = [os.environ.get("TSE_SMOKE_SET", "dev-clean")], os.environ.get("TSE_SMOKE_SET", "dev-clean")
     STEPS, BATCH, NUM_WORKERS, VAL_EXAMPLES = 20, 2, 0, 6
-    LOG_EVERY, VAL_EVERY, CKPT_EVERY, WARMUP = 5, 10, 10, 5
+    LOG_EVERY, VAL_EVERY, CKPT_EVERY, WARMUP = 5, 10, 5, 5
     RUN = WORK / "runs" / f"smoke_{MODE}"
 for folder in (WORK, RUN):
     folder.mkdir(parents=True, exist_ok=True)
@@ -170,11 +182,18 @@ def ensure_librispeech(name):
     archive.parent.mkdir(parents=True, exist_ok=True)
     if not archive.exists():
         print(f"downloading {name} ...", flush=True)
-        urllib.request.urlretrieve(f"https://www.openslr.org/resources/12/{name}.tar.gz", archive)
+        atomic(archive, lambda tmp: urllib.request.urlretrieve(
+            f"https://www.openslr.org/resources/12/{name}.tar.gz", tmp))
     if file_md5(archive) != MD5[name]:
-        raise ValueError(f"MD5 mismatch for {archive}; delete it and re-run")
+        archive.unlink()
+        raise ValueError(f"MD5 mismatch for {name}; the bad archive was deleted, re-run this cell to download again")
+    staging = LIBRISPEECH.parent / f".extract_{name}"
+    shutil.rmtree(staging, ignore_errors=True)  # leftovers of an interrupted extraction
     with tarfile.open(archive) as tar:
-        tar.extractall(LIBRISPEECH.parent, filter="data")
+        tar.extractall(staging, filter="data")
+    LIBRISPEECH.mkdir(parents=True, exist_ok=True)
+    os.replace(staging / "LibriSpeech" / name, LIBRISPEECH / name)  # appears only once complete
+    shutil.rmtree(staging, ignore_errors=True)
     print(f"extracted {name}", flush=True)
 
 
@@ -192,7 +211,7 @@ def build_index(sets):
         for path in sorted((LIBRISPEECH / name).rglob("*.flac")):
             speaker = f"{name}/{path.parts[-3]}"
             index.setdefault(speaker, []).append((str(path), sf.info(path).frames))
-    cache.write_text(json.dumps(index))
+    atomic(cache, lambda tmp: tmp.write_text(json.dumps(index)))
     return index
 
 
@@ -284,7 +303,13 @@ class RirBank:
                 room.add_source(rng.uniform([0.3, 0.3, 1.0], size - [0.3, 0.3, 0.8]))
             room.compute_rir()
             self.rooms.append([np.asarray(room.rir[0][s][:RATE], dtype="float32") for s in range(sources)])
-        np.savez(cache, rooms=np.array(self.rooms, dtype=object), allow_pickle=True)
+        rooms_array = np.array(self.rooms, dtype=object)
+
+        def write(tmp):
+            with open(tmp, "wb") as handle:
+                np.savez(handle, rooms=rooms_array, allow_pickle=True)
+
+        atomic(cache, write)
 
     def sample(self, rng, count):
         room = self.rooms[rng.integers(len(self.rooms))]
@@ -418,7 +443,7 @@ def validation_set():
     rng, speakers = np.random.default_rng(SEED + 1), sorted(VAL_INDEX)
     items = [simulate(rng, VAL_INDEX, speakers, RIRS) for _ in range(VAL_EXAMPLES)]
     data = {k: torch.from_numpy(np.stack([it[k] for it in items])) for k in items[0]}
-    torch.save(data, cache)
+    atomic(cache, lambda tmp: torch.save(data, tmp))
     return data
 
 
@@ -535,7 +560,11 @@ def validate():
 # %% [markdown]
 # ## Train
 #
-# - Resumes from `RUN/last.pt` if present.
+# - Resumes from `RUN/last.pt` if present, or from `RUN/prev.pt` if `last.pt` is damaged.
+# - Saves atomically every `CKPT_EVERY` steps and at least every `CKPT_MINUTES`, so a crash loses at most
+#   about 10 minutes of training.
+# - Skips batches with a non-finite loss or gradient. It stops after `MAX_BAD_STEPS` in a row and never saves
+#   diverged weights.
 # - Logs to `RUN/log.jsonl`.
 # - Keeps `RUN/best.pt`, chosen by validation loss.
 # - Re-run this cell to continue after an interruption.
@@ -552,31 +581,75 @@ def lr_at(step):
 
 
 start_step, best = 0, float("inf")
-if (RUN / "last.pt").exists():
-    ckpt = torch.load(RUN / "last.pt", map_location="cpu", weights_only=False)
+
+
+def load_checkpoint():
+    """Newest readable checkpoint: last.pt, else prev.pt (kept in case last.pt is damaged)."""
+    for candidate in ("last.pt", "prev.pt"):
+        path = RUN / candidate
+        if path.exists():
+            try:
+                return torch.load(path, map_location="cpu", weights_only=False), candidate
+            except Exception as error:  # damaged file: fall back to the older one
+                print(f"{candidate} unreadable ({type(error).__name__}); trying an older checkpoint")
+    return None, None
+
+
+ckpt, source = load_checkpoint()
+if ckpt is not None:
     model.load_state_dict(ckpt["model"])
     optimizer.load_state_dict(ckpt["optimizer"])
     start_step, best = ckpt["step"], ckpt["best"]
-    print(f"resumed at step {start_step}")
+    print(f"resumed at step {start_step} from {source}")
+    if (RUN / "log.jsonl").exists():  # drop log lines from steps that were lost in the crash
+        kept = [line for line in (RUN / "log.jsonl").read_text().splitlines()
+                if line and json.loads(line)["step"] <= start_step]
+        atomic(RUN / "log.jsonl", lambda tmp: tmp.write_text("".join(f"{line}\n" for line in kept)))
 
 
 def save(path, step):
-    torch.save({"model": model.state_dict(), "optimizer": optimizer.state_dict(), "step": step, "best": best,
-                "mode": MODE, "model_args": MODEL_ARGS}, path)
+    state = {"model": model.state_dict(), "optimizer": optimizer.state_dict(), "step": step, "best": best,
+             "mode": MODE, "model_args": MODEL_ARGS}
+    atomic(path, lambda tmp: torch.save(state, tmp))
+
+
+def save_last(step):
+    """Rotate last.pt -> prev.pt, then write the new last.pt atomically."""
+    if (RUN / "last.pt").exists():
+        os.replace(RUN / "last.pt", RUN / "prev.pt")
+    save(RUN / "last.pt", step)
 
 
 log = open(RUN / "log.jsonl", "a")
 batches = iter(TRAIN_LOADER)
 model.train()
-began, window = time.time(), []
+began, window, bad_steps, last_save = time.time(), [], 0, time.time()
 for step in range(start_step, STEPS):
     for group in optimizer.param_groups:
         group["lr"] = lr_at(step)
     batch = {k: v.to(DEVICE) for k, v in next(batches).items()}
     loss = tse_loss(extract(batch["mix"], batch["enroll"]), batch["target"], batch["mix"])
     optimizer.zero_grad(set_to_none=True)
+    if not torch.isfinite(loss):
+        bad_steps += 1
+        print(f"step {step + 1}: non-finite loss, batch skipped ({bad_steps} in a row)", flush=True)
+        if bad_steps >= MAX_BAD_STEPS:
+            (RUN / "DIVERGED").write_text(f"step {step + 1}\n")  # stops run_until_done.sh from retrying
+            raise RuntimeError("training diverged; last.pt still holds the last good weights. Lower LR in the "
+                               "Config cell, delete RUN/DIVERGED, and re-run to resume.")
+        continue
     loss.backward()
-    torch.nn.utils.clip_grad_norm_(trainable, 5.0)
+    grad_norm = torch.nn.utils.clip_grad_norm_(trainable, 5.0)
+    if not torch.isfinite(grad_norm):
+        bad_steps += 1
+        optimizer.zero_grad(set_to_none=True)
+        print(f"step {step + 1}: non-finite gradient, update skipped ({bad_steps} in a row)", flush=True)
+        if bad_steps >= MAX_BAD_STEPS:
+            (RUN / "DIVERGED").write_text(f"step {step + 1}\n")
+            raise RuntimeError("training diverged; last.pt still holds the last good weights. Lower LR in the "
+                               "Config cell, delete RUN/DIVERGED, and re-run to resume.")
+        continue
+    bad_steps = 0
     optimizer.step()
     window.append(loss.item())
     if (step + 1) % LOG_EVERY == 0:
@@ -592,11 +665,15 @@ for step in range(start_step, STEPS):
         log.write(json.dumps(record) + "\n")
         log.flush()
         print(record, flush=True)
-    if (step + 1) % CKPT_EVERY == 0:
-        save(RUN / "last.pt", step + 1)
-save(RUN / "last.pt", STEPS)
+    if (step + 1) % CKPT_EVERY == 0 or time.time() - last_save > CKPT_MINUTES * 60:
+        save_last(step + 1)
+        last_save = time.time()
+if not (RUN / "last.pt").exists() or torch.load(RUN / "last.pt", map_location="cpu",
+                                                  weights_only=False)["step"] < STEPS:
+    save_last(STEPS)
 if not (RUN / "best.pt").exists():
     save(RUN / "best.pt", STEPS)
+(RUN / "DONE").write_text(time.strftime("%Y-%m-%d %H:%M:%S"))
 print("training finished")
 
 # %% [markdown]

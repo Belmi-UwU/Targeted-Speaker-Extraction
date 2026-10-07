@@ -8,6 +8,7 @@ This folder implements R0–R2 of the [retraining plan](../evaluation/WESEP_RETR
 | [wesep_retrain.py](wesep_retrain.py) | Same notebook in percent format (source of truth). Rebuild with `python training/build_notebook.py`. |
 | [make_eval_pack.py](make_eval_pack.py) | Builds `eval_pack.zip` (64 MB) with the held-out test conversations and baseline numbers |
 | [build_notebook.py](build_notebook.py) | Converts the `.py` source to `.ipynb` |
+| [run_until_done.sh](run_until_done.sh) | Optional unattended runner: restarts training after any crash until it is done |
 
 ## Which mode first, with limited compute
 
@@ -45,7 +46,7 @@ Your personal recording is left out unless you add `--include-user-recording`.
    - The first run installs packages, clones WeSep at a pinned commit, downloads LibriSpeech with MD5 checks, and indexes it.
    - Data needs about 60 GB of disk: archives plus extracted `train-clean-100`, `train-clean-360` and `dev-clean`. Delete `WORK/data/archives` after extraction to reclaim about 30 GB.
 3. Keep the machine awake during training, e.g. run `caffeinate -dims` in a terminal.
-4. Training checkpoints to `WORK/runs/<MODE>/last.pt` every 1,000 steps. If the kernel stops, re-run the cells and it resumes.
+4. Training checkpoints to `WORK/runs/<MODE>/last.pt` every 1,000 steps and at least every 10 minutes. If anything stops it, re-run all cells and it resumes (see *Crash safety* below).
    - Progress and validation are logged to `log.jsonl` and printed every 50 steps (validation every 2,000).
    - Each line includes `eta_hours`.
 5. When training finishes, the notebook:
@@ -59,6 +60,25 @@ Your personal recording is left out unless you add `--include-user-recording`.
 cd evaluation/wesep_eval
 .venv/bin/python live_demo_wesep.py --model retrained_finetune_research --input-file ../data/user_recordings/mixture/Mix.wav
 ```
+
+## Crash safety
+
+A crash, kernel death, reboot, or power loss costs at most about 10 minutes of training:
+- **Checkpoints:** `last.pt` is written every 1,000 steps and at least every 10 minutes, via a temporary file and an atomic rename, so it is never half-written. The previous one is kept as `prev.pt`. If `last.pt` is ever unreadable, resume falls back to `prev.pt`.
+- **Resume:** re-running all cells skips finished work (downloads, extraction, index, reverb bank, validation set) and resumes training at the saved step. Log lines from lost steps are dropped.
+- **Downloads and extraction** land under a temporary name and appear only when complete. A corrupt archive is deleted automatically, so a re-run downloads it again.
+- **Divergence:** a batch with a non-finite loss or gradient is skipped. After 20 in a row, training stops without saving the bad weights and writes `RUN/DIVERGED`.
+
+**Unattended runs.** [run_until_done.sh](run_until_done.sh) runs the same code as a script, keeps the Mac awake, and restarts it after any crash until `RUN/DONE` exists. It never restarts a diverged run.
+
+```sh
+cd training && TSE_MODE=finetune_research PYTHON=$(which python) ./run_until_done.sh
+```
+
+**Tested on the laptop:**
+1. Training was killed with `kill -9` at step 15, and `last.pt` was then deliberately truncated.
+2. The runner restarted on its own, reported `last.pt` as unreadable, and resumed from `prev.pt` at step 10.
+3. It finished all steps with a clean log.
 
 ## Time estimates
 
