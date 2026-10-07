@@ -2,10 +2,15 @@
 # Unattended training: runs wesep_retrain.py (the notebook's code) and restarts it after any crash,
 # resuming from the last checkpoint each time, until RUN/DONE exists. Keeps the Mac awake (caffeinate).
 #
-#   cd training && TSE_WORK=~/work/tse_training TSE_MODE=finetune_research PYTHON=/path/to/python bash run_until_done.sh
+#   cd training && TSE_WORK=~/work/tse_training TSE_MODE=finetune_research PYTHON=/path/to/python \
+#     bash run_until_done.sh > ~/work/tse_training/runner.out 2>&1 < /dev/null & disown
+# (no nohup needed: the script ignores SIGHUP itself)
 #
 # Stops for good if training diverged (RUN/DIVERGED) or after MAX_ATTEMPTS restarts.
 set -u
+# Survive the terminal closing (SIGHUP) without nohup: macOS nohup fails in terminals without a console
+# ("can't detach from console"), e.g. the Jupyter terminal. Ignored signals carry over to the training process.
+trap '' HUP
 HERE="$(cd "$(dirname "$0")" && pwd)"
 PY=${PYTHON:-python3}
 MODE=${TSE_MODE:-finetune_research}
