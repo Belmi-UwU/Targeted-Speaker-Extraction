@@ -175,6 +175,25 @@ def file_md5(path):
     return digest.hexdigest()
 
 
+def safe_extract(tar, destination):
+    """tar.extractall with the "data" filter, or an equivalent check on Pythons without extraction filters
+    (< 3.9.17 / 3.10.12, e.g. Apple's system Python 3.9): only regular files and folders inside `destination`."""
+    try:
+        tar.extractall(destination, filter="data")
+        return
+    except TypeError:  # extraction filters not available on this Python
+        pass
+    root = Path(destination).resolve()
+    members = tar.getmembers()
+    for member in members:
+        target = (root / member.name).resolve()
+        if target != root and root not in target.parents:
+            raise ValueError(f"unsafe path in archive: {member.name}")
+        if not (member.isfile() or member.isdir()):
+            raise ValueError(f"unexpected link or special file in archive: {member.name}")
+    tar.extractall(destination, members=members)
+
+
 def ensure_librispeech(name):
     if (LIBRISPEECH / name).is_dir():
         return
@@ -190,7 +209,7 @@ def ensure_librispeech(name):
     staging = LIBRISPEECH.parent / f".extract_{name}"
     shutil.rmtree(staging, ignore_errors=True)  # leftovers of an interrupted extraction
     with tarfile.open(archive) as tar:
-        tar.extractall(staging, filter="data")
+        safe_extract(tar, staging)
     LIBRISPEECH.mkdir(parents=True, exist_ok=True)
     os.replace(staging / "LibriSpeech" / name, LIBRISPEECH / name)  # appears only once complete
     shutil.rmtree(staging, ignore_errors=True)
