@@ -86,7 +86,7 @@ WARMUP = 1_000
 LOG_EVERY, VAL_EVERY, CKPT_EVERY = 50, 2_000, 1_000
 CKPT_MINUTES = 10  # also checkpoint at least this often, so a crash loses at most ~10 minutes
 MAX_BAD_STEPS = 20  # stop (keeping the last good checkpoint) after this many non-finite losses in a row
-NUM_WORKERS = 6
+DATA_THREADS = 6  # background threads simulating batches (no worker processes: macOS "spawn" re-runs this script)
 VAL_EXAMPLES = 200
 FREEZE_SPEAKER_ENCODER = MODE != "finetune_research"  # cheaper from-scratch training; ECAPA stays pretrained
 SEED = 2026
@@ -100,7 +100,7 @@ DISCOVERED_STYLE_PROB = 0.6  # enrollment looks like a SepFormer-discovered trac
 
 if SMOKE:
     TRAIN_SETS, VAL_SET = [os.environ.get("TSE_SMOKE_SET", "dev-clean")], os.environ.get("TSE_SMOKE_SET", "dev-clean")
-    STEPS, BATCH, NUM_WORKERS, VAL_EXAMPLES = 20, 2, 0, 6
+    STEPS, BATCH, DATA_THREADS, VAL_EXAMPLES = 20, 2, 2, 6  # threads stay on: smoke runs test the same path
     LOG_EVERY, VAL_EVERY, CKPT_EVERY, WARMUP = 5, 10, 5, 5
     RUN = WORK / "runs" / f"smoke_{MODE}"
 for folder in (WORK, RUN):
@@ -437,22 +437,43 @@ except Exception:
 # %% [markdown]
 # ## Datasets
 #
-# - **Training:** infinite, simulated on the fly in DataLoader workers.
+# - **Training:** infinite, simulated on the fly by background **threads**.
+#   - DataLoader worker processes are not used: on macOS they start with "spawn", which re-runs this whole script
+#     (or cannot import classes defined in a notebook).
+#   - The simulation is mostly NumPy/FFT/audio decoding, which release Python's GIL, so threads run in parallel.
 # - **Validation:** a fixed set from `dev-clean` speakers, which never appear in training.
 
 # %%
-class Conversations(torch.utils.data.IterableDataset):
-    def __init__(self, index, seed):
-        self.index, self.speakers, self.seed = index, sorted(index), seed
+import queue  # noqa: E402
+import threading  # noqa: E402
+
+
+class ThreadedBatches:
+    """Infinite iterator of training batches, each simulated whole by one of `threads` daemon threads."""
+
+    def __init__(self, index, seed, batch, threads, prefetch=2):
+        self.queue = queue.Queue(maxsize=max(2, threads * prefetch))
+        speakers = sorted(index)
+        for worker in range(threads):
+            rng = np.random.default_rng([seed, worker, int(time.time())])
+            threading.Thread(target=self._produce, args=(rng, index, speakers, batch), daemon=True).start()
+
+    def _produce(self, rng, index, speakers, batch):
+        try:
+            while True:
+                items = [simulate(rng, index, speakers, RIRS) for _ in range(batch)]
+                self.queue.put({k: torch.from_numpy(np.stack([it[k] for it in items])) for k in items[0]})
+        except Exception as error:  # surface data errors in the training loop instead of hanging
+            self.queue.put(error)
 
     def __iter__(self):
-        info = torch.utils.data.get_worker_info()
-        worker = info.id if info else 0
-        rng = np.random.default_rng([self.seed, worker, int(time.time())])
-        rirs = RirBank()
-        while True:
-            ex = simulate(rng, self.index, self.speakers, rirs)
-            yield {k: torch.from_numpy(np.ascontiguousarray(v)) for k, v in ex.items()}
+        return self
+
+    def __next__(self):
+        item = self.queue.get()
+        if isinstance(item, Exception):
+            raise item
+        return item
 
 
 def validation_set():
@@ -466,8 +487,6 @@ def validation_set():
     return data
 
 
-TRAIN_LOADER = torch.utils.data.DataLoader(Conversations(TRAIN_INDEX, SEED), batch_size=BATCH,
-                                           num_workers=NUM_WORKERS, persistent_workers=NUM_WORKERS > 0)
 VALIDATION = validation_set()
 print("validation", {k: tuple(v.shape) for k, v in VALIDATION.items()})
 
@@ -653,7 +672,7 @@ def save_last(step):
 
 
 log = open(RUN / "log.jsonl", "a")
-batches = iter(TRAIN_LOADER)
+batches = ThreadedBatches(TRAIN_INDEX, SEED, BATCH, DATA_THREADS)
 model.train()
 began, window, bad_steps, last_save = time.time(), [], 0, time.time()
 for step in range(start_step, STEPS):

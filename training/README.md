@@ -91,7 +91,7 @@ Measured on an Apple M5 laptop (MPS):
 | `scratch_small` | ≈1.4 | 150k | ≈2.5 days |
 | `scratch_base` | ≈4 | 200k | ≈9 days |
 
-Step times are extrapolated from batch-4 and batch-2 runs; data simulation runs in parallel CPU workers. A Mac Studio Max has several times the laptop's GPU cores and should be noticeably faster; the `eta_hours` printout gives the real number after the first 50 steps.
+Step times are extrapolated from batch-4 and batch-2 runs; data is simulated in background threads (≈0.03–0.07 s per batch of 8, far faster than a training step). A Mac Studio Max has several times the laptop's GPU cores and should be noticeably faster; the `eta_hours` printout gives the real number after the first 50 steps.
 
 ## Checked locally
 
