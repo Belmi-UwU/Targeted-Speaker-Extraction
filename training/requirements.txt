@@ -17,5 +17,13 @@ silero-vad==5.1.2          # imported by WeSep's inference helpers
 torchmetrics>=1.2          # tested 1.9.0; imported by WeSep
 thop                       # imported by WeSep (model profiling)
 tableprint                 # imported by WeSep
+# WeSpeaker imports these at package import time but the pinned commit does not declare them.
+s3prl==0.4.18              # tested 0.4.18
+openai-whisper             # tested 20250625 (the `whisper` module); not the unrelated PyPI "whisper"
+peft                       # tested 0.21.2
+transformers               # tested 5.19.0 (pip picks a 4.x release on Python 3.9)
+kaldiio                    # tested 2.18.1
+fire
+requests
 # WeSpeaker at the commit REAL-TSE pins; WeSep's speaker modules import it. Needs git.
 wespeaker @ git+https://github.com/wenet-e2e/wespeaker.git@8f53b6485d9f88a207bd17e7f8dba899495ec794
