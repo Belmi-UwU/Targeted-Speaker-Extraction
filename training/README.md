@@ -8,6 +8,7 @@ This folder implements R0–R2 of the [retraining plan](../evaluation/WESEP_RETR
 | [wesep_retrain.py](wesep_retrain.py) | Same notebook in percent format (source of truth). Rebuild with `python training/build_notebook.py`. |
 | [make_eval_pack.py](make_eval_pack.py) | Builds `eval_pack.zip` (64 MB) with the held-out test conversations and baseline numbers |
 | [build_notebook.py](build_notebook.py) | Converts the `.py` source to `.ipynb` |
+| [requirements.txt](requirements.txt) | Python packages (pip install -r), then run with `TSE_INSTALL=0` |
 | [run_until_done.sh](run_until_done.sh) | Optional unattended runner: restarts training after any crash until it is done |
 
 ## Which mode first, with limited compute

@@ -1,0 +1,21 @@
+# Packages for wesep_retrain.py / wesep_retrain.ipynb (same list the notebook's install step uses).
+#   python -m pip install --upgrade pip
+#   python -m pip install -r requirements.txt
+# Then run with TSE_INSTALL=0. Python 3.10-3.12 recommended; 3.9 works.
+# Tested together on Python 3.10 (versions in comments); lower bounds let pip pick builds for your Python.
+torch>=2.6                 # tested 2.6.0 (server installed 2.8.0, fine)
+torchaudio>=2.6            # tested 2.6.0; keep the same minor version as torch
+numpy<2                    # tested 1.26.4; WeSep/WeSpeaker are not numpy-2 ready
+scipy>=1.10                # tested 1.15.3
+soundfile>=0.12            # tested 0.14.0
+pyyaml>=6.0                # tested 6.0.3
+tqdm                       # tested 4.70.1
+matplotlib>=3.7            # tested 3.10.9; only for the training-curve plot
+pyroomacoustics>=0.7       # tested 0.10.1; reverb simulation
+huggingface_hub>=0.20      # tested 1.33.0; downloads the WeSpeaker ECAPA512 weights (scratch modes)
+silero-vad==5.1.2          # imported by WeSep's inference helpers
+torchmetrics>=1.2          # tested 1.9.0; imported by WeSep
+thop                       # imported by WeSep (model profiling)
+tableprint                 # imported by WeSep
+# WeSpeaker at the commit REAL-TSE pins; WeSep's speaker modules import it. Needs git.
+wespeaker @ git+https://github.com/wenet-e2e/wespeaker.git@8f53b6485d9f88a207bd17e7f8dba899495ec794
