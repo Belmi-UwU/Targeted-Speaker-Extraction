@@ -100,7 +100,7 @@ Both `finetune_research` and `scratch_small` ran end to end in smoke mode on the
 
 Smoke scores mean nothing: 20 steps is far too few.
 
-The from-scratch small model passed the strict causality check (9e-6 relative change). Its live inference on MPS took 0.036 s per 1 s of audio.
+The from-scratch small model passed the strict causality check: exactly 0 change once Kaldi fbank dither is off for evaluation, which the notebook now does. Its live inference on MPS took 0.036 s per 1 s of audio. Exported models load in the streaming live demo, `evaluation/wesep_eval/live_demo_streaming.py --model <name>`, with about 0.17 s delay.
 
 When fine-tuning, validation may first dip below the released model while it adapts to the new scale-dependent loss, which also teaches silence when the target is absent. Judge R1 at the later validation points.
 

@@ -504,6 +504,17 @@ print(f"parameters {sum(p.numel() for p in model.parameters()) / 1e6:.1f} M, "
       f"trainable {sum(p.numel() for p in trainable) / 1e6:.1f} M")
 
 
+def set_dither(value):
+    """Kaldi fbank dither in the speaker encoder: 1.0 while training (augmentation), 0.0 for evaluation/inference.
+
+    With dither on, inference is random: identical inputs differed by ~0.2% of peak, which earlier tests misread
+    as a causality leak.
+    """
+    for module in model.modules():
+        if hasattr(module, "dither"):
+            module.dither = value
+
+
 def extract(mix, enroll):
     """mix: (B, T), enroll: (B, T_e) -> (B, T)."""
     out = model({"wav_mix": mix.unsqueeze(1), "audio_aux": enroll.unsqueeze(1)})["speech"][:, 0]
@@ -540,6 +551,7 @@ def si_sdr(ref, est):
 @torch.no_grad()
 def validate():
     model.eval()
+    set_dither(0.0)
     losses, sdri, absent = [], [], []
     for i in range(0, VAL_EXAMPLES, BATCH):
         b = {k: v[i:i + BATCH].to(DEVICE) for k, v in VALIDATION.items()}
@@ -553,6 +565,7 @@ def validate():
                 out_ratio = est[j][~act].pow(2).mean() / (est[j].pow(2).mean() + 1e-10)
                 in_ratio = b["mix"][j][~act].pow(2).mean() / (b["mix"][j].pow(2).mean() + 1e-10)
                 absent.append((10 * torch.log10(in_ratio + 1e-10) - 10 * torch.log10(out_ratio + 1e-10)).item())
+    set_dither(1.0)
     model.train()
     return {"val_loss": float(np.mean(losses)), "val_si_sdri_active": float(np.median(sdri)) if sdri else None,
             "val_absent_suppression": float(np.median(absent)) if absent else None}
@@ -748,6 +761,7 @@ def score_live(output, mix, reference, segments, target):
 @torch.no_grad()
 def evaluate_pack(split="test"):
     model.eval()
+    set_dither(0.0)
     index = json.loads((EVAL_PACK / "index.json").read_text())
     rows = []
     for conv in [c for c in index["conversations"] if c["split"] == split]:
@@ -764,6 +778,7 @@ def evaluate_pack(split="test"):
                               torch.from_numpy(enroll.astype("float32"))[None].to(DEVICE))[0].cpu().numpy()
                 rows.append({"conversation": conv["id"], "target": target, "enrollment": kind,
                              **score_live(out, mix, reference, conv["segments"], target)})
+    set_dither(1.0)
     model.train()
     return rows
 
@@ -789,13 +804,15 @@ else:
 # %% [markdown]
 # ## Causality and speed checks
 #
-# - **Causality:** replacing future audio must not change earlier output. Values below ~1e-5 count as causal.
+# - **Causality:** replacing future audio must not change earlier output. With dither off, a causal model gives
+#   exactly 0 (float noise at most).
 # - **Speed:** one forward pass on 1 s of audio on this machine. The live demo needs compute below the block length.
 
 # %%
 @torch.no_grad()
 def causality_check():
     model.eval()
+    set_dither(0.0)
     g = torch.Generator().manual_seed(0)
     mix = torch.randn(1, 8 * RATE, generator=g) * 0.05
     enroll = torch.randn(1, 3 * RATE, generator=g) * 0.05
@@ -807,6 +824,7 @@ def causality_check():
         out = extract(altered.to(DEVICE), enroll.to(DEVICE)).cpu()
         before = slice(0, cut * RATE - 512)
         worst = max(worst, float((out[0, before] - base[0, before]).abs().max() / base[0, before].abs().max()))
+    set_dither(1.0)
     model.train()
     return worst
 
@@ -814,6 +832,7 @@ def causality_check():
 @torch.no_grad()
 def speed_check(seconds=1.0, repeats=5):
     model.eval()
+    set_dither(0.0)
     mix, enroll = torch.randn(1, int(seconds * RATE), device=DEVICE) * 0.05, torch.randn(1, 5 * RATE, device=DEVICE) * 0.05
     extract(mix, enroll)
     times = []
@@ -823,6 +842,7 @@ def speed_check(seconds=1.0, repeats=5):
         if DEVICE.type == "mps":
             torch.mps.synchronize()
         times.append(time.perf_counter() - t)
+    set_dither(1.0)
     model.train()
     return float(np.median(times))
 
@@ -848,6 +868,7 @@ torch.save({"models": [best_state]}, export / "avg_model.pt")
 config = {"model": {"tse_model": "TSE_BSRNN_SPK"}, "model_args": {"tse_model": MODEL_ARGS},
           "dataset_args": {"resample_rate": RATE}}
 config["model_args"]["tse_model"]["speaker"]["speaker_model"]["speaker_encoder"]["pretrained"] = None
+config["model_args"]["tse_model"]["speaker"]["speaker_model"]["fbank"]["dither"] = 0.0  # deterministic inference
 (export / "config.yaml").write_text(yaml.safe_dump(config, sort_keys=False))
 (export / "NOTICE.txt").write_text(
     ("RESEARCH ONLY: fine-tuned from the REAL-TSE checkpoint, which has no stated weights licence. Do not ship.\n"
