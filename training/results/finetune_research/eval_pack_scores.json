@@ -1,0 +1,242 @@
+[
+  {
+    "conversation": "test_n4_8230-237-7729-6930",
+    "target": "8230",
+    "enrollment": "clean",
+    "si_sdri": 13.120727911315772,
+    "alone_si_sdr": 33.47462229493145,
+    "absent_suppression": 20.779955962943806
+  },
+  {
+    "conversation": "test_n4_8230-237-7729-6930",
+    "target": "8230",
+    "enrollment": "discovered",
+    "si_sdri": 13.020663263654367,
+    "alone_si_sdr": 32.84231710645225,
+    "absent_suppression": 23.223437969850625
+  },
+  {
+    "conversation": "test_n4_8230-237-7729-6930",
+    "target": "237",
+    "enrollment": "clean",
+    "si_sdri": 12.34651041715664,
+    "alone_si_sdr": 37.241901214823685,
+    "absent_suppression": 26.884108538111313
+  },
+  {
+    "conversation": "test_n4_8230-237-7729-6930",
+    "target": "237",
+    "enrollment": "discovered",
+    "si_sdri": 7.442359221542589,
+    "alone_si_sdr": 34.82941637098414,
+    "absent_suppression": 6.73104160420035
+  },
+  {
+    "conversation": "test_n4_8230-237-7729-6930",
+    "target": "7729",
+    "enrollment": "clean",
+    "si_sdri": 13.112925460088352,
+    "alone_si_sdr": 32.83559448947282,
+    "absent_suppression": 32.056226878799166
+  },
+  {
+    "conversation": "test_n4_8230-237-7729-6930",
+    "target": "7729",
+    "enrollment": "discovered",
+    "si_sdri": 12.77939018787702,
+    "alone_si_sdr": 32.3707012344284,
+    "absent_suppression": 32.69666166820117
+  },
+  {
+    "conversation": "test_n4_8230-237-7729-6930",
+    "target": "6930",
+    "enrollment": "clean",
+    "si_sdri": 10.788014269540106,
+    "alone_si_sdr": 29.18861162741007,
+    "absent_suppression": 34.77404432367727
+  },
+  {
+    "conversation": "test_n4_8230-237-7729-6930",
+    "target": "6930",
+    "enrollment": "discovered",
+    "si_sdri": 12.222983147161745,
+    "alone_si_sdr": 22.709448610905284,
+    "absent_suppression": 15.798029097360779
+  },
+  {
+    "conversation": "test_n5_908-1188-1089-7176-4970",
+    "target": "908",
+    "enrollment": "clean",
+    "si_sdri": 13.010882076750065,
+    "alone_si_sdr": null,
+    "absent_suppression": 15.036346278421622
+  },
+  {
+    "conversation": "test_n5_908-1188-1089-7176-4970",
+    "target": "908",
+    "enrollment": "discovered",
+    "si_sdri": 12.842510720939572,
+    "alone_si_sdr": null,
+    "absent_suppression": 15.108006705659186
+  },
+  {
+    "conversation": "test_n5_908-1188-1089-7176-4970",
+    "target": "1188",
+    "enrollment": "clean",
+    "si_sdri": 11.654978859968997,
+    "alone_si_sdr": null,
+    "absent_suppression": 16.00802449422396
+  },
+  {
+    "conversation": "test_n5_908-1188-1089-7176-4970",
+    "target": "1188",
+    "enrollment": "discovered",
+    "si_sdri": 5.675118685305687,
+    "alone_si_sdr": null,
+    "absent_suppression": 5.320312377425022
+  },
+  {
+    "conversation": "test_n5_908-1188-1089-7176-4970",
+    "target": "1089",
+    "enrollment": "clean",
+    "si_sdri": 8.991236383507315,
+    "alone_si_sdr": 17.11849275389915,
+    "absent_suppression": 4.750235001166786
+  },
+  {
+    "conversation": "test_n5_908-1188-1089-7176-4970",
+    "target": "1089",
+    "enrollment": "discovered",
+    "si_sdri": 5.37870192469594,
+    "alone_si_sdr": 4.952542587183223,
+    "absent_suppression": 1.6482216042087714
+  },
+  {
+    "conversation": "test_n5_908-1188-1089-7176-4970",
+    "target": "7176",
+    "enrollment": "clean",
+    "si_sdri": 2.934506078335311,
+    "alone_si_sdr": 10.669455257968085,
+    "absent_suppression": 2.116383908882259
+  },
+  {
+    "conversation": "test_n5_908-1188-1089-7176-4970",
+    "target": "7176",
+    "enrollment": "discovered",
+    "si_sdri": 3.3313663924303936,
+    "alone_si_sdr": 10.50928309227177,
+    "absent_suppression": 2.6433610063131674
+  },
+  {
+    "conversation": "test_n5_908-1188-1089-7176-4970",
+    "target": "4970",
+    "enrollment": "clean",
+    "si_sdri": 19.140240575838213,
+    "alone_si_sdr": 26.243037883356834,
+    "absent_suppression": 25.365656906455722
+  },
+  {
+    "conversation": "test_n5_908-1188-1089-7176-4970",
+    "target": "4970",
+    "enrollment": "discovered",
+    "si_sdri": 18.387416634053743,
+    "alone_si_sdr": 23.77682625300254,
+    "absent_suppression": 27.319799094428042
+  },
+  {
+    "conversation": "test_n6_8455-4446-4077-5105-2961-121",
+    "target": "8455",
+    "enrollment": "clean",
+    "si_sdri": 14.733268067605492,
+    "alone_si_sdr": 31.092975779499792,
+    "absent_suppression": 22.012804280052656
+  },
+  {
+    "conversation": "test_n6_8455-4446-4077-5105-2961-121",
+    "target": "8455",
+    "enrollment": "discovered",
+    "si_sdri": 14.3795932027869,
+    "alone_si_sdr": 30.963744265522763,
+    "absent_suppression": 17.558237090850845
+  },
+  {
+    "conversation": "test_n6_8455-4446-4077-5105-2961-121",
+    "target": "4446",
+    "enrollment": "clean",
+    "si_sdri": 17.613587695378875,
+    "alone_si_sdr": 25.03961795111063,
+    "absent_suppression": 23.513838670876595
+  },
+  {
+    "conversation": "test_n6_8455-4446-4077-5105-2961-121",
+    "target": "4446",
+    "enrollment": "discovered",
+    "si_sdri": 13.330262272560741,
+    "alone_si_sdr": 24.02317243079928,
+    "absent_suppression": 12.828331457069044
+  },
+  {
+    "conversation": "test_n6_8455-4446-4077-5105-2961-121",
+    "target": "4077",
+    "enrollment": "clean",
+    "si_sdri": 10.712593505217505,
+    "alone_si_sdr": 27.167639023508507,
+    "absent_suppression": 9.19618462095384
+  },
+  {
+    "conversation": "test_n6_8455-4446-4077-5105-2961-121",
+    "target": "4077",
+    "enrollment": "discovered",
+    "si_sdri": 9.6639337592985,
+    "alone_si_sdr": 29.306499484267732,
+    "absent_suppression": 7.82366285913735
+  },
+  {
+    "conversation": "test_n6_8455-4446-4077-5105-2961-121",
+    "target": "5105",
+    "enrollment": "clean",
+    "si_sdri": 8.498647103680755,
+    "alone_si_sdr": null,
+    "absent_suppression": 10.627903539410855
+  },
+  {
+    "conversation": "test_n6_8455-4446-4077-5105-2961-121",
+    "target": "5105",
+    "enrollment": "discovered",
+    "si_sdri": 6.14576500309521,
+    "alone_si_sdr": null,
+    "absent_suppression": 4.4717910144267705
+  },
+  {
+    "conversation": "test_n6_8455-4446-4077-5105-2961-121",
+    "target": "2961",
+    "enrollment": "clean",
+    "si_sdri": 12.941997807204071,
+    "alone_si_sdr": 29.538565520590826,
+    "absent_suppression": 34.56272770457489
+  },
+  {
+    "conversation": "test_n6_8455-4446-4077-5105-2961-121",
+    "target": "2961",
+    "enrollment": "discovered",
+    "si_sdri": 10.66146062130768,
+    "alone_si_sdr": 24.542191815287087,
+    "absent_suppression": 30.24353585537809
+  },
+  {
+    "conversation": "test_n6_8455-4446-4077-5105-2961-121",
+    "target": "121",
+    "enrollment": "clean",
+    "si_sdri": 9.024658975246068,
+    "alone_si_sdr": 29.867831769499567,
+    "absent_suppression": 10.97910769380647
+  },
+  {
+    "conversation": "test_n6_8455-4446-4077-5105-2961-121",
+    "target": "121",
+    "enrollment": "discovered",
+    "si_sdri": 8.584620960750678,
+    "alone_si_sdr": 24.46326287478794,
+    "absent_suppression": 10.652167897761569
+  }
+]
