@@ -1,0 +1,294 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Speaker Extraction Panel</title>
+<style>
+:root { --bg: #101216; --panel: #181b21; --panel2: #1f232a; --ink: #e9e7e2; --muted: #9aa1ac; --line: #2c3038;
+        --accent: #6cbfa6; --accent-ink: #0f1513; --warn: #e2a85a; --bad: #ef8a7a; }
+* { box-sizing: border-box; }
+body { margin: 0; background: var(--bg); color: var(--ink); font: 14px/1.45 -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif; }
+main { max-width: 1100px; margin: 0 auto; padding: 16px 16px 48px; }
+h1 { font-size: 21px; margin: 0; }
+h2 { font-size: 16px; margin: 0 0 10px; display: flex; align-items: center; gap: 8px; }
+.step { display: inline-grid; place-items: center; width: 22px; height: 22px; border-radius: 50%; background: var(--accent); color: var(--accent-ink); font-size: 12px; font-weight: 700; }
+.muted { color: var(--muted); }
+.top { display: flex; justify-content: space-between; align-items: center; gap: 12px; flex-wrap: wrap; margin-bottom: 4px; }
+.badge { border-radius: 999px; padding: 2px 10px; font-size: 12px; border: 1px solid var(--line); background: var(--panel); }
+.badge.live { border-color: var(--accent); color: var(--accent); } .badge.error { border-color: var(--bad); color: var(--bad); }
+.badge.busy { border-color: var(--warn); color: var(--warn); }
+.message { margin: 6px 0 14px; color: var(--muted); }
+.message.error { color: var(--bad); }
+.panel { background: var(--panel); border: 1px solid var(--line); border-radius: 10px; padding: 14px; margin-bottom: 12px; }
+.grid { display: grid; gap: 10px 14px; grid-template-columns: repeat(auto-fill, minmax(230px, 1fr)); }
+label.field { display: grid; gap: 4px; font-size: 12px; color: var(--muted); }
+select, input[type=text], input[type=number] { width: 100%; font: inherit; color: var(--ink); background: var(--panel2); border: 1px solid var(--line); border-radius: 8px; padding: 6px 8px; }
+button { font: inherit; color: var(--ink); background: var(--panel2); border: 1px solid var(--line); border-radius: 8px; padding: 7px 14px; cursor: pointer; }
+button.primary { background: var(--accent); color: var(--accent-ink); border-color: var(--accent); font-weight: 600; }
+button.danger { border-color: var(--bad); color: var(--bad); }
+button:disabled { opacity: .45; cursor: not-allowed; }
+.row { display: flex; flex-wrap: wrap; align-items: center; gap: 10px; }
+.tip { font-size: 12px; color: var(--muted); margin-top: 8px; }
+.tip b { color: var(--warn); font-weight: 600; }
+.progress { height: 8px; background: #0b0d10; border-radius: 4px; overflow: hidden; flex: 1; min-width: 160px; }
+.progress i { display: block; height: 100%; width: 0; background: var(--accent); transition: width .2s linear; }
+.meter { width: 120px; height: 8px; background: #0b0d10; border-radius: 4px; overflow: hidden; }
+.meter i { display: block; height: 100%; width: 0; background: var(--accent); transition: width .1s linear; }
+.cards { display: grid; gap: 10px; grid-template-columns: repeat(auto-fill, minmax(240px, 1fr)); }
+.card { background: var(--panel2); border: 1px solid var(--line); border-radius: 10px; padding: 10px; }
+.card.active { border-color: var(--accent); }
+.card h3 { margin: 0 0 4px; font-size: 14px; }
+audio { width: 100%; height: 32px; margin: 6px 0; }
+.chips { display: flex; flex-wrap: wrap; gap: 6px; margin: 10px 0; }
+.chip { background: var(--panel2); border: 1px solid var(--line); border-radius: 999px; padding: 2px 10px; font-size: 12px; }
+.chip.warn { border-color: var(--warn); color: var(--warn); }
+.spec h4 { margin: 10px 0 4px; font-size: 13px; display: flex; justify-content: space-between; align-items: center; }
+.plot { display: grid; grid-template-columns: 40px 1fr; gap: 6px; }
+.axis { position: relative; font-size: 11px; color: var(--muted); }
+.axis span { position: absolute; right: 2px; transform: translateY(-50%); }
+canvas { width: 100%; height: 170px; display: block; background: #000; border-radius: 4px; image-rendering: pixelated; }
+.hidden { display: none !important; }
+@media (max-width: 600px) { canvas { height: 120px; } }
+</style>
+</head>
+<body>
+<main>
+  <div class="top"><h1>Speaker extraction panel</h1><span class="badge" id="phase">connecting…</span></div>
+  <div class="message" id="message">Connecting to the local server…</div>
+
+  <section class="panel">
+    <h2><span class="step">1</span>Audio setup</h2>
+    <div class="grid">
+      <label class="field">Microphone (input)<select id="input"></select></label>
+      <label class="field">Headphones (output)<select id="output"></select></label>
+      <label class="field">Model<select id="model"></select></label>
+      <label class="field">Chunk (lower = less delay, more CPU)
+        <select id="chunk"><option value="0.064">64 ms (default)</option><option value="0.032">32 ms (low delay, needs a fast CPU)</option><option value="0.128">128 ms (safe)</option></select></label>
+      <label class="field">Safety margin
+        <select id="margin"><option value="0.10">100 ms (default)</option><option value="0.07">70 ms</option><option value="0.20">200 ms (if you hear dropouts)</option></select></label>
+    </div>
+    <div class="row" style="margin-top:10px"><button id="refresh">Refresh devices</button></div>
+    <div class="tip"><b>Use headphones.</b> Prefer the laptop microphone: choosing a Bluetooth headset's microphone switches it into low-quality call mode.</div>
+  </section>
+
+  <section class="panel">
+    <h2><span class="step">2</span>Discover the speakers</h2>
+    <div class="row">
+      <label class="field" style="width:180px">Recording length (seconds)<input type="number" id="seconds" min="10" max="120" value="30"></label>
+      <button class="primary" id="record">● Record</button>
+      <button id="stoprec" class="hidden">Stop now and discover</button>
+      <div class="progress hidden" id="recbar"><i></i></div>
+      <span class="muted hidden" id="rectime"></span>
+      <div class="meter hidden" id="recmeter"><i></i></div>
+    </div>
+    <div class="tip">Let everyone talk, ideally taking turns, with each person speaking alone for at least ~5 seconds.</div>
+    <div class="row" style="margin-top:12px">
+      <label class="field" style="flex:1;min-width:260px">…or use an audio file<input type="text" id="file" placeholder="/path/to/recording.wav"></label>
+      <button id="usefile" style="align-self:flex-end">Discover from file</button>
+    </div>
+  </section>
+
+  <section class="panel">
+    <h2><span class="step">3</span>Choose who to hear</h2>
+    <div id="speakers" class="cards"><div class="muted">No speakers yet: record or use a file in step 2.</div></div>
+  </section>
+
+  <section class="panel">
+    <h2><span class="step">4</span>Listen live</h2>
+    <div class="row">
+      <label class="field" style="width:240px">Live input
+        <select id="source"><option value="mic">Microphone (step 1)</option><option value="file">The file from step 2 (looped)</option></select></label>
+      <button class="primary" id="start" style="align-self:flex-end">▶ Start</button>
+      <button class="danger" id="stop" style="align-self:flex-end">■ Stop</button>
+      <button id="bypass" style="align-self:flex-end">Bypass: off</button>
+    </div>
+    <div class="chips" id="stats"></div>
+    <div class="spec">
+      <h4><span>Input</span><span class="row"><span class="muted" id="lvl-in">–</span><span class="meter"><i id="m-in"></i></span></span></h4>
+      <div class="plot"><div class="axis" id="axis-in"></div><canvas id="c-in" width="900" height="200"></canvas></div>
+      <h4><span id="out-title">Output</span><span class="row"><span class="muted" id="lvl-out">–</span><span class="meter"><i id="m-out"></i></span></span></h4>
+      <div class="plot"><div class="axis" id="axis-out"></div><canvas id="c-out" width="900" height="200"></canvas></div>
+      <div class="tip">Spectrograms: newest audio on the right, about 14 s of history, 0–8 kHz. Dark areas in the output are voices the model removed.</div>
+    </div>
+  </section>
+</main>
+<script>
+const $ = id => document.getElementById(id);
+let state = null, chosen = 1, discoveryStamp = 0, lastSpeakerKey = "";
+const store = {
+  get(k) { try { return localStorage.getItem(k); } catch (e) { return null; } },
+  set(k, v) { try { localStorage.setItem(k, v); } catch (e) {} },
+};
+
+async function api(path, body) {
+  const r = await fetch(path, body === undefined ? { cache: "no-store" } :
+    { method: "POST", headers: { "Content-Type": "application/json" }, body: JSON.stringify(body) });
+  const data = await r.json();
+  if (!r.ok) throw new Error(data.error || r.statusText);
+  return data;
+}
+function flash(text) { $("message").textContent = text; $("message").className = "message error"; }
+
+// ---------- devices and settings
+function fill(select, items, saved, label) {
+  select.innerHTML = "";
+  for (const it of items) {
+    const o = document.createElement("option");
+    o.value = it.value; o.textContent = label(it);
+    select.appendChild(o);
+  }
+  const pick = items.find(i => String(i.value) === saved) || items.find(i => i.default) || items[0];
+  if (pick) select.value = pick.value;
+}
+async function loadDevices() {
+  try {
+    const d = await api("/api/devices");
+    fill($("input"), d.inputs.map(x => ({ ...x, value: x.index })), store.get("input"), x => `${x.name}${x.default ? " (default)" : ""}`);
+    fill($("output"), d.outputs.map(x => ({ ...x, value: x.index })), store.get("output"), x => `${x.name}${x.default ? " (default)" : ""}`);
+  } catch (e) { flash(`Could not list audio devices: ${e.message}`); }
+}
+for (const id of ["input", "output", "model", "chunk", "margin", "source", "seconds", "file"]) {
+  const saved = store.get(id);
+  if (saved !== null && $(id).tagName !== "SELECT") $(id).value = saved;
+  $(id).addEventListener("change", () => store.set(id, $(id).value));
+}
+for (const id of ["chunk", "margin", "source"]) { const s = store.get(id); if (s !== null) $(id).value = s; }
+
+// ---------- actions
+$("refresh").onclick = loadDevices;
+$("record").onclick = () => api("/api/record", { seconds: +$("seconds").value, input: +$("input").value }).catch(e => flash(e.message));
+$("stoprec").onclick = () => api("/api/stop_record", {}).catch(e => flash(e.message));
+$("usefile").onclick = () => api("/api/discover_file", { path: $("file").value }).catch(e => flash(e.message));
+function settings(speaker) {
+  return { speaker, model: $("model").value, chunk: +$("chunk").value, margin: +$("margin").value,
+           input: +$("input").value, output: +$("output").value, source: $("source").value, file: $("file").value };
+}
+function startLive(speaker) {
+  chosen = speaker;
+  return api("/api/start", settings(speaker)).catch(e => flash(e.message));
+}
+$("start").onclick = () => startLive(chosen);
+$("stop").onclick = () => api("/api/stop", {}).catch(e => flash(e.message));
+$("bypass").onclick = () => api("/api/bypass", { on: !(state && state.live && state.live.bypass) }).catch(e => flash(e.message));
+
+function renderSpeakers(s) {
+  const key = `${discoveryStamp}:${s.speakers.length}`;
+  if (key !== lastSpeakerKey) {
+    lastSpeakerKey = key;
+    const box = $("speakers"); box.innerHTML = "";
+    if (!s.speakers.length) { box.innerHTML = '<div class="muted">No speakers yet: record or use a file in step 2.</div>'; return; }
+    for (const sp of s.speakers) {
+      const card = document.createElement("div"); card.className = "card"; card.dataset.n = sp.number;
+      card.innerHTML = `<h3>Speaker ${sp.number}</h3><div class="muted" style="font-size:12px">heard in ${sp.windows} windows</div>
+        <audio controls preload="none" src="/api/speaker/${sp.number}.wav?v=${discoveryStamp}"></audio>
+        <button class="primary">Listen live to speaker ${sp.number}</button>`;
+      card.querySelector("button").onclick = () => {
+        if (state && state.phase === "live") { chosen = sp.number; api("/api/switch", { speaker: sp.number }).catch(e => flash(e.message)); }
+        else startLive(sp.number);
+      };
+      box.appendChild(card);
+    }
+  }
+  const active = s.live ? s.live.speaker : chosen;
+  for (const card of $("speakers").children) {
+    if (!card.dataset.n) continue;
+    card.classList.toggle("active", +card.dataset.n === active);
+    const b = card.querySelector("button");
+    b.textContent = s.phase === "live" ? (+card.dataset.n === active ? `Listening to speaker ${active}` : `Switch to speaker ${card.dataset.n}`) : `Listen live to speaker ${card.dataset.n}`;
+    b.disabled = !["ready", "live", "error"].includes(s.phase) || (s.phase === "live" && +card.dataset.n === active);
+  }
+}
+
+function meter(id, db) {
+  $(`lvl-${id}`).textContent = `${db.toFixed(0)} dBFS`;
+  $(`m-${id}`).style.width = `${Math.max(0, Math.min(100, (db + 70) / 60 * 100))}%`;
+}
+
+function render(s) {
+  const busy = ["starting", "recording", "discovering", "loading"].includes(s.phase);
+  $("phase").textContent = s.phase; $("phase").className = `badge ${s.phase === "live" ? "live" : s.phase === "error" ? "error" : busy ? "busy" : ""}`;
+  $("message").textContent = s.message; $("message").className = `message ${s.phase === "error" ? "error" : ""}`;
+  // models
+  const current = $("model").value || store.get("model");
+  if ($("model").options.length !== s.models.length) {
+    fill($("model"), s.models.map(m => ({ value: m })), current, x => x.value);
+  }
+  if (!$("file").value && s.default_file) $("file").value = s.default_file;
+  // recording
+  const rec = s.recording;
+  for (const id of ["stoprec", "recbar", "rectime", "recmeter"]) $(id).classList.toggle("hidden", !rec);
+  if (rec) {
+    $("recbar").firstElementChild.style.width = `${Math.min(100, rec.elapsed / rec.total * 100)}%`;
+    $("rectime").textContent = `${Math.max(0, rec.total - rec.elapsed).toFixed(0)} s left`;
+    $("recmeter").firstElementChild.style.width = `${Math.max(0, Math.min(100, (rec.level + 70) / 60 * 100))}%`;
+  }
+  if (s.phase === "discovering" || s.phase === "recording") discoveryStamp = Date.now();
+  $("record").disabled = $("usefile").disabled = !["idle", "ready", "error"].includes(s.phase);
+  $("start").disabled = !s.speakers.length || !["ready", "error"].includes(s.phase);
+  $("stop").disabled = s.phase !== "live";
+  $("bypass").disabled = s.phase !== "live";
+  renderSpeakers(s);
+  // live
+  const L = s.live;
+  $("bypass").textContent = `Bypass: ${L && L.bypass ? "on" : "off"}`;
+  $("stats").innerHTML = L ? [
+    `<span class="chip">speaker ${L.speaker}</span>`,
+    `<span class="chip ${L.bypass ? "warn" : ""}">${L.bypass ? "bypass (unprocessed)" : "extracting"}</span>`,
+    `<span class="chip">delay ≈ ${L.delay_ms} ms + device buffers</span>`,
+    L.rtf !== null ? `<span class="chip ${L.rtf > 0.9 ? "warn" : ""}">compute ${L.rtf}× real time</span>` : "",
+    `<span class="chip ${L.underruns > 5 ? "warn" : ""}">dropouts ${L.underruns}</span>`,
+    `<span class="chip">${L.model}</span>`, `<span class="chip">input: ${L.source === "file" ? "file (looped)" : "microphone"}</span>`].join("") : "";
+  $("out-title").textContent = L ? (L.bypass ? "Output (bypass: unprocessed)" : `Output (speaker ${L.speaker})`) : "Output";
+  if (L) { meter("in", L.level_in); meter("out", L.level_out); }
+}
+
+async function pollState() {
+  try { state = await api("/api/state"); render(state); }
+  catch (e) { $("phase").textContent = "offline"; $("message").textContent = "The local server is not running. Start: .venv/bin/python web_app.py"; }
+  setTimeout(pollState, 300);
+}
+
+// ---------- spectrograms
+const W = 900, H = 200, cursors = { in: -1, out: -1 }; let rows = 128;
+const STOPS = [[0, [0, 0, 4]], [0.25, [59, 15, 112]], [0.5, [140, 41, 129]], [0.75, [222, 73, 104]], [0.9, [254, 159, 109]], [1, [252, 253, 191]]];
+const LUT = new Uint8ClampedArray(768);
+for (let i = 0; i < 256; i++) {
+  const t = i / 255; let k = 0; while (k < STOPS.length - 2 && t > STOPS[k + 1][0]) k++;
+  const [t0, c0] = STOPS[k], [t1, c1] = STOPS[k + 1], f = (t - t0) / (t1 - t0);
+  for (let c = 0; c < 3; c++) LUT[i * 3 + c] = c0[c] + (c1[c] - c0[c]) * f;
+}
+const ctx = { in: $("c-in").getContext && $("c-in").getContext("2d"), out: $("c-out").getContext && $("c-out").getContext("2d") };
+for (const kind of ["in", "out"]) {
+  if (ctx[kind]) { ctx[kind].fillStyle = "#000"; ctx[kind].fillRect(0, 0, W, H); }
+  const axis = $(`axis-${kind}`);
+  for (const khz of [8, 4, 0]) { const sp = document.createElement("span"); sp.textContent = `${khz} kHz`; sp.style.top = `${(1 - khz / 8) * 100}%`; axis.appendChild(sp); }
+}
+function draw(kind, b64, count) {
+  const c = ctx[kind]; if (!c) return;
+  const bytes = Uint8Array.from(atob(b64), ch => ch.charCodeAt(0)), n = Math.min(count, W), skip = count - n;
+  c.drawImage(c.canvas, -n, 0);
+  const img = c.createImageData(n, H);
+  for (let x = 0; x < n; x++) for (let y = 0; y < H; y++) {
+    const row = rows - 1 - Math.floor(y * rows / H);
+    const db = bytes[(skip + x) * rows + row] * 120 / 255 - 120;
+    const v = Math.max(0, Math.min(255, Math.round((db + 100) / 80 * 255)));   // -100..-20 dBFS
+    const p = (y * n + x) * 4;
+    img.data[p] = LUT[v * 3]; img.data[p + 1] = LUT[v * 3 + 1]; img.data[p + 2] = LUT[v * 3 + 2]; img.data[p + 3] = 255;
+  }
+  c.putImageData(img, W - n, 0);
+}
+async function pollSpectrum() {
+  if (state && state.phase === "live") {
+    try {
+      const d = await api(`/data?in=${cursors.in}&out=${cursors.out}`); rows = d.rows;
+      for (const kind of ["in", "out"]) { if (d[kind].count) draw(kind, d[kind].cols, d[kind].count); cursors[kind] = d[kind].next; }
+    } catch (e) {}
+  }
+  setTimeout(pollSpectrum, 100);
+}
+
+loadDevices(); pollState(); pollSpectrum();
+</script>
+</body>
+</html>
