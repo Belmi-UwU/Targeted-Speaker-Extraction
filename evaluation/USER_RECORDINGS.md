@@ -37,3 +37,35 @@ The uploaded `Mix.wav`, `Nicker.wav`, `Mond.wav`, and `Sam.wav` were processed w
 - `nicker_and_mond.wav`, `nicker_and_sam.wav`, `mond_and_sam.wav` — two selected speakers each.
 
 The run's `results/run.json` records input hashes, model revisions, speaker-to-stream matches, gain fitting, and output hashes. There are no clean references from this mixed recording, so objective source-separation scores are unavailable. The model's selected-speaker outputs require listening checks, especially for unwanted-speaker leakage. This is offline processing, not a live-app latency test.
+
+## Simulasi waktu nyata
+
+[simulate_realtime.py](simulate_realtime.py) melepas `Mix.wav` dalam frame 20 ms
+mengikuti waktu nyata dan memproses jendela 500 ms serta 1 detik. Hasil
+pengujian pertama berada di
+`data/user_recordings/realtime_simulation/2026-10-07_cpu_windows/`.
+Dengarkan `*_timeline.wav` untuk jeda dan celah playback virtual, serta
+`*_content.wav` untuk kualitas hasil tanpa jeda penjadwalan. Lihat
+[laporan simulasi](REALTIME_SIMULATION.md) untuk hasil waktu dan cara mengulang.
+
+## Percobaan konteks bergulir
+
+[experiment_rolling_context.py](experiment_rolling_context.py) mempertahankan
+konteks 2.500, 1.000, 500, atau 250 ms, dengan audio baru tetap 500 ms.
+Hanya audio baru yang dikeluarkan, sehingga konteks tidak diputar ulang.
+Hasil berada di `data/user_recordings/rolling_context/2026-10-07_context_sweep/`.
+Buka `listen.html` untuk membandingkan enam pilihan speaker dengan hasil
+rekaman penuh dan jendela 500 ms sebelumnya. Mulai dari konteks 250 ms,
+kemudian naikkan konteks jika kualitasnya belum memadai.
+
+Konteks 250 ms memiliki proses median 480 ms, tetapi 8 dari 45 putaran
+dengan riwayat penuh masih melampaui 500 ms. Konteks yang lebih panjang
+menumpuk antrean pada CPU ini. Kualitas dengar dan konteks terpendek yang
+bagus **belum ditetapkan**. Lihat [laporan konteks](ROLLING_CONTEXT_EXPERIMENT.md).
+
+Konteks **1.500 ms + audio baru 500 ms** juga sudah diuji dalam replay
+tambahan. Hasil dan halaman pembanding terbaru berada di
+`data/user_recordings/rolling_context/2026-10-07_context_1500ms/`.
+Halaman `listen.html` di sana memuat kelima konteks. Waktu proses median
+846 ms dan p95 939 ms; semua 43 putaran dengan konteks penuh melewati
+anggaran 500 ms. Hasil suara masih perlu didengarkan.
