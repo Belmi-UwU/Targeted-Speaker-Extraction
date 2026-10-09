@@ -1,0 +1,146 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Live Spectrum</title>
+<style>
+:root { --bg: #101216; --panel: #181b21; --ink: #e9e7e2; --muted: #9aa1ac; --line: #2c3038; --accent: #6cbfa6; --warn: #e2a85a; }
+* { box-sizing: border-box; }
+body { margin: 0; background: var(--bg); color: var(--ink); font: 14px/1.45 -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif; }
+main { max-width: 1100px; margin: 0 auto; padding: 16px; }
+h1 { font-size: 20px; margin: 0 0 4px; }
+.muted { color: var(--muted); }
+.status { display: flex; flex-wrap: wrap; gap: 8px; margin: 10px 0 14px; }
+.chip { background: var(--panel); border: 1px solid var(--line); border-radius: 999px; padding: 3px 10px; font-size: 13px; }
+.chip.on { border-color: var(--warn); color: var(--warn); }
+.panel { background: var(--panel); border: 1px solid var(--line); border-radius: 10px; padding: 10px 12px 12px; margin-bottom: 12px; }
+.head { display: flex; align-items: center; justify-content: space-between; gap: 10px; margin-bottom: 6px; }
+.head h2 { font-size: 15px; margin: 0; }
+.row { display: flex; align-items: center; gap: 8px; }
+.meter { width: 160px; height: 8px; background: #0b0d10; border-radius: 4px; overflow: hidden; }
+.meter i { display: block; height: 100%; width: 0; background: var(--accent); transition: width .1s linear; }
+.plot { display: grid; grid-template-columns: 44px 1fr; gap: 6px; }
+.axis { position: relative; font-size: 11px; color: var(--muted); }
+.axis span { position: absolute; right: 2px; transform: translateY(-50%); }
+canvas { width: 100%; height: 220px; display: block; image-rendering: pixelated; border-radius: 4px; background: #000; }
+.time { display: flex; justify-content: space-between; font-size: 11px; color: var(--muted); margin-left: 50px; margin-top: 3px; }
+.controls { display: flex; flex-wrap: wrap; gap: 16px; align-items: center; font-size: 13px; color: var(--muted); }
+.controls input[type=range] { width: 140px; vertical-align: middle; }
+button { font: inherit; background: var(--panel); color: var(--ink); border: 1px solid var(--line); border-radius: 8px; padding: 4px 12px; cursor: pointer; }
+@media (max-width: 600px) { canvas { height: 160px; } .meter { width: 90px; } }
+</style>
+</head>
+<body>
+<main>
+  <h1>Live spectrum</h1>
+  <div class="muted">Top: what the microphone hears. Bottom: what the model lets through to your headphones. Newest audio is on the right.</div>
+  <div class="status" id="status"><span class="chip">connecting…</span></div>
+
+  <div class="panel">
+    <div class="head"><h2>Input (microphone)</h2><div class="row"><span class="muted" id="lvl-in">–</span> <div class="meter"><i id="m-in"></i></div></div></div>
+    <div class="plot"><div class="axis" id="axis-in"></div><canvas id="c-in" width="900" height="256"></canvas></div>
+  </div>
+  <div class="panel">
+    <div class="head"><h2 id="out-title">Output (extracted speaker)</h2><div class="row"><span class="muted" id="lvl-out">–</span> <div class="meter"><i id="m-out"></i></div></div></div>
+    <div class="plot"><div class="axis" id="axis-out"></div><canvas id="c-out" width="900" height="256"></canvas></div>
+    <div class="time"><span id="t-left">–</span><span>now</span></div>
+  </div>
+
+  <div class="controls">
+    <label>Floor <input type="range" id="floor" min="-120" max="-40" value="-100"> <span id="floor-v"></span> dB</label>
+    <label>Ceiling <input type="range" id="ceil" min="-50" max="0" value="-20"> <span id="ceil-v"></span> dB</label>
+    <button id="pause">Pause</button>
+  </div>
+</main>
+<script>
+const W = 900, H = 256;
+const cursors = { in: -1, out: -1 };
+let paused = false, rows = 128, hopMs = 16;
+
+// Perceptual dark-to-bright colormap (magma-like stops).
+const STOPS = [[0, [0, 0, 4]], [0.25, [59, 15, 112]], [0.5, [140, 41, 129]], [0.75, [222, 73, 104]], [0.9, [254, 159, 109]], [1, [252, 253, 191]]];
+const LUT = new Uint8ClampedArray(256 * 3);
+for (let i = 0; i < 256; i++) {
+  const t = i / 255;
+  let k = 0; while (k < STOPS.length - 2 && t > STOPS[k + 1][0]) k++;
+  const [t0, c0] = STOPS[k], [t1, c1] = STOPS[k + 1], f = (t - t0) / (t1 - t0);
+  for (let c = 0; c < 3; c++) LUT[i * 3 + c] = c0[c] + (c1[c] - c0[c]) * f;
+}
+
+const ctx = { in: document.getElementById("c-in").getContext("2d"), out: document.getElementById("c-out").getContext("2d") };
+for (const kind of ["in", "out"]) { ctx[kind].fillStyle = "#000"; ctx[kind].fillRect(0, 0, W, H); }
+
+function axes() {
+  for (const kind of ["in", "out"]) {
+    const box = document.getElementById(`axis-${kind}`); box.innerHTML = "";
+    for (const khz of [8, 6, 4, 2, 0]) {
+      const s = document.createElement("span"); s.textContent = `${khz} kHz`;
+      s.style.top = `${(1 - khz / 8) * 100}%`; box.appendChild(s);
+    }
+  }
+  document.getElementById("t-left").textContent = `−${(W * hopMs / 1000).toFixed(1)} s`;
+}
+
+function range() {
+  const floor = +document.getElementById("floor").value, ceil = Math.max(+document.getElementById("ceil").value, floor + 5);
+  document.getElementById("floor-v").textContent = floor; document.getElementById("ceil-v").textContent = ceil;
+  return [floor, ceil];
+}
+
+function draw(kind, b64, count) {
+  const bytes = Uint8Array.from(atob(b64), c => c.charCodeAt(0));
+  const c = ctx[kind], n = Math.min(count, W), skip = count - n;
+  c.drawImage(c.canvas, -n, 0);  // scroll left
+  const img = c.createImageData(n, H), [floor, ceil] = range();
+  for (let x = 0; x < n; x++) {
+    for (let y = 0; y < H; y++) {
+      const row = rows - 1 - Math.floor(y * rows / H);             // low frequencies at the bottom
+      const db = bytes[(skip + x) * rows + row] * 120 / 255 - 120;
+      const v = Math.max(0, Math.min(255, Math.round((db - floor) / (ceil - floor) * 255)));
+      const p = (y * n + x) * 4;
+      img.data[p] = LUT[v * 3]; img.data[p + 1] = LUT[v * 3 + 1]; img.data[p + 2] = LUT[v * 3 + 2]; img.data[p + 3] = 255;
+    }
+  }
+  c.putImageData(img, W - n, 0);
+}
+
+function meter(kind, db) {
+  document.getElementById(`lvl-${kind}`).textContent = `${db.toFixed(0)} dBFS`;
+  document.getElementById(`m-${kind}`).style.width = `${Math.max(0, Math.min(100, (db + 70) / 60 * 100))}%`;
+}
+
+function showStatus(s) {
+  const box = document.getElementById("status");
+  if (s.phase !== "live") { box.innerHTML = `<span class="chip">${s.phase}</span>`; return; }
+  box.innerHTML = [
+    `<span class="chip">model ${s.model}</span>`,
+    `<span class="chip">speaker ${s.speaker} of ${s.speakers}</span>`,
+    `<span class="chip ${s.bypass ? "on" : ""}">${s.bypass ? "BYPASS (unprocessed)" : "extracting"}</span>`,
+    `<span class="chip">${s.chunk_ms} ms chunks</span>`,
+    s.rtf !== null ? `<span class="chip">compute ${s.rtf}× real time</span>` : ""].join("");
+  document.getElementById("out-title").textContent = s.bypass ? "Output (bypass: unprocessed input)" : `Output (extracted speaker ${s.speaker})`;
+  meter("in", s.level_in); meter("out", s.level_out);
+}
+
+async function poll() {
+  try {
+    const r = await fetch(`/data?in=${cursors.in}&out=${cursors.out}`, { cache: "no-store" });
+    const d = await r.json();
+    if (d.rows !== rows || d.hop_ms !== hopMs) { rows = d.rows; hopMs = d.hop_ms; axes(); }
+    for (const kind of ["in", "out"]) {
+      if (d[kind].count && !paused) draw(kind, d[kind].cols, d[kind].count);
+      cursors[kind] = d[kind].next;
+    }
+    showStatus(d.status);
+  } catch (e) {
+    document.getElementById("status").innerHTML = '<span class="chip on">demo not running (start live_demo_visual.py)</span>';
+  }
+  setTimeout(poll, 100);
+}
+
+document.getElementById("pause").onclick = e => { paused = !paused; e.target.textContent = paused ? "Resume" : "Pause"; };
+range(); axes(); poll();
+</script>
+</body>
+</html>
