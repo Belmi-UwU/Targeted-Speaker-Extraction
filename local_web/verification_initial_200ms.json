@@ -1,0 +1,37 @@
+{
+  "scope": "real-model loopback HTTP/WebSocket, file PCM; no microphone/hardware latency",
+  "checks": {
+    "static_assets": true,
+    "origin_rejection": true,
+    "path_rejection": true,
+    "saved_profile_preview": true,
+    "short_and_invalid_upload_rejected": true
+  },
+  "health": {
+    "status": "ready",
+    "error": null,
+    "device": "mps",
+    "profile_busy": false,
+    "context_ms": 1500,
+    "hop_ms": 200,
+    "calibration_seconds": 30,
+    "example_available": true,
+    "local_only": true
+  },
+  "runs": {
+    "one_speaker": {
+      "returned_blocks": 14,
+      "sent_blocks": 20,
+      "first_output_seconds": 0.39512645799914026,
+      "incremental_before_eof": true,
+      "processing_ms": {
+        "p50": 231.9063749991983,
+        "p95": 262.08106250023775
+      },
+      "max_server_pending": 2,
+      "errors": [
+        "Pemrosesan tertinggal: antrean mencapai batas. Sesi dihentikan agar delay tidak terus bertambah. Coba Bypass atau tutup aplikasi berat."
+      ]
+    }
+  }
+}

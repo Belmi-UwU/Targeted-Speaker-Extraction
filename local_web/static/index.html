@@ -1,0 +1,45 @@
+<!doctype html>
+<html lang="id">
+<head>
+  <meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Suara — TSE lokal</title><link rel="stylesheet" href="/static/style.css">
+</head>
+<body>
+  <aside class="sidebar">
+    <a class="brand" href="/" aria-label="Suara, beranda"><span class="brand-icon">ııı</span> suara<span class="brand-dot">.</span></a>
+    <div class="workspace-label">RUANG UJI LOKAL</div>
+    <nav><a class="nav-link current" href="#setup"><span>◉</span> Studio suara</a><a class="nav-link" href="#metrics"><span>▥</span> Pengukuran</a><a class="nav-link" href="#guide"><span>≡</span> Panduan singkat</a></nav>
+    <div class="sidebar-bottom"><span class="local-dot"></span> Diproses di komputer ini<p>Audio tetap lokal.<br>Tanpa layanan cloud.</p><span class="version">PROTOTIPE · V0.1</span></div>
+  </aside>
+  <main>
+    <header class="topbar"><span>Studio / <b>Filtering speaker</b></span><span class="pill" id="modelBadge"><i></i> Memuat model…</span></header>
+    <section class="hero"><div><div class="eyebrow">TARGETED SPEAKER EXTRACTION</div><h1>Dengarkan suara<br>yang kamu pilih<span>.</span></h1><p>Kenali suara dari percakapan, pilih siapa yang ingin didengar,<br class="desktop"> lalu coba filtering langsung melalui headphone.</p></div><div class="hero-mark" aria-hidden="true"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></div></section>
+    <div class="steps" aria-label="Tahapan"><span class="step active"><b>01</b> Siapkan audio</span><span class="step"><b>02</b> Kenali speaker</span><span class="step"><b>03</b> Mulai mendengar</span></div>
+    <div id="notice" role="status" aria-live="polite" class="notice">Menunggu model lokal siap.</div>
+    <div class="studio-grid" id="setup">
+      <section class="card route-card"><div class="card-heading"><div><span class="section-number">01 / AUDIO</span><h2>Sumber & perangkat</h2></div><span class="icon-box">↗</span></div>
+        <label for="source">Sumber suara</label><select id="source"><option value="microphone">Mikrofon langsung</option><option value="demo">Demo Mix.wav · mulai setelah detik ke-10</option></select>
+        <div id="micControls"><div class="label-row"><label for="inputDevice">Mikrofon</label><button id="permissionBtn" class="text-btn">Izinkan & cari perangkat</button></div><select id="inputDevice"><option value="">Mikrofon default</option></select></div>
+        <label for="outputDevice">Output headphone</label><select id="outputDevice"><option value="">Output default macOS</option></select><p class="field-note" id="outputHint">Pilih AirPods Max di pengaturan Sound macOS jika pilihan output browser tidak tersedia.</p>
+        <label for="hopMs">Audio baru per putaran</label><select id="hopMs"><option value="200">200 ms · konfigurasi kualitas sebelumnya</option><option value="300">300 ms · ruang proses lebih longgar</option></select><p class="field-note">Jika 200 ms overload, coba 300 ms dan bandingkan kualitas serta delay. Bypass memakai 20 ms.</p>
+        <div class="route-info"><span>Rute input aktif</span><strong id="activeInput">Belum diaktifkan</strong><p id="inputSettings">Gunakan mic Mac dan headphone untuk uji pertama.</p></div>
+        <div class="input-meter"><span>LEVEL INPUT</span><div><i id="inputLevel"></i></div><small id="inputDb">— dB</small></div>
+      </section>
+      <section class="card calibration-card"><div class="card-heading"><div><span class="section-number">02 / KALIBRASI</span><h2>Kenali suara di ruangan</h2></div><span class="icon-box">⌁</span></div>
+        <p class="card-copy">Rekam percakapan selama 30 detik. Pastikan setiap orang berbicara agar suaranya bisa dijadikan profil.</p>
+        <div class="countdown"><strong id="countdown">30<span>detik</span></strong><span id="calibrationState">Siap merekam setelah model dimuat</span></div><div class="progress-track"><i id="calibrationProgress"></i></div>
+        <button id="calibrateBtn" class="button primary" disabled>● &nbsp; Rekam kalibrasi 30 detik</button>
+        <div class="calibration-actions"><button id="exampleBtn" class="button subtle" disabled>Pakai profil uji Mix.wav</button><label class="button subtle upload-label">Impor WAV ≥30 detik<input id="uploadInput" type="file" accept=".wav,audio/wav" disabled></label></div>
+        <p class="field-note">Pembuatan profil memerlukan waktu tambahan setelah rekaman. Model saat ini menghasilkan tiga kandidat suara.</p>
+      </section>
+    </div>
+    <section class="card speaker-section"><div class="card-heading"><div><span class="section-number">03 / PILIH SPEAKER</span><h2>Siapa yang ingin kamu dengar?</h2></div><div class="profile-tools"><select id="profileGroup" aria-label="Profil tersimpan"><option value="">Belum ada profil</option></select><button id="deleteBtn" class="text-btn danger" disabled>Hapus</button></div></div>
+      <p class="card-copy">Dengarkan cuplikan, beri nama, dan pilih satu atau beberapa suara. Speaker baru perlu kalibrasi ulang.</p>
+      <div id="speakerCards" class="speaker-cards"><div class="empty-state"><span>♫</span><p>Profil suara akan muncul di sini.</p><small>Rekam kalibrasi atau gunakan profil uji sebelumnya.</small></div></div><p id="profileInfo" class="field-note"></p>
+    </section>
+    <section class="listen-panel"><div><span class="section-number">LIVE MONITORING</span><h2 id="listenTitle">Siap mendengarkan</h2><p id="selectionText">Pilih speaker, lalu mulai filtering.</p></div><div class="listen-controls"><div class="mode-toggle" aria-label="Mode audio"><button id="filteredMode" class="active" data-mode="filtered">Dengan filter</button><button id="bypassMode" data-mode="bypass">Bypass</button></div><label class="volume-label">Volume <input id="volume" type="range" min="0" max="1" step="0.01" value="0.5"><span id="volumeText">50%</span></label><div class="transport"><button id="startBtn" class="button primary" disabled>▶ &nbsp; Mulai mendengar</button><button id="stopBtn" class="button stop" disabled>■ &nbsp; Stop</button></div></div></section>
+    <section id="metrics" class="metrics-section"><div class="metrics-heading"><h2>Selama sesi berlangsung</h2><button id="exportBtn" class="text-btn" disabled>↓ Unduh laporan JSON</button></div><div class="metric-grid"><div class="metric"><span>ESTIMASI DELAY APLIKASI · P95</span><strong id="delayMetric">—<small>ms</small></strong><p>Capture browser → playback terjadwal</p></div><div class="metric"><span>WAKTU PROSES MODEL · P95</span><strong id="processMetric">—<small>ms</small></strong><p id="computeLabel">Menunggu model</p></div><div class="metric"><span>ANTREAN SERVER</span><strong id="queueMetric">0<small>blok</small></strong><p>Maksimal 2 blok menunggu</p></div><div class="metric"><span>CELAH PLAYBACK</span><strong id="gapMetric">0<small>ms</small></strong><p id="playbackBuffer">Buffer browser: 0 ms</p></div></div><p class="metric-note">Estimasi aplikasi belum termasuk delay fisik mikrofon dan AirPods. Target eksplorasi &lt;500 ms; pengukuran perangkat tetap diperlukan.</p></section>
+    <section class="guide" id="guide"><div><span class="section-number">SEBELUM MULAI</span><h3>Uji satu langkah setiap kali.</h3></div><ol><li><b>Periksa rute.</b> Pilih mic Mac dan AirPods Max melalui USB-C. Coba Bypass untuk memastikan audio masuk dan terdengar.</li><li><b>Kenali profil.</b> Dengarkan tiga kandidat; suara bisa bercampur atau terduplikasi. Nama otomatis belum mengenali identitas orang.</li><li><b>Bandingkan hasil.</b> Periksa kejernihan, suara lain yang bocor, dan speaker yang hilang. Stop akan melepaskan mikrofon.</li></ol></section>
+    <footer><span>Suara · Local TSE prototype</span><span id="configFooter">SepFormer + ECAPA · Konteks 1.500 ms · Hop 200 ms</span></footer>
+  </main><script type="module" src="/static/app.js"></script>
+</body></html>

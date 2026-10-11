@@ -69,3 +69,39 @@ tambahan. Hasil dan halaman pembanding terbaru berada di
 Halaman `listen.html` di sana memuat kelima konteks. Waktu proses median
 846 ms dan p95 939 ms; semua 43 putaran dengan konteks penuh melewati
 anggaran 500 ms. Hasil suara masih perlu didengarkan.
+
+## SepFormer GPU/MPS, hop 100 dan 200 ms
+
+Pengujian 9 Oktober 2026 memakai konteks 1.500 ms yang sama, dengan
+SepFormer pada GPU Metal dan ECAPA hybrid CPU/MPS. Hasil berada di
+`data/user_recordings/mps_sepformer/2026-10-09_context_1500ms_hops_100_200/`.
+Halaman `listen.html` di sana membandingkan hop 100 dan 200 ms dengan
+hasil CPU sebelumnya dan hasil rekaman penuh.
+
+**Hop 200 ms mencapai delay playback virtual p95 sekitar 424 ms** pada
+rekaman ini, dengan waktu proses p95 sekitar 197 ms; 3 dari 107 blok
+konteks penuh melewati anggaran 200 ms. Hop 100 ms menumpuk antrean.
+Pengguna menerima kualitas konfigurasi konteks 1.500 ms / hop 200 ms pada
+rekaman ini. Delay hardware dan operasi panjang belum diukur.
+Lihat [laporan MPS](MPS_SEPFORMER_EXPERIMENT.md).
+
+## Enrollment otomatis dari campuran
+
+[experiment_auto_enrollment.py](experiment_auto_enrollment.py) membuat
+profil anonim dari interval awal, lalu memakai profil itu pada audio
+lanjutan. Default kalibrasi 30 detik; uji awal memakai 10 detik pertama
+Mix.wav karena file yang ada hanya 23,125 detik. Hasil berada di
+`data/user_recordings/auto_enrollment/2026-10-09_mix_first10s/listen.html`.
+
+Pembuatan profil memerlukan tambahan 1,906 detik pada contoh 10 detik ini.
+Replay sisa audio mencapai delay playback virtual p95 403 ms. Kualitas
+profil otomatis masih perlu kamu dengarkan; ada perbedaan pencocokan
+dengan enrollment lama. Sistem saat ini menghasilkan tiga kandidat,
+belum menghitung jumlah speaker secara otomatis.
+
+Untuk percobaan berikutnya, letakkan rekaman kalibrasi sebenarnya di
+`data/user_recordings/calibration/Calibration30.wav`, lalu rekaman lanjutan
+di `data/user_recordings/mixture/Following.wav`. Semua orang yang ingin
+dipilih perlu berbicara selama kalibrasi. Lihat [laporan enrollment otomatis](AUTO_ENROLLMENT_EXPERIMENT.md)
+untuk membuat profil, mendengarkan, memilih satu/beberapa ID, dan memakai
+ulang profil tersebut. File hasil pemisahan bukan clean reference.

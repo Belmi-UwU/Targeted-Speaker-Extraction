@@ -1,0 +1,113 @@
+{
+  "scope": "AudioWorklet logic; no physical microphone",
+  "checks": [
+    {
+      "sample_rate_hz": 16000,
+      "hop_ms": 20,
+      "blocks": 7,
+      "frames": 2240,
+      "exact_30s_calibration": false,
+      "stop_silences_capture": true,
+      "capture_graph_silent": true
+    },
+    {
+      "sample_rate_hz": 16000,
+      "hop_ms": 200,
+      "blocks": 150,
+      "frames": 480000,
+      "exact_30s_calibration": true,
+      "stop_silences_capture": true,
+      "capture_graph_silent": true
+    },
+    {
+      "sample_rate_hz": 16000,
+      "hop_ms": 300,
+      "blocks": 7,
+      "frames": 33600,
+      "exact_30s_calibration": false,
+      "stop_silences_capture": true,
+      "capture_graph_silent": true
+    },
+    {
+      "sample_rate_hz": 44100,
+      "hop_ms": 20,
+      "blocks": 7,
+      "frames": 6174,
+      "exact_30s_calibration": false,
+      "stop_silences_capture": true,
+      "capture_graph_silent": true
+    },
+    {
+      "sample_rate_hz": 44100,
+      "hop_ms": 200,
+      "blocks": 150,
+      "frames": 1323000,
+      "exact_30s_calibration": true,
+      "stop_silences_capture": true,
+      "capture_graph_silent": true
+    },
+    {
+      "sample_rate_hz": 44100,
+      "hop_ms": 300,
+      "blocks": 7,
+      "frames": 92610,
+      "exact_30s_calibration": false,
+      "stop_silences_capture": true,
+      "capture_graph_silent": true
+    },
+    {
+      "sample_rate_hz": 48000,
+      "hop_ms": 20,
+      "blocks": 7,
+      "frames": 6720,
+      "exact_30s_calibration": false,
+      "stop_silences_capture": true,
+      "capture_graph_silent": true
+    },
+    {
+      "sample_rate_hz": 48000,
+      "hop_ms": 200,
+      "blocks": 150,
+      "frames": 1440000,
+      "exact_30s_calibration": true,
+      "stop_silences_capture": true,
+      "capture_graph_silent": true
+    },
+    {
+      "sample_rate_hz": 48000,
+      "hop_ms": 300,
+      "blocks": 7,
+      "frames": 100800,
+      "exact_30s_calibration": false,
+      "stop_silences_capture": true,
+      "capture_graph_silent": true
+    },
+    {
+      "sample_rate_hz": 96000,
+      "hop_ms": 20,
+      "blocks": 7,
+      "frames": 13440,
+      "exact_30s_calibration": false,
+      "stop_silences_capture": true,
+      "capture_graph_silent": true
+    },
+    {
+      "sample_rate_hz": 96000,
+      "hop_ms": 200,
+      "blocks": 150,
+      "frames": 2880000,
+      "exact_30s_calibration": true,
+      "stop_silences_capture": true,
+      "capture_graph_silent": true
+    },
+    {
+      "sample_rate_hz": 96000,
+      "hop_ms": 300,
+      "blocks": 7,
+      "frames": 201600,
+      "exact_30s_calibration": false,
+      "stop_silences_capture": true,
+      "capture_graph_silent": true
+    }
+  ]
+}

@@ -151,10 +151,17 @@ def passthrough(wave, rate, window_seconds):
 
 
 class WindowSeparator:
-    def __init__(self, separator, matcher, enrollments):
+    def __init__(self, separator, matcher, enrollments, names=None):
         self.separator, self.matcher = separator, matcher
-        self.names = list(PROFILES)
-        self.enrollments = enrollments
+        self.names = list(PROFILES) if names is None else list(names)
+        self.enrollments = np.asarray(enrollments, dtype="float32")
+        if (not 1 <= len(self.names) <= 3 or len(set(self.names)) != len(self.names)
+                or any(not name or not name.replace("_", "").isalnum() for name in self.names)
+                or self.enrollments.ndim != 2
+                or self.enrollments.shape[0] != len(self.names)
+                or not np.isfinite(self.enrollments).all()
+                or not np.allclose(np.linalg.norm(self.enrollments, axis=1), 1, atol=1e-4)):
+            raise ValueError("Expected 1–3 distinct speaker IDs and finite unit enrollment vectors")
         self.selections = [(name,) for name in self.names] + list(combinations(self.names, 2))
 
     def __call__(self, wave, rate, window_seconds):

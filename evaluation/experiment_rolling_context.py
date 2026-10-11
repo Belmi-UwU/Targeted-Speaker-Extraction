@@ -74,20 +74,21 @@ class RollingSeparator:
 
 
 def context_diagnostics(summary, records, context_ms):
+    hop_seconds = summary["hop_seconds"]
     steady = [r for r in records if r["steady_context"] and r["full_window"]]
     summary.update({
         "context_ms": context_ms,
-        "total_window_seconds_with_full_history": context_ms / 1000 + HOP_SECONDS,
+        "total_window_seconds_with_full_history": context_ms / 1000 + hop_seconds,
         "startup_policy": "use only available past; do not wait to fill history",
         "emission_policy": "newest hop only; no crossfade or future lookahead",
         "steady_full_window_count": len(steady),
         "steady_processing_seconds": stats([r["processing_seconds"] for r in steady]),
         "steady_separator_seconds": stats([r["separator_seconds"] for r in steady]),
-        "steady_processing_budget_misses": sum(r["processing_seconds"] > HOP_SECONDS for r in steady),
+        "steady_processing_budget_misses": sum(r["processing_seconds"] > hop_seconds for r in steady),
         "steady_matched_context_cosine_p50": {
             name: float(np.median([r["enrollment_to_stream_cosine"][row]
                                    [r["matched_stream_by_speaker"][name]] for r in steady]))
-            for row, name in enumerate(PROFILES)
+            for row, name in enumerate(records[0]["matched_stream_by_speaker"])
         },
         "quality_status": "awaiting listening; cosine is a diagnostic, not a quality score",
     })
@@ -97,16 +98,19 @@ def export_listening_page(output, inputs, runs, previous_run_dirs=()):
     """Use one common playback gain and no loudness normalization across clips."""
     sources = []
     for label, context_ms in runs:
-        sources.append((label, f"Konteks {context_ms} ms + audio baru 500 ms",
+        summary = json.loads((output / label / "summary.json").read_text())
+        hop_ms = round(summary["hop_seconds"] * 1000)
+        device = summary.get("separator_device", "cpu").upper()
+        sources.append((label, f"Konteks {context_ms} ms + audio baru {hop_ms} ms — {device}",
                         output / label, "{selection}_content_raw.wav"))
     for previous in previous_run_dirs:
         record = json.loads((previous / "experiment.json").read_text())
         for label, summary in record["runs"].items():
             if any(source[0] == label for source in sources):
                 raise ValueError(f"Duplicate comparison condition: {label}")
-            if summary["hop_seconds"] != HOP_SECONDS:
-                raise ValueError("Previous comparison must use a 500 ms hop")
-            sources.append((label, f"Konteks {summary['context_ms']} ms + audio baru 500 ms (run sebelumnya)",
+            hop_ms = round(summary["hop_seconds"] * 1000)
+            device = summary.get("separator_device", "cpu").upper()
+            sources.append((label, f"Konteks {summary['context_ms']} ms + audio baru {hop_ms} ms — {device} (run sebelumnya)",
                             previous / label, "{selection}_content_raw.wav"))
     baseline = inputs / "realtime_simulation/2026-10-07_cpu_windows/sepformer_500ms"
     if baseline.is_dir():
@@ -153,7 +157,7 @@ body{font:16px system-ui;max-width:900px;margin:32px auto;padding:0 20px;color:#
 article{background:white;border:1px solid #ddd;border-radius:10px;padding:16px;margin:12px 0}
 audio{display:block;width:100%;margin:12px 0}select,button{font:inherit;padding:6px}h3{margin:0;font-size:17px}
 </style><h1>Perbandingan konteks SepFormer</h1>
-<p>Audio baru tetap 500 ms. Dengarkan kejelasan speaker pilihan, kebocoran speaker lain,
+<p>Ukuran audio baru dan konteks tercantum pada setiap kondisi. Dengarkan kejelasan speaker pilihan, kebocoran speaker lain,
 suara terputus, dan sambungan. File pembanding memakai gain yang sama; tidak ada normalisasi loudness.
 Ini audio content tanpa jeda playback. Delay tersedia di summary.json dan audio timeline.</p>
 <p>Bandingkan bagian ucapan yang sama, terutama setelah detik 2,5 ketika semua konteks sudah tersedia.

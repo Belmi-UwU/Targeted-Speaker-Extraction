@@ -1,13 +1,139 @@
 # Product requirements document: Live target-speaker listening app
 
 **Status:** Draft for project alignment  
-**Version:** 0.2 — 6 October 2026  
+**Version:** 0.4 — 9 October 2026<br>
 **Owner:** Project team  
-**Current phase:** M1 complete; M2 offline model evaluation before app implementation
+**Current phase:** Local browser prototype; mixed calibration + microphone capture + headphone playback
+
+## Current implementation contract — local website
+
+**This file is the single source of truth for the project.** The local website
+requirements below define the current iteration. The phone release requirements
+in sections 1–11 remain the longer-term product plan. Experiment reports are
+evidence, and README files explain operation; they do not replace this contract.
+Update this PRD when scope or architecture changes and update PROGRESS.md with
+what passed, what remains unverified, and the next user action.
+
+### A. Goal, evidence, and fixed decisions
+
+Build a website served on **127.0.0.1**, with all processing on this Mac,
+to try hearing one or several selected speakers through headphones. UI language
+is Indonesian. Preferred first route: **Mac microphone → Mac M5 → AirPods Max 2
+USB-C output**. Browser routing must be shown rather than assumed. Phone and
+Bluetooth microphone performance are not inferred from Mac benchmarks.
+
+Use the existing pinned **SepFormer Libri3Mix + ECAPA** models. Separation on
+MPS, CPU ECAPA features and MPS embedding layers; **1,500 ms retained context
+and 200 ms new audio**. This is bounded-window noncausal inference, not a
+trained streaming model. Unsupported MPS ops must not silently fall back to CPU.
+Explicit CPU mode is for debugging and must display its device accurately.
+
+**Website measurement update:** the first browser run overloaded at hop 200 ms;
+loopback-only checks measured approximately 232–240 ms on some full-context
+blocks under the current host load. Keep 200 ms as the accepted-quality default,
+and offer **300 ms as an explicit comparison option**, retaining 1,500 ms context.
+Do not call 300 ms quality accepted or <500 ms until measured. Bypass uses 20 ms
+blocks for an audio-route baseline. Report the actual hop in every session.
+
+Evidence: the user accepted MPS 1,500/200 ms listening quality on Mix.wav.
+The previous virtual p95 was 424 ms; automatic enrollment from the first 10 s
+gave 403 ms on the disjoint 13.125 s suffix, with identity differences versus
+separate-enrollment control. **These are not browser or physical-route latency.**
+The separator always produces three candidate streams; arbitrary speaker count,
+target absence, and unseen speakers remain unverified.
+
+### B. User flow and required controls
+
+1. **Open local site.** Show model loading/ready/error, actual compute device,
+   workflow steps, and local-only processing. No microphone access on page load.
+2. **Choose audio route.** Request mic access through a user action; list browser
+   audio input devices, show the active track settings, and request echo
+   cancellation/noise suppression/automatic gain control off. Show effective
+   settings because browsers may ignore requests. Choose output where supported;
+   otherwise instruct the user to select AirPods in macOS Sound settings.
+3. **Calibrate.** Capture exactly 30 s of mono PCM. Countdown uses captured sample
+   count. Stop capture at the boundary; show profile-processing progress. All
+   participants must speak. Incoming audio while profiles are being made is
+   intentionally not buffered into a delayed conversation. Calibration and
+   warm-up are startup time, separate from live metrics.
+4. **Review/select.** Play each anonymous profile preview; allow renaming, selecting
+   one/multiple voices, reusing saved profiles, and deleting web-created profiles.
+   Explain three candidates and possible mixed/duplicate voices. Do not identify
+   people automatically or use future live audio to build initial profiles.
+5. **Listen.** Start actual microphone capture and incremental playback before
+   recording ends. Provide volume, Stop, and unfiltered Bypass. Selection/mode
+   changes reset pending audio and context so prior outputs cannot leak into a
+   new selection. Stop releases mic tracks and silences scheduled playback.
+6. **Test without a room recording.** Include a clearly labelled Mix.wav demo and
+   previously generated 10 s profiles when available. File audio passes through
+   the same paced capture/transport/model/playback path as the mic, without being
+   acoustically played into the mic. Never describe that demo as a 30 s calibration.
+
+### C. Audio and timing architecture
+
+Browser Web Audio + **AudioWorklet** captures mono PCM in 200/300 ms filtered blocks
+(20 ms for Bypass; 200 ms during calibration) at the
+actual AudioContext rate. A same-origin WebSocket sends sequence numbers,
+capture timestamps and binary float32 audio to a Python **aiohttp** backend.
+A single model executor owns GPU work; the event loop stays responsive to Stop.
+Per-session rolling history is capped at 1.5 s. Only the latest chosen hop is emitted
+at 16 kHz and scheduled through Web Audio into headphones. The browser handles
+output-rate conversion. Use the existing checkpoint/embedding code, not a
+replacement network, or pre-rendered WAVs masquerading as live inference.
+
+Bound both input backlog and browser playback backlog. On overload, stop and
+explain it instead of accumulating unlimited delay or silently dropping chunks.
+No model work occurs inside the audio callback. Gain and limiting are applied
+online, using only current/past audio; count limiting events. Bypass uses the
+same output volume and separate timing, without claiming perfect loudness match.
+
+Display model processing p50/p95, server pending blocks, browser queued audio,
+playback gaps and an **estimated application delay** from browser capture to
+scheduled playback. Do not subtract clocks across Python/browser. Export a
+bounded JSON timing report with mode, selected IDs, sample rates, requested and
+effective input settings, compute device, drops/overload/gaps, and configuration.
+Browser timing excludes unknown acoustic/input/output hardware delay; a physical
+loopback test is needed for microphone-to-ear measurements. Target <500 ms is
+exploratory, not a guarantee or replacement for the eventual phone PRD gate.
+
+### D. Local storage and errors
+
+Use only loopback HTTP/WS, same-origin controls, local static assets, no CDN,
+analytics, cloud inference, automatic downloads, or deployment. Keep audio and
+profile artifacts below the existing Git-ignored user-recordings folder. Store
+calibration and derived profiles from the explicit calibration action; **do not
+store live conversation audio by default**. Reports contain metrics, not PCM.
+Do not alter original Mix.wav, manual enrollments, or previous experiment outputs.
+One active browser audio session; extra clients get a visible busy response.
+Validate message sizes, rates, sequence continuity, finite PCM, profile ID paths
+and embedding hashes. Reject empty selection, silent calibration, too-short
+uploads and incompatible profiles. Permission denial, disconnect, route ending,
+closed/background-suspended audio context, overload and model failure stop
+monitoring visibly. Retry/recalibration must be possible without restarting the app.
+
+### E. Deliverables and acceptance gates
+
+Deliver `local_web/` server, UI, audio worklet, launch script, usage instructions,
+and verification evidence. Canonical requirements remain in **this PRD**.
+
+| Gate | Required evidence |
+| --- | --- |
+| Website and local model | Local URL responds, models load on displayed device, UI works at desktop/mobile widths; no placeholder inference. |
+| Calibration | Real 30 s boundary by sample count; saved previews/embeddings reload; silent/short input rejected. Short existing demo is labelled correctly. |
+| Incremental inference | Real checkpoint handles multiple successive packets and returns audio before EOF; bounded context and contiguous samples. |
+| Selection | One/two profiles, reuse and rename work; empty selection rejected; switching/Stop prevent stale audio. |
+| Timing and overload | Browser/server metrics named honestly; overload stops bounded queues; metrics downloadable. |
+| Privacy/recovery | Loopback binding, origin/path checks, no live PCM retention, disconnect/Stop cleanup, repeat start works. |
+| Hardware listening | **User test required** for real microphone permission, AirPods route, identity quality and physical delay; do not mark passed from file replay. |
+
+Implementation sequence: PRD → local transport and audio route → reuse saved
+profiles and live inference → 30 s calibration + speaker controls → integration
+verification → user microphone/AirPods listening → sustained/physical latency tests.
+Do not wait for optional design choices to complete the agreed local prototype.
 
 ## 1. Product in one paragraph
 
-Build a phone app that lets a listener hear **one or more selected people** when several people are speaking nearby. The listener supplies a short, separate recording of each desired speaker (an **enrollment** recording). The app captures live sound from the phone microphone or, where the audio route allows it, a true wireless earbud microphone. A speaker-selective system keeps the chosen voice or voices and plays them to headphones while reducing unselected voices. The first release uses a **selected-speaker list**: only speakers on that list should be passed through.
+Build a phone app that lets a listener hear **one or more selected people** when several people are speaking nearby. The listener creates speaker profiles either from separate enrollment recordings or, in the new prototype flow, from an initial **30-second mixed calibration recording**. The app captures live sound from the phone microphone or, where the audio route allows it, a true wireless earbud microphone. A speaker-selective system keeps the chosen voice or voices and plays them to headphones while reducing unselected voices. The first release uses a **selected-speaker list**: only speakers on that list should be passed through.
 
 The immediate deliverable is an evidence-based offline evaluation, then a causal streaming prototype, then a usable phone app. **The model is not chosen for release yet.** The verified SpeakerBeam-SS variant handles one target at a time; support for multiple selected speakers is an explicit research gate.
 
@@ -39,7 +165,7 @@ The [SpeakerBeam-SS paper](https://www.isca-archive.org/interspeech_2024/sato24_
 
 ### Goals
 
-1. Let a user enroll multiple speakers from separate, reasonably clean voice samples and select one or more of them for listening.
+1. Let a user create profiles from separate voice samples or from mixed-audio calibration, then select one or more speakers for listening. Automatic profiles require a listening review and a separate quality gate.
 2. Produce a listenable signal that retains selected speakers and suppresses unselected speakers.
 3. Work with an actual live phone audio route at a delay suitable for conversation.
 4. Explain input/output route, model status, and interruptions in the interface.
@@ -49,7 +175,7 @@ The [SpeakerBeam-SS paper](https://www.isca-archive.org/interspeech_2024/sato24_
 
 - One or more selected speakers at a time, from profiles created for each speaker; one mono mixture channel supplied to the processing system.
 - Live monitoring through headphones, with an obvious Start/Stop control and bypass comparison.
-- A short enrollment capture for each speaker and stored speaker profiles on device, subject to user delete actions.
+- Separate enrollment capture or an initial mixed-audio calibration, with stored speaker profiles on device, subject to user delete actions.
 - Phone microphone as the primary capture route for the first hardware feasibility test. True wireless earbud microphone is a required investigated route, with support decided by measured audio routing and quality.
 - No server processing in the intended app. Research notebooks may run on a computer.
 
@@ -60,11 +186,17 @@ The [SpeakerBeam-SS paper](https://www.isca-archive.org/interspeech_2024/sato24_
 
 ## 5. Core user flow
 
-1. **Choose or create profiles.** User records approximately 10–20 seconds of each desired speaker talking alone, or imports permitted recordings. The app checks speech presence and usable level, then creates embeddings/profiles. Exact minimum duration will be set by testing.
+1. **Choose or create profiles.** User can record approximately 10–20 seconds of each desired speaker talking alone, import recordings, or record a 30-second mixed calibration. In the calibration flow, everyone to be selected must speak during that interval. The system separates the calibration recording, creates anonymous candidate profiles, and presents voice previews to label and select. Processing after capture takes additional time; show progress before announcing profiles ready. Exact minimum speech duration and quality thresholds will be set by testing.
 2. **Select input and output.** App displays the actual active microphone and headphone route. The initial flow favors phone microphone plus headphones. Route changes must be visible.
 3. **Select who to hear and start listening.** User checks one or more speaker profiles, then presses Start. The app captures audio, processes it, and plays the selected voices. A Bypass control lets the user compare it with the unprocessed input at matched safe loudness.
 4. **Adjust and stop.** User controls output level, sees processing/route status, and stops immediately with one tap. No automatic storage of live conversation audio.
 5. **Recover from interruption.** If microphone permission, route, or processing fails, the app stops processed playback and clearly indicates the problem. It does not silently claim filtering is active.
+
+### Mixed-calibration prototype gate
+
+The current SepFormer Libri3Mix checkpoint supplies **three output streams**, not an estimate of the number of people. The first automatic-enrollment experiment is scoped to the existing three-person recording. Fewer speakers, more than three speakers, duplicate profiles, identities changing within a separated stream, noise, and a person who did not speak during calibration remain explicit research cases. Generated enrollment is an estimate, not a clean reference.
+
+Calibration must use only the initial interval. Evaluate subsequent filtering on a disjoint later interval or a new recording, and compare it with the same pipeline using separate enrollments. Check each selected voice, pairs, identity swaps, and target absence. Keep calibration processing, warm-up, per-block latency, and physical route latency separate. Initial file replay pauses input while profiles and warm-up are prepared; continuous microphone capture/buffering during this transition is not implemented yet. A new person requires recalibration in this prototype.
 
 ## 6. Functional requirements
 
@@ -79,6 +211,7 @@ The [SpeakerBeam-SS paper](https://www.isca-archive.org/interspeech_2024/sato24_
 | F7 | Handle calls, app backgrounding, unplugging, and Bluetooth handoff. | Route/interruption test matrix; user can recover without reinstalling. |
 | F8 | Process voice on-device for the app and save no live audio by default. | Data-flow inspection and a user-facing delete action for profiles. |
 | F9 | Keep each selected speaker audible when another selected speaker starts talking. | Three-speaker test with two selected voices and one unselected voice; listen and measure each selected source separately. |
+| F10 | Generate selectable anonymous profiles from an initial mixed calibration without requiring separate enrollment files. | Profile previews, reusable embeddings, input boundaries and processing time recorded; disjoint subsequent filtering compared with separate-enrollment control. Unknown speaker count and profile purity must be validated before general release. |
 
 ## 7. Nonfunctional requirements and proposed gates
 
