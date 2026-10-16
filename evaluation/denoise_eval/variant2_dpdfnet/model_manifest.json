@@ -1,0 +1,16 @@
+{
+  "repository": "Ceva-IP/DPDFNet",
+  "revision": "dd6818d00f50c836fed43a6243ebe49116de5964",
+  "models": {
+    "dpdfnet2": {
+      "file": "models/dpdfnet2.onnx",
+      "sha256": "4f0ee28935b4a32abecc717d745416976565834d839601acf43031094b4dc94c",
+      "bytes": 10178747
+    },
+    "dpdfnet4": {
+      "file": "models/dpdfnet4.onnx",
+      "sha256": "42a386d3601922f474c4309927e1f471cce422e9bd8e3fd3967bb943bac36c01",
+      "bytes": 11633337
+    }
+  }
+}

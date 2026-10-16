@@ -1,0 +1,32 @@
+{
+  "date": "2026-10-13",
+  "repositories": {
+    "gtcrn": {
+      "url": "https://github.com/Xiaobin-Rong/gtcrn.git",
+      "commit": "502ebfab64da7c4a9af78dcb9c6ceef1ebb01c73"
+    },
+    "DTLN": {
+      "url": "https://github.com/breizhn/DTLN.git",
+      "commit": "1de1f15a8b5b7e1c44905618ff2ef70ca8277fbc"
+    },
+    "rnnoise-v0.1.1": {
+      "url": "https://github.com/xiph/rnnoise.git",
+      "commit": "6cbfd53eb348a8d394e0757b4025c6ded34eb2b6"
+    }
+  },
+  "files": {
+    "gtcrn/stream/onnx_models/gtcrn_simple.onnx": "b4718df6228e7bdf1a8a435cf98f838636eb2fd331acabf86ba87c5192ebcb87",
+    "DTLN/pretrained_model/model_1.onnx": "22b91cae3855e5a0620e66a917ca6c82c58db0e842c770f58d86751c5e8d4ae3",
+    "DTLN/pretrained_model/model_2.onnx": "e20c92f9233fccf29cddf86970d0d0161a03aebccc26d6f4d5639c4d5ec2e639",
+    "rnnoise-v0.1.1/src/rnn_data.c": "7b90ed18f065a34597d80b4c00e140a7c5eb6380ef8c9c6bf265384c944ae708",
+    "rnnoise-v0.1.1/librnnoise.dylib": "e89bafaea3f73474929ccf3e1180421dfec5db38589bd33312913bf17e124ec5"
+  },
+  "dependencies": {
+    "onnxruntime": "1.31.0",
+    "numpy": "1.26.4",
+    "sounddevice": "0.5.6",
+    "soxr": "1.1.0"
+  },
+  "rnnoise_note": "v0.1.1; current model download stopped because upstream archive was too slow. Not the latest model.",
+  "rnnoise_build": "clang -O3 -dynamiclib -Iinclude -Isrc src/denoise.c src/rnn.c src/rnn_reader.c src/pitch.c src/kiss_fft.c src/celt_lpc.c src/rnn_data.c -o librnnoise.dylib"
+}

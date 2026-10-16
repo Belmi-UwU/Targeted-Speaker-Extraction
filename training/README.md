@@ -11,6 +11,12 @@ This folder implements R0–R2 of the [retraining plan](../evaluation/WESEP_RETR
 | [requirements.txt](requirements.txt) | Python packages (pip install -r), then run with `TSE_INSTALL=0` |
 | [run_until_done.sh](run_until_done.sh) | Optional unattended runner: restarts training after any crash until it is done |
 
+## Local robustness fine-tune (12 October 2026)
+
+The `noise_robust` profile continues the existing R1 checkpoint on this MacBook.
+See [LOCAL_ROBUST_FINETUNE.md](LOCAL_ROBUST_FINETUNE.md) for the running job, changes,
+data boundaries, and progress files. The baseline profile remains available.
+
 ## Which mode first, with limited compute
 
 Run **R1 first, then R2 small**:

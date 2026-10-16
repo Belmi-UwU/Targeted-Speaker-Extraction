@@ -1,3 +1,4 @@
 # Large or generated training artefacts stay local.
 eval_pack.zip
 work/
+local_work/

@@ -1,0 +1,27 @@
+{
+  "variant1_unchanged": true,
+  "variant1_files_checked": 9,
+  "models": {
+    "dpdfnet2": {
+      "model": "dpdfnet2",
+      "rate": 16000,
+      "hop_ms": 10.0,
+      "sample_alignment_ms": 50.0,
+      "median_compute_ms": 0.7128544966690242,
+      "p90_compute_ms": 0.8891455072443932,
+      "measured_correlation_lag_samples": 800,
+      "matched_bypass_exact": true
+    },
+    "dpdfnet4": {
+      "model": "dpdfnet4",
+      "rate": 16000,
+      "hop_ms": 10.0,
+      "sample_alignment_ms": 50.0,
+      "median_compute_ms": 1.0670625051716343,
+      "p90_compute_ms": 1.1613539973041043,
+      "measured_correlation_lag_samples": 800,
+      "matched_bypass_exact": true
+    }
+  },
+  "stft_identity_max_error": 5.960464477539063e-08
+}

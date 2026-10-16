@@ -50,7 +50,7 @@ import tarfile
 import time
 import urllib.request
 import zipfile
-from hashlib import md5
+from hashlib import md5, sha256
 from pathlib import Path
 
 
@@ -66,15 +66,22 @@ def atomic(path, write):
 
 # %%
 MODE = os.environ.get("TSE_MODE", "finetune_research")  # "finetune_research" | "scratch_small" | "scratch_base"
+PROFILE = os.environ.get("TSE_PROFILE", "baseline")
+if PROFILE not in ("baseline", "noise_robust"):
+    raise ValueError("TSE_PROFILE must be baseline or noise_robust")
+ROBUST = PROFILE == "noise_robust"
+if ROBUST and MODE != "finetune_research":
+    raise ValueError("noise_robust currently continues a finetune_research checkpoint")
 SMOKE = os.environ.get("TSE_SMOKE", "0") == "1"  # tiny end-to-end check; set False for real training
 
 WORK = Path(os.environ.get("TSE_WORK", "~/tse_training")).expanduser()
 LIBRISPEECH = Path(os.environ.get("TSE_LIBRISPEECH", WORK / "data/LibriSpeech")).expanduser()
 TRAIN_SETS = ["train-clean-100", "train-clean-360"]  # add "train-other-500" for more speakers (+30 GB)
 VAL_SET = "dev-clean"  # speakers disjoint from training and from the test-clean evaluation pack
-REALTSE_CKPT = WORK / "pretrained/tfmap_context_causal_100"  # R1 only: config.yaml + avg_model.pt
+REALTSE_CKPT = Path(os.environ.get("TSE_INIT_CHECKPOINT", WORK / "pretrained/tfmap_context_causal_100")).expanduser()
 EVAL_PACK = WORK / "eval_pack"  # unzip eval_pack.zip so that EVAL_PACK/index.json exists
-RUN = WORK / "runs" / MODE
+RUN_NAME = os.environ.get("TSE_RUN_NAME", "finetune_noise_robust_research" if ROBUST else MODE)
+RUN = WORK / "runs" / RUN_NAME
 
 RATE = 16000
 CHUNK_SECONDS = 4.0  # training mixture length
@@ -98,14 +105,25 @@ TARGET_NEVER_PRESENT = 0.05  # whole chunk without the target
 REVERB_PROB, NOISE_PROB = 0.5, 0.5
 DISCOVERED_STYLE_PROB = 0.6  # enrollment looks like a SepFormer-discovered track
 
+if ROBUST:
+    TRAIN_SETS = ["train-clean-100"]
+    BATCH, STEPS, LR, WARMUP = 2, 5_000, 5e-5, 200
+    DATA_THREADS, VAL_EXAMPLES = 2, 48
+    LOG_EVERY, VAL_EVERY, CKPT_EVERY = 25, 500, 250
+    FREEZE_SPEAKER_ENCODER = True
+    NOISE_PROB, DISCOVERED_STYLE_PROB, TARGET_NEVER_PRESENT = 0.75, 0.5, 0.10
+BATCH = int(os.environ.get("TSE_BATCH", BATCH))
+STEPS = int(os.environ.get("TSE_STEPS", STEPS))
+LR = float(os.environ.get("TSE_LR", LR))
+
 if SMOKE:
     TRAIN_SETS, VAL_SET = [os.environ.get("TSE_SMOKE_SET", "dev-clean")], os.environ.get("TSE_SMOKE_SET", "dev-clean")
     STEPS, BATCH, DATA_THREADS, VAL_EXAMPLES = 20, 2, 2, 6  # threads stay on: smoke runs test the same path
     LOG_EVERY, VAL_EVERY, CKPT_EVERY, WARMUP = 5, 10, 5, 5
-    RUN = WORK / "runs" / f"smoke_{MODE}"
+    RUN = WORK / "runs" / f"smoke_{RUN_NAME}"
 for folder in (WORK, RUN):
     folder.mkdir(parents=True, exist_ok=True)
-print(f"MODE={MODE} SMOKE={SMOKE} STEPS={STEPS} BATCH={BATCH} RUN={RUN}")
+print(f"MODE={MODE} PROFILE={PROFILE} SMOKE={SMOKE} STEPS={STEPS} BATCH={BATCH} RUN={RUN}")
 
 # %% [markdown]
 # ## Environment
@@ -144,9 +162,29 @@ import soundfile as sf  # noqa: E402
 import torch  # noqa: E402
 import yaml  # noqa: E402
 
-DEVICE = torch.device("mps" if torch.backends.mps.is_available() else "cpu")
+DEVICE = torch.device(os.environ.get("TSE_DEVICE", "cuda" if torch.cuda.is_available() else
+                                     "mps" if torch.backends.mps.is_available() else "cpu"))
+torch.set_num_threads(int(os.environ.get("TSE_THREADS", "4")))
 torch.manual_seed(SEED)
 print("torch", torch.__version__, "device", DEVICE)
+RUN_CONFIG = {"mode": MODE, "profile": PROFILE, "smoke": SMOKE, "seed": SEED,
+              "batch": BATCH, "steps": STEPS, "lr": LR, "train_sets": TRAIN_SETS,
+              "validation_set": VAL_SET, "device": str(DEVICE),
+              "noise_probability": NOISE_PROB, "discovered_style_probability": DISCOVERED_STYLE_PROB,
+              "target_never_present": TARGET_NEVER_PRESENT,
+              "initial_checkpoint": str(REALTSE_CKPT),
+              "initial_checkpoint_sha256": None, "wesep_commit": WESEP_COMMIT}
+if MODE == "finetune_research":
+    digest = sha256()
+    with (REALTSE_CKPT / "avg_model.pt").open("rb") as stream:
+        for block in iter(lambda: stream.read(1 << 20), b""):
+            digest.update(block)
+    RUN_CONFIG["initial_checkpoint_sha256"] = digest.hexdigest()
+if ROBUST:
+    config_path = RUN / "run_config.json"
+    if config_path.exists() and json.loads(config_path.read_text()) != RUN_CONFIG:
+        raise ValueError("Run configuration changed; use a separate TSE_RUN_NAME")
+    atomic(config_path, lambda tmp: tmp.write_text(json.dumps(RUN_CONFIG, indent=2) + "\n"))
 
 # %% [markdown]
 # ## Data: LibriSpeech
@@ -355,12 +393,39 @@ def coloured_noise(rng, frames):
     return np.fft.irfft(spectrum)[:frames].astype("float32")
 
 
+def environmental_noise(rng, frames):
+    """Synthetic electrical buzz and clap-like bursts, not recordings of actual rooms."""
+    t = np.arange(frames) / RATE
+    fundamental = rng.choice([50.0, 60.0]) * rng.uniform(0.98, 1.02)
+    hum = sum(np.sin(2 * np.pi * fundamental * k * t + rng.uniform(0, 2 * np.pi)) / k
+              for k in range(1, int(rng.integers(4, 13))))
+    hum *= 0.5 + 0.5 * np.sin(2 * np.pi * rng.uniform(0.2, 2.0) * t) ** 2
+    bursts = np.zeros(frames)
+    for _ in range(int(rng.integers(1, 9))):
+        start = int(rng.integers(frames))
+        count = min(frames - start, int(rng.uniform(0.03, 0.25) * RATE))
+        burst = rng.standard_normal(count) * np.exp(-np.arange(count) / (RATE * rng.uniform(0.008, 0.05)))
+        bursts[start:start + count] += burst * rng.uniform(0.3, 2.0)
+    kind = int(rng.integers(3))
+    return (hum if kind == 0 else bursts if kind == 1 else hum + bursts).astype("float32")
+
+
+def channel_augment(rng, wave):
+    """Vary the enrollment channel while preserving speaker identity and duration."""
+    sos = scipy.signal.butter(2, [rng.uniform(60, 200), rng.uniform(2800, 7500)],
+                              btype="bandpass", fs=RATE, output="sos")
+    return scipy.signal.sosfilt(sos, wave).astype("float32")
+
+
 def discovered_style(rng, enroll, leak_source):
     """Make a clean enrollment look like a SepFormer-discovered track."""
     x = scipy.signal.resample_poly(scipy.signal.resample_poly(enroll, 1, 2), 2, 1)[:len(enroll)]
     x = np.pad(x, (0, len(enroll) - len(x))).astype("float32")
-    if leak_source is not None and len(leak_source) >= len(x):
-        leak = leak_source[:len(x)] * (rms(x) / rms(leak_source[:len(x)])) * 10 ** (rng.uniform(-25, -12) / 20)
+    if leak_source is not None and len(leak_source) and (ROBUST or len(leak_source) >= len(x)):
+        # R1's 4 s source with a 5 s enrollment skipped leakage. Preserve its baseline recipe.
+        source = np.pad(leak_source, (0, max(0, len(x) - len(leak_source))))[:len(x)]
+        low, high = (-20, -6) if ROBUST else (-25, -12)
+        leak = source * (rms(x) / rms(source)) * 10 ** (rng.uniform(low, high) / 20)
         x = x + leak.astype("float32")
     for _ in range(rng.integers(0, 4)):
         start, length = rng.integers(0, len(x)), int(rng.uniform(0.1, 0.5) * RATE)
@@ -399,6 +464,8 @@ def simulate(rng, index, speakers, rirs=None):
                 track[a:b] = fade(speech[cursor:cursor + (b - a)])
                 cursor += b - a
             track *= 10 ** (rng.uniform(-10, 10) / 20) * 0.05 / rms(track[activity[i]])
+            if ROBUST and i == 0 and rng.random() < 0.5:
+                track *= 10 ** (-rng.uniform(3, 12) / 20)
         reference = track
         if rir_list is not None and i < len(rir_list):
             track, reference = reverberate(track, rir_list[i])
@@ -406,14 +473,17 @@ def simulate(rng, index, speakers, rirs=None):
         references.append(reference)
     mix = np.sum(sources, axis=0)
     if rng.random() < NOISE_PROB and rms(mix) > 1e-6:
-        if rng.random() < 0.5:  # babble from speakers outside this mixture
+        kind = rng.random()
+        if kind < (0.25 if ROBUST else 0.5):  # babble from speakers outside this mixture
             others = [s for s in speakers if s not in chosen]
             babble = sum(speech_from(rng, index[others[j]], frames)[0]
                          for j in rng.choice(len(others), size=min(int(rng.integers(3, 9)), len(others)),
                                              replace=False))
+        elif ROBUST and kind >= 0.5:
+            babble = environmental_noise(rng, frames)
         else:
             babble = coloured_noise(rng, frames)
-        mix = mix + babble * (rms(mix) / rms(babble)) * 10 ** (-rng.uniform(5, 30) / 20)
+        mix = mix + babble * (rms(mix) / rms(babble)) * 10 ** (-rng.uniform(0 if ROBUST else 5, 30) / 20)
     level = 10 ** (rng.uniform(-35, -15) / 20) / rms(mix)
     level = min(level, 0.95 / (np.max(np.abs(mix)) + 1e-9))
     mix, target = (mix * level).astype("float32"), (references[0] * level).astype("float32")
@@ -421,6 +491,8 @@ def simulate(rng, index, speakers, rirs=None):
     if rng.random() < DISCOVERED_STYLE_PROB:
         leak = sources[1] if n > 1 and rms(sources[1]) > 1e-6 else None
         enroll = discovered_style(rng, enroll, leak)
+    if ROBUST and rng.random() < 0.5:
+        enroll = channel_augment(rng, enroll)
     enroll = enroll * 10 ** (rng.uniform(-40, -10) / 20) / rms(enroll)  # level augmentation
     return {"mix": mix, "target": target, "enroll": enroll.astype("float32"), "active": activity[0]}
 
@@ -477,9 +549,14 @@ class ThreadedBatches:
 
 
 def validation_set():
-    cache = RUN.parent / f"validation_{VAL_SET}_{VAL_EXAMPLES}.pt"
+    recipe = {"profile": PROFILE, "smoke": SMOKE, "seed": SEED, "chunk": CHUNK_SECONDS,
+              "enroll": ENROLL_SECONDS, "speakers": sorted(VAL_INDEX),
+              "code": sha256(Path(__file__).read_bytes()).hexdigest() if "__file__" in globals() else
+                      "notebook-noise-robust-v1"}
+    signature = sha256(json.dumps(recipe, sort_keys=True).encode()).hexdigest()[:12]
+    cache = RUN.parent / f"validation_{VAL_SET}_{VAL_EXAMPLES}_{signature}.pt"
     if cache.exists():
-        return torch.load(cache)
+        return torch.load(cache, map_location="cpu", weights_only=True)
     rng, speakers = np.random.default_rng(SEED + 1), sorted(VAL_INDEX)
     items = [simulate(rng, VAL_INDEX, speakers, RIRS) for _ in range(VAL_EXAMPLES)]
     data = {k: torch.from_numpy(np.stack([it[k] for it in items])) for k in items[0]}
@@ -524,6 +601,7 @@ MODEL_ARGS = {
 }
 if MODE == "scratch_small":
     MODEL_ARGS["separator"].update(feature_dim=64, num_repeat=4)
+MODEL_ARGS["speaker"]["speaker_model"]["speaker_encoder"]["freeze"] = FREEZE_SPEAKER_ENCODER
 if MODE != "finetune_research":
     from huggingface_hub import hf_hub_download
     ecapa = hf_hub_download("Wespeaker/wespeaker-voxceleb-ecapa-tdnn512", "avg_model.pt",
@@ -535,7 +613,7 @@ model = get_model("TSE_BSRNN_SPK")(MODEL_ARGS)
 if MODE == "finetune_research":
     state = torch.load(REALTSE_CKPT / "avg_model.pt", map_location="cpu", weights_only=True)["models"][0]
     model.load_state_dict(state, strict=True)
-    print("initialised from the REAL-TSE checkpoint (research only, no weights licence)")
+    print(f"initialised from {REALTSE_CKPT} (research fine-tune)")
 model = model.to(DEVICE)
 trainable = [p for p in model.parameters() if p.requires_grad]
 print(f"parameters {sum(p.numel() for p in model.parameters()) / 1e6:.1f} M, "
@@ -577,7 +655,23 @@ def tse_loss(est, target, mix):
     present = t_e > 1e-5 * m_e
     snr = 10 * torch.log10(t_e / ((target - est).pow(2).sum(-1) + TAU * t_e + 1e-10) + 1e-10)
     quiet = 10 * torch.log10((est.pow(2).sum(-1) + TAU * m_e + 1e-10) / (m_e + 1e-10))
-    return torch.where(present, -snr, quiet).mean()
+    primary = torch.where(present, -snr, quiet).mean()
+    return primary + 0.2 * frame_energy_loss(est, target) if ROBUST else primary
+
+
+def frame_energy_loss(est, target, frame=1600):
+    """Local energy fidelity to the target, including its natural loudness changes.
+
+    Silent reference frames remain covered by waveform and absence penalties.
+    """
+    count = est.shape[-1] // frame
+    if count == 0:
+        return est.sum() * 0
+    e = est[..., :count * frame].reshape(est.shape[0], count, frame).pow(2).mean(-1)
+    r = target[..., :count * frame].reshape(target.shape[0], count, frame).pow(2).mean(-1)
+    mask = (r > r.amax(-1, keepdim=True) * 1e-4) & (r > 1e-10)
+    error = (10 * torch.log10(e + 1e-10) - 10 * torch.log10(r + 1e-10)).abs()
+    return (error * mask).sum() / mask.sum().clamp(min=1)
 
 
 def si_sdr(ref, est):
@@ -590,11 +684,13 @@ def si_sdr(ref, est):
 def validate():
     model.eval()
     set_dither(0.0)
-    losses, sdri, absent = [], [], []
+    losses, sdri, absent, energy_errors = [], [], [], []
     for i in range(0, VAL_EXAMPLES, BATCH):
         b = {k: v[i:i + BATCH].to(DEVICE) for k, v in VALIDATION.items()}
         est = extract(b["mix"], b["enroll"])
         losses.append(tse_loss(est, b["target"], b["mix"]).item())
+        if ROBUST:
+            energy_errors.append(frame_energy_loss(est, b["target"]).item())
         for j in range(est.shape[0]):
             act = b["active"][j]
             if act.sum() > RATE // 2:
@@ -606,7 +702,8 @@ def validate():
     set_dither(1.0)
     model.train()
     return {"val_loss": float(np.mean(losses)), "val_si_sdri_active": float(np.median(sdri)) if sdri else None,
-            "val_absent_suppression": float(np.median(absent)) if absent else None}
+            "val_absent_suppression": float(np.median(absent)) if absent else None,
+            **({"val_frame_energy_error_db": float(np.mean(energy_errors))} if ROBUST else {})}
 
 # %% [markdown]
 # ## Train
@@ -660,7 +757,7 @@ if ckpt is not None:
 
 def save(path, step):
     state = {"model": model.state_dict(), "optimizer": optimizer.state_dict(), "step": step, "best": best,
-             "mode": MODE, "model_args": MODEL_ARGS}
+             "mode": MODE, "profile": PROFILE, "model_args": MODEL_ARGS}
     atomic(path, lambda tmp: torch.save(state, tmp))
 
 
@@ -670,6 +767,15 @@ def save_last(step):
         os.replace(RUN / "last.pt", RUN / "prev.pt")
     save(RUN / "last.pt", step)
 
+
+if ckpt is not None and ckpt.get("profile", "baseline") != PROFILE:
+    raise ValueError("Resume checkpoint profile differs; use a separate TSE_RUN_NAME")
+if ROBUST and ckpt is None:
+    initial = validate()
+    best = initial["val_loss"]
+    save(RUN / "best.pt", 0)  # retain R1 if fine-tuning never beats it on the new validation set
+    (RUN / "initial_validation.json").write_text(json.dumps(initial, indent=2) + "\n")
+    print({"step": 0, **initial}, flush=True)
 
 log = open(RUN / "log.jsonl", "a")
 batches = ThreadedBatches(TRAIN_INDEX, SEED, BATCH, DATA_THREADS)
@@ -724,7 +830,6 @@ if not (RUN / "last.pt").exists() or torch.load(RUN / "last.pt", map_location="c
     save_last(STEPS)
 if not (RUN / "best.pt").exists():
     save(RUN / "best.pt", STEPS)
-(RUN / "DONE").write_text(time.strftime("%Y-%m-%d %H:%M:%S"))
 print("training finished")
 
 # %% [markdown]
@@ -898,7 +1003,7 @@ print(f"speed: {speed_check():.3f} s compute for 1 s of audio on {DEVICE}")
 # R1 exports derive from unlicensed weights and are marked research-only.
 
 # %%
-name = f"retrained_{MODE}"
+name = f"retrained_{RUN_NAME}"
 export = RUN / "export" / name
 export.mkdir(parents=True, exist_ok=True)
 best_state = torch.load(RUN / "best.pt", map_location="cpu", weights_only=False)["model"]
@@ -913,5 +1018,6 @@ config["model_args"]["tse_model"]["speaker"]["speaker_model"]["fbank"]["dither"]
      if MODE == "finetune_research" else
      "Trained from scratch with WeSep (Apache-2.0) on LibriSpeech (CC BY 4.0); context encoder initialised from "
      "WeSpeaker VoxCeleb ECAPA512 (attribution required).\n")
-    + f"mode={MODE} steps={STEPS} date={time.strftime('%Y-%m-%d')}\n")
+    + f"mode={MODE} profile={PROFILE} smoke={SMOKE} steps={STEPS} date={time.strftime('%Y-%m-%d')}\n")
 print("exported to", export)
+(RUN / "DONE").write_text(time.strftime("%Y-%m-%d %H:%M:%S"))
